@@ -115,7 +115,7 @@
                         <h1 class="text-center py-3">Orangután de Borneo</h1>
 
 			   
-			                      <!--desde acá la edición de nombres-->
+	            <!--desde acá la edición de nombres-->
 
                     <h6 class="text-center mb-5 text-muted">
                         Por
@@ -127,7 +127,7 @@
                             data-bs-placement="top"
                             data-bs-content="<div class='text-center'><img src='https://randomuser.me/api/portraits/men/14.jpg' class='w-50 mb-2 rounded-circle'><br>Nombre Apellido<br><span class='small text-muted'>Profesión</span></div>"
                         >
-                            Nombre Apellido
+                            Fabiola Hernández
                         </span>
 
                         y
@@ -139,7 +139,7 @@
                             data-bs-placement="top"
                             data-bs-content="<div class='text-center'><img src='https://randomuser.me/api/portraits/women/14.jpg' class='w-50 mb-2 rounded-circle'><br>Nombre Apellido<br><span class='small text-muted'>Profesión</span></div>"
                         >
-                            Nombre Apellido
+                            Juan Pablo Astorga
                         </span>
                     </h6>
 
@@ -835,6 +835,17 @@
             var mGreen = L.marker([3.807798, 97.452561], { icon: greenIcon }).bindPopup("<strong>Orangután de Sumatra</strong> <br> Pongo abelii.").addTo(map);
             var mRed = L.marker([1.274309, 113.378906], { icon: redIcon }).bindPopup("<strong>Orangután de Borneo</strong> <br> Pongo pygmaeus.").addTo(map);
             var mOrange = L.marker([1.487107, 99.068527], { icon: orangeIcon }).bindPopup("<strong>Orangután de Tapanuli</strong> <br> Pongo tapanuliensis.").addTo(map);
+        </script>
+
+        <!--BOOTSTRAP OFRECE SU PROPIA BIBLIOTECA DE JAVASCRIPT-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+        <!--CON ESTE CÓDIGO DE ACTIVA EL POPOVER SOBRE SU NOMBRE-->
+        <script>
+            var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+            var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+                return new bootstrap.Popover(popoverTriggerEl, { html: true });
+            });
         </script>
 
     </body>
