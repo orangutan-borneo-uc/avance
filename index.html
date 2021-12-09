@@ -197,51 +197,101 @@
         <main class="pb-5">
 
             <!-- TAXONOMÍA Y DISTRIBUCIÓN -->
-            <div class="container border">
+          <div class="container">
                 <div class="row">
                     <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-                        <h3 class="text-center mt-3 mb-1 border">Taxonomía y distribución</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-                        <!-- Este es el mapa SVG -->
-
-                        <!-- Estos son los tres orangutanes -->
-                        <div class="row flex mt-5">
-                            <div class="col-12 col-lg-4 bg-success" >
-                              <h4 class="text-center mt-2">Orangután Sumatra</h4>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            </div>
-                            <div class="col-12 col-lg-4 bg-primary" >
-                              <h4 class="text-center mt-2">Orangután Borneo</h4>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            </div>
-                            <div class="col-12 col-lg-4 bg-warning" >
-                              <h4 class="text-center mt-2">Orangután de Tapanuli</h4>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            </div>
-                          </div>
-                        <!-- Este es el mapa con javascript -->
-                        <h4 class="text-center mt-5">Existen otros tipos de orangutan</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                        <div class="container mt-5 border">
-                          <div class="row justify-content-center">
-                            <div class="col">
-                        <div id="map" style="height: 300px;"></div>
-                            </div>
-                          </div>
-                        </div>
-
-                        <!--Gráfico de Barras / MUCHAS GRACIAS FACO POR LA AYUDA! QUEDÓ GENIAL! -->
-
-                        <h4 class="text-center mt-5">¿Cuántos individuos quedan por especie?</h4>
-                        <div class="row g-2 align-items-center my-4" id="grafico_de_barras">
-
-                        </div>
-                        <p class="small text-center mb-5 text-black-50">Según datos obtenidos de [link], en [fecha]</p>
+                        <h3 class="text-center mt-3 mb-2">Las 3 especies</h3>
+                        <p>
+                            Existen 3 especies reconocidas de orangután. Sólo se encuentran en el sudeste asiático en las islas de Borneo y Sumatra. Borneo es la isla más grande de Asia y se divide en tres países: Brunei, Indonesia y
+                            Malasia. Sumatra es una isla más pequeña que pertenece por completo a Indonesia.
+                        </p>
                     </div>
                 </div>
             </div>
 
+            <!-- Este es el mapa con javascript -->
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 mt-3 py-3">
+                        <div id="map" style="height: 450px;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Estos son los tres orangutanes -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-11 col-md-9 mx-auto">
+                        <div class="row flex mt-5">
+
+                            <div class="card col-12 col-lg-4">
+                                <img src="imgs/Borneo_bg_col.jpg" class="card-img-top" alt="Ilustración de un orangután de Borneo macho con bridas" />
+                                <div class="card-body">
+                                    <h5 class="card-title">Orangután de Borneo</h5>
+                                    <p class="card-text">Es el más grande de las 3 especies. Posee cabello semi corto con color marrón rojizo oscuro.</p>
+                                </div class="align-top">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Las bridas masculinas son redondas y anchas.</li>
+                                    <li class="list-group-item">A menudo pasa tiempo en el suelo.</li>
+                                    <li class="list-group-item">Población estimada: 57,350</li>
+                                </ul>
+                            </div>
+
+                            <div class="card col-12 col-lg-4">
+                                <img src="imgs/Borneo_bg_col.jpg" class="card-img-top" alt="Ilustración de un orangután de Sumatra macho con bridas" />
+                                <div class="card-body">
+                                    <h5 class="card-title">Orangután de Sumatra</h5>
+                                    <p class="card-text">Más pequeño que su hermano de Borneo. Tiene un color de pelo rojo pardusco claro.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Sus bridas se inclinan y parecen ovaladas.</li>
+                                    <li class="list-group-item">Pasa la mayor parte del tiempo en la copa de los árboles.</li>
+                                    <li class="list-group-item">Población estimada: 13,846</li>
+                                </ul>
+                            </div>
+
+                            <div class="card col-12 col-lg-4">
+                                <img src="imgs/Borneo_bg_col.jpg" class="card-img-top" alt="Ilustración de un orangután Tapanuli macho con bridas" />
+                                <div class="card-body">
+                                    <h5 class="card-title">Orangután de Tapanuli</h5>
+                                    <p class="card-text">Similar al de Sumatra pero su cabello es más grueso y rizado. Posee una barba más larga</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Sus bridas tienden a ser planas y gruesas.</li>
+                                    <li class="list-group-item">Solo se encuentra en el bosque de Batang Toru.</li>
+                                    <li class="list-group-item">Población estimada: < 800</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Este es el mapa SVG -->
+            <div class="container mt-5">
+                <div class="row">
+                    <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                        <h3 class="text-center mt-3 mb-2">Aquí va el svg</h3>
+                        <p>Pese a ser aún objeto de debate en la comunidad científica, se reconocen
+3 subespecies de Pongo pygmaeus:</p>
+                    </div>
+                </div>
+            </div>
+
+            <!--Gráfico de Barras / MUCHAS GRACIAS FACO POR LA AYUDA! QUEDÓ GENIAL! -->
+            <div class="container border mt-5">
+                <div class="row">
+                    <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                        <h4 class="text-center mt-5">¿Cuántos individuos quedan por especie?</h4>
+                        <div class="row g-2 align-items-center my-4" id="grafico_de_barras"></div>
+                        <p class="small text-center mb-5 text-black-50">Según el censo de población de orangután de 2016 [link], en [fecha]</p>
+                    </div>
+                </div>
+            </div>
+
+            
+            <!-- ................................................................................ -->
+            
             <!-- CARACTERÍSTICAS FÍSICAS -->
 
 
@@ -289,6 +339,9 @@
 
     </div>
   </div>
+            
+            <!-- ................................................................................ -->
+            
             <!-- DESPLAZAMIENTO -->
 
             <div class="container border">
@@ -300,6 +353,9 @@
                 </div>
             </div>
 
+            
+            <!-- ................................................................................ -->
+                    
             <!-- REPRODUCCIÓN -->
 
             <div class="container border">
@@ -322,6 +378,9 @@
                 </div>
             </div>
 
+                    
+            <!-- ................................................................................ -->
+                    
             <!-- ALIMENTACIÓN -->
 
             <div class="container border">
@@ -333,6 +392,9 @@
                 </div>
             </div>
 
+                    
+            <!-- ................................................................................ -->
+            
             <!-- TERRITORIO -->
 
             <div class="container border">
