@@ -3,202 +3,273 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- COMMON TAGS -->
+        <title>Orangután de Borneo / Diplomado en Infografía UC</title>
+        <!-- Search Engine -->
+        <meta name="description" content="Infografía sobre el Orangután de Borneo, el hombre del bosque." />
+        <meta name="image" content="https://orangutan-borneo-uc.github.io/infografia/imgs/Orangutan_002.png" />
+        <!-- Schema.org for Google -->
+        <meta itemprop="name" content="Orangután de Borneo / Diplomado en Infografía UC" />
+        <meta itemprop="description" content="Infografía sobre el Orangután de Borneo, el hombre del bosque." />
+        <meta itemprop="image" content="https://orangutan-borneo-uc.github.io/infografia/imgs/Orangutan_002.png" />
+        <!-- Open Graph general (Facebook, Pinterest & Google+) -->
+        <meta name="og:title" content="Orangután de Borneo / Diplomado en Infografía UC" />
+        <meta name="og:description" content="Infografía sobre el Orangután de Borneo, el hombre del bosque." />
+        <meta name="og:locale" content="es_CL" />
+        <meta name="og:type" content="website" />
+
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
         <style>
-            /* vamos a importar una fuente tipográfica desde  */
+            @import url("https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Roboto:ital,wght@0,300;0,400;0,500;1,400&display=swap");
 
-            @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;1,700&display=swap');
-
-            /* vamos a contradecir a Bootstrap, partiendo por la fuente tipográfica y afectando sus variables --> https://getbootstrap.com/docs/5.1/customize/css-variables/  */
-
+            /* Contradiciendo a Bootstrap */
             :root {
-                --bs-body-font-family: "PT Serif", Georgia, serif;
+                --bs-body-font-family: "Roboto", sans-serif;
+                --bs-primary: #e65100 !important;
             }
 
-            /* vamos a ajustar los pesos de algunos títulos a lo que dispone la fuente  */
+            a {
+                color: #222;
+                text-decoration: underline;
+                transition: color ease 0.5s;
+            }
+            a:hover {
+                color: var(--bs-primary);
+                text-decoration: none;
+                transition: color ease 0.5s;
+            }
 
             h1,
             h2,
             h3,
             h4 {
-                font-weight: 400;font-family: 'Roboto', sans-serif;
+                font-weight: 400;
+                font-family: "PT Serif", serif;
             }
-
-            /* vamos a ajustar los pesos de otros títulos y negrita a lo que dispone la fuente  */
 
             h5,
-            h6,
-            strong {
+            h6 {
                 font-weight: 700;
+                font-family: "PT Serif", serif;
             }
 
-            /* definiré un tamaño del título de primer nivel (h1) que se ajuste según el viewport width --> https://www.yunbitsoftware.com/blog/2017/06/22/viewport-units-css-que-es/ */
+            strong,
+            b,
+            em {
+                font-weight: 500;
+                font-style: normal;
+            }
 
             h1 {
-                font-size: calc(3rem + 1vw);
+                font-size: calc(1rem + 3vw);
             }
-
-            /* repetiré el truco anterior con el título de segundo nivel (h2), que, a diferencia del anterior, puedo ocupar varias veces en la misma página */
 
             h2 {
-                font-size: calc(0.75rem + 1.25vw);
+                font-size: calc(0.75rem + 1vw);
             }
-
-            /* usaré el ">" entre el título se segundo nive (h2) y el lapso en la misma línea (span) --> https://techbrij.com/css-selector-adjacent-child-sibling */
 
             h2 > span {
-                background:#BB5C0E;
-                color: rgba(255, 255, 255, 1);
+                background: var(--bs-primary);
+                color: #fff;
             }
-
-            /* sigamos con el título de tercer nivel (h3) */
 
             h3 {
                 font-size: calc(1.5rem + 1vw);
             }
+
+            header {
+                background: linear-gradient(rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%), url(imgs/bosque_borneo.jpeg);
+                background-size: cover;
+                background-position: center -250px;
+                background-repeat: no-repeat;
+                /*  background-attachment: fixed; */
+            }
         </style>
 
-        <title>¡intentando SVG!</title>
+        <link href="https://unpkg.com/image-compare-viewer/dist/image-compare-viewer.min.css" rel="stylesheet" />
+
+        <!-- Esto sirve para que funcione el mapa -->
+
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+
     </head>
 
     <body>
 
-        <header class="container">
-            <div class="row">
-                <div class="col-sm-8 mx-auto">
-                    <h2 class="text-center pt-5 fst-italic"><span class="px-3 py-1">Pongo pygmaeus</span></h2>
-                    <h1 class="text-center py-4">Orangutan de Borneo</h1>
-                    <p class="lead">Es el mamífero arbóreo más grande del mundo, lo cual lo hace
-probablemente uno de los simios más fascinantes que aún existen.
-En lengua malaya orang gutan significa “hombre del bosque”.</p>
-                    <p>Es el mamífero arbóreo más grande del mundo, lo cual lo hace
-probablemente uno de los simios más fascinantes que aún existen.
-En lengua malaya orang gutan significa “hombre del bosque”.</p>
+        <!-- ENCABEZADO -->
+
+        <header>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-md-11 col-lg-10 col-xl-9 mx-auto">
+                        <img src="imgs/Orangutan_002.png" class="w-100" />
+                    </div>
                 </div>
-                <div class="mx-auto" style="width: 500px;">
-                    <img src="img/orangutan.png" alt="describa lo que se ve en la imagen" class="w-100 my-3" />
-                <div class="position-static">
-                </div>
-                <div class="col-sm-11 col-md-8 mx-auto">
+            </div>
+            <div class="container bg-white rounded-2">
+                <div class="row">
+                    <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                        <h2 class="text-center fst-italic mt-5"><span class="px-2 py-1 rounded-2">Pongo pygmaeus</span></h2>
+
+                        <h1 class="text-center py-3">Orangután de Borneo</h1>
+
+                        <p class="lead">
+                            En este párrafo, de clase lead, tenemos que ser capaces de conectar lo que se ve arriba (el animal en su hábitat) y lo que se ve abajo (la gráfica del estado de conservación). Es recomendable que sea corto como
+                            un tweet (máximo de 280 caracteres, como los caracteres del párrafo).
+                        </p>
+
+                        <p class="strong text-center mt-5">Infografía Fabiola Hernández y Juan Pablo Astorga</p>
+
+                        <!-- NIVEL DE AMENAZA-->
+
+                        <div class="row">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300" class="col-11 col-sm-10 col-md-9 col-lg-8 col-xl-7 col-xxl-6 my-5 mx-auto border">
+                                <style type="text/css">
+                                    line,
+                                    path {
+                                        fill: none;
+                                        stroke: #777777;
+                                        stroke-linecap: round;
+                                    }
+                                    .blanco {
+                                        fill: #ffffff;
+                                        font-size: 45px;
+                                    }
+                                    .gris {
+                                        fill: #777777;
+                                        font-size: 35px;
+                                    }
+                                    .no {
+                                        fill: #999999;
+                                    }
+                                    .si {
+                                        fill: var(--bs-primary);
+                                    }
+                                </style>
+                                <g id="ex">
+                                    <circle class="no" cx="82.1" cy="228.7" r="46.4" />
+                                    <text transform="matrix(1 0 0 1 54 245)" class="blanco">EX</text>
+                                </g>
+                                <g id="ew">
+                                    <circle class="no" cx="212.6" cy="228.7" r="46.4" />
+                                    <text transform="matrix(1 0 0 1 180 245)" class="blanco">EW</text>
+                                </g>
+                                <g id="cr">
+                                    <circle class="si" cx="342.9" cy="228.7" r="46.4" />
+                                    <text transform="matrix(1 0 0 1 313 245)" class="blanco">CR</text>
+                                </g>
+                                <g id="en">
+                                    <circle class="no" cx="473.6" cy="228.7" r="46.4" />
+                                    <text transform="matrix(1 0 0 1 444 245)" class="blanco">EN</text>
+                                </g>
+                                <g id="vu">
+                                    <circle class="no" cx="603.8" cy="228.7" r="46.4" />
+                                    <text transform="matrix(1 0 0 1 574 245)" class="blanco">VU</text>
+                                </g>
+                                <g id="nt">
+                                    <circle class="no" cx="734.1" cy="228.7" r="46.4" />
+                                    <text transform="matrix(1 0 0 1 705 245)" class="blanco">NT</text>
+                                </g>
+                                <g id="lc">
+                                    <circle class="no" cx="865.6" cy="228.7" r="46.4" />
+                                    <text transform="matrix(1 0 0 1 840 245)" class="blanco">LC</text>
+                                </g>
+                                <g id="datos">
+                                    <text transform="matrix(1 0 0 1 29.8186 54.2935)" class="gris">Extinto</text>
+                                    <text transform="matrix(1 0 0 1 382.5784 54.2935)" class="gris">Amenazado</text>
+                                    <text transform="matrix(1 0 0 1 760.9694 54.2935)" class="gris">Preocupación</text>
+                                    <text transform="matrix(1 0 0 1 812.2867 95.3477)" class="gris">menor</text>
+                                    <line class="st6" x1="865.6" y1="119.4" x2="865.6" y2="162.5" />
+                                    <line class="st6" x1="82.1" y1="77.9" x2="82.1" y2="162.5" />
+                                    <path
+                                        class="st6"
+                                        d="M279.3,162.5v-55.2c0-6,4.8-10.8,10.8-10.8h161.1c4.4,0,7.9-0.3,10.4-0.9c2.6-0.5,5-1.9,7-3.8 c2.6-3.3,4.1-6,4.3-8.6c0.2,2.6,1.7,5.3,4.3,8.6c2.1,2.1,4.4,3.3,7,3.8c2.6,0.5,6.2,0.9,10.4,0.9h163.2c6,0,10.8,4.8,10.8,10.8v55.2"
+                                    />
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
                 </div>
             </div>
         </header>
-        <main>
-            <section class="container">
+
+        <main class="pb-5">
+
+            <!-- TAXONOMÍA Y DISTRIBUCIÓN -->
+            <div class="container border">
                 <div class="row">
-                    <div class="col-sm-12 mx-auto">
-                        <!--PODEMOS INCLUIR EL SVG DIRECTAMENTE, DESDE AQUÍ A LA LÍNEA 311-->
-                        <?xml version="1.0" encoding="utf-8"?>
-                        <!-- Generator: Adobe Illustrator 22.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-                        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                        	 viewBox="0 0 1000 250" style="enable-background:new 0 0 1000 250;" xml:space="preserve">
-                        <style type="text/css">
-                        	.st0{fill:#AAAAAA;}
-                        	.st1{fill:#FFFFFF;}
-                        	.st2{font-family:'Helvetica';}
-                        	.st3{font-size:26.2839px;}
-                        	.st4{enable-background:new    ;}
-                        	.st5{font-size:20px;}
-                        	.st6{fill:none;stroke:#686969;stroke-width:0.474;stroke-linecap:round;}
-                        	.st7{fill:#BB5C0E;}
-                        	.st8{font-size:30.9223px;}
-                        	.st9{fill:#BB5C0E}
-                        </style>
-                        <g id="lc">
-                        	<circle class="st0" cx="729.2" cy="191.1" r="27.1"/>
-                        	<text transform="matrix(1 0 0 1 712.5064 200.7115)" class="st1 st2 st3">LC</text>
-                        </g>
-                        <g id="nt">
-                        	<circle class="st0" cx="652.4" cy="191.1" r="27.1"/>
-                        	<text transform="matrix(1 0 0 1 635.027 200.7115)" class="st1 st2 st3">NT</text>
-                        </g>
-                        <g id="vu">
-                        	<circle class="st0" cx="576.2" cy="191.1" r="27.1"/>
-                        	<text transform="matrix(1 0 0 1 557.9618 200.7115)" class="st1 st2 st3">VU</text>
-                        </g>
-                        <g id="en">
-                        	<circle class="st0" cx="500.1" cy="191.1" r="27.1"/>
-                        	<text transform="matrix(1 0 0 1 481.8506 200.7115)" class="st1 st2 st3">EN</text>
-                        </g>
-                        <g id="cr">
-                        	<circle class="st9" cx="423.7" cy="191.1" r="27.1"/>
-                        	<text transform="matrix(1 0 0 1 404.764 200.7115)" class="st1 st2 st3">CR</text>
-                        </g>
-                        <g id="ew">
-                        	<circle class="st0" cx="347.5" cy="191.1" r="27.1"/>
-                        	<text transform="matrix(1 0 0 1 326.2961 200.7115)" class="st1 st2 st3">EW</text>
-                        </g>
-                        <g id="ex">
-                        	<circle class="st0" cx="271.2" cy="191.1" r="27.1"/>
-                        	<text transform="matrix(1 0 0 1 253.6985 200.7115)" class="st1 st2 st3">EX</text>
-                        </g>
-                        <g>
-                        	<text transform="matrix(1 0 0 1 668.1641 96.143)" class="st4"><tspan x="0" y="0" class="st2 st5">Preocupación </tspan><tspan x="30" y="24" class="st2 st5">menor </tspan></text>
-                        	<line class="st6" x1="729.2" y1="138.3" x2="729.2" y2="154.7"/>
-                        </g>
-                        <g>
-                        	<path class="st6" d="M386.5,154.7v-26.4c0-3.5,2.8-6.3,6.3-6.3H487c2.6,0,4.6-0.2,6.1-0.5s2.9-1.1,4.1-2.2c1.5-1.9,2.4-3.5,2.5-5
-                        		c0.1,1.5,1,3.1,2.5,5c1.2,1.2,2.6,1.9,4.1,2.2c1.5,0.3,3.6,0.5,6.1,0.5h95.4c3.5,0,6.3,2.8,6.3,6.3v26.4"/>
-                        	<text transform="matrix(1 0 0 1 446.8811 96.143)" class="st2 st5">Amenazado</text>
-                        </g>
-                        <g>
-                        	<line class="st6" x1="271.2" y1="111.1" x2="271.2" y2="154.7"/>
-                        	<text transform="matrix(1 0 0 1 240.6586 96.143)" class="st2 st5">Extinto</text>
-                        </g>
-                        <text transform="matrix(1 0 0 1 392.8677 52.61)" class="st7 st2 st8">DESCRIPCIÓN</text>
-                        </svg>
+                    <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                        <h3 class="text-center mt-3 mb-1 border">Taxonomía y distribución</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
-                            </g>
-                    <div class="col-sm-9 mx-auto">
-                        <h3 class="text-center pt-5 pb-2">Localización</h3>
-                        <!--              AQUÍ TRABAJARE MI CARDS CON MAPA-->
+                        <!-- Este es el mapa SVG -->
+
+                        <!-- Estos son los tres orangutanes -->
+                        <div class="row flex mt-5">
+                            <div class="col-12 col-lg-4 bg-success" >
+                              <h4 class="text-center mt-2">Orangután Sumatra</h4>
+                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            </div>
+                            <div class="col-12 col-lg-4 bg-primary" >
+                              <h4 class="text-center mt-2">Orangután Borneo</h4>
+                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            </div>
+                            <div class="col-12 col-lg-4 bg-warning" >
+                              <h4 class="text-center mt-2">Orangután de Tapanuli</h4>
+                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            </div>
                           </div>
+                        <!-- Este es el mapa con javascript -->
+                        <h4 class="text-center mt-5">Existen otros tipos de orangutan</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                        <div class="container mt-5 border">
+                          <div class="row justify-content-center">
+                            <div class="col">
+                        <div id="map" style="height: 300px;"></div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!--Gráfico de Barras / MUCHAS GRACIAS FACO POR LA AYUDA! QUEDÓ GENIAL! -->
+
+                        <h4 class="text-center mt-5">¿Cuántos individuos quedan por especie?</h4>
+                        <div class="row g-2 align-items-center my-4" id="grafico_de_barras">
 
                         </div>
-                        <div align="center">
-                        <div class="card-center" style="width: 18rem;"position align= "xml:space="preserve"">
-
-                <img src="img/mapafondo2.png" class="card-img-center" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Dónde nos encontramos...</h5>
-                  <p class="card-text">toca el botón para saber en que lugar de la isla se encuentra </p>
+                        <p class="small text-center mb-5 text-black-50">Según datos obtenidos de [link], en [fecha]</p>
+                    </div>
                 </div>
-              </div>
-              </p>
-              </p>
-              </p>
-              <div class="mx-auto" style="width: 600px;">
-              Paises que integran la isla de Borneo
-                        <div class="btn-group" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-orange-100">malasia</button>
-              <button type="button" class="btn btn-orange-100">Indonesia</button>
-              <button type="button" class="btn btn-orange-100">Brunéi</button>
-                  </p>
-                  </div>
-                    </p>
-                    <div class="mx-auto" style="width: 600px;">
-                    Sub especies del orangutan en la Isla
-              <div class="btn-group" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-light">Pygmaeus</button>
-              <button type="button" class="btn btn-light">Wurmbii</button>
-              <button type="button" class="btn btn-light">Morio</button>
             </div>
-                        </div>
-                    </header>
-                    <main>
-                        <section class="container">
-                            <div class="row">
-                                <div class="col-sm-9 mx-auto">
-                                    </div>
-<!-- AQUÍ termina mi mapa con cards-->
-<h3 class="text-center pt-5 pb-2">Caracteristicas fisicas</h3>
-</p>
-<h2 class="text-center pt-5 pb-2">Bimaturismo</h2>
-</p>
-</p>
-<!-- AQUÍ empieza mis bridas-->
+
+            <!-- CARACTERÍSTICAS FÍSICAS -->
+
+
+  <!-- aca viene mi card old . FACO ME AYUDAS A CENTRAR?-->
+
+            <div class="container border">
+                <div class="row">
+                    <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                        <h3 class="text-center mt-3 mb-1 border">Características físicas</h3>
+                        <p>Sus dedos son más largos y tienden a curvarse.</p>
+                        <div class="card" style="width: 18rem;">
+                        <img src="imgs/manoorangutan.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                      <h5 class="card-title">Mano de un orangutan</h5>
+                    </div>
+                  </div>
+              <p> Sus pulgares son más pequeños y menos ágiles. Sin embargo, pueden recoger objetos pequeños con bastante facilidad.</p>
+
+               </div>
+                <div class="card" style="width: 18rem;">
+                 <img src="imgs/manohumano.png" class="card-img-top" alt="...">
+                <div class="card-body">
+      <h5 class="card-title">mano humana</h5>
+
+    </div>
+  </div>
   <div class="card" style="width: 18rem;">
-    <img src="img/bridas.png" class="card-img-top" alt="...">
+    <img src="imgs/bridas.png" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">Macho dominante</h5>
       <p class="card-text">El macho dominante tiene protuberancias laterales que se denominan bridas.
@@ -207,7 +278,7 @@ En lengua malaya orang gutan significa “hombre del bosque”.</p>
     </div>
   </div>
   <div class="card" style="width: 18rem;">
-    <img src="img/sinbridas.png" class="card-img-top" alt="...">
+    <img src="imgs/sinbridas.png" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">Otros machos</h5>
               <p>
@@ -215,930 +286,1231 @@ En lengua malaya orang gutan significa “hombre del bosque”.</p>
       <p class="card-text">Los machos que no las poseen se integran con las hembras.</p>
           <p>
       <a href="#" class="btn btn-primary">más</a>
-    </div>
-  </div>
-  <!-- AQUÍ termina mis bridas y empiezan lasmanos-->
-  <p>
-    <p>
-      <p>
-
-  <p class="card-text">Sus dedos son más largos y tienden a curvarse. Sus pulgares son más pequeños y menos ágiles. Sin embargo, pueden recoger objetos pequeños con bastante facilidad.
-  </p>
-  <div class="card" style="width: 18rem;">
-    <img src="img/manoorangutan.png" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Mano de un orangutan</h5>
 
     </div>
-    </p>
-    </p>
-    </p>
-    </p>
   </div>
-  <div class="card" style="width: 18rem;">
-    <img src="img/manohumano.png" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">mano humana</h5>
-              <p>
-              <p>
-          <p>
+            <!-- DESPLAZAMIENTO -->
 
-    </div>
+            <div class="container border">
+                <div class="row">
+                    <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                        <h3 class="text-center mt-3 mb-1 border">Desplazamiento</h3>
+                        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </div>
+                </div>
+            </div>
 
-  </div>
-  <!-- AQUÍ terminan mis manos-->
+            <!-- REPRODUCCIÓN -->
 
-<!-- y las las cards-->
+            <div class="container border">
+                <div class="row">
+                    <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                        <h3 class="text-center mt-3 mb-1 border">Reproducción</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </div>
+                </div>
+            </div>
 
-<section class="container">
-   <h3 class="text-center pt-5 pb-2"></h3>
-     </div>
-        <div class="row">
-            <div class="col-sm-12 mx-auto">
-          <p class="lead"> Los machos emiten un alarido potente para localizar y atraer hembras, así como para advertir a sus conespecíficos masculinos de no acercarse.
-n de zoologico habita en 500 metros cubicos <p>
-        </div>
-    </div>
-  </section>
+            <!-- HERRAMIENTAS -->
 
-<!-- ahora viene la linea en movimieto-->
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 26.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 350 471.9" style="enable-background:new 0 0 350 471.9;" xml:space="preserve">
-<style type="text/css">
-.st0{fill:#AAAAAA;}
-.st1{fill:#FFFFFF;}
-.st2{font-family:'Helvetica';}
-.st3{font-size:26.2839px;}
-.st4{enable-background:new    ;}
-.st5{font-size:20px;}
-.st6{fill:none;stroke:#686969;stroke-width:0.474;stroke-linecap:round;}
-  .st9{fill:#BB5C0E}
-</style>
-<g id="Capa_2">
-	<path class="st1" d="M70.1,99.8h209.3 M267.4,106.9l14.4-7.1l-14.4-7"/>
-	<g class="st9">
-		<g>
-			<g>
-				<path class="st2" d="M82.2,75.1c10.4-3.2,22.8,3.2,25.5,14c2.8,11-5.3,21.5-15.8,24c-2.5,0.6-5.1,0.9-7.9,0.6
-					c0,0-0.5-0.8-0.5-0.8c5.1-3.8,10.4-7.9,13.4-13.6c5.7-10.8-6.2-19.4-14.9-23.3C81.8,76,82.2,75.1,82.2,75.1L82.2,75.1z"/>
-			</g>
-			<g>
-				<path class="st2" d="M98.5,73.5c10.4-3.2,22.8,3.2,25.5,14c2.8,11-5.3,21.5-15.8,24c-2.5,0.6-5.1,0.9-7.9,0.6
-					c0,0-0.5-0.8-0.5-0.8c5.1-3.8,10.4-7.9,13.4-13.6c5.7-10.8-6.2-19.4-14.9-23.3C98.1,74.4,98.5,73.5,98.5,73.5L98.5,73.5z"/>
-			</g>
-			<g>
-				<path class="st2" d="M115.7,73.8c10.4-3.2,22.8,3.2,25.5,14c2.8,11-5.3,21.5-15.8,24c-2.5,0.6-5.1,0.9-7.9,0.6
-					c0,0-0.5-0.8-0.5-0.8c5.1-3.8,10.4-7.9,13.4-13.6c5.7-10.8-6.2-19.4-14.9-23.3C115.4,74.7,115.7,73.8,115.7,73.8L115.7,73.8z"/>
-			</g>
-			<g>
-				<path class="st2" d="M132.9,74.5c10.4-3.2,22.8,3.2,25.5,14c2.8,11-5.3,21.5-15.8,24c-2.5,0.6-5.1,0.9-7.9,0.6
-					c0,0-0.5-0.8-0.5-0.8c5.1-3.8,10.4-7.9,13.4-13.6c5.7-10.8-6.2-19.4-14.9-23.3C132.6,75.5,132.9,74.5,132.9,74.5L132.9,74.5z"/>
-			</g>
-			<g>
-				<path class="st2" d="M150.2,75.2c10.4-3.2,22.8,3.2,25.5,14c2.8,11-5.3,21.5-15.8,24c-2.5,0.6-5.1,0.9-7.9,0.6l-0.5-0.8
-					c5.1-3.8,10.4-7.9,13.4-13.6c5.7-10.8-6.2-19.4-14.9-23.3C149.8,76.1,150.2,75.2,150.2,75.2L150.2,75.2z"/>
-			</g>
-			<g>
-				<path class="st2" d="M167.4,75.2c10.4-3.2,22.8,3.2,25.5,14c2.8,11-5.3,21.5-15.8,24c-2.5,0.6-5.1,0.9-7.9,0.6
-					c0,0-0.5-0.8-0.5-0.8c5.1-3.8,10.4-7.9,13.4-13.6c5.7-10.8-6.2-19.4-14.9-23.3C167,76.1,167.4,75.2,167.4,75.2L167.4,75.2z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st2" d="M185.7,74.7c10.4-3.2,22.8,3.2,25.5,14c2.8,11-5.3,21.5-15.8,24c-2.5,0.6-5.1,0.9-7.9,0.6l-0.5-0.8
-					c5.1-3.8,10.4-7.9,13.4-13.6c5.7-10.8-6.2-19.4-14.9-23.3C185.4,75.7,185.7,74.7,185.7,74.7L185.7,74.7z"/>
-			</g>
-			<g>
-				<path class="st2" d="M202.3,75.3c10.4-3.2,22.8,3.2,25.5,14c2.8,11-5.3,21.5-15.8,24c-2.5,0.6-5.1,0.9-7.9,0.6
-					c0,0-0.5-0.8-0.5-0.8c5.1-3.8,10.4-7.9,13.4-13.6c5.7-10.8-6.2-19.4-14.9-23.3C201.9,76.2,202.3,75.3,202.3,75.3L202.3,75.3z"/>
-			</g>
-			<g>
-				<path class="st2" d="M218.6,73.7c10.4-3.2,22.8,3.2,25.5,14c2.8,11-5.3,21.5-15.8,24c-2.5,0.6-5.1,0.9-7.9,0.6l-0.5-0.8
-					c5.1-3.8,10.4-7.9,13.4-13.6c5.7-10.8-6.2-19.4-14.9-23.3C218.2,74.7,218.6,73.7,218.6,73.7L218.6,73.7z"/>
-			</g>
-			<g>
-				<path class="st2" d="M235.8,74c10.4-3.2,22.8,3.2,25.5,14c2.8,11-5.3,21.5-15.8,24c-2.5,0.6-5.1,0.9-7.9,0.6
-					c0,0-0.5-0.8-0.5-0.8c5.1-3.8,10.4-7.9,13.4-13.6c5.7-10.8-6.2-19.4-14.9-23.3C235.5,74.9,235.8,74,235.8,74L235.8,74z"/>
-			</g>
-			<g>
-				<path class="st2" d="M253,74.8c10.4-3.2,22.8,3.2,25.5,14c2.8,11-5.3,21.5-15.8,24c-2.5,0.6-5.1,0.9-7.9,0.6
-					c0,0-0.5-0.8-0.5-0.8c5.1-3.8,10.4-7.9,13.4-13.6c5.7-10.8-6.2-19.4-14.9-23.3C252.7,75.7,253,74.8,253,74.8L253,74.8z"/>
-			</g>
-		</g>
-	</g>
-</g>
-<g id="Capa_1">
-	<path class="st0" d="M70.8,99.8h209.3 M268.1,106.9l14.4-7.1l-14.4-7"/>
-	<circle class="st9" cx="1.8" cy="-0.1" r="10">
+            <div class="container border">
+                <div class="row">
+                    <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                        <h3 class="text-center mt-3 mb-1 border">Uso de Herramientas</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </div>
+                </div>
+            </div>
 
-		<animateTransform  accumulate="none" additive="replace" attributeName="transform" attributeType="XML" begin="space1.end" calcMode="linear" dur="2s" fill="remove" id="pause" restart="always" type="translate">
-		</animateTransform>
+            <!-- ALIMENTACIÓN -->
 
-		<animateMotion  accumulate="none" additive="replace" begin="0; pause.end" calcMode="linear" dur="4s" fill="freeze" id="space1" path="M70.8 99.8h209.3M268.1" restart="always">
-		</animateMotion>
-	</circle>
-	<g id="bosque">
+            <div class="container border">
+                <div class="row">
+                    <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                        <h3 class="text-center mt-3 mb-1 border">Uso de Herramientas</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseruntmollit anim id est laborum.</p>
+                    </div>
+                </div>
+            </div>
 
-			<image style="overflow:visible;enable-background:new    ;" width="500" height="300" xlink:href="img/bosquesonido.png"  transform="matrix(0.4206 0 0 0.3875 73.4609 59.0057)">
-		</image>
-	</g>
-	<text transform="matrix(1 0 0 1 132.8777 63.6053)" class="st4 st5">2 kilometros</text>
-	<g>
-		<g>
-			<g>
-				<path class="st9" d="M71.3,76.1c4,1.9,7,5.4,8.1,9.7c1.1,4.4-0.4,8.8-3.8,11.7c-0.7,0.6,0.3,1.7,1.1,1.1
-					c3.8-3.2,5.4-8.1,4.3-12.9c-1.1-4.7-4.5-8.8-8.8-10.9C71.2,74.4,70.4,75.7,71.3,76.1L71.3,76.1z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st9" d="M72.2,74.9c-3.1-2.3-6.8,4.7-8,6.5c-1.4,2.1-3.1,3.8-4.1,6.1c-1.3,2.8-1.8,5.9-1.5,9
-					c0.3,3.7,1.4,7.3,3,10.7c0.4,0.9,1.7,0.1,1.3-0.8c-3.2-6.8-4.4-14.9,0.3-21.2c1.4-1.8,2.7-3.7,4-5.5c0.6-0.9,2.9-4.5,4.2-3.5
-					C72.3,76.8,73,75.5,72.2,74.9L72.2,74.9z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st9" d="M74.2,91.1c2.8,1.7,1.6,5.1,0.4,7.5c-1.4,2.7-3.5,5.2-5.9,7.1c-0.8,0.6,0.3,1.6,1.1,1.1
-					c2.7-2.1,5.1-5.1,6.5-8.2c1.4-3,1.9-6.7-1.3-8.7C74.1,89.3,73.4,90.6,74.2,91.1L74.2,91.1z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st9" d="M75,91.6C75,91.6,75,91.6,75,91.6c0,0,0,0.1-0.1,0.2c0,0,0,0,0,0c0,0.1-0.1,0.1-0.1,0.2c0,0,0,0,0,0
-					c-0.1,0-0.1,0.1-0.2,0.1c0,0,0,0,0,0c-0.1,0-0.1,0.1-0.2,0.1c0,0,0,0,0,0c-0.1,0-0.1,0-0.2,0c0,0,0,0,0,0c-0.1,0-0.1,0-0.2,0
-					c0,0,0,0,0,0c-0.1,0-0.1-0.1-0.2-0.1c0,0,0,0,0,0c0.1-0.5,0.3-0.9,0.4-1.4c-0.3,0-0.5,0.1-0.7,0.2c-0.1,0.1-0.2,0.1-0.3,0.2
-					c0,0-0.1,0.1-0.1,0.1c-0.1,0.1-0.2,0.3-0.3,0.5c-0.1,0.1-0.1,0.2-0.2,0.3c-0.1,0.1-0.1,0.2-0.1,0.3c0,0.1,0,0.2,0,0.3
-					c0,0.1,0.1,0.2,0.1,0.3c0.1,0.1,0.1,0.1,0.2,0.2c0.2,0.1,0.4,0.1,0.6,0.1c0.1,0,0.1-0.1,0.2-0.1c0.1-0.1,0.2-0.2,0.3-0.3
-					c0.1-0.2,0.2-0.4,0.3-0.6c0,0.1-0.1,0.1-0.1,0.2c0.1-0.1,0.1-0.1,0.2-0.2c-0.1,0-0.1,0.1-0.2,0.1c0.1,0,0.1-0.1,0.2-0.1
-					c-0.1,0-0.1,0.1-0.2,0.1c0.1,0,0.1,0,0.2,0c-0.1,0-0.1,0-0.2,0c0,0,0.1,0,0.1,0c0.1,0,0.1,0,0.2,0c0.1,0,0.2-0.1,0.3-0.1
-					c0.1,0,0.1-0.1,0.1-0.1c0.1-0.1,0.1-0.2,0.1-0.3c0-0.1,0-0.3,0-0.4c0-0.1-0.1-0.2-0.1-0.3c-0.1-0.1-0.1-0.1-0.2-0.2
-					c-0.1,0-0.1-0.1-0.2-0.1c0,0-0.1,0-0.1,0c0,0-0.1,0-0.1,0c-0.2,0-0.3,0-0.4,0.1c-0.1,0-0.2,0.1-0.2,0.2
-					c-0.1,0.1-0.2,0.2-0.2,0.4c0,0.1,0,0.2,0,0.3c0,0.1,0,0.2,0.1,0.3c0,0.1,0.1,0.2,0.2,0.2c0.1,0.1,0.2,0.1,0.3,0.1
-					c0.2,0,0.4,0,0.6-0.1c0.1,0,0.1-0.1,0.2-0.1C74.9,91.8,74.9,91.7,75,91.6L75,91.6z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st9" d="M72.4,92.1c-0.1-0.2-0.3-0.5-0.5-0.7c-0.1-0.2-0.3-0.4-0.5-0.6c-0.1-0.1-0.2-0.2-0.3-0.2c0,0-0.1,0-0.1-0.1
-					c-0.2-0.1-0.3-0.1-0.5-0.1c-0.2,0-0.3,0-0.4,0.1c-0.4,0.2-0.5,0.8-0.3,1.2c0.1,0.2,0.1,0.3,0.2,0.4c0.1,0.1,0.2,0.3,0.4,0.4
-					c0.2,0.1,0.3,0.3,0.5,0.4c0.1,0.1,0.3,0.1,0.4,0.2c0.2,0,0.3,0.1,0.5,0.1c0.1,0,0.1,0,0.2,0c0.1,0,0.2-0.1,0.3-0.1
-					c0.1,0,0.1-0.1,0.1-0.1c0.1-0.1,0.1-0.2,0.1-0.3c0-0.1,0-0.3,0-0.4c0-0.1-0.1-0.2-0.1-0.3c-0.1-0.1-0.1-0.1-0.2-0.2
-					c-0.1-0.1-0.3-0.1-0.4-0.2c0.1,0,0.1,0.1,0.2,0.1c-0.1-0.1-0.2-0.2-0.4-0.4c0,0.1,0.1,0.1,0.1,0.2c0,0,0-0.1-0.1-0.1
-					c0-0.1-0.1-0.2-0.2-0.2C71.4,91,71.3,91,71.2,91c-0.1,0-0.1,0-0.2,0c-0.1,0-0.2,0-0.3,0.1c-0.1,0-0.1,0-0.2,0.1
-					c-0.1,0.1-0.1,0.1-0.2,0.2c0,0.1-0.1,0.1-0.1,0.2c0,0.1,0,0.3,0,0.4c0.1,0.2,0.1,0.3,0.2,0.5c0.1,0.1,0.2,0.2,0.3,0.3
-					c0.1,0.1,0.2,0.1,0.4,0.1c0.2,0,0.4-0.1,0.5-0.2c0.1-0.1,0.2-0.2,0.2-0.3c0-0.1,0-0.1,0-0.2c0-0.1,0-0.2,0-0.2c0,0,0,0,0,0
-					c-0.1-0.2-0.2-0.4-0.3-0.5c-0.1-0.1-0.2-0.2-0.3-0.2c-0.1-0.1-0.2-0.1-0.3-0.2c-0.1,0-0.2,0-0.3,0c-0.1,0-0.2,0-0.3,0.1
-					c-0.1,0-0.2,0.1-0.2,0.2c-0.1,0.1-0.1,0.2-0.1,0.3c0,0.2,0,0.4,0.1,0.6c0,0.1,0.1,0.1,0.1,0.2c0.1,0.1,0.2,0.2,0.3,0.2
-					c0,0,0,0,0,0c-0.1,0-0.1-0.1-0.2-0.1c0.1,0,0.1,0.1,0.2,0.1c-0.1,0-0.1-0.1-0.2-0.1c0,0,0.1,0.1,0.1,0.1c0-0.1-0.1-0.1-0.1-0.2
-					c0,0,0.1,0.1,0.1,0.1c0-0.1-0.1-0.1-0.1-0.2c0,0,0,0.1,0,0.1c0-0.1,0-0.1,0-0.2c0,0,0,0,0,0c0-0.1,0-0.1,0-0.2c0,0,0,0,0,0
-					c0-0.1,0.1-0.1,0.1-0.2c0,0,0,0,0,0c0-0.1,0.1-0.1,0.1-0.2c0,0,0,0,0,0c0.1,0,0.1-0.1,0.2-0.1c0,0,0,0,0,0
-					c0.1,0,0.1-0.1,0.2-0.1c0,0,0,0,0,0c0.1,0,0.1,0,0.2,0c0,0,0,0,0,0c0.1,0,0.1,0,0.2,0c0,0,0,0,0,0c0.1,0,0.1,0.1,0.2,0.1
-					c0,0,0,0,0,0c0.1,0,0.1,0.1,0.2,0.1c0,0,0,0,0,0c0,0.1,0.1,0.1,0.1,0.2c-0.1-0.1-0.1-0.2-0.1-0.3c0,0.1,0.1,0.1,0.1,0.2
-					c0,0,0,0,0-0.1c-0.5,0.2-0.9,0.4-1.4,0.6c0.1,0.2,0.3,0.4,0.5,0.6c0.2,0.2,0.4,0.3,0.6,0.4c0.1-0.5,0.3-0.9,0.4-1.4
-					c0,0,0,0-0.1,0c0.1,0,0.1,0,0.2,0c-0.1,0-0.3-0.1-0.4-0.1c0.1,0,0.1,0.1,0.2,0.1c-0.1-0.1-0.3-0.1-0.4-0.2
-					c0.1,0,0.1,0.1,0.2,0.1c-0.1-0.1-0.2-0.2-0.3-0.3c0,0.1,0.1,0.1,0.1,0.2c-0.1-0.1-0.1-0.2-0.2-0.3c0,0.1,0.1,0.1,0.1,0.2
-					c0-0.1,0-0.1-0.1-0.2c0,0.1,0,0.1,0,0.2c0,0,0-0.1,0-0.1c0,0.1,0,0.1,0,0.2c0,0,0,0,0,0c0,0.1-0.1,0.1-0.1,0.2c0,0,0,0,0,0
-					c0,0.1-0.1,0.1-0.1,0.2c0,0,0,0,0,0c-0.1,0-0.1,0.1-0.2,0.1c0,0,0,0,0,0c-0.1,0-0.1,0.1-0.2,0.1c0,0,0,0,0,0c-0.1,0-0.1,0-0.2,0
-					c0,0,0,0,0,0c-0.1,0-0.1,0-0.2,0c0,0,0,0,0.1,0c-0.1,0-0.1-0.1-0.2-0.1c0,0,0.1,0,0.1,0.1c-0.1,0-0.1-0.1-0.2-0.1
-					c0.2,0.1,0.3,0.3,0.4,0.5c0-0.1-0.1-0.1-0.1-0.2c0.2,0.2,0.3,0.5,0.5,0.7c0.1,0.2,0.3,0.3,0.4,0.3c0.1,0,0.2,0,0.3,0
-					c0.1,0,0.2,0,0.3-0.1c0.2-0.1,0.3-0.3,0.3-0.4C72.5,92.5,72.5,92.2,72.4,92.1L72.4,92.1z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st9" d="M71.4,89.3c-3.2-0.9-6,1.6-7.7,4c-1.9,2.7-3.4,6.4-3,9.8c0.2,1.7,0.9,3.2,2.4,4.1c0.8,0.5,1.6-0.8,0.8-1.3
-					c-2.2-1.4-1.8-4.7-1.2-6.9c0.8-2.8,2.4-5.7,4.8-7.4c1.1-0.8,2.4-1.3,3.7-0.9C72,91,72.3,89.5,71.4,89.3L71.4,89.3z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st9" d="M75.7,97.5c-1.8-1.6-4.7-2.1-7.1-1.8c-1.2,0.2-2.4,0.7-3.2,1.7c-0.9,1.1-1.1,2.6-1,4
-					c0.1,1.8,0.7,3.7,2.6,4.2c0.9,0.3,1.3-1.2,0.4-1.4c-1.2-0.3-1.5-1.6-1.5-2.7c0-1,0-2.2,0.6-3c1.2-1.5,3.6-1.5,5.3-1.1
-					c0.5,0.1,1.1,0.3,1.5,0.5c0.4,0.2,0.9,0.5,1.2,0.7C75.4,99.2,76.4,98.1,75.7,97.5L75.7,97.5z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st9" d="M74.5,98.4c0.1,0.1,0.2,0.3,0.3,0.3c-0.1-0.1,0.1,0.1,0.2,0.1c0.1,0,0.2,0,0.2,0c0,0,0,0,0,0
-					c0,0,0.2,0,0.2,0c0,0,0.1-0.1,0.2-0.1c0.1,0,0.1-0.1,0.2-0.1c0.1-0.1,0.2-0.2,0.2-0.3c0-0.1,0-0.3,0-0.4c0-0.1-0.1-0.1-0.1-0.2
-					c0,0,0,0,0,0c0-0.1-0.1-0.1-0.1-0.2c-0.1-0.1-0.1-0.1-0.2-0.2c-0.1,0-0.1-0.1-0.2-0.1c-0.1,0-0.2,0-0.3,0
-					c-0.1,0-0.2,0.1-0.3,0.2c-0.1,0.1-0.1,0.1-0.2,0.2c0,0.1-0.1,0.2-0.1,0.3c0,0,0,0.1,0,0.1c0-0.1,0-0.1,0-0.2
-					c0,0.2-0.1,0.4-0.1,0.6C74.5,98.5,74.5,98.4,74.5,98.4c-0.1,0-0.1,0-0.1,0.1C74.5,98.5,74.5,98.4,74.5,98.4
-					C74.5,98.4,74.5,98.4,74.5,98.4C74.5,98.4,74.6,98.4,74.5,98.4C74.6,98.3,74.6,98.4,74.5,98.4c0.1-0.1,0.1-0.1,0.2-0.1
-					C74.7,98.3,74.6,98.3,74.5,98.4c0.1-0.1,0.2-0.1,0.3-0.1c-0.1,0-0.1,0-0.2,0c0.1,0,0.1,0,0.2,0c-0.1,0-0.3-0.1-0.4-0.1
-					c-0.1,0-0.2,0-0.3,0c-0.1,0-0.2,0-0.3,0.1c-0.1,0-0.2,0.1-0.2,0.2c-0.1,0.1-0.1,0.2-0.1,0.3c0,0.2,0,0.4,0.1,0.6
-					c0,0.1,0.1,0.1,0.1,0.2c0.1,0.1,0.2,0.2,0.3,0.2c0.2,0.1,0.4,0.1,0.6,0.1c0.2,0,0.5,0,0.7-0.1c0.2-0.1,0.3-0.3,0.4-0.4
-					c0.1-0.1,0.1-0.2,0.1-0.3c0-0.1,0-0.1,0.1-0.2c0.1-0.2,0.1-0.5,0.1-0.7c-0.5,0.1-0.9,0.3-1.4,0.4c0,0,0,0,0,0
-					c0-0.1-0.1-0.1-0.1-0.2c0,0,0,0,0,0c0-0.1,0-0.1,0-0.2c0,0,0,0,0,0c0-0.1,0-0.1,0-0.2c0,0,0,0,0,0c0-0.1,0.1-0.1,0.1-0.2
-					c0,0,0,0,0,0c0-0.1,0.1-0.1,0.1-0.2c0,0,0,0,0,0c0.1,0,0.1-0.1,0.2-0.1c0,0,0,0,0,0c0.1,0,0.1-0.1,0.2-0.1c0,0,0,0,0,0
-					c0.1,0,0.1,0,0.2,0c0,0,0,0,0,0c0.1,0,0.1,0,0.2,0c0,0,0,0,0,0c0.1,0,0.1,0.1,0.2,0.1c0,0,0,0,0,0c0.1,0,0.1,0.1,0.2,0.1
-					c0,0,0,0,0,0c0,0.1,0.1,0.1,0.1,0.2c0,0,0,0,0,0c0-0.1-0.1-0.2-0.2-0.2c-0.1-0.1-0.2-0.1-0.3-0.1c-0.1,0-0.2,0-0.3,0
-					c-0.1,0-0.2,0-0.3,0.1c-0.2,0.1-0.3,0.3-0.3,0.4c0,0.1,0,0.1,0,0.2C74.4,98.2,74.5,98.3,74.5,98.4L74.5,98.4z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st9" d="M73.6,98.2c-0.1,0.3-0.1,0.6-0.1,0.8c0-0.1,0-0.1,0-0.2c0,0.1,0,0.2-0.1,0.3c0-0.1,0.1-0.1,0.1-0.2
-					c0,0,0,0.1-0.1,0.1c0-0.1,0.1-0.1,0.1-0.2c0,0,0,0,0,0c0.1,0,0.1-0.1,0.2-0.1c0,0,0,0-0.1,0c0.1,0,0.1-0.1,0.2-0.1
-					c0,0,0,0-0.1,0c0.1,0,0.1,0,0.2,0c0,0-0.1,0-0.1,0c0.1,0,0.1,0,0.2,0c0,0-0.1,0-0.1,0c0.1,0,0.1,0.1,0.2,0.1
-					c-0.2-0.1-0.4-0.1-0.6-0.2c-0.2,0-0.3-0.1-0.5-0.1c0.1,0,0.1,0.1,0.2,0.1c0,0-0.1,0-0.1-0.1c0.1,0,0.1,0.1,0.2,0.1c0,0,0,0,0,0
-					c0,0.1,0.1,0.1,0.1,0.2c0,0,0,0,0,0c0,0.1,0.1,0.1,0.1,0.2c0,0,0,0,0,0c0,0.1,0,0.1,0,0.2c0,0,0,0,0,0c0,0.1,0,0.1,0,0.2
-					c0,0,0,0,0,0c0.1-0.2,0-0.4-0.1-0.6c-0.1-0.2-0.3-0.3-0.4-0.3c-0.4-0.1-0.8,0.1-0.9,0.5c-0.1,0.3,0,0.7,0.2,0.9
-					c0.2,0.2,0.4,0.3,0.6,0.3c0.2,0.1,0.5,0.1,0.7,0.2c-0.1,0-0.1-0.1-0.2-0.1c0.2,0.1,0.3,0.1,0.5,0.1c0.2,0,0.4,0,0.5-0.1
-					c0.3-0.1,0.4-0.4,0.5-0.7c0.1-0.3,0.1-0.7,0.1-1c0,0.1,0,0.1,0,0.2c0,0,0-0.1,0-0.1c0-0.2,0-0.4-0.1-0.6
-					c-0.1-0.2-0.3-0.3-0.4-0.3c-0.2,0-0.4,0-0.6,0.1C73.8,97.8,73.6,98,73.6,98.2L73.6,98.2z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st9" d="M71.9,98.1c-0.1,0.3-0.1,0.5-0.2,0.8c0-0.1,0.1-0.1,0.1-0.2c0,0.1-0.1,0.1-0.1,0.2c0-0.1,0.1-0.1,0.1-0.2
-					c0,0-0.1,0.1-0.1,0.1c0.1,0,0.1-0.1,0.2-0.1c0,0-0.1,0-0.1,0.1c0.1,0,0.1-0.1,0.2-0.1c0,0-0.1,0-0.1,0c0.1,0,0.1,0,0.2,0
-					c-0.1,0-0.1,0-0.2,0c0.1,0,0.1,0,0.2,0c-0.1,0-0.2,0-0.3-0.1c-0.1,0-0.2-0.1-0.3-0.1c-0.2,0-0.3,0-0.5-0.1
-					c0.1,0,0.1,0.1,0.2,0.1c0,0-0.1,0-0.1-0.1c0.1,0,0.1,0.1,0.2,0.1c0,0,0,0-0.1-0.1c0,0.1,0.1,0.1,0.1,0.2c0,0,0-0.1-0.1-0.1
-					c0,0.1,0.1,0.1,0.1,0.2c0,0,0-0.1,0-0.1c0,0.1,0,0.1,0,0.2c0,0,0,0,0-0.1c0-0.4-0.3-0.8-0.8-0.8c-0.4,0-0.8,0.3-0.8,0.8
-					c0,0.3,0.1,0.6,0.3,0.8c0.2,0.2,0.4,0.3,0.6,0.3c0.1,0,0.2,0.1,0.3,0.1c0.1,0,0.2,0.1,0.4,0.1c0.3,0.1,0.7,0.1,1,0
-					c0.2-0.1,0.3-0.1,0.4-0.3c0.1-0.2,0.2-0.3,0.3-0.5c0.1-0.2,0.1-0.5,0.2-0.8c0-0.2,0-0.4-0.1-0.6c-0.1-0.2-0.3-0.3-0.4-0.3
-					c-0.2,0-0.4,0-0.6,0.1C72.1,97.8,71.9,97.9,71.9,98.1L71.9,98.1z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st9" d="M69.9,98.4C69.9,98.5,69.9,98.5,69.9,98.4c0,0,0,0,0-0.1C69.9,98.4,69.9,98.4,69.9,98.4c0,0,0-0.1,0-0.1
-					C69.9,98.3,69.9,98.4,69.9,98.4c0-0.1,0-0.1,0.1-0.2C69.9,98.3,69.9,98.3,69.9,98.4c0-0.1,0.1-0.2,0.1-0.2c0,0,0,0.1-0.1,0.1
-					c0.1,0,0.1-0.1,0.2-0.1c0,0-0.1,0-0.1,0.1c0.1,0,0.1-0.1,0.2-0.1c0,0-0.1,0-0.1,0c0.1,0,0.1,0,0.2,0c0,0-0.1,0-0.1,0
-					c0.1,0,0.1,0,0.2,0c0,0-0.1,0-0.1,0c0.1,0,0.1,0.1,0.2,0.1c0,0-0.1,0-0.1-0.1c0.1,0,0.1,0.1,0.2,0.1c0,0-0.1-0.1-0.1-0.1
-					c0,0.1,0.1,0.1,0.1,0.2c0,0-0.1-0.1-0.1-0.2c0,0.1,0.1,0.1,0.1,0.2c0-0.1-0.1-0.2-0.1-0.2c0,0.1,0,0.1,0,0.2c0-0.1,0-0.2,0-0.4
-					c0,0.1,0,0.1,0,0.2c0-0.1,0-0.2,0.1-0.3c0-0.1,0-0.2,0-0.3c0-0.1,0-0.2-0.1-0.3c0-0.1-0.1-0.2-0.2-0.2c-0.1-0.1-0.2-0.1-0.3-0.1
-					c-0.2,0-0.4,0-0.6,0.1c-0.2,0.1-0.3,0.3-0.3,0.4c-0.1,0.4-0.1,0.8,0,1.2c0,0.1,0.1,0.3,0.2,0.4c0.1,0.2,0.2,0.3,0.4,0.4
-					c0.1,0.1,0.2,0.1,0.4,0.2c0.1,0,0.3,0.1,0.4,0c0.2,0,0.4-0.1,0.5-0.2c0.1,0,0.2-0.1,0.2-0.2c0,0,0.1-0.1,0.1-0.1
-					c0.1-0.1,0.2-0.3,0.2-0.5c0-0.1,0-0.2,0-0.3c0-0.1,0-0.2,0-0.4c0-0.1-0.1-0.2-0.1-0.3c-0.1-0.1-0.1-0.1-0.2-0.2
-					c-0.1-0.1-0.2-0.1-0.3-0.1c-0.1,0-0.2,0-0.3,0c-0.2,0.1-0.4,0.2-0.4,0.3C69.9,98,69.8,98.2,69.9,98.4L69.9,98.4z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st9" d="M68.9,98.5C69,98.5,69,98.5,68.9,98.5c0,0-0.1,0-0.2,0C68.8,98.5,68.8,98.5,68.9,98.5c-0.2,0-0.2,0-0.3,0
-					c0,0,0,0,0,0c-0.1,0-0.1-0.1-0.2-0.1c0,0,0,0,0,0c-0.1,0-0.1-0.1-0.2-0.1c0,0,0,0,0,0c0-0.1-0.1-0.1-0.1-0.2c0,0,0,0,0,0
-					c0-0.1-0.1-0.1-0.1-0.2c0,0,0,0,0,0c0-0.1,0-0.1,0-0.2c0,0,0,0,0,0c0-0.1,0-0.1,0-0.2c0,0,0,0,0,0c0-0.1,0.1-0.1,0.1-0.2
-					c0,0,0,0,0,0c0-0.1,0.1-0.1,0.1-0.2c0,0-0.1,0.1-0.1,0.1c0.1,0,0.1-0.1,0.2-0.1c-0.4,0.3-0.9,0.6-1.4,0.9c0.1,0,0.1-0.1,0.2-0.1
-					c0,0,0,0,0,0c0.1,0,0.1-0.1,0.2-0.1c0,0,0,0-0.1,0c0.1,0,0.1,0,0.2,0c0,0,0,0,0,0c0.1,0,0.1,0,0.2,0c0,0,0,0,0,0
-					c0.1,0,0.1,0.1,0.2,0.1c0,0,0,0,0,0c0.1,0,0.1,0.1,0.2,0.1c0,0,0,0,0,0c0,0.1,0.1,0.1,0.1,0.2c0,0,0,0,0-0.1
-					c0,0.1,0.1,0.1,0.1,0.2c0,0,0-0.1,0-0.1c0,0.1,0,0.1,0,0.2c0-0.1,0-0.2,0-0.3c0,0.1,0,0.1,0,0.2c0-0.2,0.1-0.4,0.2-0.6
-					c0,0.1-0.1,0.1-0.1,0.2c0.1-0.2,0.1-0.3,0.3-0.4c0,0.1-0.1,0.1-0.1,0.2c0.1-0.1,0.1-0.1,0.2-0.2c-0.1,0-0.1,0.1-0.2,0.1
-					c0,0,0.1-0.1,0.1-0.1c-0.1,0-0.1,0.1-0.2,0.1c0,0,0.1,0,0.1,0c-0.1,0-0.1,0-0.2,0c0,0,0.1,0,0.1,0c-0.1,0-0.1,0-0.2,0
-					c0,0,0.1,0,0.1,0c-0.1,0-0.1-0.1-0.2-0.1c0,0,0.1,0,0.1,0.1c-0.1,0-0.1-0.1-0.2-0.1c0.1,0.1,0.1,0.1,0.2,0.2
-					c0-0.1-0.1-0.1-0.1-0.2c0.1,0.2,0.2,0.4,0.3,0.6c0-0.1-0.1-0.1-0.1-0.2c0,0,0,0,0,0.1c0,0.1,0.1,0.2,0.1,0.3
-					c0.1,0.1,0.1,0.1,0.2,0.2c0.2,0.1,0.4,0.1,0.6,0.1c0.2-0.1,0.4-0.2,0.4-0.3c0.1-0.2,0.2-0.4,0.1-0.6c-0.1-0.3-0.2-0.5-0.4-0.8
-					c-0.1-0.1-0.2-0.2-0.3-0.3c-0.1-0.1-0.2-0.2-0.3-0.2c-0.2-0.1-0.3-0.1-0.5-0.1c-0.1,0-0.2,0-0.3,0c-0.2,0.1-0.4,0.2-0.6,0.4
-					c-0.3,0.3-0.5,0.6-0.6,1c0,0.1-0.1,0.3-0.1,0.4c0,0.2-0.1,0.3,0,0.5c0,0.2,0,0.3,0.1,0.5c0.1,0.1,0.2,0.3,0.3,0.3
-					c0.1,0.1,0.3,0.1,0.5,0.1c0.1,0,0.2,0,0.3,0c0.1,0,0.2-0.1,0.2-0.1c0.1,0,0.1-0.1,0.2-0.1c-0.1,0-0.1,0.1-0.2,0.1
-					c0.2-0.2,0.5-0.3,0.7-0.5c0.1-0.1,0.3-0.2,0.4-0.3c0.2-0.1,0.4-0.3,0.5-0.5c0.1-0.2,0.1-0.3,0-0.5c-0.1-0.2-0.3-0.5-0.5-0.5
-					c-0.2,0-0.3,0-0.5,0c-0.2,0-0.4,0.2-0.4,0.3C68,97.6,68,97.8,68,98c0.1,0.2,0.2,0.4,0.3,0.4c0.1,0,0.1,0.1,0.2,0.1
-					C68.7,98.5,68.8,98.5,68.9,98.5L68.9,98.5z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st9" d="M68.2,98c0.1,0.1,0.2,0.1,0.3,0.2c0.1,0.1,0.2,0.1,0.3,0.1c0.1,0,0.2,0,0.3,0c0.1,0,0.2-0.1,0.3-0.1
-					c0.1-0.1,0.1-0.1,0.2-0.2c0-0.1,0.1-0.1,0.1-0.2c0-0.1,0-0.3,0-0.4c0-0.1-0.1-0.1-0.1-0.2c-0.1-0.1-0.2-0.2-0.3-0.3
-					c-0.1-0.1-0.2-0.1-0.3-0.2c-0.1-0.1-0.2-0.1-0.3-0.1c-0.1,0-0.2,0-0.3,0c-0.1,0-0.2,0.1-0.3,0.1C68,96.8,68,96.9,67.9,97
-					c0,0.1-0.1,0.1-0.1,0.2c0,0.1,0,0.3,0,0.4c0,0.1,0.1,0.1,0.1,0.2C68,97.9,68.1,98,68.2,98L68.2,98z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st9" d="M74.7,97.3c-1,0.2-2.2-0.1-3.3-0.3c-0.6-0.1-1.2-0.3-1.8-0.3c-0.2,0-0.5,0-0.6,0c-0.1,0-0.2-0.1-0.2-0.1
-					c-0.1,0-0.1,0-0.1-0.1c-0.2-0.3-0.6-0.5-1-0.3c-0.3,0.2-0.5,0.7-0.3,1c0.5,0.6,1,0.8,1.8,0.9c0.3,0,0.5,0,0.7,0
-					c0.4,0.1,0.7,0.1,1.1,0.2c1.4,0.3,2.8,0.6,4.2,0.3c0.4-0.1,0.6-0.6,0.5-0.9C75.5,97.4,75.1,97.2,74.7,97.3L74.7,97.3z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st9" d="M71.4,85.3C71.3,85.2,71.6,85.4,71.4,85.3C71.4,85.3,71.4,85.2,71.4,85.3c-0.1-0.1-0.2-0.2-0.3-0.3
-					c-0.1-0.2-0.3-0.3-0.5-0.4c-0.2-0.2-0.5-0.2-0.8-0.3c-0.1,0-0.3,0-0.4,0c0,0-0.2,0-0.1,0c0.2,0-0.1,0-0.1,0c0,0,0,0,0,0
-					c-0.3,0.1-0.6,0.2-0.9,0.3c-0.3,0.2-0.6,0.3-0.9,0.6c-0.2,0.2-0.3,0.4-0.3,0.6c-0.1,0.4,0,0.7,0.3,1c0.3,0.3,0.8,0.3,1.1,0
-					c0.3-0.3,0.3-0.7,0-1.1c0.1,0.1,0.1,0.2,0.1,0.1c0-0.1,0,0,0.1,0.1c0-0.1,0,0.2,0,0.1c0,0.2,0,0.2,0,0.1c-0.1,0.2-0.1,0.2,0,0.1
-					c0.1-0.1-0.1,0.1,0,0.1c0,0,0-0.1,0.1-0.1c0,0,0.1,0,0.1-0.1c-0.2,0.2-0.1,0.1,0,0c0.1-0.1,0.3-0.2,0.4-0.3c0.1,0,0.4-0.1,0.1,0
-					c0.1,0,0.1-0.1,0.2-0.1c0.1,0,0.1,0,0.2-0.1c0,0,0,0,0.1,0c0.1,0,0,0-0.2,0c0.1,0,0.2,0,0.2,0c0.2,0-0.1,0,0,0c0,0,0,0,0.1,0
-					c0.1,0,0,0-0.1,0c0,0,0.1,0,0.1,0c-0.2,0-0.1-0.1,0,0c0.2,0.1-0.1-0.1,0,0c0,0,0.1,0.1,0.1,0.1c0.1,0.1,0.1,0.1,0.2,0.2
-					c0.2,0.2,0.3,0.3,0.5,0.5c0.3,0.2,0.8,0.1,1-0.3C71.9,85.9,71.8,85.5,71.4,85.3L71.4,85.3z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st9" d="M69.5,85.9c0,0,0.1,0,0.1,0C69.6,85.9,69.6,85.9,69.5,85.9C69.5,85.9,69.6,85.9,69.5,85.9
-					C69.6,85.9,69.5,85.9,69.5,85.9C69.5,85.9,69.5,85.9,69.5,85.9c-0.1,0-0.1-0.1-0.2-0.1c0,0,0,0,0,0c0-0.1-0.1-0.1-0.1-0.2
-					c0,0,0,0,0,0c0-0.1-0.1-0.1-0.1-0.2c0,0,0,0,0,0.1c0-0.1,0-0.1,0-0.2c0,0,0,0.1,0,0.1c0-0.1,0-0.1,0-0.2c0,0,0,0.1,0,0.1
-					c0-0.1,0.1-0.1,0.1-0.2c0,0.1-0.1,0.1-0.1,0.1c0-0.1,0.1-0.1,0.1-0.2c0,0.1-0.1,0.1-0.2,0.2c0.1,0,0.1-0.1,0.2-0.1
-					c-0.1,0.1-0.1,0.1-0.2,0.1c0.1,0,0.1-0.1,0.2-0.1c-0.1,0-0.1,0-0.2,0.1c0.1,0,0.1,0,0.2,0c-0.1,0-0.1,0-0.2,0c0.1,0,0.1,0,0.2,0
-					c0,0-0.1,0-0.1,0c0.1,0,0.1,0.1,0.2,0.1c0,0-0.1,0-0.1-0.1c0.1,0,0.1,0.1,0.2,0.1c0,0,0,0,0,0c-0.1-0.1-0.3-0.2-0.5-0.2
-					c-0.1,0-0.2,0-0.3,0.1c-0.1,0-0.2,0.1-0.2,0.2c-0.1,0.1-0.2,0.3-0.2,0.5c0,0.1,0,0.1,0,0.2c0,0.1,0.1,0.2,0.2,0.3
-					c0.2,0.2,0.3,0.2,0.5,0.3c0,0,0.1,0,0.1,0c0.1,0,0.2,0,0.3,0c0.1,0,0.3,0,0.4-0.1c0.1,0,0.3-0.1,0.4-0.2
-					c0.1-0.1,0.2-0.1,0.2-0.2c0,0,0.1-0.1,0.1-0.1c0.1-0.1,0.2-0.2,0.2-0.3c0.1-0.2,0.1-0.3,0.2-0.5c0-0.2,0-0.4-0.1-0.5
-					c0-0.1-0.1-0.2-0.2-0.2c-0.1,0-0.1-0.1-0.2-0.1c-0.1,0-0.1-0.1-0.2-0.1c0,0-0.1,0-0.1,0c-0.1,0-0.2,0-0.4,0
-					c-0.1,0-0.2,0-0.3,0.1c-0.1,0-0.2,0.1-0.2,0.2c-0.1,0.1-0.1,0.1-0.2,0.2c0,0.1-0.1,0.2-0.1,0.3c0,0.1,0,0.1,0,0.2
-					c0,0.1,0.1,0.2,0.2,0.3C69.2,85.8,69.3,85.9,69.5,85.9L69.5,85.9z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st9" d="M74.7,86.6c0-0.1,0.1-0.2,0.1-0.2c0-0.1,0.1-0.2,0,0c0,0,0.1-0.1,0.1-0.1c0,0,0.1-0.1,0.1-0.1
-					c0.1-0.1-0.1,0.1,0,0c0.1,0,0.1-0.1,0.2-0.1c0.1,0,0.2,0,0,0c0,0,0.1,0,0.1,0c0.1,0,0.1,0,0.2-0.1c-0.2,0.1-0.1,0-0.1,0
-					c0,0,0.1,0,0.1,0c0,0,0.1,0,0.1,0c0.2,0-0.1,0-0.1,0c0.1,0,0.1,0,0.2,0c0,0,0.1,0,0.1,0c0.1,0-0.2-0.1,0,0
-					c0.1,0,0.1,0.1,0.2,0.1c0.1,0.1-0.1-0.1,0,0c0,0,0.1,0,0.1,0.1c0,0,0,0,0.1,0.1c0,0.1,0.1,0.2,0,0c0,0.1,0.1,0.1,0.1,0.2
-					c0,0.1,0.1,0.2,0,0c0,0,0,0.1,0,0.1c0,0.1,0,0.2,0.1,0.3c0,0.2,0.2,0.4,0.3,0.4c0.2,0.1,0.4,0.1,0.6,0.1
-					c0.2-0.1,0.4-0.2,0.4-0.3c0.1-0.2,0.1-0.4,0.1-0.6c-0.1-0.7-0.6-1.4-1.3-1.7c-0.7-0.3-1.5-0.3-2.2,0.1c-0.4,0.2-0.7,0.6-0.9,1
-					c-0.1,0.2-0.1,0.4-0.1,0.6c0,0.2,0.2,0.4,0.3,0.4C74,87.1,74.5,87,74.7,86.6L74.7,86.6z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st9" d="M74.9,86.1C74.9,86.2,75,86.2,74.9,86.1C75,86.2,74.9,86.1,74.9,86.1C74.9,86.1,74.9,86.2,74.9,86.1
-					C74.9,86.1,74.9,86.1,74.9,86.1C74.9,86.1,74.9,86.1,74.9,86.1c0,0,0-0.1-0.1-0.2C74.9,86,74.9,86,74.9,86.1
-					c0-0.1-0.1-0.2-0.1-0.3c0,0,0,0.1,0,0.1c0-0.1,0-0.1,0-0.2c0,0,0,0.1,0,0.1c0-0.1,0.1-0.1,0.1-0.2c0,0,0,0.1-0.1,0.1
-					c0-0.1,0.1-0.1,0.1-0.2c0,0,0,0.1-0.1,0.1c0.1,0,0.1-0.1,0.2-0.1c0,0-0.1,0-0.1,0.1c0.1,0,0.1-0.1,0.2-0.1c0,0-0.1,0-0.1,0
-					c0.1,0,0.1,0,0.2,0c0,0-0.1,0-0.1,0c0.1,0,0.1,0,0.2,0c0,0-0.1,0-0.1,0c0.1,0,0.1,0.1,0.2,0.1c-0.1,0-0.1-0.1-0.2-0.1
-					c0.1,0,0.1,0.1,0.2,0.1c0,0-0.1-0.1-0.1-0.1c-0.1-0.1-0.1-0.1-0.2-0.2c-0.1,0-0.2-0.1-0.3-0.1c-0.1,0-0.2,0-0.3,0.1
-					c-0.1,0-0.2,0.1-0.2,0.2c0,0.1-0.1,0.1-0.1,0.2C74,85.8,74,85.9,74,86.1c0,0.1,0,0.1,0,0.2c0,0.1,0.1,0.2,0.2,0.3
-					c0,0,0.1,0.1,0.1,0.1c0.1,0.1,0.1,0.1,0.2,0.1c0,0,0,0,0.1,0c0,0,0.1,0,0.1,0.1c0.1,0,0.2,0.1,0.3,0.1c0,0,0,0,0,0
-					c0.1,0,0.2,0,0.2,0c0,0,0.1,0,0.1,0c0.1,0,0.2,0,0.2,0c0,0,0,0,0,0c0,0,0,0,0,0c0.1,0,0.1-0.1,0.2-0.1c0.1,0,0.1-0.1,0.1-0.1
-					c0,0,0.1-0.1,0.1-0.1c0,0,0.1-0.1,0.1-0.1c0,0,0.1-0.1,0.1-0.1c0-0.1,0.1-0.2,0.1-0.2c0,0,0,0,0-0.1c0-0.1,0-0.2,0-0.3
-					c0-0.1,0-0.2,0-0.3c0,0,0-0.1,0-0.1c0-0.1-0.1-0.1-0.1-0.2c0,0,0,0,0,0c0-0.1-0.1-0.2-0.2-0.2c0,0-0.1-0.1-0.1-0.1
-					c-0.1-0.1-0.2-0.1-0.3-0.2c-0.1-0.1-0.2-0.1-0.3-0.1c-0.1,0-0.2,0-0.3,0c-0.1,0-0.2,0.1-0.3,0.1c-0.1,0.1-0.1,0.1-0.2,0.2
-					c0,0.1-0.1,0.1-0.1,0.2c0,0.1,0,0.3,0,0.4c0,0.1,0.1,0.1,0.1,0.2C74.7,86,74.8,86.1,74.9,86.1L74.9,86.1z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st9" d="M67.1,105.5c1.5,0.3,3,0,4.1-1.1c1-0.9,1.7-2.2,2.4-3.3c0.4-0.7,0.8-1.2,1.4-1.8c0.7-0.7-0.4-1.7-1.1-1.1
-					c-1.3,1.2-2,2.7-3,4.1c-0.4,0.5-0.9,1.1-1.4,1.4c-0.6,0.3-1.3,0.4-2.1,0.3c-0.4-0.1-0.8,0.1-0.9,0.5
-					C66.4,104.9,66.6,105.4,67.1,105.5L67.1,105.5z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st9" d="M71.1,103.6C71.1,103.6,71.1,103.6,71.1,103.6c0,0-0.1,0-0.2,0C71,103.6,71,103.6,71.1,103.6
-					c-0.1,0-0.1,0-0.2-0.1c0,0,0,0,0,0c-0.1,0-0.1-0.1-0.2-0.1c0,0,0,0,0,0c0-0.1-0.1-0.1-0.1-0.2c0,0,0,0,0,0
-					c0-0.1-0.1-0.1-0.1-0.2c0,0,0,0,0,0c0-0.1,0-0.1,0-0.2c0,0,0,0,0,0c0-0.1,0-0.1,0-0.2c0,0,0,0,0,0c0-0.1,0.1-0.1,0.1-0.2
-					c0,0,0,0,0,0c0-0.1,0.1-0.1,0.1-0.2c0,0,0,0,0,0c0.1,0,0.1-0.1,0.2-0.1c0,0-0.1,0-0.1,0.1c0.1,0,0.1-0.1,0.2-0.1
-					c-0.2,0.1-0.5,0.2-0.7,0.3c-0.4,0.2-0.7,0.6-0.7,1.1c0,0.3,0.2,0.6,0.4,0.9c0.1,0.1,0.3,0.2,0.5,0.2c0.2,0,0.4-0.1,0.5-0.2
-					c0.1-0.1,0.2-0.3,0.2-0.5C71.2,103.9,71.1,103.7,71.1,103.6c-0.1-0.1-0.1-0.1-0.2-0.2C71,103.5,71,103.6,71.1,103.6
-					c-0.1,0-0.1-0.1-0.1-0.1C71,103.6,71,103.6,71.1,103.6C71,103.6,71,103.6,71.1,103.6c-0.1,0-0.1,0.1-0.1,0.1
-					C71,103.7,71,103.7,71.1,103.6c-0.1,0.1-0.1,0.2-0.1,0.2c0,0,0-0.1,0-0.1c0,0.1-0.1,0.1-0.1,0.2c0,0,0-0.1,0.1-0.1
-					c0,0.1-0.1,0.1-0.1,0.2c0,0,0.1-0.1,0.1-0.1c-0.1,0-0.1,0.1-0.2,0.1c0.1-0.1,0.3-0.2,0.4-0.2c-0.1,0-0.1,0.1-0.2,0.1
-					c0.2-0.1,0.3-0.1,0.5-0.2c0,0,0,0,0,0c0.1,0,0.1-0.1,0.2-0.1c0.1-0.1,0.2-0.2,0.2-0.4c0-0.1,0-0.3,0-0.4c0-0.1,0-0.1-0.1-0.2
-					c-0.1-0.1-0.2-0.2-0.3-0.3c-0.2-0.1-0.4-0.1-0.6-0.1c-0.1,0-0.2,0-0.3,0.1c-0.1,0-0.2,0.1-0.2,0.2c-0.1,0.1-0.2,0.3-0.2,0.5
-					c0,0.2,0.1,0.4,0.2,0.5c0.1,0,0.1,0.1,0.2,0.1C70.8,103.6,70.9,103.6,71.1,103.6L71.1,103.6z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st9" d="M69.7,103C69.7,103,69.7,103.1,69.7,103c0,0,0.1-0.1,0.1-0.1c-0.2,0.1-0.4,0.2-0.6,0.3
-					c-0.1,0.1-0.3,0.2-0.4,0.3c-0.1,0.1-0.2,0.2-0.3,0.4c0,0.1,0,0.2,0,0.3c0,0.2,0.1,0.4,0.2,0.5c0.1,0.1,0.2,0.2,0.3,0.3
-					c0.1,0.1,0.3,0.2,0.5,0.2c0.1,0,0.2,0,0.3-0.1c0.1,0,0.2-0.1,0.2-0.2c0.1-0.1,0.2-0.3,0.2-0.5c0-0.2-0.1-0.4-0.2-0.5
-					c0,0-0.1-0.1-0.1-0.1c0,0.1,0.1,0.1,0.1,0.2c0,0-0.1-0.1-0.1-0.1c0,0.1,0.1,0.1,0.1,0.2c0,0,0,0,0-0.1c0,0.1,0,0.1,0,0.2
-					c0,0,0,0,0-0.1c0,0.1,0,0.1,0,0.2c0,0,0,0,0-0.1c0,0.1-0.1,0.1-0.1,0.2c0,0,0,0,0-0.1c0,0.1-0.1,0.1-0.1,0.2
-					c0,0,0.1-0.1,0.1-0.1c-0.1,0-0.1,0.1-0.2,0.1c0.1-0.1,0.3-0.1,0.4-0.2c0.2-0.1,0.4-0.2,0.5-0.3c0.1-0.1,0.1-0.1,0.2-0.2
-					c0-0.1,0.1-0.2,0.1-0.3c0-0.1,0-0.2-0.1-0.3c0-0.1-0.1-0.2-0.2-0.2c-0.1-0.1-0.3-0.2-0.5-0.2c-0.1,0-0.1,0-0.2,0
-					C69.9,102.9,69.8,102.9,69.7,103L69.7,103z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st9" d="M68.7,103.6C68.7,103.6,68.7,103.6,68.7,103.6c0,0,0.1-0.1,0.1-0.1c0,0,0,0,0,0c0.1,0,0.1-0.1,0.2-0.1
-					c0,0-0.1,0-0.1,0.1c0.1,0,0.1-0.1,0.2-0.1c-0.1,0.1-0.3,0.1-0.5,0.1c-0.1,0-0.2,0.1-0.3,0.1c0,0,0,0,0,0c-0.1,0-0.1,0.1-0.2,0.1
-					c-0.1,0.1-0.2,0.2-0.2,0.4c0,0.2,0,0.3,0,0.5c0,0.1,0.1,0.2,0.1,0.3c0,0.1,0.1,0.1,0.1,0.2c0,0.1,0.1,0.2,0.2,0.2
-					c0.1,0.1,0.2,0.1,0.3,0.1c0.1,0,0.2,0,0.3,0c0.1,0,0.2,0,0.3-0.1c0.2-0.1,0.3-0.3,0.3-0.4c0-0.1,0-0.1,0-0.2
-					c0-0.1,0-0.3-0.1-0.4c-0.1-0.1-0.1-0.2-0.2-0.3c0,0.1,0.1,0.1,0.1,0.2c0,0,0-0.1,0-0.1c0,0.1,0,0.1,0,0.2c0,0,0,0,0-0.1
-					c0,0.1,0,0.1,0,0.2c0,0,0,0,0,0c0,0.1-0.1,0.1-0.1,0.2c0,0,0,0,0,0c0,0.1-0.1,0.1-0.1,0.2c0,0,0,0,0,0c-0.1,0-0.1,0.1-0.2,0.1
-					c0,0,0,0,0.1,0c-0.1,0-0.1,0.1-0.2,0.1c0.1,0,0.2-0.1,0.3-0.1c0.2,0,0.3-0.1,0.5-0.2c0.1,0,0.1-0.1,0.2-0.2
-					c0.1-0.1,0.1-0.1,0.2-0.2c0.1-0.1,0.1-0.2,0.1-0.3c0-0.1,0-0.2,0-0.3c0-0.1-0.1-0.2-0.1-0.3c-0.1-0.1-0.1-0.1-0.2-0.2
-					c-0.2-0.1-0.4-0.1-0.6-0.1c-0.1,0-0.1,0.1-0.2,0.1C68.8,103.4,68.7,103.5,68.7,103.6L68.7,103.6z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st9" d="M69,103.5c-0.1-0.1-0.2-0.1-0.3-0.2c0,0-0.1,0-0.2,0c-0.1,0-0.2,0-0.3,0c0,0,0,0-0.1,0c-0.1,0-0.2,0-0.3,0
-					c0,0,0,0-0.1,0c-0.1,0-0.2,0.1-0.2,0.1c-0.1,0-0.2,0.1-0.3,0.2c0,0,0,0,0,0c-0.1,0.1-0.1,0.1-0.2,0.2c0,0,0,0,0,0.1
-					c0,0.1-0.1,0.2-0.1,0.2c-0.1,0.2-0.1,0.5,0,0.8c0,0.1,0.1,0.2,0.1,0.3c0.1,0.1,0.1,0.1,0.2,0.2c0.1,0.1,0.2,0.1,0.3,0.1
-					c0.1,0,0.2,0,0.3,0c0.2-0.1,0.4-0.2,0.4-0.3c0.1-0.2,0.1-0.4,0.1-0.6c0-0.1,0-0.1,0-0.2c0,0.1,0,0.1,0,0.2c0,0,0-0.1,0-0.1
-					c0,0.1,0,0.1,0,0.2c0,0,0-0.1,0-0.1c0,0.1-0.1,0.1-0.1,0.2c0,0,0-0.1,0.1-0.1c0,0.1-0.1,0.1-0.1,0.2c0,0,0.1-0.1,0.1-0.1
-					c-0.1,0-0.1,0.1-0.2,0.1c0,0,0.1,0,0.1-0.1c-0.1,0-0.1,0.1-0.2,0.1c0.1,0,0.1,0,0.2,0c-0.1,0-0.1,0-0.2,0c0.1,0,0.1,0,0.2,0
-					c-0.1,0-0.1,0-0.2,0c0.1,0,0.1,0,0.2,0.1c-0.1,0-0.1-0.1-0.2-0.1c0,0,0.1,0,0.1,0.1c0.1,0.1,0.2,0.1,0.3,0.1c0.1,0,0.2,0,0.3,0
-					c0.1,0,0.2-0.1,0.3-0.1c0.1-0.1,0.1-0.1,0.2-0.2c0.1-0.2,0.1-0.4,0.1-0.6c0-0.1-0.1-0.1-0.1-0.2C69.2,103.7,69.1,103.6,69,103.5
-					L69,103.5z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st9" d="M67.3,103.6C67.2,103.6,67.2,103.7,67.3,103.6C67.3,103.6,67.3,103.6,67.3,103.6
-					C67.3,103.6,67.3,103.6,67.3,103.6c0.1-0.1,0.1-0.1,0.2-0.1C67.4,103.5,67.4,103.5,67.3,103.6c0.1-0.1,0.2-0.1,0.3-0.2
-					c0,0-0.1,0-0.1,0c0.1,0,0.1,0,0.2,0c0,0-0.1,0-0.1,0c0.1,0,0.1,0,0.2,0c-0.1,0-0.2,0-0.2-0.1c0.1,0,0.1,0.1,0.2,0.1
-					c-0.2-0.1-0.4-0.2-0.6-0.3c-0.2-0.1-0.4-0.2-0.6-0.2c-0.3,0-0.6,0.2-0.8,0.4c-0.1,0.2-0.2,0.5-0.2,0.7c0,0.2,0.1,0.4,0.2,0.5
-					c0.1,0.1,0.3,0.2,0.5,0.2c0.2,0,0.4-0.1,0.5-0.2c0.1-0.1,0.2-0.3,0.2-0.5c0-0.1,0-0.1,0-0.2c0,0.1,0,0.1,0,0.2c0,0,0-0.1,0-0.1
-					c0,0.1-0.1,0.1-0.1,0.2c0,0,0,0,0-0.1c0,0.1-0.1,0.1-0.1,0.2c0,0,0,0,0,0c-0.1,0-0.1,0.1-0.2,0.1c0,0,0,0,0,0
-					c-0.1,0-0.1,0.1-0.2,0.1c0,0,0,0,0,0c-0.1,0-0.1,0-0.2,0c0,0,0,0,0.1,0c-0.1,0-0.1,0-0.2,0c0.1,0,0.1,0,0.2,0.1
-					c-0.1,0-0.1-0.1-0.2-0.1c0.3,0.1,0.6,0.3,0.9,0.4c0.5,0.2,1.1,0,1.4-0.5c0.1-0.2,0.1-0.4,0.1-0.6c0-0.2-0.2-0.4-0.3-0.4
-					C67.9,103.2,67.5,103.2,67.3,103.6L67.3,103.6z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st9" d="M67.2,103.9c0-0.1,0-0.2-0.1-0.3c0-0.1-0.1-0.2-0.1-0.3c-0.1-0.1-0.2-0.3-0.3-0.4c-0.1-0.1-0.2-0.2-0.4-0.3
-					c-0.1,0-0.1-0.1-0.2-0.1c0,0-0.1,0-0.1-0.1c-0.1,0-0.1,0-0.2,0c0,0-0.1,0-0.2,0c-0.1,0-0.2,0-0.2,0c0,0,0,0,0,0
-					c-0.1,0-0.1,0.1-0.2,0.1c0,0,0,0,0,0c0,0-0.1,0.1-0.1,0.1c0,0-0.1,0.1-0.1,0.1c-0.1,0.1-0.1,0.1-0.2,0.2c0,0.1-0.1,0.2-0.1,0.3
-					c0,0.1,0,0.2,0.1,0.3c0,0.1,0.1,0.2,0.2,0.2c0.1,0.1,0.3,0.2,0.5,0.2c0.1,0,0.1,0,0.2,0c0.1,0,0.2-0.1,0.3-0.2c0,0,0,0,0,0
-					c-0.1,0-0.1,0.1-0.2,0.1c0,0,0,0,0.1,0c-0.1,0-0.1,0.1-0.2,0.1c0,0,0,0,0.1,0c-0.1,0-0.1,0-0.2,0c0,0,0,0,0.1,0
-					c-0.1,0-0.1,0-0.2,0c0,0,0.1,0,0.1,0c-0.1,0-0.1-0.1-0.2-0.1c0.1,0,0.1,0.1,0.1,0.1c-0.1,0-0.1-0.1-0.2-0.1
-					c0.1,0.1,0.1,0.1,0.2,0.2c0-0.1-0.1-0.1-0.1-0.2c0.1,0.1,0.1,0.2,0.1,0.2c0-0.1-0.1-0.1-0.1-0.2c0,0.1,0,0.1,0,0.2
-					c0-0.1,0-0.1,0-0.2c0,0,0,0,0,0c0,0.1,0,0.2,0.1,0.3c0,0.1,0.1,0.2,0.2,0.2c0.1,0.1,0.1,0.1,0.2,0.2c0.1,0,0.2,0.1,0.3,0.1
-					c0.2,0,0.4-0.1,0.5-0.2c0-0.1,0.1-0.1,0.1-0.2C67.1,104.2,67.2,104.1,67.2,103.9L67.2,103.9z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st9" d="M71.3,102.5c-0.1-0.1-0.3-0.2-0.4-0.4c0,0.1,0.1,0.1,0.1,0.2c-0.1-0.1-0.2-0.2-0.2-0.4
-					c0,0.1,0.1,0.1,0.1,0.2c0-0.1-0.1-0.2-0.1-0.3c0,0.1,0,0.1,0,0.2c0-0.1,0-0.2,0-0.3c0,0.1,0,0.1,0,0.2c0-0.1,0-0.1,0.1-0.2
-					c0,0.1-0.1,0.1-0.1,0.2c0-0.1,0.1-0.1,0.1-0.2c0,0.1-0.1,0.1-0.1,0.2c0,0,0.1-0.1,0.1-0.1c-0.1,0-0.1,0.1-0.2,0.1
-					c0,0,0.1,0,0.1-0.1c-0.1,0-0.1,0.1-0.2,0.1c0,0,0.1,0,0.1,0c-0.1,0-0.1,0-0.2,0c0,0,0.1,0,0.1,0c-0.1,0-0.1,0-0.2,0
-					c0,0,0.1,0,0.1,0c-0.1,0-0.1-0.1-0.2-0.1c0,0,0.1,0,0.1,0.1c-0.1,0-0.1-0.1-0.2-0.1c0,0,0.1,0.1,0.1,0.1c0-0.1-0.1-0.1-0.1-0.2
-					c0.1,0.1,0.1,0.2,0.1,0.3c0-0.1-0.1-0.1-0.1-0.2c0.1,0.2,0.1,0.4,0.2,0.6c0-0.1,0-0.1,0-0.2c0,0.1,0,0.1,0,0.2
-					c0,0.1,0,0.2,0.1,0.3c0,0.1,0.1,0.2,0.2,0.2c0.1,0.1,0.1,0.1,0.2,0.2c0.1,0,0.2,0.1,0.3,0.1c0.1,0,0.1,0,0.2,0
-					c0.1,0,0.2-0.1,0.3-0.2c0-0.1,0.1-0.1,0.1-0.2c0.1-0.1,0.1-0.2,0.1-0.4c0-0.2,0-0.4-0.1-0.5c0-0.1,0-0.2-0.1-0.3
-					c0-0.1-0.1-0.3-0.2-0.4c0-0.1-0.1-0.1-0.1-0.2c-0.1-0.1-0.1-0.2-0.2-0.3c-0.1-0.1-0.1-0.1-0.2-0.2c0,0,0,0-0.1,0
-					c-0.1,0-0.2-0.1-0.2-0.1c0,0,0,0-0.1,0c-0.1,0-0.2,0-0.3,0c-0.1,0-0.2,0-0.3,0.1c-0.1,0-0.2,0.1-0.3,0.1
-					c-0.1,0.1-0.2,0.1-0.2,0.2c-0.1,0.1-0.1,0.2-0.2,0.3c0,0.1-0.1,0.2-0.1,0.2c0,0,0,0,0,0.1c0,0.1,0,0.2-0.1,0.4
-					c0,0.1,0,0.1,0,0.2c0,0.1,0,0.2,0,0.3c0,0,0,0.1,0,0.1c0,0.1,0,0.1,0.1,0.2c0.1,0.1,0.1,0.3,0.2,0.4c0.1,0.1,0.2,0.2,0.3,0.4
-					c0.1,0.1,0.1,0.1,0.2,0.2c0,0,0.1,0.1,0.1,0.1c0.1,0.1,0.1,0.1,0.2,0.2c0.1,0,0.2,0.1,0.3,0.1c0.1,0,0.2,0,0.3-0.1
-					c0.1,0,0.2-0.1,0.2-0.2c0-0.1,0.1-0.1,0.1-0.2c0.1-0.1,0.1-0.2,0.1-0.4c0-0.1,0-0.1,0-0.2C71.4,102.7,71.4,102.6,71.3,102.5
-					L71.3,102.5z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st9" d="M71.1,100.7c0,0-0.1-0.1-0.1-0.1C71.1,100.6,71.1,100.7,71.1,100.7c-0.1-0.1-0.2-0.2-0.2-0.4
-					c0,0.1,0.1,0.1,0.1,0.2c0-0.1,0-0.1-0.1-0.2c0,0.1,0,0.1,0,0.2c0,0,0-0.1,0-0.1c0,0.1,0,0.1,0,0.2c0,0,0-0.1,0-0.1
-					c0,0.1-0.1,0.1-0.1,0.2c0,0,0,0,0-0.1c0,0.1-0.1,0.1-0.1,0.2c0,0,0,0,0,0c-0.1,0-0.1,0.1-0.2,0.1c0,0,0,0,0.1,0
-					c-0.1,0-0.1,0.1-0.2,0.1c0,0,0.1,0,0.1,0c-0.1,0-0.1,0-0.2,0c0.1,0,0.1,0,0.2,0c-0.1,0-0.1,0-0.2,0c0.1,0,0.2,0,0.2,0.1
-					c-0.1,0-0.1-0.1-0.2-0.1c0.1,0,0.2,0.1,0.2,0.1c-0.1,0-0.1-0.1-0.2-0.1c0.1,0.1,0.1,0.1,0.2,0.2c0-0.1-0.1-0.1-0.1-0.2
-					c0.1,0.1,0.1,0.1,0.1,0.2c0-0.1-0.1-0.1-0.1-0.2c0,0.1,0.1,0.2,0.1,0.3c0-0.1,0-0.1,0-0.2c0,0.1,0,0.2,0,0.3c0-0.1,0-0.1,0-0.2
-					c0,0.1,0,0.1,0,0.2c0,0.2,0,0.4,0.1,0.6c0,0.1,0.1,0.2,0.2,0.2c0.1,0.1,0.2,0.1,0.3,0.1c0.2,0,0.4,0,0.6-0.1
-					c0.2-0.1,0.3-0.3,0.3-0.4c0-0.1,0.1-0.3,0.1-0.4c0-0.1,0-0.1,0-0.2c0-0.1,0-0.3-0.1-0.4c0-0.1-0.1-0.2-0.1-0.3
-					c0-0.1-0.1-0.1-0.1-0.2c-0.1-0.1-0.1-0.2-0.2-0.3c-0.1-0.1-0.2-0.2-0.3-0.2c0,0-0.1-0.1-0.1-0.1c-0.1-0.1-0.2-0.1-0.3-0.1
-					c0,0-0.1,0-0.1,0c-0.1,0-0.2,0-0.3,0c-0.1,0-0.2,0-0.3,0c0,0,0,0-0.1,0c-0.1,0-0.2,0.1-0.2,0.1c0,0,0,0,0,0
-					c-0.1,0-0.1,0.1-0.2,0.1c0,0,0,0,0,0c0,0,0,0,0,0c0,0.1-0.1,0.1-0.1,0.2c0,0,0,0,0,0c-0.1,0.2-0.1,0.3-0.1,0.5c0,0,0,0,0,0.1
-					c0,0.1,0,0.2,0,0.3c0,0.1,0,0.1,0.1,0.2c0.1,0.1,0.1,0.2,0.2,0.4c0.1,0.1,0.2,0.2,0.3,0.4c0,0,0.1,0.1,0.1,0.1
-					c0.1,0.1,0.1,0.1,0.2,0.2c0.1,0,0.2,0.1,0.3,0.1c0.1,0,0.2,0,0.3-0.1c0.1,0,0.2-0.1,0.2-0.2c0.1-0.1,0.2-0.3,0.2-0.5
-					c0-0.1,0-0.1,0-0.2C71.3,100.9,71.2,100.8,71.1,100.7L71.1,100.7z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st9" d="M70.9,100.4c0-0.1,0.1-0.2,0.1-0.3c0,0.1-0.1,0.1-0.1,0.2c0-0.1,0.1-0.2,0.1-0.2c0,0.1-0.1,0.1-0.1,0.2
-					c0,0,0.1-0.1,0.1-0.1c-0.1,0-0.1,0.1-0.2,0.1c0,0,0.1,0,0.1-0.1c-0.1,0-0.1,0.1-0.2,0.1c0,0,0.1,0,0.1,0c-0.1,0-0.1,0-0.2,0
-					c0,0,0.1,0,0.1,0c-0.1,0-0.1,0-0.2,0c0,0,0.1,0,0.1,0c-0.1,0-0.1-0.1-0.2-0.1c0,0,0.1,0,0.1,0.1c-0.1,0-0.1-0.1-0.2-0.1
-					c0,0,0.1,0.1,0.1,0.1c0-0.1-0.1-0.1-0.1-0.2c0,0.1,0.1,0.1,0.1,0.2c0-0.1-0.1-0.1-0.1-0.2c0,0.1,0.1,0.2,0.1,0.3
-					c0-0.1,0-0.1,0-0.2c0,0.1,0,0.2,0,0.3c0,0.2,0.1,0.4,0.2,0.5c0.1,0.1,0.3,0.2,0.5,0.2c0.2,0,0.4-0.1,0.5-0.2
-					c0.1-0.2,0.2-0.3,0.2-0.5c0-0.2,0-0.3,0-0.5c0-0.1,0-0.2-0.1-0.3c-0.1-0.3-0.2-0.5-0.4-0.7c-0.2-0.1-0.3-0.2-0.5-0.3
-					c-0.1,0-0.2-0.1-0.4,0c-0.2,0-0.3,0.1-0.5,0.1c0,0-0.1,0-0.1,0.1C70.1,99,70,99,69.9,99.1c-0.2,0.3-0.4,0.6-0.5,0.9
-					c0,0.2,0,0.4,0.1,0.6c0.1,0.2,0.3,0.3,0.4,0.3c0.2,0,0.4,0,0.6-0.1C70.7,100.8,70.9,100.6,70.9,100.4L70.9,100.4z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st9" d="M70.3,98.8c-0.4-0.2-0.8-0.4-1.3-0.3c-0.3,0-0.7,0.1-1,0.3c-0.2,0.2-0.4,0.3-0.6,0.5
-					c-0.1,0.1,0.2-0.1,0.1-0.1c0,0,0,0-0.1,0.1c0,0-0.1,0.1-0.2,0.1c0,0,0,0-0.1,0c0.2-0.1,0.1-0.1,0.1,0c-0.1,0-0.1,0-0.2,0
-					c0.1,0,0.1,0,0.2,0c0,0,0,0,0,0c-0.2,0-0.4,0.1-0.5,0.2c-0.1,0.1-0.2,0.3-0.2,0.5c0,0.2,0.1,0.4,0.2,0.5
-					c0.1,0.1,0.3,0.2,0.5,0.2c0.3,0,0.6-0.1,0.8-0.3c0.2-0.1,0.4-0.2,0.5-0.4c0.1,0,0.1-0.1,0.2-0.1c0,0,0.2-0.1,0,0
-					c-0.1,0.1,0,0,0,0c0,0,0.1,0,0.1-0.1c0.1,0,0.2-0.1,0,0c0.1,0,0.2-0.1,0.2-0.1c-0.1,0-0.1,0-0.2,0c0.1,0,0.2,0,0.3,0
-					c-0.1,0-0.1,0-0.2,0c0.1,0,0.2,0,0.3,0.1c0,0,0.1,0,0.2,0.1c0,0-0.2-0.1-0.1,0c0,0,0.1,0,0.1,0.1c0.2,0.1,0.4,0.1,0.6,0.1
-					c0.2,0,0.4-0.2,0.4-0.3C70.7,99.5,70.7,99,70.3,98.8L70.3,98.8z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st9" d="M68,99.4C68,99.4,68,99.4,68,99.4c0,0,0.1,0,0.1,0.1C68.1,99.4,68.1,99.4,68,99.4c0.1,0,0.1,0.1,0.2,0.1
-					c0,0-0.1-0.1-0.1-0.1c0,0.1,0.1,0.1,0.1,0.2c0-0.1-0.1-0.1-0.1-0.2c-0.1-0.1-0.1-0.2-0.2-0.4c-0.2-0.3-0.6-0.4-0.9-0.5
-					c-0.3,0-0.6-0.1-0.9,0c-0.2,0-0.4,0.1-0.5,0.2c-0.1,0.1-0.2,0.3-0.2,0.5c0,0.2,0.1,0.4,0.2,0.5c0.1,0.1,0.3,0.2,0.5,0.2
-					c0.2,0,0.4,0,0.6,0c-0.1,0-0.1,0-0.2,0c0.1,0,0.2,0,0.3,0.1c-0.1,0-0.1-0.1-0.2-0.1c0.1,0,0.1,0.1,0.2,0.1
-					c-0.1,0-0.1-0.1-0.2-0.1c0,0,0.1,0.1,0.1,0.1c0-0.1-0.1-0.1-0.1-0.2c0.1,0.1,0.1,0.2,0.2,0.3c0.1,0.1,0.1,0.2,0.2,0.3
-					c0.2,0.1,0.3,0.2,0.5,0.3c0.2,0.1,0.4,0,0.6-0.1c0.2-0.1,0.3-0.3,0.3-0.4c0-0.2,0-0.4-0.1-0.6C68.4,99.6,68.2,99.4,68,99.4
-					L68,99.4z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st9" d="M62.8,107.2C62.9,107.2,62.9,107.2,62.8,107.2C62.8,107.2,62.8,107.2,62.8,107.2c0.1,0,0.2,0.1,0.2,0.1
-					c0.1,0.1,0.2,0.1,0.3,0.2c0.2,0.2,0.4,0.3,0.7,0.5c0.7,0.4,1.4,0.5,2.1,0.2c0.2-0.1,0.4-0.2,0.6-0.3c0.2-0.1,0.3-0.3,0.5-0.4
-					c0.3-0.2,0.5-0.2,0.9-0.3c0.8-0.2,1.5-0.5,2.1-1.2c0.2-0.3,0.1-0.8-0.3-1c-0.4-0.2-0.8-0.1-1,0.3c-0.1,0.1-0.3,0.3-0.5,0.3
-					c-0.3,0.1-0.6,0.2-0.9,0.2c-0.3,0.1-0.7,0.2-1,0.4c-0.3,0.2-0.5,0.5-0.8,0.6c-0.1,0-0.2,0.1-0.2,0.1c-0.1,0,0,0-0.1,0
-					c0,0-0.2,0-0.1,0c0.1,0-0.1,0-0.1,0c-0.1,0-0.1,0-0.2-0.1c0.1,0.1-0.1,0-0.1,0c-0.1-0.1-0.2-0.1-0.3-0.2
-					c-0.4-0.3-0.8-0.6-1.3-0.8C62.3,105.5,61.9,106.9,62.8,107.2L62.8,107.2z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st9" d="M61.8,107.2c0.6,0.5,1.3,0.9,2.1,1.2c0.7,0.2,1.6,0.3,2.3,0c0.4-0.1,0.7-0.5,0.5-0.9
-					c-0.1-0.4-0.5-0.7-0.9-0.5c-0.1,0-0.1,0-0.2,0.1c0,0-0.2,0-0.2,0c0,0,0.2,0,0,0c0,0-0.1,0-0.1,0c-0.1,0-0.2,0-0.2,0
-					c-0.1,0-0.2,0-0.2,0c-0.1,0-0.1,0,0,0c0,0-0.1,0-0.1,0c-0.2,0-0.3-0.1-0.5-0.1c-0.1,0-0.2,0-0.2-0.1c0,0-0.1,0-0.1,0
-					c0,0-0.2-0.1-0.1,0c0.1,0,0,0,0,0c0,0-0.1,0-0.1-0.1c-0.1,0-0.1-0.1-0.2-0.1c-0.1-0.1-0.3-0.2-0.4-0.2c0,0-0.1,0-0.1-0.1
-					c-0.1-0.1,0,0,0,0c0,0-0.2-0.1-0.2-0.2c-0.3-0.3-0.8-0.3-1.1,0C61.5,106.4,61.4,106.9,61.8,107.2L61.8,107.2z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st9" d="M83.7,79.3C82.4,70.2,73,66.4,64.9,65.7C60,65.2,55,65.7,50.3,67c-4.4,1.2-9.1,3-12.6,6.1
-					c-0.6,0.5-0.9,1.3-1.3,2c-0.5,0.8-1,1.6-1.6,2.4c-0.9,1.2-1.8,2.4-2.8,3.6c-1.5,1.6-3.2,3-5.1,4.2c-3.7,2.2-7.7,3.7-11.1,6.3
-					c-1.2,0.9-2.3,2-3.5,2.8c-1.1,0.7-2.2,1.4-3.3,2.3c-1.7,1.4-3.1,3-4.1,5c-2,3.8-2,8.1-1.6,12.2c0.6,5.1,1.7,10.2,2.4,15.3
-					c0.8,6.2,0.8,12.5-0.5,18.7c-0.4,1.7-0.8,3.4-1.4,5.1c-0.3,0.9,1.1,1.3,1.4,0.4c2-6,2.7-12.3,2.4-18.5
-					c-0.2-5.3-1.2-10.5-2.1-15.7c-0.7-4.2-1.5-8.7-0.6-13c0.9-4.4,3.8-7.7,7.6-10.1c2.3-1.5,4.3-3.5,6.6-4.9c1.7-1.1,3.5-2,5.4-2.9
-					c3.8-1.8,7-4.1,9.7-7.4c1-1.2,1.9-2.4,2.7-3.7c0.9-1.3,1.5-2.7,2.9-3.6c1.8-1.3,3.8-2.4,5.9-3.3c4.5-1.9,9.3-2.9,14.1-3.1
-					c7.8-0.3,18.7,1.5,21.9,9.8c0.3,0.9,0.6,1.9,0.7,2.8C82.4,80.6,83.9,80.2,83.7,79.3L83.7,79.3z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st9" d="M41.2,111.8c3.2,4.1,0.8,10-1,14.2c-1,2.3-2.1,4.6-3,6.9c-1,2.5-1.6,5.2-2,7.9c-1,6.7-0.6,13.6-2.7,20.1
-					c-0.5,1.5-1.3,2.7-1.5,4.3c-0.2,1.5-0.1,3.1-0.2,4.6c0,0.7-0.1,1.4-0.3,2.1c-0.2,0.7-0.7,1.3-0.9,2.1c-0.3,1.1,0.6,1.6,1.4,2.2
-					c0.9,0.7,1.7,1.7,2.1,2.7c0.1,0.2,0,0.2,0.2,0.1c-0.2,0.1-0.6-0.1-0.7-0.2c-2.3-0.9-3.8-3.5-4.6-5.7c-0.3-0.9-1.8-0.5-1.4,0.4
-					c0.9,2.3,2.2,4.4,4.2,5.9c0.9,0.6,2.6,1.6,3.6,0.6c1.1-1.2-0.7-3.3-1.4-4.1c-0.2-0.3-0.5-0.6-0.8-0.8c-0.2-0.2-0.8-0.4-0.9-0.5
-					c-0.2-0.4,0.6-2,0.8-2.5c0.4-1.5,0.3-3.2,0.4-4.7c0-0.9,0.1-1.9,0.3-2.8c0.2-0.9,0.7-1.6,1-2.5c0.6-1.7,1-3.5,1.4-5.4
-					c0.6-3.7,0.8-7.4,1.1-11.1c0.3-3.6,0.8-7.2,1.9-10.7c0.8-2.7,2.1-5.2,3.2-7.8c2.2-5.1,4.8-11.5,0.9-16.5
-					C41.7,109.9,40.6,111,41.2,111.8L41.2,111.8z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st9" d="M27.5,174.9c0.1,0.3,0.2,0.5,0.2,0.8c0,0,0,0.1,0,0.1c0,0,0-0.2,0-0.1c0,0.1,0,0.1,0,0.2c0,0.1,0,0.3,0,0.4
-					c0,0.1,0,0.2,0,0.3c0,0,0,0.1,0,0.1c0,0,0-0.2,0-0.1c0,0.1,0,0.1,0,0.2c0,0.1,0,0.2-0.1,0.3c0,0,0,0.1,0,0.1c0,0,0,0,0,0.1
-					c-0.1,0.1,0.1-0.1,0,0c0,0.1-0.1,0.2-0.1,0.3c0,0,0,0.1-0.1,0.1c0,0,0,0,0,0c-0.1,0.1,0.1-0.1,0,0c-0.1,0.1-0.1,0.1-0.2,0.2
-					c0,0-0.1,0.1-0.1,0.1c-0.1,0.1,0.1,0,0.1-0.1c0,0,0,0-0.1,0.1c-0.1,0-0.1,0.1-0.2,0.1c-0.1,0,0.2-0.1,0.1,0c0,0,0,0-0.1,0
-					c0,0-0.1,0-0.1,0c-0.1,0-0.2,0,0,0c0,0-0.1,0-0.1,0c0,0-0.1,0-0.1,0c0,0-0.1,0-0.1,0c-0.1,0,0.1,0,0.1,0c-0.1,0-0.2,0-0.3-0.1
-					c0,0,0,0-0.1,0c-0.1,0,0.1,0.1,0,0c-0.1,0-0.1-0.1-0.2-0.1c-0.1-0.1-0.2-0.1-0.4-0.2c-0.1-0.1,0,0,0,0c0,0-0.1-0.1-0.1-0.1
-					c-0.1-0.1-0.1-0.1-0.2-0.2c-0.3-0.3-0.8-0.3-1.1,0c-0.3,0.3-0.3,0.8,0,1.1c0.5,0.5,1.1,0.9,1.7,1c0.6,0.1,1.2,0.1,1.7-0.2
-					c1-0.5,1.5-1.7,1.6-2.8c0.1-0.7,0-1.4-0.3-2.1c-0.1-0.4-0.5-0.7-0.9-0.5C27.6,174.1,27.3,174.5,27.5,174.9L27.5,174.9z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st9" d="M23.2,177.4C23.2,177.4,23.4,177.5,23.2,177.4c0.1,0.1,0.1,0.1,0.2,0.1c0.1,0.1,0.2,0.1,0.3,0.2
-					c0.2,0.1,0.3,0.3,0.5,0.4c0.2,0.2,0.5,0.4,0.7,0.7c0,0,0.1,0.1,0.1,0.1c0,0,0.2,0.2,0.1,0.1c-0.1-0.1,0,0,0,0.1
-					c0,0,0.1,0.1,0.1,0.1c0,0,0,0.1,0.1,0.1c0.1,0.1,0,0.1,0-0.1c0,0.1,0,0.1,0.1,0.2c0-0.1,0-0.1,0-0.2c0,0,0,0.1,0,0.1
-					c0-0.1,0-0.1,0-0.2c0,0,0,0,0,0.1c0,0,0.1-0.2,0-0.1c-0.1,0.1,0.2-0.2,0.1-0.1c-0.1,0.1,0,0,0.1-0.1c0,0,0,0-0.1,0
-					c-0.1,0.1,0.2-0.1,0.1,0c-0.1,0-0.1,0-0.2,0c0.1,0,0.1,0,0.2,0c-0.2,0-0.3,0-0.5,0c0.1,0,0.1,0,0.2,0c-0.2,0-0.5-0.1-0.7-0.2
-					c-0.1,0-0.3-0.1-0.4-0.1c0,0-0.1,0-0.1,0c0,0-0.2-0.1,0,0c0.2,0.1,0,0,0,0c0,0-0.1,0-0.1,0c-0.3-0.1-0.6-0.3-0.8-0.4
-					c-0.1-0.1-0.3-0.2-0.4-0.3c-0.1,0-0.1-0.1-0.2-0.1c0,0-0.1,0-0.1-0.1c0.2,0.2,0.1,0.1,0,0c-0.3-0.2-0.6-0.5-0.8-0.8
-					c-0.3-0.3-0.8-0.3-1.1,0c-0.3,0.3-0.3,0.7,0,1.1c0.5,0.6,1.2,1.1,1.9,1.5c0.6,0.4,1.3,0.7,2,0.9c0.6,0.1,1.2,0.3,1.8,0
-					c0.3-0.2,0.5-0.5,0.6-0.9c0-0.3-0.1-0.6-0.2-0.9c-0.2-0.4-0.5-0.7-0.8-1c-0.5-0.5-1-0.9-1.6-1.3c-0.1-0.1-0.4-0.1-0.6-0.1
-					c-0.2,0-0.4,0.2-0.4,0.3c-0.1,0.2-0.1,0.4-0.1,0.6C22.9,177.1,23,177.2,23.2,177.4L23.2,177.4z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st9" d="M23.1,178.3c-2.9-0.2-6.5-1.3-7.6-4.3c-1.1-3.1,1.7-6.2,4.4-7.3c2.4-0.9,4.4-2.1,4.9-4.9
-					c0.3-1.5,0.1-2.9,0.1-4.4c0-2.4,0.5-4.9,0.6-7.3c0.7-9.7,0.4-19.5-0.4-29.2c-0.1-0.9,0.2-1.2,0.5-2c0.3-0.6,0.6-1.3,0.8-1.9
-					c0.5-1.3,1-2.7,1.3-4.1c0.8-2.9,1.4-5.8,2.2-8.7c1.6-6.2,3.9-13.1,10.2-16c0.9-0.4,0.1-1.7-0.8-1.3c-5.7,2.6-8.4,8.3-10.1,14
-					c-1.8,5.9-2.5,12.5-5.4,18c-0.5,0.9-0.5,1.3-0.4,2.3c0.1,1.3,0.2,2.6,0.3,3.9c0.2,2.6,0.3,5.2,0.4,7.8
-					c0.1,5.1,0.1,10.3-0.2,15.4c-0.2,2.6-0.4,5.3-0.6,7.9c-0.2,1.7,0.2,3.5-0.2,5.2c-0.3,1.4-1,2.4-2.3,3.1
-					c-0.7,0.4-1.4,0.5-2.1,0.8c-0.9,0.4-1.8,1.1-2.5,1.7c-2.3,2-3.6,5.2-2.1,8.1c1.6,3.1,5.3,4.4,8.6,4.6
-					C24,179.9,24,178.4,23.1,178.3L23.1,178.3z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st9" d="M18.4,135.8c0,2.3-0.5,4.6-0.8,6.9c-0.5,3-1,5.9-1.4,8.9c-0.4,2.6-0.7,5.3-0.6,7.9c0.1,1.6,0.3,3.6,1.7,4.6
-					c0.8,0.5,1.6-0.8,0.8-1.3c-1.2-0.8-1-3.4-1-4.6c0-2.7,0.4-5.3,0.8-7.9c0.4-2.7,0.9-5.5,1.3-8.2c0.3-2.1,0.7-4.2,0.7-6.3
-					C19.9,134.8,18.4,134.8,18.4,135.8L18.4,135.8z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st9" d="M3.1,152.7c0.9,1.7,1.1,3.6,1.1,5.5c0.1,2.1-0.1,4.2-0.1,6.3c-0.1,2.8-0.1,7.3,3.5,8c2.7,0.5,5.6-1,7.9-2.2
-					c0.9-0.4,0.1-1.7-0.8-1.3c-1.9,1-4.4,2.3-6.6,2c-1.2-0.1-1.9-1-2.2-2.1c-0.4-1.6-0.4-3.3-0.3-5c0.1-2,0.2-4,0.1-5.9
-					c-0.1-2.1-0.4-4.2-1.3-6C4,151.1,2.7,151.9,3.1,152.7L3.1,152.7z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st9" d="M35,143.7c1.2,3.9,2.1,8,2.6,12.1c0.4,3.9,0.5,8-0.8,11.7c-0.3,0.9,1.1,1.3,1.4,0.4
-					c1.4-3.8,1.3-8.1,0.9-12.1c-0.5-4.2-1.4-8.4-2.6-12.5C36.2,142.3,34.7,142.7,35,143.7L35,143.7z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st9" d="M37.1,167.3c0,0.1-0.1,0.2,0,0.1c0,0,0,0-0.1,0c-0.2,0.1-0.4,0.1-0.6,0.1c-0.5,0.1-1,0.3-1.4,0.7
-					c-0.9,0.9-0.5,2.4,0.7,2.8c0.6,0.2,1.3-0.1,1.8-0.4c0.2-0.1,0.5-0.3,0.7-0.4c0.1,0,0.2-0.1,0.3-0.1c0,0,0.1,0,0.1,0
-					c-0.1-0.1-0.1-0.1,0,0c0.5,0.1,0.9,0.4,1.5,0.3c0.6-0.1,1-0.6,0.9-1.3c-0.3,0.2-0.6,0.5-0.9,0.7c0.6,0.2,1.3,0.4,2,0.3
-					c0.8-0.1,1.3-0.6,1.8-1.2c-0.1,0.1-0.2,0.2-0.3,0.3c-0.1,0,0,0,0,0c0.1,0,0.2,0,0.3,0c0.2,0,0.4,0,0.6-0.1
-					c0.6-0.2,0.9-0.6,0.9-1.2c0-1-1.5-1-1.5,0c0-0.1,0.1-0.1,0.2-0.2c0-0.1,0,0,0,0c0,0-0.1,0-0.1,0c-0.1,0-0.1,0-0.2,0
-					c-0.5,0-0.8,0.1-1.1,0.5c-0.6,0.7-1.3,0.4-2,0.1c-0.4-0.2-1,0.3-0.9,0.7c0,0.2,0,0.1,0.2-0.2c0.1-0.1,0.1,0.1,0,0
-					c0.1,0.1-0.1,0-0.1,0c-0.1,0-0.1,0-0.2-0.1c-0.1,0-0.2-0.1-0.4-0.2c-0.3-0.1-0.6-0.1-0.9,0c-0.5,0.1-0.9,0.3-1.3,0.6
-					c-0.3,0.2-0.6,0.4-0.9,0.3c0,0,0-0.1,0,0c0-0.1,0,0.1,0,0c0,0,0-0.1,0.1-0.1c0-0.1,0.1-0.1,0.2-0.2c-0.1,0.1,0.1-0.1,0,0
-					c0.2-0.1,0.3-0.1,0.5-0.1c0.8-0.2,1.6-0.4,1.8-1.3c0.1-0.4-0.1-0.8-0.5-0.9C37.7,166.7,37.2,166.9,37.1,167.3L37.1,167.3z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st9" d="M41.7,165.3c-0.5,0.7-0.1,1.6,0.2,2.3c0.1,0.3,0.3,0.6,0.4,0.9c0,0.1-0.1-0.2,0-0.1c0,0,0,0.1,0,0.1
-					c0,0.1,0,0.1,0.1,0.2c0,0,0,0.1,0,0.1c-0.1-0.2,0-0.2,0-0.1c0,0,0,0.1,0,0.1c0,0.1,0-0.2,0-0.1c0,0,0,0,0,0
-					c0,0.1,0.1-0.1,0.1-0.1c0,0.1,0,0,0.1-0.1c0,0-0.1,0.1-0.1,0.1c0,0,0.2-0.1,0.1-0.1c0,0,0,0,0,0c-0.1,0.1,0.2-0.1,0,0
-					c0,0-0.1,0-0.1,0c0,0-0.1,0-0.1,0c0.1,0,0.2,0,0.1,0c0,0-0.1,0-0.1,0c-0.4,0-0.8,0.3-0.8,0.8c0,0.4,0.3,0.8,0.8,0.8
-					c0.5,0,1-0.1,1.4-0.5c0.3-0.4,0.4-0.8,0.3-1.3c-0.1-0.4-0.3-0.7-0.4-1c-0.1-0.2-0.2-0.3-0.2-0.5c0-0.1-0.1-0.1-0.1-0.2
-					c0-0.1,0.1,0.2,0,0.1c0,0,0,0,0-0.1c0,0,0-0.1,0-0.1c0-0.1-0.1-0.2-0.1-0.2c0-0.1,0-0.2,0,0c0,0,0-0.1,0-0.1c0,0,0,0,0-0.1
-					c0-0.1,0.1-0.1,0,0.1c0,0,0-0.1,0-0.1c0-0.1-0.1,0.2,0,0.1c0,0,0-0.1,0.1-0.1c0.2-0.3,0.1-0.9-0.3-1
-					C42.3,164.8,42,165,41.7,165.3L41.7,165.3z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st9" d="M40,166.9c0,0.3,0,0.6,0,0.9c0,0.4,0,0.8,0,1.1c0-0.1,0-0.1,0-0.2c0,0.1,0,0.2-0.1,0.4
-					c0-0.1,0.1-0.1,0.1-0.2c0,0,0,0.1-0.1,0.1c0-0.1,0.1-0.1,0.1-0.2c0,0,0,0,0,0c0.1,0,0.1-0.1,0.2-0.1c0,0,0,0-0.1,0
-					c0.1,0,0.1-0.1,0.2-0.1c0,0,0,0-0.1,0c0.1,0,0.1,0,0.2,0c0,0,0,0-0.1,0c0.1,0,0.1,0,0.2,0c0,0-0.1,0-0.1,0
-					c0.1,0,0.1,0.1,0.2,0.1c-0.1,0-0.1-0.1-0.2-0.1c0.1,0,0.1,0.1,0.2,0.1c0,0,0,0-0.1-0.1c-0.2-0.1-0.3-0.2-0.5-0.2
-					c-0.2,0-0.4,0.1-0.5,0.2c-0.3,0.3-0.3,0.8,0,1.1c0.3,0.3,0.7,0.5,1.2,0.4c0.4-0.1,0.6-0.5,0.7-0.9c0.1-0.6,0.1-1.2,0.1-1.8
-					c0-0.2,0-0.5,0-0.7c0-0.2-0.1-0.4-0.2-0.5c-0.1-0.1-0.3-0.2-0.5-0.2c-0.2,0-0.4,0.1-0.5,0.2C40.1,166.6,40,166.7,40,166.9
-					L40,166.9z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st9" d="M40,167.7c-0.1-0.2-0.3-0.3-0.5-0.4c-0.1,0-0.3,0-0.5,0c-0.2,0.1-0.4,0.2-0.5,0.3c-0.2,0.2-0.4,0.5-0.5,0.7
-					c0-0.1,0.1-0.1,0.1-0.2c-0.1,0.1-0.2,0.3-0.4,0.4c0.1,0,0.1-0.1,0.2-0.1c0,0-0.1,0.1-0.2,0.1c0.1,0,0.1-0.1,0.2-0.1
-					c0,0-0.1,0-0.1,0c0.1,0,0.1,0,0.2,0c0,0-0.1,0-0.1,0c0.1,0,0.1,0,0.2,0c0,0-0.1,0-0.1,0c0.1,0,0.1,0.1,0.2,0.1c0,0,0,0-0.1,0
-					c0.1,0,0.1,0.1,0.2,0.1c0,0-0.1-0.1-0.1-0.1c0,0.1,0.1,0.1,0.1,0.2c-0.1-0.1-0.1-0.2-0.2-0.3c0,0.1,0.1,0.1,0.1,0.2
-					c0,0,0-0.1-0.1-0.1c-0.1-0.2-0.2-0.3-0.3-0.4c-0.2-0.1-0.4-0.1-0.6-0.1c-0.2,0.1-0.4,0.2-0.4,0.3c-0.1,0.2-0.1,0.4-0.1,0.6
-					c0.1,0.3,0.2,0.6,0.5,0.8c0.3,0.3,0.6,0.4,1,0.3c0.5-0.1,0.8-0.5,1.1-0.9c0.1-0.1,0.2-0.3,0.3-0.4c0,0.1-0.1,0.1-0.1,0.2
-					c0.1-0.1,0.1-0.2,0.2-0.2c-0.1,0-0.1,0.1-0.2,0.1c0,0,0,0,0.1,0c-0.1,0-0.1,0.1-0.2,0.1c0,0,0,0,0,0c-0.1,0-0.1,0-0.2,0
-					c0,0,0,0,0,0c-0.1,0-0.1,0-0.2,0c0,0,0,0,0,0c-0.1,0-0.1-0.1-0.2-0.1c0,0,0,0,0,0c-0.1,0-0.1-0.1-0.2-0.1c0,0,0,0,0,0
-					c0-0.1-0.1-0.1-0.1-0.2c0,0,0,0,0,0c0.1,0.2,0.2,0.3,0.4,0.3c0.2,0,0.4,0,0.6-0.1c0.2-0.1,0.3-0.3,0.3-0.4
-					C40.1,168.1,40.1,167.9,40,167.7L40,167.7z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st9" d="M43.3,119.9c0.1,3.2-0.8,6.5,0.6,9.5c0.4,0.8,1,1.6,1.3,2.4c0.4,0.8,0.6,1.7,0.8,2.6
-					c0.3,1.8,0.3,3.7,0.2,5.5c0,0.8-0.1,1.6,0,2.5c0,1,0.5,1.9,0.7,2.9c0.5,2,0.5,4.1,0.5,6.2c-0.1,3.9-0.8,7.8-0.6,11.8
-					c0,1,1.5,1,1.5,0c-0.2-3.9,0.5-7.8,0.6-11.8c0.1-1.9,0-3.8-0.3-5.7c-0.2-1-0.6-2-0.8-3c-0.2-0.9-0.1-1.9,0-2.8
-					c0.1-3.4,0-6.9-1.7-9.9c-1-1.7-1.4-3.1-1.3-5.1c0-1.7,0.3-3.4,0.2-5.1C44.8,118.9,43.3,118.9,43.3,119.9L43.3,119.9z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st9" d="M44.6,120.6c0-2.3,2.8-2.6,4.6-2.9c2.6-0.4,5.4-0.5,7.8-1.6c1.3-0.6,2.3-1.5,2.9-2.8
-					c0.4-0.9-0.9-1.6-1.3-0.8c-1.1,2.5-4.1,2.9-6.4,3.3c-2.4,0.3-5.3,0.3-7.4,1.7c-1.1,0.7-1.7,1.8-1.7,3.1
-					C43.1,121.5,44.6,121.5,44.6,120.6L44.6,120.6z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st9" d="M58.6,112c-3,15.9-0.1,32.1-2.1,48.1c-0.1,1,1.4,0.9,1.5,0c1.9-15.9-1-32,2-47.7
-					C60.2,111.5,58.7,111.1,58.6,112L58.6,112z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st9" d="M56.6,159c-0.6,0.1-1.1,0.6-1.2,1.3c-0.1,0.6,0,1.2,0.3,1.7c0.1,0.3,0.3,0.5,0.5,0.7c0.3,0.3,0.8,0.3,1.1,0
-					c0.3-0.3,0.3-0.8,0-1.1c-0.1-0.1-0.2-0.2-0.2-0.2c0,0.1,0.1,0.1,0.1,0.2c-0.1-0.2-0.2-0.3-0.3-0.5c0,0.1,0.1,0.1,0.1,0.2
-					c-0.1-0.2-0.1-0.4-0.1-0.5c0,0.1,0,0.1,0,0.2c0-0.1,0-0.2,0-0.4c0,0.1,0,0.1,0,0.2c0-0.1,0-0.2,0.1-0.3c0,0.1-0.1,0.1-0.1,0.2
-					c0-0.1,0.1-0.1,0.1-0.2c0,0.1-0.1,0.1-0.1,0.2c0-0.1,0.1-0.1,0.1-0.1c-0.1,0-0.1,0.1-0.2,0.1c0.1,0,0.1-0.1,0.2-0.1
-					c-0.1,0-0.1,0.1-0.2,0.1c0.1,0,0.1,0,0.2-0.1c0.4-0.1,0.6-0.5,0.5-0.9C57.4,159.1,57,158.9,56.6,159L56.6,159z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st9" d="M56.1,159.8c-1-0.4-2.2-0.3-3.2-0.1c-1.2,0.2-2.3,0.6-3.4,1.2c-1.8,0.9-4.1,2.6-4.1,4.9
-					c0,1.4,1,2.5,2.1,3.3c0.3,0.2,0.8,0.1,1-0.3c0.2-0.4,0.1-0.8-0.3-1c-0.4-0.3-0.8-0.7-1-1c-0.1-0.1-0.1-0.2-0.2-0.3
-					c0,0,0-0.1-0.1-0.1c0.1,0.1,0,0,0,0c0-0.1-0.1-0.2-0.1-0.3c0,0,0-0.1,0-0.1c0,0.2,0,0,0,0c0-0.1,0-0.2,0-0.3c0-0.2,0,0.1,0-0.2
-					c0-0.1,0-0.2,0.1-0.3c0,0,0-0.1,0-0.1c0,0,0.1-0.2,0,0c0.1-0.2,0.2-0.3,0.3-0.5c0.1-0.1,0.1-0.2,0.2-0.3
-					c-0.1,0.1,0.1-0.2,0.2-0.2c1.3-1.5,3.3-2.4,5.3-2.8c0.5-0.1,0.9-0.2,1.5-0.2c0.1,0,0.2,0,0.4,0c0.1,0,0.1,0,0.2,0
-					c0.2,0,0,0,0.1,0c0.2,0,0.5,0.1,0.7,0.2c0.4,0.1,0.8-0.2,0.9-0.5C56.7,160.3,56.5,159.9,56.1,159.8L56.1,159.8z"/>
-			</g>
-			<g>
-				<path class="st9" d="M46.8,168.8c0.8,0.4,1.6,0.9,2.5,1.1c0.6,0.1,1.2,0.2,1.7-0.2c0.5-0.3,0.7-0.8,0.9-1.3
-					c0.2-0.6,0.4-1.1,0.6-1.7c0-0.1,0,0.1,0,0c0-0.1,0-0.1,0.1-0.2c0-0.1,0.1-0.2,0.1-0.3c0.1-0.2,0.2-0.4,0.3-0.6
-					c0.3-0.4,0.6-0.9,0.9-1.3c0.3-0.3,0.3-0.8,0-1.1c-0.3-0.3-0.8-0.3-1.1,0c-1,1.2-1.7,2.6-2.2,4.1c0,0.1-0.1,0.2-0.1,0.3
-					c0,0.1,0,0.1-0.1,0.2c0,0,0,0.1,0,0.1c0,0.1,0.1-0.1,0,0c0,0.1-0.1,0.2-0.1,0.3c0,0,0,0.1-0.1,0.1c-0.1,0.1,0,0,0,0
-					c0,0-0.1,0.1-0.1,0.1c-0.1,0.1,0,0,0,0c0,0-0.1,0.1-0.1,0.1c-0.1,0.1,0.2,0,0,0c0,0-0.1,0-0.1,0c-0.1,0,0.2,0,0,0
-					c0,0-0.1,0-0.1,0c0,0-0.1,0-0.1,0c-0.1,0,0.2,0,0,0c-0.9-0.2-1.5-0.5-2.4-0.9c-0.4-0.2-0.8-0.1-1,0.3
-					C46.4,168.2,46.5,168.7,46.8,168.8L46.8,168.8z"/>
-			</g>
-			<g>
-				<path class="st9" d="M46.6,168.1c-0.3,1.3,0.5,2.6,1.5,3.4c0.5,0.4,1,0.8,1.6,1.1c0.2,0.1,0.5,0.2,0.7,0.3
-					c0.5,0.1,1-0.2,1.5-0.5c0.3-0.2,0.7-0.4,1-0.6c0.4-0.3,0.5-0.7,0.7-1.1c0.3-0.7,0.4-1.4,0.7-2.1c0.1-0.3,0.3-0.6,0.5-0.8
-					c0.2-0.2,0.3-0.4,0.5-0.6c0.3-0.4,0.4-0.9,0.5-1.4c0.1-0.6,0.1-1.2-0.2-1.7c-0.4-0.6-1.1-0.7-1.8-0.6c-0.4,0.1-0.6,0.6-0.5,0.9
-					c0.1,0.4,0.5,0.6,0.9,0.5c-0.1,0,0.1,0,0.1,0c0.1,0,0,0,0,0c0.1,0,0.1,0,0,0c0.1,0,0-0.1,0,0c-0.1-0.1,0,0,0,0c0,0,0-0.1,0,0
-					c0,0,0,0.2,0,0c0,0.1,0,0.1,0,0.2c0,0.1,0,0.1,0,0.2c0-0.2,0,0.1,0,0.1c0,0.1-0.1,0.2-0.1,0.4c-0.1,0.2-0.1,0.4-0.3,0.6
-					c0,0-0.1,0.2-0.1,0.1c0.1-0.1-0.1,0.1-0.1,0.1c-0.1,0.2-0.3,0.3-0.4,0.5c-0.3,0.4-0.4,0.8-0.6,1.2c-0.3,0.8-0.5,1.7-0.9,2.5
-					c0.1-0.1,0.2-0.2,0.3-0.3c-0.5,0.4-1.1,0.7-1.8,1c0.1,0,0.3,0,0.4,0c-0.7-0.2-1.4-0.6-1.9-1.2c-0.3-0.3-0.5-0.6-0.7-1
-					c-0.1-0.1-0.1-0.3-0.1-0.4c0-0.1,0-0.3,0-0.4C48.2,167.6,46.8,167.2,46.6,168.1L46.6,168.1z"/>
-			</g>
-			<g>
-				<path class="st9" d="M51.4,172.1c0.5,0.6,1,1.2,1.8,1.3c0.6,0.1,1.2-0.3,1.6-0.7c0.9-0.9,1.4-2.2,1.9-3.4
-					c-0.1,0.1-0.1,0.2-0.2,0.3c0.8-0.8,1.2-2.1,1-3.3c-0.1-0.5-0.4-1-0.9-1.3c-0.7-0.3-1.4-0.1-2,0.2c-0.4,0.2-0.5,0.7-0.3,1
-					c0.2,0.4,0.7,0.5,1,0.3c0,0,0.1,0,0.1-0.1c-0.1,0.1,0,0,0,0c0.1,0,0.2,0,0.2-0.1c0.1,0,0.2,0,0,0c0,0,0.1,0,0.1,0
-					c0,0,0.1,0,0.1,0c-0.1,0-0.1-0.1,0,0c0.1,0.1-0.2-0.1,0,0c0.2,0.1-0.1-0.1,0,0c0.1,0.1,0-0.1,0,0c0,0.1,0.1,0.1,0.1,0.2
-					c-0.1-0.2,0,0,0,0.1c0,0,0.1,0.2,0,0.1c0-0.1,0,0.1,0,0.2c0,0.1,0,0.2,0,0.3c0,0.1,0,0.3,0,0.1c0,0.1,0,0.1,0,0.2
-					c0,0.2-0.1,0.3-0.1,0.5c0.1-0.2,0,0.1-0.1,0.1c0,0.1-0.1,0.1-0.1,0.2c0,0-0.2,0.2-0.1,0.1c-0.1,0.1-0.1,0.1-0.2,0.2
-					c-0.2,0.2-0.2,0.4-0.3,0.7c0,0.1-0.1,0.3-0.1,0.2c0-0.1,0,0.1,0,0.1c0,0.1,0,0.1-0.1,0.2c-0.2,0.4-0.4,0.8-0.6,1.2
-					c-0.1,0.2-0.2,0.3-0.3,0.5c0,0-0.1,0.1-0.1,0.1c0.1-0.1,0,0,0,0c-0.1,0.1-0.1,0.1-0.2,0.2c0,0-0.3,0.2-0.1,0.1
-					c-0.1,0.1-0.2,0.1-0.2,0.1c-0.1,0.1,0,0,0,0c0,0-0.1,0-0.1,0c-0.1,0,0,0,0.1,0c0,0-0.1,0-0.1,0c0,0,0.2,0.1,0.1,0
-					c0,0-0.1,0-0.2,0c0.2,0.1-0.1-0.1-0.1-0.1c0.1,0.1-0.1-0.1-0.1-0.1c-0.1-0.1-0.2-0.2-0.2-0.3c-0.2-0.3-0.7-0.5-1-0.3
-					C51.4,171.2,51.2,171.7,51.4,172.1L51.4,172.1z"/>
-			</g>
-			<g>
-				<path class="st9" d="M54.6,171.6c0.3,0.5,0.7,0.8,1.2,1c0.5,0.1,1,0,1.5-0.2c0.9-0.4,1.6-1.3,1.9-2.3c0.2-0.6,0.2-1.3,0.1-1.9
-					c0,0.1,0,0.3,0,0.4c0.1-0.4,0-0.7-0.1-1c-0.1-0.3-0.3-0.5-0.6-0.6c-0.6-0.3-1.3-0.2-1.7,0.3c-0.3,0.3-0.3,0.8,0,1.1
-					c0.3,0.3,0.8,0.3,1.1,0c0,0,0.1-0.1,0.1-0.1c0-0.1-0.2,0.1,0,0c0.2-0.1-0.1,0,0,0c0.1,0-0.2,0-0.1,0c0,0,0.1,0,0.1,0
-					c0,0-0.2,0-0.1,0c0.1,0,0.1,0.1,0,0c0,0,0.2,0.1,0.1,0c-0.1-0.1,0,0,0,0c0,0,0,0.1,0-0.1c0,0,0.1,0.2,0.1,0.1c-0.1-0.1,0,0,0,0
-					c0,0.1,0-0.2,0,0c0,0,0,0.1,0,0.1c0,0,0-0.1,0-0.1c0,0.1,0,0.1,0,0.2c0,0.1,0,0.3,0.1,0.4c0,0.1,0,0.1,0-0.1c0,0,0,0.1,0,0.1
-					c0,0.1,0,0.2,0,0.2c0,0.1,0,0.1,0,0.2c0,0,0,0.1,0,0.1c0,0.2,0-0.2,0-0.1c0,0.1,0,0.3-0.1,0.4c0,0.1,0,0.1-0.1,0.2
-					c0,0,0,0.1,0,0.1c0.1-0.2,0.1-0.1,0-0.1c-0.1,0.1-0.1,0.2-0.2,0.4c0,0.1-0.1,0.1-0.1,0.2c0,0,0,0,0,0.1c0.1-0.2,0.1-0.1,0-0.1
-					c-0.1,0.1-0.2,0.2-0.3,0.3c0,0-0.1,0.1-0.1,0.1c-0.1,0-0.2,0.1,0,0c-0.1,0.1-0.2,0.1-0.3,0.2c0,0-0.1,0-0.1,0.1
-					c-0.1,0.1,0.2-0.1,0.1,0c0,0-0.1,0-0.1,0c0,0-0.1,0-0.1,0c0,0-0.3,0-0.1,0c0.2,0,0,0-0.1,0c-0.1,0-0.1,0-0.2,0
-					c0.2,0,0.2,0,0.1,0c0,0-0.1,0-0.1,0c0,0,0,0-0.1,0c-0.1,0,0.1,0.1,0.1,0c0,0-0.1-0.1-0.1-0.1c-0.1,0,0,0,0.1,0.1
-					c0,0-0.1,0-0.1-0.1c0,0-0.1-0.1-0.1-0.1c0.1,0.1,0.1,0.1,0,0c0,0-0.1-0.1-0.1-0.1c-0.2-0.3-0.7-0.5-1-0.3
-					C54.5,170.8,54.4,171.2,54.6,171.6L54.6,171.6z"/>
-			</g>
-			<g>
-				<path class="st9" d="M51.6,165c0.2,0.2,0.5,0.3,0.8,0.3c0.4,0,0.8-0.3,0.9-0.7c0.1-0.5-0.1-1.1-0.3-1.5c-0.3-0.5-0.8-1-1.4-1.2
-					c-0.7-0.3-1.4,0-2,0.5c-0.4,0.4-0.7,0.8-0.9,1.3c-0.4,0.7-0.6,1.5-0.8,2.3c-0.1,0.4,0.1,0.8,0.5,0.9c0.4,0.1,0.8-0.1,0.9-0.5
-					c0.1-0.3,0.2-0.7,0.3-1c0-0.1,0.1-0.3,0.2-0.4c0-0.1,0-0.1,0.1-0.2c0,0,0-0.1,0-0.1c0-0.1-0.1,0.2,0,0c0.1-0.2,0.2-0.4,0.3-0.6
-					c0-0.1,0.1-0.2,0.1-0.2c0,0,0.1-0.1,0.1-0.1c0,0,0,0,0-0.1c0.1-0.1-0.1,0.1-0.1,0.1c0.1-0.1,0.2-0.2,0.3-0.3
-					c0.1-0.1,0.2-0.1-0.1,0c0,0,0,0,0.1,0c0.1,0,0.1-0.1,0.2-0.1c0.1-0.1-0.2,0.1-0.1,0c0,0,0.1,0,0.1,0c0.1,0,0.3,0,0,0
-					c0,0,0.1,0,0.1,0c0,0,0,0,0.1,0c0.1,0-0.2,0-0.1,0c0,0,0.1,0,0.1,0c0,0,0,0,0.1,0c0.1,0-0.2-0.1-0.1,0c0.1,0,0.2,0.1,0.2,0.2
-					c-0.3-0.2-0.1-0.1,0,0c0,0,0.1,0.1,0.1,0.1c0,0,0.1,0.1,0.1,0.1c0.1,0.2-0.1-0.2,0,0c0.1,0.1,0.1,0.2,0.2,0.2c0,0,0,0.1,0.1,0.1
-					c0,0,0,0,0,0.1c0.1,0.1-0.1-0.2,0-0.1c0,0.1,0.1,0.2,0.1,0.2c0,0,0,0.1,0,0.1c0,0.1,0-0.2,0-0.1c0,0,0,0,0,0.1c0,0,0,0.2,0,0
-					c0-0.2,0-0.1,0,0c0,0.1-0.1,0.1,0.1-0.1c-0.1,0.1,0.1-0.2,0.1-0.1c-0.1,0.1,0.2-0.1,0.1-0.1c0,0,0.2-0.1,0.1-0.1
-					c-0.1,0,0.3,0,0.2,0c-0.1,0,0.1,0,0.1,0c0,0-0.1,0-0.1,0c0.2,0.1,0.2,0.1,0,0c-0.1,0-0.1-0.1-0.2-0.1c-0.3-0.2-0.8-0.1-1,0.3
-					C51.1,164.4,51.2,164.8,51.6,165L51.6,165z"/>
-			</g>
-			<g>
-				<path class="st9" d="M49,164.2c-0.1,0-0.2,0.1-0.3,0.1c0,0-0.1,0-0.1,0.1c-0.1,0.1-0.2,0.1-0.3,0.2c-0.1,0.1-0.2,0.2-0.2,0.3
-					c0,0-0.1,0.1-0.1,0.1c-0.1,0.1-0.1,0.2-0.1,0.3c0,0.2-0.1,0.4-0.1,0.5c0,0.1,0,0.2,0.1,0.3c0,0.1,0.1,0.2,0.2,0.2
-					c0.1,0.1,0.1,0.1,0.2,0.2c0.1,0,0.2,0.1,0.3,0.1c0.2,0,0.4-0.1,0.5-0.2c0-0.1,0.1-0.1,0.1-0.2c0.1-0.1,0.1-0.2,0.1-0.4
-					c0-0.1,0-0.1,0-0.2c0,0.1,0,0.1,0,0.2c0-0.1,0-0.2,0.1-0.2c0,0.1-0.1,0.1-0.1,0.2c0-0.1,0.1-0.2,0.1-0.2c0,0.1-0.1,0.1-0.1,0.2
-					c0.1-0.1,0.1-0.1,0.2-0.2c-0.1,0-0.1,0.1-0.2,0.1c0.1,0,0.1-0.1,0.2-0.1c-0.1,0-0.1,0.1-0.2,0.1c0,0,0.1,0,0.1,0
-					c0.1,0,0.2-0.1,0.3-0.1c0.1-0.1,0.1-0.1,0.2-0.2c0.1-0.1,0.1-0.2,0.1-0.3c0-0.1,0-0.2,0-0.3c-0.1-0.2-0.2-0.4-0.3-0.4
-					c-0.1,0-0.1-0.1-0.2-0.1C49.3,164.1,49.2,164.1,49,164.2L49,164.2z"/>
-			</g>
-			<g>
-				<path class="st9" d="M49.9,164.9c0.2-0.5,0.2-1,0.1-1.5c-0.1-0.5-0.4-1-0.8-1.3c-0.2-0.1-0.3-0.2-0.5-0.2
-					c-0.2,0-0.4,0.1-0.5,0.2c-0.1,0.1-0.2,0.3-0.2,0.5c0,0.2,0.1,0.4,0.2,0.5c0.1,0.1,0.2,0.2,0.3,0.3c0-0.1-0.1-0.1-0.1-0.2
-					c0.1,0.1,0.2,0.3,0.2,0.4c0-0.1-0.1-0.1-0.1-0.2c0.1,0.2,0.1,0.3,0.1,0.5c0-0.1,0-0.1,0-0.2c0,0.2,0,0.3,0,0.5
-					c0-0.1,0-0.1,0-0.2c0,0.1-0.1,0.3-0.1,0.4c-0.1,0.2,0,0.4,0.1,0.6c0.1,0.2,0.3,0.3,0.4,0.3c0.2,0,0.4,0,0.6-0.1
-					C49.8,165.3,49.9,165.1,49.9,164.9L49.9,164.9z"/>
-			</g>
-			<g>
-				<path class="st9" d="M55.9,160.5c0.2,0.5,0.5,0.9,0.9,1.3c0.4,0.3,0.8,0.5,1.2,0.7c0.4,0.2,0.8,0.3,1.1,0.5
-					c0.1,0.1,0.2,0.1,0.3,0.2c0,0,0.1,0.1,0.1,0.1c0.2,0.1-0.1-0.1,0,0c0.1,0.1,0.2,0.1,0.2,0.2c0,0,0.1,0.1,0.1,0.1
-					c0.1,0.1-0.1-0.1,0,0c0.2,0.3,0.7,0.5,1,0.3c0.3-0.2,0.5-0.7,0.3-1c-0.5-0.8-1.4-1.2-2.2-1.6c-0.4-0.2-0.8-0.3-1.1-0.6
-					c0,0-0.1-0.1-0.1-0.1c0.1,0.1,0.1,0.1,0,0c0,0,0,0,0,0c-0.1-0.1-0.2-0.1-0.2-0.2c0,0-0.1-0.2-0.1-0.1c0.1,0.1,0-0.1,0-0.1
-					c0,0,0-0.1-0.1-0.1c0,0-0.1-0.2,0,0c-0.2-0.4-0.5-0.7-0.9-0.5C56.1,159.6,55.8,160.1,55.9,160.5L55.9,160.5z"/>
-			</g>
-			<g>
-				<path class="st9" d="M62.8,164.1c-1.7,1.7,0.4,3.9,1.2,5.4c0,0.1,0.1,0.2,0.1,0.3c0,0,0,0.1,0.1,0.1c-0.1-0.1,0-0.1,0,0
-					c0,0.1,0,0.2,0.1,0.2c0,0.1,0-0.1,0,0c0,0,0,0.1,0,0.1c0,0.1,0-0.2,0-0.1c0,0,0,0.1,0,0.1c0-0.1,0.1-0.2,0-0.1
-					c-0.1,0.1,0.1-0.1,0,0c0,0-0.1,0.1,0,0c0.1-0.1,0,0,0,0c0,0-0.1,0-0.1,0.1c-0.1,0.1,0,0,0.1,0c0,0-0.1,0-0.1,0
-					c-0.1,0-0.2,0.1-0.4,0.1c-0.1,0-0.1,0-0.2,0c0.2,0-0.1,0-0.2,0c0,0-0.1,0,0,0c0.1,0-0.1,0-0.1,0c-0.1,0-0.1,0-0.2,0
-					c-0.1,0-0.3,0-0.4,0c-0.6,0.1-1.2,0.2-1.8,0.4c-0.3,0.1-0.7,0.2-1,0.2c-0.1,0-0.2,0-0.3,0c0.2,0-0.1,0-0.1,0c-0.1,0-0.3,0-0.4,0
-					c-0.2,0,0.1,0-0.1,0c-0.1,0-0.1,0-0.2,0c-0.1,0,0,0,0,0c0,0-0.1,0-0.1,0c-0.2-0.1,0.1,0,0,0c0,0,0,0,0-0.1c0,0,0,0,0,0.1
-					c0,0,0,0,0,0c0,0,0-0.1,0-0.1c0-0.1,0,0.2,0,0c0-0.1,0-0.1,0-0.2c0-0.1,0,0.1,0,0c0-0.1,0-0.1,0-0.2c0-1-1.5-1-1.5,0
-					c0,0.7,0.3,1.5,0.9,1.8c0.6,0.3,1.3,0.3,2,0.1c0.7-0.1,1.3-0.3,1.9-0.5c0.1,0,0.3-0.1,0.4-0.1c0.1,0,0.1,0,0.2,0
-					c-0.2,0,0,0,0.1,0c0.1,0,0.2,0,0.4,0c0.1,0,0,0-0.1,0c0.1,0,0.1,0,0.2,0c0.1,0,0.2,0,0.3,0c0.6-0.1,1.3-0.2,1.8-0.6
-					c0.4-0.4,0.5-0.9,0.4-1.5c-0.2-0.9-0.9-1.8-1.4-2.6c-0.2-0.2-0.3-0.5-0.4-0.7c0-0.1-0.1-0.1-0.1-0.2c-0.1-0.2,0,0.1,0,0
-					c0-0.1-0.1-0.2-0.1-0.4c0-0.1,0-0.1,0-0.2c0-0.2,0,0.2,0,0c0-0.1,0-0.1,0-0.2c0-0.2,0,0.1,0,0c0,0,0-0.1,0-0.2c0-0.1,0,0,0,0.1
-					c0,0,0-0.1,0-0.1c0-0.1,0.1-0.1,0.1-0.2c0-0.1-0.1,0.1,0,0.1c0,0,0.1-0.1,0.1-0.1C64.6,164.4,63.5,163.4,62.8,164.1L62.8,164.1z
-					"/>
-			</g>
-			<g>
-				<path class="st9" d="M57.9,169.3C57.9,169.4,57.9,169.4,57.9,169.3c0,0,0,0,0-0.1c0,0.1,0,0.3,0,0.4c0-0.1,0-0.1,0-0.2
-					c0,0.1-0.1,0.3-0.1,0.4c0,0.1,0,0.2,0,0.3c0,0.1,0,0.2,0.1,0.3c0,0.1,0.1,0.2,0.2,0.2c0.1,0.1,0.2,0.1,0.3,0.1
-					c0.2,0,0.4,0,0.6-0.1c0.1,0,0.1-0.1,0.2-0.1c0.1-0.1,0.2-0.2,0.2-0.3c0.1-0.2,0.1-0.4,0.1-0.7c0-0.2,0-0.5-0.1-0.7
-					c0-0.1-0.1-0.2-0.1-0.3c-0.1-0.1-0.1-0.1-0.2-0.2c-0.1-0.1-0.2-0.1-0.3-0.1c-0.1,0-0.2,0-0.3,0c-0.2,0.1-0.4,0.2-0.4,0.3
-					c0,0.1-0.1,0.1-0.1,0.2C57.9,169.1,57.9,169.2,57.9,169.3L57.9,169.3z"/>
-			</g>
-			<g>
-				<path class="st9" d="M58,169.7c-0.3,0.3-0.5,0.6-0.8,0.9c0.4,0.3,0.8,0.6,1.2,0.9c0.3-0.5,0.6-0.9,0.8-1.4
-					c0.1-0.1,0.2-0.3,0.3-0.4c0,0,0,0,0.1-0.1c0.1-0.1,0,0-0.1,0.1c0,0,0.1-0.1,0.1-0.1c0.1-0.1-0.2,0.1,0,0c0,0,0,0,0,0
-					c0.1,0-0.2,0.1-0.1,0c0,0,0.2,0,0,0c-0.2,0,0,0,0.1,0c0.1,0,0.1,0,0.2,0c0,0,0.1,0,0.1,0c0,0,0,0,0,0c0.1,0-0.1,0-0.1,0
-					c0.2,0,0.4,0.1,0.5,0.1c0.7,0.1,1.4,0.2,2.1,0.2c0.4,0,0.8-0.4,0.8-0.8c0-0.4-0.3-0.7-0.8-0.8c-0.4,0-0.7,0-1.1-0.1
-					c-0.1,0-0.3,0-0.4,0c-0.1,0-0.1,0-0.2,0c-0.2,0,0.1,0-0.1,0c-0.4-0.1-0.8-0.1-1.1-0.1c-0.8,0-1.2,0.5-1.6,1.1
-					c-0.3,0.5-0.6,1.1-0.9,1.6c-0.2,0.3-0.1,0.7,0.2,1c0.3,0.2,0.7,0.2,1-0.1c0.3-0.3,0.5-0.6,0.8-0.9c0.2-0.3,0.3-0.8,0-1.1
-					C58.8,169.5,58.3,169.4,58,169.7L58,169.7z"/>
-			</g>
-			<g>
-				<path class="st9" d="M63.9,165.4c4.9-11.6,3.8-24.7,7.4-36.6c0.3-0.9-1.2-1.3-1.4-0.4c-3.6,12-2.5,25-7.4,36.6
-					C62.1,165.9,63.5,166.3,63.9,165.4L63.9,165.4z"/>
-			</g>
-			<g>
-				<path class="st9" d="M71.1,129c1.9-7.7,2.7-15.7,2.4-23.6c0-1-1.5-1-1.5,0c0.3,7.8-0.4,15.6-2.3,23.2
-					C69.5,129.6,70.9,130,71.1,129L71.1,129z"/>
-			</g>
-			<g>
-				<path class="st9" d="M17.3,163.9c0.1,0,0.1,0,0.2,0c0.1,0-0.2,0,0,0c0.1,0,0.2,0,0.3,0.1c0,0,0.1,0,0.1,0c0,0,0,0,0.1,0
-					c-0.1,0-0.1-0.1-0.1,0c0.1,0,0.1,0.1,0.2,0.1c0.1,0,0.1,0.1,0.2,0.1c-0.2-0.1-0.1-0.1,0,0c0,0,0.1,0.1,0.1,0.1
-					c0.1,0.1,0.2,0.2,0.4,0.4c0,0,0,0.1,0.1,0.1c-0.2-0.2,0,0,0,0c0,0.1,0.1,0.1,0.1,0.2c0.1,0.2,0.2,0.3,0.3,0.5
-					c0.2,0.3,0.4,0.6,0.6,0.9c0.2,0.3,0.7,0.5,1,0.3c0.3-0.2,0.5-0.7,0.3-1c-0.5-0.7-0.8-1.4-1.4-2c-0.6-0.7-1.4-1.1-2.4-1.2
-					c-0.4,0-0.8,0.4-0.8,0.8C16.5,163.6,16.8,163.9,17.3,163.9L17.3,163.9z"/>
-			</g>
-			<g>
-				<path class="st9" d="M69.3,66.4c-10.7,0.1-17.1,12.5-13.1,21.8c0.4,0.9,1.7,0.1,1.3-0.8c-3.6-8.3,2.4-19.4,11.8-19.5
-					C70.3,67.9,70.3,66.4,69.3,66.4L69.3,66.4z"/>
-			</g>
-		</g>
-		<g>
-			<g>
-				<path class="st9" d="M58.9,81.4c-2.7,3.9-4.2,8.5-3.7,13.2c0.5,4.7,2.7,8.8,5.8,12.2c0.6,0.7,1.7-0.3,1.1-1.1
-					c-2.9-3.2-5.1-7.2-5.4-11.5c-0.3-4.4,1.1-8.5,3.6-12.1C60.7,81.4,59.4,80.6,58.9,81.4L58.9,81.4z"/>
-			</g>
-			<g>
-				<path class="st9" d="M59,72.6c-2-2.7-5.2-4.1-8.6-3.6c-3.3,0.5-6.2,2.7-7.8,5.6c-0.5,0.8,0.8,1.6,1.3,0.8
-					c1.3-2.5,3.7-4.4,6.5-4.9c2.8-0.5,5.6,0.5,7.2,2.8C58.2,74.1,59.5,73.4,59,72.6L59,72.6z"/>
-			</g>
-			<g>
-				<path class="st9" d="M82.1,79.8c0.3,0.8,0.2,1.6,0.1,2.4c-0.1,1.2-0.4,2.3-0.6,3.5c-0.5,2-1,4.1-2,6c-0.4,0.9,0.9,1.6,1.3,0.8
-					c1-2,1.6-4.3,2.1-6.5c0.3-1.2,0.5-2.5,0.6-3.7c0.1-0.9,0.1-1.9-0.2-2.8C83.2,78.5,81.7,78.9,82.1,79.8L82.1,79.8z"/>
-			</g>
-</svg>
+            <!-- TERRITORIO -->
 
-<!-- ahora viene la linea en movimieto-->
-    </section>
-
-  </div>
-</div>
-
-<section class="container">
-   <h3 class="text-center pt-1 pb-2">Territorio</h3>
-     </div>
-        <div class="row">
-            <div class="col-sm-8 mx-auto">
-            <p class="lead"> Revisemos aquí la percepción del espacio de un orangutan en relación a su género y hábitat natural.En chile, un orangutan de zoologico habita en 500 metros cubicos <p>
-
-          </div>
-        </section>
+            <div class="container border">
+                <div class="row">
+                    <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                        <h3 class="text-center mt-3 mb-1 border">Territorio</h3>
+                        <p>El espacio doméstico de la hembra es cuatro veces inferior al del macho cuyo territorio puede abarcar hasta 39 kilómetros cuadrados.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            </section>
           </div>
               <section class="container">
                    <div class="col-sm-10 mx-auto">
-                          <object data="img/territorio.svg" type="image/svg+xml"></object>
+                          <object data="imgs/territorio.svg" type="image/svg+xml"></object>
                       </div>
+
               </section>
-  <!-- AQUÍ TERMINASVG territorio-->
+
+              <!-- AQUI dejaré un .svg muy mal hecho. Estoy eliminando el ornagutan vectorizado por un .png que contenga la foto ge un organtugan un el fondo de un bosque. Ahora bien. sel formato lo saque del ej. 2 pero no me atrevo a achicar el tamaño del .svg / si te fija, FACO, es muy largo. me  ayudarías a achicar el formato?  -->
+
+              <div class="container border">
+                  <div class="row">
+                      <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                          <h4 class="text-center mt-3 mb-1 border">El llamado</h4>
+                          <p>Los machos emiten un alarido potente para localizar y atraer hembras, así como para advertir a sus conespecíficos masculinos de no acercarse.
+                          </p>
+                      </div>
+                  </div>
+              </div>
+              </section>
+              <!-- ahora viene la linea en movimieto-->
+              <?xml version="1.0" encoding="utf-8"?>
+              <!-- Generator: Adobe Illustrator 26.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+              	 viewBox="0 0 350 471.9" style="enable-background:new 0 0 350 471.9;" xml:space="preserve">
+              <style type="text/css">
+              .st0{fill:#AAAAAA;}
+              .st1{fill:#FFFFFF;}
+              .st2{font-family:'Helvetica';}
+              .st3{font-size:26.2839px;}
+              .st4{enable-background:new    ;}
+              .st5{font-size:20px;}
+              .st6{fill:none;stroke:#686969;stroke-width:0.474;stroke-linecap:round;}
+                .st9{fill:#BB5C0E}
+              </style>
+              <g id="Capa_2">
+              	<path class="st9" d="M70.1,99.8h209.3 M267.4,106.9l14.4-7.1l-14.4-7"/>
+              	<g class="st9">
+              		<g>
+              			<g>
+              				<path class="st9" d="M82.2,75.1c10.4-3.2,22.8,3.2,25.5,14c2.8,11-5.3,21.5-15.8,24c-2.5,0.6-5.1,0.9-7.9,0.6
+              					c0,0-0.5-0.8-0.5-0.8c5.1-3.8,10.4-7.9,13.4-13.6c5.7-10.8-6.2-19.4-14.9-23.3C81.8,76,82.2,75.1,82.2,75.1L82.2,75.1z"/>
+              			</g>
+              			<g>
+              				<path class="st9" d="M98.5,73.5c10.4-3.2,22.8,3.2,25.5,14c2.8,11-5.3,21.5-15.8,24c-2.5,0.6-5.1,0.9-7.9,0.6
+              					c0,0-0.5-0.8-0.5-0.8c5.1-3.8,10.4-7.9,13.4-13.6c5.7-10.8-6.2-19.4-14.9-23.3C98.1,74.4,98.5,73.5,98.5,73.5L98.5,73.5z"/>
+              			</g>
+              			<g>
+              				<path class="st9" d="M115.7,73.8c10.4-3.2,22.8,3.2,25.5,14c2.8,11-5.3,21.5-15.8,24c-2.5,0.6-5.1,0.9-7.9,0.6
+              					c0,0-0.5-0.8-0.5-0.8c5.1-3.8,10.4-7.9,13.4-13.6c5.7-10.8-6.2-19.4-14.9-23.3C115.4,74.7,115.7,73.8,115.7,73.8L115.7,73.8z"/>
+              			</g>
+              			<g>
+              				<path class="st9" d="M132.9,74.5c10.4-3.2,22.8,3.2,25.5,14c2.8,11-5.3,21.5-15.8,24c-2.5,0.6-5.1,0.9-7.9,0.6
+              					c0,0-0.5-0.8-0.5-0.8c5.1-3.8,10.4-7.9,13.4-13.6c5.7-10.8-6.2-19.4-14.9-23.3C132.6,75.5,132.9,74.5,132.9,74.5L132.9,74.5z"/>
+              			</g>
+              			<g>
+              				<path class="st9" d="M150.2,75.2c10.4-3.2,22.8,3.2,25.5,14c2.8,11-5.3,21.5-15.8,24c-2.5,0.6-5.1,0.9-7.9,0.6l-0.5-0.8
+              					c5.1-3.8,10.4-7.9,13.4-13.6c5.7-10.8-6.2-19.4-14.9-23.3C149.8,76.1,150.2,75.2,150.2,75.2L150.2,75.2z"/>
+              			</g>
+              			<g>
+              				<path class="st9" d="M167.4,75.2c10.4-3.2,22.8,3.2,25.5,14c2.8,11-5.3,21.5-15.8,24c-2.5,0.6-5.1,0.9-7.9,0.6
+              					c0,0-0.5-0.8-0.5-0.8c5.1-3.8,10.4-7.9,13.4-13.6c5.7-10.8-6.2-19.4-14.9-23.3C167,76.1,167.4,75.2,167.4,75.2L167.4,75.2z"/>
+              			</g>
+              		</g>
+              		<g>
+              			<g>
+              				<path class="st9" d="M185.7,74.7c10.4-3.2,22.8,3.2,25.5,14c2.8,11-5.3,21.5-15.8,24c-2.5,0.6-5.1,0.9-7.9,0.6l-0.5-0.8
+              					c5.1-3.8,10.4-7.9,13.4-13.6c5.7-10.8-6.2-19.4-14.9-23.3C185.4,75.7,185.7,74.7,185.7,74.7L185.7,74.7z"/>
+              			</g>
+              			<g>
+              				<path class="st9" d="M202.3,75.3c10.4-3.2,22.8,3.2,25.5,14c2.8,11-5.3,21.5-15.8,24c-2.5,0.6-5.1,0.9-7.9,0.6
+              					c0,0-0.5-0.8-0.5-0.8c5.1-3.8,10.4-7.9,13.4-13.6c5.7-10.8-6.2-19.4-14.9-23.3C201.9,76.2,202.3,75.3,202.3,75.3L202.3,75.3z"/>
+              			</g>
+              			<g>
+              				<path class="st9" d="M218.6,73.7c10.4-3.2,22.8,3.2,25.5,14c2.8,11-5.3,21.5-15.8,24c-2.5,0.6-5.1,0.9-7.9,0.6l-0.5-0.8
+              					c5.1-3.8,10.4-7.9,13.4-13.6c5.7-10.8-6.2-19.4-14.9-23.3C218.2,74.7,218.6,73.7,218.6,73.7L218.6,73.7z"/>
+              			</g>
+              			<g>
+              				<path class="st9" d="M235.8,74c10.4-3.2,22.8,3.2,25.5,14c2.8,11-5.3,21.5-15.8,24c-2.5,0.6-5.1,0.9-7.9,0.6
+              					c0,0-0.5-0.8-0.5-0.8c5.1-3.8,10.4-7.9,13.4-13.6c5.7-10.8-6.2-19.4-14.9-23.3C235.5,74.9,235.8,74,235.8,74L235.8,74z"/>
+              			</g>
+              			<g>
+              				<path class="st9" d="M253,74.8c10.4-3.2,22.8,3.2,25.5,14c2.8,11-5.3,21.5-15.8,24c-2.5,0.6-5.1,0.9-7.9,0.6
+              					c0,0-0.5-0.8-0.5-0.8c5.1-3.8,10.4-7.9,13.4-13.6c5.7-10.8-6.2-19.4-14.9-23.3C252.7,75.7,253,74.8,253,74.8L253,74.8z"/>
+              			</g>
+                 </g>
+              <g id="Capa_1">
+              	<path class="st2" d="M70.8,99.8h209.3 M268.1,106.9l14.4-7.1l-14.4-7"/>
+              	<circle class="st9" cx="1.8" cy="-0.1" r="10">
+
+              		<animateTransform  accumulate="none" additive="replace" attributeName="transform" attributeType="XML" begin="space1.end" calcMode="linear" dur="2s" fill="remove" id="pause" restart="always" type="translate">
+              		</animateTransform>
+
+              		<animateMotion  accumulate="none" additive="replace" begin="0; pause.end" calcMode="linear" dur="4s" fill="freeze" id="space1" path="M70.8 99.8h209.3M268.1" restart="always">
+              		</animateMotion>
+              	</circle>
+              	<g id="bosque">
+
+              			<image style="overflow:visible;enable-background:new    ;" width="500" height="300" xlink:href="imgs/bosquesonido.png"  transform="matrix(0.4206 0 0 0.3875 73.4609 59.0057)">
+              		</image>
+              	</g>
+              	<text transform="matrix(1 0 0 1 132.8777 63.6053)" class="st4 st5">2 kilometros</text>
+              	<g>
+              			<g>
+              				<path class="st9" d="M71.3,76.1c4,1.9,7,5.4,8.1,9.7c1.1,4.4-0.4,8.8-3.8,11.7c-0.7,0.6,0.3,1.7,1.1,1.1
+              					c3.8-3.2,5.4-8.1,4.3-12.9c-1.1-4.7-4.5-8.8-8.8-10.9C71.2,74.4,70.4,75.7,71.3,76.1L71.3,76.1z"/>
+              			</g>
+              		<g>
+              			<g>
+              				<path class="st9" d="M72.2,74.9c-3.1-2.3-6.8,4.7-8,6.5c-1.4,2.1-3.1,3.8-4.1,6.1c-1.3,2.8-1.8,5.9-1.5,9
+              					c0.3,3.7,1.4,7.3,3,10.7c0.4,0.9,1.7,0.1,1.3-0.8c-3.2-6.8-4.4-14.9,0.3-21.2c1.4-1.8,2.7-3.7,4-5.5c0.6-0.9,2.9-4.5,4.2-3.5
+              					C72.3,76.8,73,75.5,72.2,74.9L72.2,74.9z"/>
+              			</g>
+              		</g>
+              		<g>
+              			<g>
+              				<path class="st9" d="M74.2,91.1c2.8,1.7,1.6,5.1,0.4,7.5c-1.4,2.7-3.5,5.2-5.9,7.1c-0.8,0.6,0.3,1.6,1.1,1.1
+              					c2.7-2.1,5.1-5.1,6.5-8.2c1.4-3,1.9-6.7-1.3-8.7C74.1,89.3,73.4,90.6,74.2,91.1L74.2,91.1z"/>
+              			</g>
+              		</g>
+              		<g>
+              			<g>
+              				<path class="st9" d="M75,91.6C75,91.6,75,91.6,75,91.6c0,0,0,0.1-0.1,0.2c0,0,0,0,0,0c0,0.1-0.1,0.1-0.1,0.2c0,0,0,0,0,0
+              					c-0.1,0-0.1,0.1-0.2,0.1c0,0,0,0,0,0c-0.1,0-0.1,0.1-0.2,0.1c0,0,0,0,0,0c-0.1,0-0.1,0-0.2,0c0,0,0,0,0,0c-0.1,0-0.1,0-0.2,0
+              					c0,0,0,0,0,0c-0.1,0-0.1-0.1-0.2-0.1c0,0,0,0,0,0c0.1-0.5,0.3-0.9,0.4-1.4c-0.3,0-0.5,0.1-0.7,0.2c-0.1,0.1-0.2,0.1-0.3,0.2
+              					c0,0-0.1,0.1-0.1,0.1c-0.1,0.1-0.2,0.3-0.3,0.5c-0.1,0.1-0.1,0.2-0.2,0.3c-0.1,0.1-0.1,0.2-0.1,0.3c0,0.1,0,0.2,0,0.3
+              					c0,0.1,0.1,0.2,0.1,0.3c0.1,0.1,0.1,0.1,0.2,0.2c0.2,0.1,0.4,0.1,0.6,0.1c0.1,0,0.1-0.1,0.2-0.1c0.1-0.1,0.2-0.2,0.3-0.3
+              					c0.1-0.2,0.2-0.4,0.3-0.6c0,0.1-0.1,0.1-0.1,0.2c0.1-0.1,0.1-0.1,0.2-0.2c-0.1,0-0.1,0.1-0.2,0.1c0.1,0,0.1-0.1,0.2-0.1
+              					c-0.1,0-0.1,0.1-0.2,0.1c0.1,0,0.1,0,0.2,0c-0.1,0-0.1,0-0.2,0c0,0,0.1,0,0.1,0c0.1,0,0.1,0,0.2,0c0.1,0,0.2-0.1,0.3-0.1
+              					c0.1,0,0.1-0.1,0.1-0.1c0.1-0.1,0.1-0.2,0.1-0.3c0-0.1,0-0.3,0-0.4c0-0.1-0.1-0.2-0.1-0.3c-0.1-0.1-0.1-0.1-0.2-0.2
+              					c-0.1,0-0.1-0.1-0.2-0.1c0,0-0.1,0-0.1,0c0,0-0.1,0-0.1,0c-0.2,0-0.3,0-0.4,0.1c-0.1,0-0.2,0.1-0.2,0.2
+              					c-0.1,0.1-0.2,0.2-0.2,0.4c0,0.1,0,0.2,0,0.3c0,0.1,0,0.2,0.1,0.3c0,0.1,0.1,0.2,0.2,0.2c0.1,0.1,0.2,0.1,0.3,0.1
+              					c0.2,0,0.4,0,0.6-0.1c0.1,0,0.1-0.1,0.2-0.1C74.9,91.8,74.9,91.7,75,91.6L75,91.6z"/>
+              			</g>
+              		</g>
+              		<g>
+              			<g>
+              				<path class="st9" d="M72.4,92.1c-0.1-0.2-0.3-0.5-0.5-0.7c-0.1-0.2-0.3-0.4-0.5-0.6c-0.1-0.1-0.2-0.2-0.3-0.2c0,0-0.1,0-0.1-0.1
+              					c-0.2-0.1-0.3-0.1-0.5-0.1c-0.2,0-0.3,0-0.4,0.1c-0.4,0.2-0.5,0.8-0.3,1.2c0.1,0.2,0.1,0.3,0.2,0.4c0.1,0.1,0.2,0.3,0.4,0.4
+              					c0.2,0.1,0.3,0.3,0.5,0.4c0.1,0.1,0.3,0.1,0.4,0.2c0.2,0,0.3,0.1,0.5,0.1c0.1,0,0.1,0,0.2,0c0.1,0,0.2-0.1,0.3-0.1
+              					c0.1,0,0.1-0.1,0.1-0.1c0.1-0.1,0.1-0.2,0.1-0.3c0-0.1,0-0.3,0-0.4c0-0.1-0.1-0.2-0.1-0.3c-0.1-0.1-0.1-0.1-0.2-0.2
+              					c-0.1-0.1-0.3-0.1-0.4-0.2c0.1,0,0.1,0.1,0.2,0.1c-0.1-0.1-0.2-0.2-0.4-0.4c0,0.1,0.1,0.1,0.1,0.2c0,0,0-0.1-0.1-0.1
+              					c0-0.1-0.1-0.2-0.2-0.2C71.4,91,71.3,91,71.2,91c-0.1,0-0.1,0-0.2,0c-0.1,0-0.2,0-0.3,0.1c-0.1,0-0.1,0-0.2,0.1
+              					c-0.1,0.1-0.1,0.1-0.2,0.2c0,0.1-0.1,0.1-0.1,0.2c0,0.1,0,0.3,0,0.4c0.1,0.2,0.1,0.3,0.2,0.5c0.1,0.1,0.2,0.2,0.3,0.3
+              					c0.1,0.1,0.2,0.1,0.4,0.1c0.2,0,0.4-0.1,0.5-0.2c0.1-0.1,0.2-0.2,0.2-0.3c0-0.1,0-0.1,0-0.2c0-0.1,0-0.2,0-0.2c0,0,0,0,0,0
+              					c-0.1-0.2-0.2-0.4-0.3-0.5c-0.1-0.1-0.2-0.2-0.3-0.2c-0.1-0.1-0.2-0.1-0.3-0.2c-0.1,0-0.2,0-0.3,0c-0.1,0-0.2,0-0.3,0.1
+              					c-0.1,0-0.2,0.1-0.2,0.2c-0.1,0.1-0.1,0.2-0.1,0.3c0,0.2,0,0.4,0.1,0.6c0,0.1,0.1,0.1,0.1,0.2c0.1,0.1,0.2,0.2,0.3,0.2
+              					c0,0,0,0,0,0c-0.1,0-0.1-0.1-0.2-0.1c0.1,0,0.1,0.1,0.2,0.1c-0.1,0-0.1-0.1-0.2-0.1c0,0,0.1,0.1,0.1,0.1c0-0.1-0.1-0.1-0.1-0.2
+              					c0,0,0.1,0.1,0.1,0.1c0-0.1-0.1-0.1-0.1-0.2c0,0,0,0.1,0,0.1c0-0.1,0-0.1,0-0.2c0,0,0,0,0,0c0-0.1,0-0.1,0-0.2c0,0,0,0,0,0
+              					c0-0.1,0.1-0.1,0.1-0.2c0,0,0,0,0,0c0-0.1,0.1-0.1,0.1-0.2c0,0,0,0,0,0c0.1,0,0.1-0.1,0.2-0.1c0,0,0,0,0,0
+              					c0.1,0,0.1-0.1,0.2-0.1c0,0,0,0,0,0c0.1,0,0.1,0,0.2,0c0,0,0,0,0,0c0.1,0,0.1,0,0.2,0c0,0,0,0,0,0c0.1,0,0.1,0.1,0.2,0.1
+              					c0,0,0,0,0,0c0.1,0,0.1,0.1,0.2,0.1c0,0,0,0,0,0c0,0.1,0.1,0.1,0.1,0.2c-0.1-0.1-0.1-0.2-0.1-0.3c0,0.1,0.1,0.1,0.1,0.2
+              					c0,0,0,0,0-0.1c-0.5,0.2-0.9,0.4-1.4,0.6c0.1,0.2,0.3,0.4,0.5,0.6c0.2,0.2,0.4,0.3,0.6,0.4c0.1-0.5,0.3-0.9,0.4-1.4
+              					c0,0,0,0-0.1,0c0.1,0,0.1,0,0.2,0c-0.1,0-0.3-0.1-0.4-0.1c0.1,0,0.1,0.1,0.2,0.1c-0.1-0.1-0.3-0.1-0.4-0.2
+              					c0.1,0,0.1,0.1,0.2,0.1c-0.1-0.1-0.2-0.2-0.3-0.3c0,0.1,0.1,0.1,0.1,0.2c-0.1-0.1-0.1-0.2-0.2-0.3c0,0.1,0.1,0.1,0.1,0.2
+              					c0-0.1,0-0.1-0.1-0.2c0,0.1,0,0.1,0,0.2c0,0,0-0.1,0-0.1c0,0.1,0,0.1,0,0.2c0,0,0,0,0,0c0,0.1-0.1,0.1-0.1,0.2c0,0,0,0,0,0
+              					c0,0.1-0.1,0.1-0.1,0.2c0,0,0,0,0,0c-0.1,0-0.1,0.1-0.2,0.1c0,0,0,0,0,0c-0.1,0-0.1,0.1-0.2,0.1c0,0,0,0,0,0c-0.1,0-0.1,0-0.2,0
+              					c0,0,0,0,0,0c-0.1,0-0.1,0-0.2,0c0,0,0,0,0.1,0c-0.1,0-0.1-0.1-0.2-0.1c0,0,0.1,0,0.1,0.1c-0.1,0-0.1-0.1-0.2-0.1
+              					c0.2,0.1,0.3,0.3,0.4,0.5c0-0.1-0.1-0.1-0.1-0.2c0.2,0.2,0.3,0.5,0.5,0.7c0.1,0.2,0.3,0.3,0.4,0.3c0.1,0,0.2,0,0.3,0
+              					c0.1,0,0.2,0,0.3-0.1c0.2-0.1,0.3-0.3,0.3-0.4C72.5,92.5,72.5,92.2,72.4,92.1L72.4,92.1z"/>
+              			</g>
+              		</g>
+              		<g>
+              			<g>
+              				<path class="st9" d="M71.4,89.3c-3.2-0.9-6,1.6-7.7,4c-1.9,2.7-3.4,6.4-3,9.8c0.2,1.7,0.9,3.2,2.4,4.1c0.8,0.5,1.6-0.8,0.8-1.3
+              					c-2.2-1.4-1.8-4.7-1.2-6.9c0.8-2.8,2.4-5.7,4.8-7.4c1.1-0.8,2.4-1.3,3.7-0.9C72,91,72.3,89.5,71.4,89.3L71.4,89.3z"/>
+              			</g>
+              		</g>
+              		<g>
+              			<g>
+              				<path class="st9" d="M75.7,97.5c-1.8-1.6-4.7-2.1-7.1-1.8c-1.2,0.2-2.4,0.7-3.2,1.7c-0.9,1.1-1.1,2.6-1,4
+              					c0.1,1.8,0.7,3.7,2.6,4.2c0.9,0.3,1.3-1.2,0.4-1.4c-1.2-0.3-1.5-1.6-1.5-2.7c0-1,0-2.2,0.6-3c1.2-1.5,3.6-1.5,5.3-1.1
+              					c0.5,0.1,1.1,0.3,1.5,0.5c0.4,0.2,0.9,0.5,1.2,0.7C75.4,99.2,76.4,98.1,75.7,97.5L75.7,97.5z"/>
+              			</g>
+              		</g>
+              		<g>
+              			<g>
+              				<path class="st9" d="M74.5,98.4c0.1,0.1,0.2,0.3,0.3,0.3c-0.1-0.1,0.1,0.1,0.2,0.1c0.1,0,0.2,0,0.2,0c0,0,0,0,0,0
+              					c0,0,0.2,0,0.2,0c0,0,0.1-0.1,0.2-0.1c0.1,0,0.1-0.1,0.2-0.1c0.1-0.1,0.2-0.2,0.2-0.3c0-0.1,0-0.3,0-0.4c0-0.1-0.1-0.1-0.1-0.2
+              					c0,0,0,0,0,0c0-0.1-0.1-0.1-0.1-0.2c-0.1-0.1-0.1-0.1-0.2-0.2c-0.1,0-0.1-0.1-0.2-0.1c-0.1,0-0.2,0-0.3,0
+              					c-0.1,0-0.2,0.1-0.3,0.2c-0.1,0.1-0.1,0.1-0.2,0.2c0,0.1-0.1,0.2-0.1,0.3c0,0,0,0.1,0,0.1c0-0.1,0-0.1,0-0.2
+              					c0,0.2-0.1,0.4-0.1,0.6C74.5,98.5,74.5,98.4,74.5,98.4c-0.1,0-0.1,0-0.1,0.1C74.5,98.5,74.5,98.4,74.5,98.4
+              					C74.5,98.4,74.5,98.4,74.5,98.4C74.5,98.4,74.6,98.4,74.5,98.4C74.6,98.3,74.6,98.4,74.5,98.4c0.1-0.1,0.1-0.1,0.2-0.1
+              					C74.7,98.3,74.6,98.3,74.5,98.4c0.1-0.1,0.2-0.1,0.3-0.1c-0.1,0-0.1,0-0.2,0c0.1,0,0.1,0,0.2,0c-0.1,0-0.3-0.1-0.4-0.1
+              					c-0.1,0-0.2,0-0.3,0c-0.1,0-0.2,0-0.3,0.1c-0.1,0-0.2,0.1-0.2,0.2c-0.1,0.1-0.1,0.2-0.1,0.3c0,0.2,0,0.4,0.1,0.6
+              					c0,0.1,0.1,0.1,0.1,0.2c0.1,0.1,0.2,0.2,0.3,0.2c0.2,0.1,0.4,0.1,0.6,0.1c0.2,0,0.5,0,0.7-0.1c0.2-0.1,0.3-0.3,0.4-0.4
+              					c0.1-0.1,0.1-0.2,0.1-0.3c0-0.1,0-0.1,0.1-0.2c0.1-0.2,0.1-0.5,0.1-0.7c-0.5,0.1-0.9,0.3-1.4,0.4c0,0,0,0,0,0
+              					c0-0.1-0.1-0.1-0.1-0.2c0,0,0,0,0,0c0-0.1,0-0.1,0-0.2c0,0,0,0,0,0c0-0.1,0-0.1,0-0.2c0,0,0,0,0,0c0-0.1,0.1-0.1,0.1-0.2
+              					c0,0,0,0,0,0c0-0.1,0.1-0.1,0.1-0.2c0,0,0,0,0,0c0.1,0,0.1-0.1,0.2-0.1c0,0,0,0,0,0c0.1,0,0.1-0.1,0.2-0.1c0,0,0,0,0,0
+              					c0.1,0,0.1,0,0.2,0c0,0,0,0,0,0c0.1,0,0.1,0,0.2,0c0,0,0,0,0,0c0.1,0,0.1,0.1,0.2,0.1c0,0,0,0,0,0c0.1,0,0.1,0.1,0.2,0.1
+              					c0,0,0,0,0,0c0,0.1,0.1,0.1,0.1,0.2c0,0,0,0,0,0c0-0.1-0.1-0.2-0.2-0.2c-0.1-0.1-0.2-0.1-0.3-0.1c-0.1,0-0.2,0-0.3,0
+              					c-0.1,0-0.2,0-0.3,0.1c-0.2,0.1-0.3,0.3-0.3,0.4c0,0.1,0,0.1,0,0.2C74.4,98.2,74.5,98.3,74.5,98.4L74.5,98.4z"/>
+              			</g>
+              		</g>
+              		<g>
+              			<g>
+              				<path class="st9" d="M73.6,98.2c-0.1,0.3-0.1,0.6-0.1,0.8c0-0.1,0-0.1,0-0.2c0,0.1,0,0.2-0.1,0.3c0-0.1,0.1-0.1,0.1-0.2
+              					c0,0,0,0.1-0.1,0.1c0-0.1,0.1-0.1,0.1-0.2c0,0,0,0,0,0c0.1,0,0.1-0.1,0.2-0.1c0,0,0,0-0.1,0c0.1,0,0.1-0.1,0.2-0.1
+              					c0,0,0,0-0.1,0c0.1,0,0.1,0,0.2,0c0,0-0.1,0-0.1,0c0.1,0,0.1,0,0.2,0c0,0-0.1,0-0.1,0c0.1,0,0.1,0.1,0.2,0.1
+              					c-0.2-0.1-0.4-0.1-0.6-0.2c-0.2,0-0.3-0.1-0.5-0.1c0.1,0,0.1,0.1,0.2,0.1c0,0-0.1,0-0.1-0.1c0.1,0,0.1,0.1,0.2,0.1c0,0,0,0,0,0
+              					c0,0.1,0.1,0.1,0.1,0.2c0,0,0,0,0,0c0,0.1,0.1,0.1,0.1,0.2c0,0,0,0,0,0c0,0.1,0,0.1,0,0.2c0,0,0,0,0,0c0,0.1,0,0.1,0,0.2
+              					c0,0,0,0,0,0c0.1-0.2,0-0.4-0.1-0.6c-0.1-0.2-0.3-0.3-0.4-0.3c-0.4-0.1-0.8,0.1-0.9,0.5c-0.1,0.3,0,0.7,0.2,0.9
+              					c0.2,0.2,0.4,0.3,0.6,0.3c0.2,0.1,0.5,0.1,0.7,0.2c-0.1,0-0.1-0.1-0.2-0.1c0.2,0.1,0.3,0.1,0.5,0.1c0.2,0,0.4,0,0.5-0.1
+              					c0.3-0.1,0.4-0.4,0.5-0.7c0.1-0.3,0.1-0.7,0.1-1c0,0.1,0,0.1,0,0.2c0,0,0-0.1,0-0.1c0-0.2,0-0.4-0.1-0.6
+              					c-0.1-0.2-0.3-0.3-0.4-0.3c-0.2,0-0.4,0-0.6,0.1C73.8,97.8,73.6,98,73.6,98.2L73.6,98.2z"/>
+              			</g>
+              		</g>
+              		<g>
+              			<g>
+              				<path class="st9" d="M71.9,98.1c-0.1,0.3-0.1,0.5-0.2,0.8c0-0.1,0.1-0.1,0.1-0.2c0,0.1-0.1,0.1-0.1,0.2c0-0.1,0.1-0.1,0.1-0.2
+              					c0,0-0.1,0.1-0.1,0.1c0.1,0,0.1-0.1,0.2-0.1c0,0-0.1,0-0.1,0.1c0.1,0,0.1-0.1,0.2-0.1c0,0-0.1,0-0.1,0c0.1,0,0.1,0,0.2,0
+              					c-0.1,0-0.1,0-0.2,0c0.1,0,0.1,0,0.2,0c-0.1,0-0.2,0-0.3-0.1c-0.1,0-0.2-0.1-0.3-0.1c-0.2,0-0.3,0-0.5-0.1
+              					c0.1,0,0.1,0.1,0.2,0.1c0,0-0.1,0-0.1-0.1c0.1,0,0.1,0.1,0.2,0.1c0,0,0,0-0.1-0.1c0,0.1,0.1,0.1,0.1,0.2c0,0,0-0.1-0.1-0.1
+              					c0,0.1,0.1,0.1,0.1,0.2c0,0,0-0.1,0-0.1c0,0.1,0,0.1,0,0.2c0,0,0,0,0-0.1c0-0.4-0.3-0.8-0.8-0.8c-0.4,0-0.8,0.3-0.8,0.8
+              					c0,0.3,0.1,0.6,0.3,0.8c0.2,0.2,0.4,0.3,0.6,0.3c0.1,0,0.2,0.1,0.3,0.1c0.1,0,0.2,0.1,0.4,0.1c0.3,0.1,0.7,0.1,1,0
+              					c0.2-0.1,0.3-0.1,0.4-0.3c0.1-0.2,0.2-0.3,0.3-0.5c0.1-0.2,0.1-0.5,0.2-0.8c0-0.2,0-0.4-0.1-0.6c-0.1-0.2-0.3-0.3-0.4-0.3
+              					c-0.2,0-0.4,0-0.6,0.1C72.1,97.8,71.9,97.9,71.9,98.1L71.9,98.1z"/>
+              			</g>
+              		</g>
+              		<g>
+              			<g>
+              				<path class="st9" d="M69.9,98.4C69.9,98.5,69.9,98.5,69.9,98.4c0,0,0,0,0-0.1C69.9,98.4,69.9,98.4,69.9,98.4c0,0,0-0.1,0-0.1
+              					C69.9,98.3,69.9,98.4,69.9,98.4c0-0.1,0-0.1,0.1-0.2C69.9,98.3,69.9,98.3,69.9,98.4c0-0.1,0.1-0.2,0.1-0.2c0,0,0,0.1-0.1,0.1
+              					c0.1,0,0.1-0.1,0.2-0.1c0,0-0.1,0-0.1,0.1c0.1,0,0.1-0.1,0.2-0.1c0,0-0.1,0-0.1,0c0.1,0,0.1,0,0.2,0c0,0-0.1,0-0.1,0
+              					c0.1,0,0.1,0,0.2,0c0,0-0.1,0-0.1,0c0.1,0,0.1,0.1,0.2,0.1c0,0-0.1,0-0.1-0.1c0.1,0,0.1,0.1,0.2,0.1c0,0-0.1-0.1-0.1-0.1
+              					c0,0.1,0.1,0.1,0.1,0.2c0,0-0.1-0.1-0.1-0.2c0,0.1,0.1,0.1,0.1,0.2c0-0.1-0.1-0.2-0.1-0.2c0,0.1,0,0.1,0,0.2c0-0.1,0-0.2,0-0.4
+              					c0,0.1,0,0.1,0,0.2c0-0.1,0-0.2,0.1-0.3c0-0.1,0-0.2,0-0.3c0-0.1,0-0.2-0.1-0.3c0-0.1-0.1-0.2-0.2-0.2c-0.1-0.1-0.2-0.1-0.3-0.1
+              					c-0.2,0-0.4,0-0.6,0.1c-0.2,0.1-0.3,0.3-0.3,0.4c-0.1,0.4-0.1,0.8,0,1.2c0,0.1,0.1,0.3,0.2,0.4c0.1,0.2,0.2,0.3,0.4,0.4
+              					c0.1,0.1,0.2,0.1,0.4,0.2c0.1,0,0.3,0.1,0.4,0c0.2,0,0.4-0.1,0.5-0.2c0.1,0,0.2-0.1,0.2-0.2c0,0,0.1-0.1,0.1-0.1
+              					c0.1-0.1,0.2-0.3,0.2-0.5c0-0.1,0-0.2,0-0.3c0-0.1,0-0.2,0-0.4c0-0.1-0.1-0.2-0.1-0.3c-0.1-0.1-0.1-0.1-0.2-0.2
+              					c-0.1-0.1-0.2-0.1-0.3-0.1c-0.1,0-0.2,0-0.3,0c-0.2,0.1-0.4,0.2-0.4,0.3C69.9,98,69.8,98.2,69.9,98.4L69.9,98.4z"/>
+              			</g>
+              		</g>
+              		<g>
+              			<g>
+              				<path class="st9" d="M68.9,98.5C69,98.5,69,98.5,68.9,98.5c0,0-0.1,0-0.2,0C68.8,98.5,68.8,98.5,68.9,98.5c-0.2,0-0.2,0-0.3,0
+              					c0,0,0,0,0,0c-0.1,0-0.1-0.1-0.2-0.1c0,0,0,0,0,0c-0.1,0-0.1-0.1-0.2-0.1c0,0,0,0,0,0c0-0.1-0.1-0.1-0.1-0.2c0,0,0,0,0,0
+              					c0-0.1-0.1-0.1-0.1-0.2c0,0,0,0,0,0c0-0.1,0-0.1,0-0.2c0,0,0,0,0,0c0-0.1,0-0.1,0-0.2c0,0,0,0,0,0c0-0.1,0.1-0.1,0.1-0.2
+              					c0,0,0,0,0,0c0-0.1,0.1-0.1,0.1-0.2c0,0-0.1,0.1-0.1,0.1c0.1,0,0.1-0.1,0.2-0.1c-0.4,0.3-0.9,0.6-1.4,0.9c0.1,0,0.1-0.1,0.2-0.1
+              					c0,0,0,0,0,0c0.1,0,0.1-0.1,0.2-0.1c0,0,0,0-0.1,0c0.1,0,0.1,0,0.2,0c0,0,0,0,0,0c0.1,0,0.1,0,0.2,0c0,0,0,0,0,0
+              					c0.1,0,0.1,0.1,0.2,0.1c0,0,0,0,0,0c0.1,0,0.1,0.1,0.2,0.1c0,0,0,0,0,0c0,0.1,0.1,0.1,0.1,0.2c0,0,0,0,0-0.1
+              					c0,0.1,0.1,0.1,0.1,0.2c0,0,0-0.1,0-0.1c0,0.1,0,0.1,0,0.2c0-0.1,0-0.2,0-0.3c0,0.1,0,0.1,0,0.2c0-0.2,0.1-0.4,0.2-0.6
+              					c0,0.1-0.1,0.1-0.1,0.2c0.1-0.2,0.1-0.3,0.3-0.4c0,0.1-0.1,0.1-0.1,0.2c0.1-0.1,0.1-0.1,0.2-0.2c-0.1,0-0.1,0.1-0.2,0.1
+              					c0,0,0.1-0.1,0.1-0.1c-0.1,0-0.1,0.1-0.2,0.1c0,0,0.1,0,0.1,0c-0.1,0-0.1,0-0.2,0c0,0,0.1,0,0.1,0c-0.1,0-0.1,0-0.2,0
+              					c0,0,0.1,0,0.1,0c-0.1,0-0.1-0.1-0.2-0.1c0,0,0.1,0,0.1,0.1c-0.1,0-0.1-0.1-0.2-0.1c0.1,0.1,0.1,0.1,0.2,0.2
+              					c0-0.1-0.1-0.1-0.1-0.2c0.1,0.2,0.2,0.4,0.3,0.6c0-0.1-0.1-0.1-0.1-0.2c0,0,0,0,0,0.1c0,0.1,0.1,0.2,0.1,0.3
+              					c0.1,0.1,0.1,0.1,0.2,0.2c0.2,0.1,0.4,0.1,0.6,0.1c0.2-0.1,0.4-0.2,0.4-0.3c0.1-0.2,0.2-0.4,0.1-0.6c-0.1-0.3-0.2-0.5-0.4-0.8
+              					c-0.1-0.1-0.2-0.2-0.3-0.3c-0.1-0.1-0.2-0.2-0.3-0.2c-0.2-0.1-0.3-0.1-0.5-0.1c-0.1,0-0.2,0-0.3,0c-0.2,0.1-0.4,0.2-0.6,0.4
+              					c-0.3,0.3-0.5,0.6-0.6,1c0,0.1-0.1,0.3-0.1,0.4c0,0.2-0.1,0.3,0,0.5c0,0.2,0,0.3,0.1,0.5c0.1,0.1,0.2,0.3,0.3,0.3
+              					c0.1,0.1,0.3,0.1,0.5,0.1c0.1,0,0.2,0,0.3,0c0.1,0,0.2-0.1,0.2-0.1c0.1,0,0.1-0.1,0.2-0.1c-0.1,0-0.1,0.1-0.2,0.1
+              					c0.2-0.2,0.5-0.3,0.7-0.5c0.1-0.1,0.3-0.2,0.4-0.3c0.2-0.1,0.4-0.3,0.5-0.5c0.1-0.2,0.1-0.3,0-0.5c-0.1-0.2-0.3-0.5-0.5-0.5
+              					c-0.2,0-0.3,0-0.5,0c-0.2,0-0.4,0.2-0.4,0.3C68,97.6,68,97.8,68,98c0.1,0.2,0.2,0.4,0.3,0.4c0.1,0,0.1,0.1,0.2,0.1
+              					C68.7,98.5,68.8,98.5,68.9,98.5L68.9,98.5z"/>
+              			</g>
+              		</g>
+              		<g>
+              			<g>
+              				<path class="st9" d="M68.2,98c0.1,0.1,0.2,0.1,0.3,0.2c0.1,0.1,0.2,0.1,0.3,0.1c0.1,0,0.2,0,0.3,0c0.1,0,0.2-0.1,0.3-0.1
+              					c0.1-0.1,0.1-0.1,0.2-0.2c0-0.1,0.1-0.1,0.1-0.2c0-0.1,0-0.3,0-0.4c0-0.1-0.1-0.1-0.1-0.2c-0.1-0.1-0.2-0.2-0.3-0.3
+              					c-0.1-0.1-0.2-0.1-0.3-0.2c-0.1-0.1-0.2-0.1-0.3-0.1c-0.1,0-0.2,0-0.3,0c-0.1,0-0.2,0.1-0.3,0.1C68,96.8,68,96.9,67.9,97
+              					c0,0.1-0.1,0.1-0.1,0.2c0,0.1,0,0.3,0,0.4c0,0.1,0.1,0.1,0.1,0.2C68,97.9,68.1,98,68.2,98L68.2,98z"/>
+              			</g>
+              		</g>
+              		<g>
+              			<g>
+              				<path class="st9" d="M74.7,97.3c-1,0.2-2.2-0.1-3.3-0.3c-0.6-0.1-1.2-0.3-1.8-0.3c-0.2,0-0.5,0-0.6,0c-0.1,0-0.2-0.1-0.2-0.1
+              					c-0.1,0-0.1,0-0.1-0.1c-0.2-0.3-0.6-0.5-1-0.3c-0.3,0.2-0.5,0.7-0.3,1c0.5,0.6,1,0.8,1.8,0.9c0.3,0,0.5,0,0.7,0
+              					c0.4,0.1,0.7,0.1,1.1,0.2c1.4,0.3,2.8,0.6,4.2,0.3c0.4-0.1,0.6-0.6,0.5-0.9C75.5,97.4,75.1,97.2,74.7,97.3L74.7,97.3z"/>
+              			</g>
+              		</g>
+              		<g>
+              			<g>
+              				<path class="st9" d="M71.4,85.3C71.3,85.2,71.6,85.4,71.4,85.3C71.4,85.3,71.4,85.2,71.4,85.3c-0.1-0.1-0.2-0.2-0.3-0.3
+              					c-0.1-0.2-0.3-0.3-0.5-0.4c-0.2-0.2-0.5-0.2-0.8-0.3c-0.1,0-0.3,0-0.4,0c0,0-0.2,0-0.1,0c0.2,0-0.1,0-0.1,0c0,0,0,0,0,0
+              					c-0.3,0.1-0.6,0.2-0.9,0.3c-0.3,0.2-0.6,0.3-0.9,0.6c-0.2,0.2-0.3,0.4-0.3,0.6c-0.1,0.4,0,0.7,0.3,1c0.3,0.3,0.8,0.3,1.1,0
+              					c0.3-0.3,0.3-0.7,0-1.1c0.1,0.1,0.1,0.2,0.1,0.1c0-0.1,0,0,0.1,0.1c0-0.1,0,0.2,0,0.1c0,0.2,0,0.2,0,0.1c-0.1,0.2-0.1,0.2,0,0.1
+              					c0.1-0.1-0.1,0.1,0,0.1c0,0,0-0.1,0.1-0.1c0,0,0.1,0,0.1-0.1c-0.2,0.2-0.1,0.1,0,0c0.1-0.1,0.3-0.2,0.4-0.3c0.1,0,0.4-0.1,0.1,0
+              					c0.1,0,0.1-0.1,0.2-0.1c0.1,0,0.1,0,0.2-0.1c0,0,0,0,0.1,0c0.1,0,0,0-0.2,0c0.1,0,0.2,0,0.2,0c0.2,0-0.1,0,0,0c0,0,0,0,0.1,0
+              					c0.1,0,0,0-0.1,0c0,0,0.1,0,0.1,0c-0.2,0-0.1-0.1,0,0c0.2,0.1-0.1-0.1,0,0c0,0,0.1,0.1,0.1,0.1c0.1,0.1,0.1,0.1,0.2,0.2
+              					c0.2,0.2,0.3,0.3,0.5,0.5c0.3,0.2,0.8,0.1,1-0.3C71.9,85.9,71.8,85.5,71.4,85.3L71.4,85.3z"/>
+              			</g>
+              		</g>
+              		<g>
+              			<g>
+              				<path class="st9" d="M69.5,85.9c0,0,0.1,0,0.1,0C69.6,85.9,69.6,85.9,69.5,85.9C69.5,85.9,69.6,85.9,69.5,85.9
+              					C69.6,85.9,69.5,85.9,69.5,85.9C69.5,85.9,69.5,85.9,69.5,85.9c-0.1,0-0.1-0.1-0.2-0.1c0,0,0,0,0,0c0-0.1-0.1-0.1-0.1-0.2
+              					c0,0,0,0,0,0c0-0.1-0.1-0.1-0.1-0.2c0,0,0,0,0,0.1c0-0.1,0-0.1,0-0.2c0,0,0,0.1,0,0.1c0-0.1,0-0.1,0-0.2c0,0,0,0.1,0,0.1
+              					c0-0.1,0.1-0.1,0.1-0.2c0,0.1-0.1,0.1-0.1,0.1c0-0.1,0.1-0.1,0.1-0.2c0,0.1-0.1,0.1-0.2,0.2c0.1,0,0.1-0.1,0.2-0.1
+              					c-0.1,0.1-0.1,0.1-0.2,0.1c0.1,0,0.1-0.1,0.2-0.1c-0.1,0-0.1,0-0.2,0.1c0.1,0,0.1,0,0.2,0c-0.1,0-0.1,0-0.2,0c0.1,0,0.1,0,0.2,0
+              					c0,0-0.1,0-0.1,0c0.1,0,0.1,0.1,0.2,0.1c0,0-0.1,0-0.1-0.1c0.1,0,0.1,0.1,0.2,0.1c0,0,0,0,0,0c-0.1-0.1-0.3-0.2-0.5-0.2
+              					c-0.1,0-0.2,0-0.3,0.1c-0.1,0-0.2,0.1-0.2,0.2c-0.1,0.1-0.2,0.3-0.2,0.5c0,0.1,0,0.1,0,0.2c0,0.1,0.1,0.2,0.2,0.3
+              					c0.2,0.2,0.3,0.2,0.5,0.3c0,0,0.1,0,0.1,0c0.1,0,0.2,0,0.3,0c0.1,0,0.3,0,0.4-0.1c0.1,0,0.3-0.1,0.4-0.2
+              					c0.1-0.1,0.2-0.1,0.2-0.2c0,0,0.1-0.1,0.1-0.1c0.1-0.1,0.2-0.2,0.2-0.3c0.1-0.2,0.1-0.3,0.2-0.5c0-0.2,0-0.4-0.1-0.5
+              					c0-0.1-0.1-0.2-0.2-0.2c-0.1,0-0.1-0.1-0.2-0.1c-0.1,0-0.1-0.1-0.2-0.1c0,0-0.1,0-0.1,0c-0.1,0-0.2,0-0.4,0
+              					c-0.1,0-0.2,0-0.3,0.1c-0.1,0-0.2,0.1-0.2,0.2c-0.1,0.1-0.1,0.1-0.2,0.2c0,0.1-0.1,0.2-0.1,0.3c0,0.1,0,0.1,0,0.2
+              					c0,0.1,0.1,0.2,0.2,0.3C69.2,85.8,69.3,85.9,69.5,85.9L69.5,85.9z"/>
+              			</g>
+              		</g>
+              		<g>
+              			<g>
+              				<path class="st9" d="M74.7,86.6c0-0.1,0.1-0.2,0.1-0.2c0-0.1,0.1-0.2,0,0c0,0,0.1-0.1,0.1-0.1c0,0,0.1-0.1,0.1-0.1
+              					c0.1-0.1-0.1,0.1,0,0c0.1,0,0.1-0.1,0.2-0.1c0.1,0,0.2,0,0,0c0,0,0.1,0,0.1,0c0.1,0,0.1,0,0.2-0.1c-0.2,0.1-0.1,0-0.1,0
+              					c0,0,0.1,0,0.1,0c0,0,0.1,0,0.1,0c0.2,0-0.1,0-0.1,0c0.1,0,0.1,0,0.2,0c0,0,0.1,0,0.1,0c0.1,0-0.2-0.1,0,0
+              					c0.1,0,0.1,0.1,0.2,0.1c0.1,0.1-0.1-0.1,0,0c0,0,0.1,0,0.1,0.1c0,0,0,0,0.1,0.1c0,0.1,0.1,0.2,0,0c0,0.1,0.1,0.1,0.1,0.2
+              					c0,0.1,0.1,0.2,0,0c0,0,0,0.1,0,0.1c0,0.1,0,0.2,0.1,0.3c0,0.2,0.2,0.4,0.3,0.4c0.2,0.1,0.4,0.1,0.6,0.1
+              					c0.2-0.1,0.4-0.2,0.4-0.3c0.1-0.2,0.1-0.4,0.1-0.6c-0.1-0.7-0.6-1.4-1.3-1.7c-0.7-0.3-1.5-0.3-2.2,0.1c-0.4,0.2-0.7,0.6-0.9,1
+              					c-0.1,0.2-0.1,0.4-0.1,0.6c0,0.2,0.2,0.4,0.3,0.4C74,87.1,74.5,87,74.7,86.6L74.7,86.6z"/>
+              			</g>
+              		</g>
+              		<g>
+              			<g>
+              				<path class="st9" d="M74.9,86.1C74.9,86.2,75,86.2,74.9,86.1C75,86.2,74.9,86.1,74.9,86.1C74.9,86.1,74.9,86.2,74.9,86.1
+              					C74.9,86.1,74.9,86.1,74.9,86.1C74.9,86.1,74.9,86.1,74.9,86.1c0,0,0-0.1-0.1-0.2C74.9,86,74.9,86,74.9,86.1
+              					c0-0.1-0.1-0.2-0.1-0.3c0,0,0,0.1,0,0.1c0-0.1,0-0.1,0-0.2c0,0,0,0.1,0,0.1c0-0.1,0.1-0.1,0.1-0.2c0,0,0,0.1-0.1,0.1
+              					c0-0.1,0.1-0.1,0.1-0.2c0,0,0,0.1-0.1,0.1c0.1,0,0.1-0.1,0.2-0.1c0,0-0.1,0-0.1,0.1c0.1,0,0.1-0.1,0.2-0.1c0,0-0.1,0-0.1,0
+              					c0.1,0,0.1,0,0.2,0c0,0-0.1,0-0.1,0c0.1,0,0.1,0,0.2,0c0,0-0.1,0-0.1,0c0.1,0,0.1,0.1,0.2,0.1c-0.1,0-0.1-0.1-0.2-0.1
+              					c0.1,0,0.1,0.1,0.2,0.1c0,0-0.1-0.1-0.1-0.1c-0.1-0.1-0.1-0.1-0.2-0.2c-0.1,0-0.2-0.1-0.3-0.1c-0.1,0-0.2,0-0.3,0.1
+              					c-0.1,0-0.2,0.1-0.2,0.2c0,0.1-0.1,0.1-0.1,0.2C74,85.8,74,85.9,74,86.1c0,0.1,0,0.1,0,0.2c0,0.1,0.1,0.2,0.2,0.3
+              					c0,0,0.1,0.1,0.1,0.1c0.1,0.1,0.1,0.1,0.2,0.1c0,0,0,0,0.1,0c0,0,0.1,0,0.1,0.1c0.1,0,0.2,0.1,0.3,0.1c0,0,0,0,0,0
+              					c0.1,0,0.2,0,0.2,0c0,0,0.1,0,0.1,0c0.1,0,0.2,0,0.2,0c0,0,0,0,0,0c0,0,0,0,0,0c0.1,0,0.1-0.1,0.2-0.1c0.1,0,0.1-0.1,0.1-0.1
+              					c0,0,0.1-0.1,0.1-0.1c0,0,0.1-0.1,0.1-0.1c0,0,0.1-0.1,0.1-0.1c0-0.1,0.1-0.2,0.1-0.2c0,0,0,0,0-0.1c0-0.1,0-0.2,0-0.3
+              					c0-0.1,0-0.2,0-0.3c0,0,0-0.1,0-0.1c0-0.1-0.1-0.1-0.1-0.2c0,0,0,0,0,0c0-0.1-0.1-0.2-0.2-0.2c0,0-0.1-0.1-0.1-0.1
+              					c-0.1-0.1-0.2-0.1-0.3-0.2c-0.1-0.1-0.2-0.1-0.3-0.1c-0.1,0-0.2,0-0.3,0c-0.1,0-0.2,0.1-0.3,0.1c-0.1,0.1-0.1,0.1-0.2,0.2
+              					c0,0.1-0.1,0.1-0.1,0.2c0,0.1,0,0.3,0,0.4c0,0.1,0.1,0.1,0.1,0.2C74.7,86,74.8,86.1,74.9,86.1L74.9,86.1z"/>
+              			</g>
+              		</g>
+              		<g>
+              			<g>
+              				<path class="st9" d="M67.1,105.5c1.5,0.3,3,0,4.1-1.1c1-0.9,1.7-2.2,2.4-3.3c0.4-0.7,0.8-1.2,1.4-1.8c0.7-0.7-0.4-1.7-1.1-1.1
+              					c-1.3,1.2-2,2.7-3,4.1c-0.4,0.5-0.9,1.1-1.4,1.4c-0.6,0.3-1.3,0.4-2.1,0.3c-0.4-0.1-0.8,0.1-0.9,0.5
+              					C66.4,104.9,66.6,105.4,67.1,105.5L67.1,105.5z"/>
+              			</g>
+              		</g>
+              		<g>
+              			<g>
+              				<path class="st9" d="M71.1,103.6C71.1,103.6,71.1,103.6,71.1,103.6c0,0-0.1,0-0.2,0C71,103.6,71,103.6,71.1,103.6
+              					c-0.1,0-0.1,0-0.2-0.1c0,0,0,0,0,0c-0.1,0-0.1-0.1-0.2-0.1c0,0,0,0,0,0c0-0.1-0.1-0.1-0.1-0.2c0,0,0,0,0,0
+              					c0-0.1-0.1-0.1-0.1-0.2c0,0,0,0,0,0c0-0.1,0-0.1,0-0.2c0,0,0,0,0,0c0-0.1,0-0.1,0-0.2c0,0,0,0,0,0c0-0.1,0.1-0.1,0.1-0.2
+              					c0,0,0,0,0,0c0-0.1,0.1-0.1,0.1-0.2c0,0,0,0,0,0c0.1,0,0.1-0.1,0.2-0.1c0,0-0.1,0-0.1,0.1c0.1,0,0.1-0.1,0.2-0.1
+              					c-0.2,0.1-0.5,0.2-0.7,0.3c-0.4,0.2-0.7,0.6-0.7,1.1c0,0.3,0.2,0.6,0.4,0.9c0.1,0.1,0.3,0.2,0.5,0.2c0.2,0,0.4-0.1,0.5-0.2
+              					c0.1-0.1,0.2-0.3,0.2-0.5C71.2,103.9,71.1,103.7,71.1,103.6c-0.1-0.1-0.1-0.1-0.2-0.2C71,103.5,71,103.6,71.1,103.6
+              					c-0.1,0-0.1-0.1-0.1-0.1C71,103.6,71,103.6,71.1,103.6C71,103.6,71,103.6,71.1,103.6c-0.1,0-0.1,0.1-0.1,0.1
+              					C71,103.7,71,103.7,71.1,103.6c-0.1,0.1-0.1,0.2-0.1,0.2c0,0,0-0.1,0-0.1c0,0.1-0.1,0.1-0.1,0.2c0,0,0-0.1,0.1-0.1
+              					c0,0.1-0.1,0.1-0.1,0.2c0,0,0.1-0.1,0.1-0.1c-0.1,0-0.1,0.1-0.2,0.1c0.1-0.1,0.3-0.2,0.4-0.2c-0.1,0-0.1,0.1-0.2,0.1
+              					c0.2-0.1,0.3-0.1,0.5-0.2c0,0,0,0,0,0c0.1,0,0.1-0.1,0.2-0.1c0.1-0.1,0.2-0.2,0.2-0.4c0-0.1,0-0.3,0-0.4c0-0.1,0-0.1-0.1-0.2
+              					c-0.1-0.1-0.2-0.2-0.3-0.3c-0.2-0.1-0.4-0.1-0.6-0.1c-0.1,0-0.2,0-0.3,0.1c-0.1,0-0.2,0.1-0.2,0.2c-0.1,0.1-0.2,0.3-0.2,0.5
+              					c0,0.2,0.1,0.4,0.2,0.5c0.1,0,0.1,0.1,0.2,0.1C70.8,103.6,70.9,103.6,71.1,103.6L71.1,103.6z"/>
+              			</g>
+              		</g>
+              		<g>
+              			<g>
+              				<path class="st9" d="M69.7,103C69.7,103,69.7,103.1,69.7,103c0,0,0.1-0.1,0.1-0.1c-0.2,0.1-0.4,0.2-0.6,0.3
+              					c-0.1,0.1-0.3,0.2-0.4,0.3c-0.1,0.1-0.2,0.2-0.3,0.4c0,0.1,0,0.2,0,0.3c0,0.2,0.1,0.4,0.2,0.5c0.1,0.1,0.2,0.2,0.3,0.3
+              					c0.1,0.1,0.3,0.2,0.5,0.2c0.1,0,0.2,0,0.3-0.1c0.1,0,0.2-0.1,0.2-0.2c0.1-0.1,0.2-0.3,0.2-0.5c0-0.2-0.1-0.4-0.2-0.5
+              					c0,0-0.1-0.1-0.1-0.1c0,0.1,0.1,0.1,0.1,0.2c0,0-0.1-0.1-0.1-0.1c0,0.1,0.1,0.1,0.1,0.2c0,0,0,0,0-0.1c0,0.1,0,0.1,0,0.2
+              					c0,0,0,0,0-0.1c0,0.1,0,0.1,0,0.2c0,0,0,0,0-0.1c0,0.1-0.1,0.1-0.1,0.2c0,0,0,0,0-0.1c0,0.1-0.1,0.1-0.1,0.2
+              					c0,0,0.1-0.1,0.1-0.1c-0.1,0-0.1,0.1-0.2,0.1c0.1-0.1,0.3-0.1,0.4-0.2c0.2-0.1,0.4-0.2,0.5-0.3c0.1-0.1,0.1-0.1,0.2-0.2
+              					c0-0.1,0.1-0.2,0.1-0.3c0-0.1,0-0.2-0.1-0.3c0-0.1-0.1-0.2-0.2-0.2c-0.1-0.1-0.3-0.2-0.5-0.2c-0.1,0-0.1,0-0.2,0
+              					C69.9,102.9,69.8,102.9,69.7,103L69.7,103z"/>
+              			</g>
+              		</g>
+              		<g>
+              			<g>
+              				<path class="st9" d="M68.7,103.6C68.7,103.6,68.7,103.6,68.7,103.6c0,0,0.1-0.1,0.1-0.1c0,0,0,0,0,0c0.1,0,0.1-0.1,0.2-0.1
+              					c0,0-0.1,0-0.1,0.1c0.1,0,0.1-0.1,0.2-0.1c-0.1,0.1-0.3,0.1-0.5,0.1c-0.1,0-0.2,0.1-0.3,0.1c0,0,0,0,0,0c-0.1,0-0.1,0.1-0.2,0.1
+              					c-0.1,0.1-0.2,0.2-0.2,0.4c0,0.2,0,0.3,0,0.5c0,0.1,0.1,0.2,0.1,0.3c0,0.1,0.1,0.1,0.1,0.2c0,0.1,0.1,0.2,0.2,0.2
+              					c0.1,0.1,0.2,0.1,0.3,0.1c0.1,0,0.2,0,0.3,0c0.1,0,0.2,0,0.3-0.1c0.2-0.1,0.3-0.3,0.3-0.4c0-0.1,0-0.1,0-0.2
+              					c0-0.1,0-0.3-0.1-0.4c-0.1-0.1-0.1-0.2-0.2-0.3c0,0.1,0.1,0.1,0.1,0.2c0,0,0-0.1,0-0.1c0,0.1,0,0.1,0,0.2c0,0,0,0,0-0.1
+              					c0,0.1,0,0.1,0,0.2c0,0,0,0,0,0c0,0.1-0.1,0.1-0.1,0.2c0,0,0,0,0,0c0,0.1-0.1,0.1-0.1,0.2c0,0,0,0,0,0c-0.1,0-0.1,0.1-0.2,0.1
+              					c0,0,0,0,0.1,0c-0.1,0-0.1,0.1-0.2,0.1c0.1,0,0.2-0.1,0.3-0.1c0.2,0,0.3-0.1,0.5-0.2c0.1,0,0.1-0.1,0.2-0.2
+              					c0.1-0.1,0.1-0.1,0.2-0.2c0.1-0.1,0.1-0.2,0.1-0.3c0-0.1,0-0.2,0-0.3c0-0.1-0.1-0.2-0.1-0.3c-0.1-0.1-0.1-0.1-0.2-0.2
+              					c-0.2-0.1-0.4-0.1-0.6-0.1c-0.1,0-0.1,0.1-0.2,0.1C68.8,103.4,68.7,103.5,68.7,103.6L68.7,103.6z"/>
+              			</g>
+              		</g>
+              		<g>
+              			<g>
+              				<path class="st9" d="M69,103.5c-0.1-0.1-0.2-0.1-0.3-0.2c0,0-0.1,0-0.2,0c-0.1,0-0.2,0-0.3,0c0,0,0,0-0.1,0c-0.1,0-0.2,0-0.3,0
+              					c0,0,0,0-0.1,0c-0.1,0-0.2,0.1-0.2,0.1c-0.1,0-0.2,0.1-0.3,0.2c0,0,0,0,0,0c-0.1,0.1-0.1,0.1-0.2,0.2c0,0,0,0,0,0.1
+              					c0,0.1-0.1,0.2-0.1,0.2c-0.1,0.2-0.1,0.5,0,0.8c0,0.1,0.1,0.2,0.1,0.3c0.1,0.1,0.1,0.1,0.2,0.2c0.1,0.1,0.2,0.1,0.3,0.1
+              					c0.1,0,0.2,0,0.3,0c0.2-0.1,0.4-0.2,0.4-0.3c0.1-0.2,0.1-0.4,0.1-0.6c0-0.1,0-0.1,0-0.2c0,0.1,0,0.1,0,0.2c0,0,0-0.1,0-0.1
+              					c0,0.1,0,0.1,0,0.2c0,0,0-0.1,0-0.1c0,0.1-0.1,0.1-0.1,0.2c0,0,0-0.1,0.1-0.1c0,0.1-0.1,0.1-0.1,0.2c0,0,0.1-0.1,0.1-0.1
+              					c-0.1,0-0.1,0.1-0.2,0.1c0,0,0.1,0,0.1-0.1c-0.1,0-0.1,0.1-0.2,0.1c0.1,0,0.1,0,0.2,0c-0.1,0-0.1,0-0.2,0c0.1,0,0.1,0,0.2,0
+              					c-0.1,0-0.1,0-0.2,0c0.1,0,0.1,0,0.2,0.1c-0.1,0-0.1-0.1-0.2-0.1c0,0,0.1,0,0.1,0.1c0.1,0.1,0.2,0.1,0.3,0.1c0.1,0,0.2,0,0.3,0
+              					c0.1,0,0.2-0.1,0.3-0.1c0.1-0.1,0.1-0.1,0.2-0.2c0.1-0.2,0.1-0.4,0.1-0.6c0-0.1-0.1-0.1-0.1-0.2C69.2,103.7,69.1,103.6,69,103.5
+              					L69,103.5z"/>
+              			</g>
+              		</g>
+              		<g>
+              			<g>
+              				<path class="st9" d="M67.3,103.6C67.2,103.6,67.2,103.7,67.3,103.6C67.3,103.6,67.3,103.6,67.3,103.6
+              					C67.3,103.6,67.3,103.6,67.3,103.6c0.1-0.1,0.1-0.1,0.2-0.1C67.4,103.5,67.4,103.5,67.3,103.6c0.1-0.1,0.2-0.1,0.3-0.2
+              					c0,0-0.1,0-0.1,0c0.1,0,0.1,0,0.2,0c0,0-0.1,0-0.1,0c0.1,0,0.1,0,0.2,0c-0.1,0-0.2,0-0.2-0.1c0.1,0,0.1,0.1,0.2,0.1
+              					c-0.2-0.1-0.4-0.2-0.6-0.3c-0.2-0.1-0.4-0.2-0.6-0.2c-0.3,0-0.6,0.2-0.8,0.4c-0.1,0.2-0.2,0.5-0.2,0.7c0,0.2,0.1,0.4,0.2,0.5
+              					c0.1,0.1,0.3,0.2,0.5,0.2c0.2,0,0.4-0.1,0.5-0.2c0.1-0.1,0.2-0.3,0.2-0.5c0-0.1,0-0.1,0-0.2c0,0.1,0,0.1,0,0.2c0,0,0-0.1,0-0.1
+              					c0,0.1-0.1,0.1-0.1,0.2c0,0,0,0,0-0.1c0,0.1-0.1,0.1-0.1,0.2c0,0,0,0,0,0c-0.1,0-0.1,0.1-0.2,0.1c0,0,0,0,0,0
+              					c-0.1,0-0.1,0.1-0.2,0.1c0,0,0,0,0,0c-0.1,0-0.1,0-0.2,0c0,0,0,0,0.1,0c-0.1,0-0.1,0-0.2,0c0.1,0,0.1,0,0.2,0.1
+              					c-0.1,0-0.1-0.1-0.2-0.1c0.3,0.1,0.6,0.3,0.9,0.4c0.5,0.2,1.1,0,1.4-0.5c0.1-0.2,0.1-0.4,0.1-0.6c0-0.2-0.2-0.4-0.3-0.4
+              					C67.9,103.2,67.5,103.2,67.3,103.6L67.3,103.6z"/>
+              			</g>
+              		</g>
+              		<g>
+              			<g>
+              				<path class="st9" d="M67.2,103.9c0-0.1,0-0.2-0.1-0.3c0-0.1-0.1-0.2-0.1-0.3c-0.1-0.1-0.2-0.3-0.3-0.4c-0.1-0.1-0.2-0.2-0.4-0.3
+              					c-0.1,0-0.1-0.1-0.2-0.1c0,0-0.1,0-0.1-0.1c-0.1,0-0.1,0-0.2,0c0,0-0.1,0-0.2,0c-0.1,0-0.2,0-0.2,0c0,0,0,0,0,0
+              					c-0.1,0-0.1,0.1-0.2,0.1c0,0,0,0,0,0c0,0-0.1,0.1-0.1,0.1c0,0-0.1,0.1-0.1,0.1c-0.1,0.1-0.1,0.1-0.2,0.2c0,0.1-0.1,0.2-0.1,0.3
+              					c0,0.1,0,0.2,0.1,0.3c0,0.1,0.1,0.2,0.2,0.2c0.1,0.1,0.3,0.2,0.5,0.2c0.1,0,0.1,0,0.2,0c0.1,0,0.2-0.1,0.3-0.2c0,0,0,0,0,0
+              					c-0.1,0-0.1,0.1-0.2,0.1c0,0,0,0,0.1,0c-0.1,0-0.1,0.1-0.2,0.1c0,0,0,0,0.1,0c-0.1,0-0.1,0-0.2,0c0,0,0,0,0.1,0
+              					c-0.1,0-0.1,0-0.2,0c0,0,0.1,0,0.1,0c-0.1,0-0.1-0.1-0.2-0.1c0.1,0,0.1,0.1,0.1,0.1c-0.1,0-0.1-0.1-0.2-0.1
+              					c0.1,0.1,0.1,0.1,0.2,0.2c0-0.1-0.1-0.1-0.1-0.2c0.1,0.1,0.1,0.2,0.1,0.2c0-0.1-0.1-0.1-0.1-0.2c0,0.1,0,0.1,0,0.2
+              					c0-0.1,0-0.1,0-0.2c0,0,0,0,0,0c0,0.1,0,0.2,0.1,0.3c0,0.1,0.1,0.2,0.2,0.2c0.1,0.1,0.1,0.1,0.2,0.2c0.1,0,0.2,0.1,0.3,0.1
+              					c0.2,0,0.4-0.1,0.5-0.2c0-0.1,0.1-0.1,0.1-0.2C67.1,104.2,67.2,104.1,67.2,103.9L67.2,103.9z"/>
+              			</g>
+              		</g>
+              		<g>
+              			<g>
+              				<path class="st9" d="M71.3,102.5c-0.1-0.1-0.3-0.2-0.4-0.4c0,0.1,0.1,0.1,0.1,0.2c-0.1-0.1-0.2-0.2-0.2-0.4
+              					c0,0.1,0.1,0.1,0.1,0.2c0-0.1-0.1-0.2-0.1-0.3c0,0.1,0,0.1,0,0.2c0-0.1,0-0.2,0-0.3c0,0.1,0,0.1,0,0.2c0-0.1,0-0.1,0.1-0.2
+              					c0,0.1-0.1,0.1-0.1,0.2c0-0.1,0.1-0.1,0.1-0.2c0,0.1-0.1,0.1-0.1,0.2c0,0,0.1-0.1,0.1-0.1c-0.1,0-0.1,0.1-0.2,0.1
+              					c0,0,0.1,0,0.1-0.1c-0.1,0-0.1,0.1-0.2,0.1c0,0,0.1,0,0.1,0c-0.1,0-0.1,0-0.2,0c0,0,0.1,0,0.1,0c-0.1,0-0.1,0-0.2,0
+              					c0,0,0.1,0,0.1,0c-0.1,0-0.1-0.1-0.2-0.1c0,0,0.1,0,0.1,0.1c-0.1,0-0.1-0.1-0.2-0.1c0,0,0.1,0.1,0.1,0.1c0-0.1-0.1-0.1-0.1-0.2
+              					c0.1,0.1,0.1,0.2,0.1,0.3c0-0.1-0.1-0.1-0.1-0.2c0.1,0.2,0.1,0.4,0.2,0.6c0-0.1,0-0.1,0-0.2c0,0.1,0,0.1,0,0.2
+              					c0,0.1,0,0.2,0.1,0.3c0,0.1,0.1,0.2,0.2,0.2c0.1,0.1,0.1,0.1,0.2,0.2c0.1,0,0.2,0.1,0.3,0.1c0.1,0,0.1,0,0.2,0
+              					c0.1,0,0.2-0.1,0.3-0.2c0-0.1,0.1-0.1,0.1-0.2c0.1-0.1,0.1-0.2,0.1-0.4c0-0.2,0-0.4-0.1-0.5c0-0.1,0-0.2-0.1-0.3
+              					c0-0.1-0.1-0.3-0.2-0.4c0-0.1-0.1-0.1-0.1-0.2c-0.1-0.1-0.1-0.2-0.2-0.3c-0.1-0.1-0.1-0.1-0.2-0.2c0,0,0,0-0.1,0
+              					c-0.1,0-0.2-0.1-0.2-0.1c0,0,0,0-0.1,0c-0.1,0-0.2,0-0.3,0c-0.1,0-0.2,0-0.3,0.1c-0.1,0-0.2,0.1-0.3,0.1
+              					c-0.1,0.1-0.2,0.1-0.2,0.2c-0.1,0.1-0.1,0.2-0.2,0.3c0,0.1-0.1,0.2-0.1,0.2c0,0,0,0,0,0.1c0,0.1,0,0.2-0.1,0.4
+              					c0,0.1,0,0.1,0,0.2c0,0.1,0,0.2,0,0.3c0,0,0,0.1,0,0.1c0,0.1,0,0.1,0.1,0.2c0.1,0.1,0.1,0.3,0.2,0.4c0.1,0.1,0.2,0.2,0.3,0.4
+              					c0.1,0.1,0.1,0.1,0.2,0.2c0,0,0.1,0.1,0.1,0.1c0.1,0.1,0.1,0.1,0.2,0.2c0.1,0,0.2,0.1,0.3,0.1c0.1,0,0.2,0,0.3-0.1
+              					c0.1,0,0.2-0.1,0.2-0.2c0-0.1,0.1-0.1,0.1-0.2c0.1-0.1,0.1-0.2,0.1-0.4c0-0.1,0-0.1,0-0.2C71.4,102.7,71.4,102.6,71.3,102.5
+              					L71.3,102.5z"/>
+              			</g>
+              		</g>
+              		<g>
+              			<g>
+              				<path class="st9" d="M71.1,100.7c0,0-0.1-0.1-0.1-0.1C71.1,100.6,71.1,100.7,71.1,100.7c-0.1-0.1-0.2-0.2-0.2-0.4
+              					c0,0.1,0.1,0.1,0.1,0.2c0-0.1,0-0.1-0.1-0.2c0,0.1,0,0.1,0,0.2c0,0,0-0.1,0-0.1c0,0.1,0,0.1,0,0.2c0,0,0-0.1,0-0.1
+              					c0,0.1-0.1,0.1-0.1,0.2c0,0,0,0,0-0.1c0,0.1-0.1,0.1-0.1,0.2c0,0,0,0,0,0c-0.1,0-0.1,0.1-0.2,0.1c0,0,0,0,0.1,0
+              					c-0.1,0-0.1,0.1-0.2,0.1c0,0,0.1,0,0.1,0c-0.1,0-0.1,0-0.2,0c0.1,0,0.1,0,0.2,0c-0.1,0-0.1,0-0.2,0c0.1,0,0.2,0,0.2,0.1
+              					c-0.1,0-0.1-0.1-0.2-0.1c0.1,0,0.2,0.1,0.2,0.1c-0.1,0-0.1-0.1-0.2-0.1c0.1,0.1,0.1,0.1,0.2,0.2c0-0.1-0.1-0.1-0.1-0.2
+              					c0.1,0.1,0.1,0.1,0.1,0.2c0-0.1-0.1-0.1-0.1-0.2c0,0.1,0.1,0.2,0.1,0.3c0-0.1,0-0.1,0-0.2c0,0.1,0,0.2,0,0.3c0-0.1,0-0.1,0-0.2
+              					c0,0.1,0,0.1,0,0.2c0,0.2,0,0.4,0.1,0.6c0,0.1,0.1,0.2,0.2,0.2c0.1,0.1,0.2,0.1,0.3,0.1c0.2,0,0.4,0,0.6-0.1
+              					c0.2-0.1,0.3-0.3,0.3-0.4c0-0.1,0.1-0.3,0.1-0.4c0-0.1,0-0.1,0-0.2c0-0.1,0-0.3-0.1-0.4c0-0.1-0.1-0.2-0.1-0.3
+              					c0-0.1-0.1-0.1-0.1-0.2c-0.1-0.1-0.1-0.2-0.2-0.3c-0.1-0.1-0.2-0.2-0.3-0.2c0,0-0.1-0.1-0.1-0.1c-0.1-0.1-0.2-0.1-0.3-0.1
+              					c0,0-0.1,0-0.1,0c-0.1,0-0.2,0-0.3,0c-0.1,0-0.2,0-0.3,0c0,0,0,0-0.1,0c-0.1,0-0.2,0.1-0.2,0.1c0,0,0,0,0,0
+              					c-0.1,0-0.1,0.1-0.2,0.1c0,0,0,0,0,0c0,0,0,0,0,0c0,0.1-0.1,0.1-0.1,0.2c0,0,0,0,0,0c-0.1,0.2-0.1,0.3-0.1,0.5c0,0,0,0,0,0.1
+              					c0,0.1,0,0.2,0,0.3c0,0.1,0,0.1,0.1,0.2c0.1,0.1,0.1,0.2,0.2,0.4c0.1,0.1,0.2,0.2,0.3,0.4c0,0,0.1,0.1,0.1,0.1
+              					c0.1,0.1,0.1,0.1,0.2,0.2c0.1,0,0.2,0.1,0.3,0.1c0.1,0,0.2,0,0.3-0.1c0.1,0,0.2-0.1,0.2-0.2c0.1-0.1,0.2-0.3,0.2-0.5
+              					c0-0.1,0-0.1,0-0.2C71.3,100.9,71.2,100.8,71.1,100.7L71.1,100.7z"/>
+              			</g>
+              		</g>
+              		<g>
+              			<g>
+              				<path class="st9" d="M70.9,100.4c0-0.1,0.1-0.2,0.1-0.3c0,0.1-0.1,0.1-0.1,0.2c0-0.1,0.1-0.2,0.1-0.2c0,0.1-0.1,0.1-0.1,0.2
+              					c0,0,0.1-0.1,0.1-0.1c-0.1,0-0.1,0.1-0.2,0.1c0,0,0.1,0,0.1-0.1c-0.1,0-0.1,0.1-0.2,0.1c0,0,0.1,0,0.1,0c-0.1,0-0.1,0-0.2,0
+              					c0,0,0.1,0,0.1,0c-0.1,0-0.1,0-0.2,0c0,0,0.1,0,0.1,0c-0.1,0-0.1-0.1-0.2-0.1c0,0,0.1,0,0.1,0.1c-0.1,0-0.1-0.1-0.2-0.1
+              					c0,0,0.1,0.1,0.1,0.1c0-0.1-0.1-0.1-0.1-0.2c0,0.1,0.1,0.1,0.1,0.2c0-0.1-0.1-0.1-0.1-0.2c0,0.1,0.1,0.2,0.1,0.3
+              					c0-0.1,0-0.1,0-0.2c0,0.1,0,0.2,0,0.3c0,0.2,0.1,0.4,0.2,0.5c0.1,0.1,0.3,0.2,0.5,0.2c0.2,0,0.4-0.1,0.5-0.2
+              					c0.1-0.2,0.2-0.3,0.2-0.5c0-0.2,0-0.3,0-0.5c0-0.1,0-0.2-0.1-0.3c-0.1-0.3-0.2-0.5-0.4-0.7c-0.2-0.1-0.3-0.2-0.5-0.3
+              					c-0.1,0-0.2-0.1-0.4,0c-0.2,0-0.3,0.1-0.5,0.1c0,0-0.1,0-0.1,0.1C70.1,99,70,99,69.9,99.1c-0.2,0.3-0.4,0.6-0.5,0.9
+              					c0,0.2,0,0.4,0.1,0.6c0.1,0.2,0.3,0.3,0.4,0.3c0.2,0,0.4,0,0.6-0.1C70.7,100.8,70.9,100.6,70.9,100.4L70.9,100.4z"/>
+              			</g>
+              		</g>
+              		<g>
+              			<g>
+              				<path class="st9" d="M70.3,98.8c-0.4-0.2-0.8-0.4-1.3-0.3c-0.3,0-0.7,0.1-1,0.3c-0.2,0.2-0.4,0.3-0.6,0.5
+              					c-0.1,0.1,0.2-0.1,0.1-0.1c0,0,0,0-0.1,0.1c0,0-0.1,0.1-0.2,0.1c0,0,0,0-0.1,0c0.2-0.1,0.1-0.1,0.1,0c-0.1,0-0.1,0-0.2,0
+              					c0.1,0,0.1,0,0.2,0c0,0,0,0,0,0c-0.2,0-0.4,0.1-0.5,0.2c-0.1,0.1-0.2,0.3-0.2,0.5c0,0.2,0.1,0.4,0.2,0.5
+              					c0.1,0.1,0.3,0.2,0.5,0.2c0.3,0,0.6-0.1,0.8-0.3c0.2-0.1,0.4-0.2,0.5-0.4c0.1,0,0.1-0.1,0.2-0.1c0,0,0.2-0.1,0,0
+              					c-0.1,0.1,0,0,0,0c0,0,0.1,0,0.1-0.1c0.1,0,0.2-0.1,0,0c0.1,0,0.2-0.1,0.2-0.1c-0.1,0-0.1,0-0.2,0c0.1,0,0.2,0,0.3,0
+              					c-0.1,0-0.1,0-0.2,0c0.1,0,0.2,0,0.3,0.1c0,0,0.1,0,0.2,0.1c0,0-0.2-0.1-0.1,0c0,0,0.1,0,0.1,0.1c0.2,0.1,0.4,0.1,0.6,0.1
+              					c0.2,0,0.4-0.2,0.4-0.3C70.7,99.5,70.7,99,70.3,98.8L70.3,98.8z"/>
+              			</g>
+              		</g>
+              		<g>
+              			<g>
+              				<path class="st9" d="M68,99.4C68,99.4,68,99.4,68,99.4c0,0,0.1,0,0.1,0.1C68.1,99.4,68.1,99.4,68,99.4c0.1,0,0.1,0.1,0.2,0.1
+              					c0,0-0.1-0.1-0.1-0.1c0,0.1,0.1,0.1,0.1,0.2c0-0.1-0.1-0.1-0.1-0.2c-0.1-0.1-0.1-0.2-0.2-0.4c-0.2-0.3-0.6-0.4-0.9-0.5
+              					c-0.3,0-0.6-0.1-0.9,0c-0.2,0-0.4,0.1-0.5,0.2c-0.1,0.1-0.2,0.3-0.2,0.5c0,0.2,0.1,0.4,0.2,0.5c0.1,0.1,0.3,0.2,0.5,0.2
+              					c0.2,0,0.4,0,0.6,0c-0.1,0-0.1,0-0.2,0c0.1,0,0.2,0,0.3,0.1c-0.1,0-0.1-0.1-0.2-0.1c0.1,0,0.1,0.1,0.2,0.1
+              					c-0.1,0-0.1-0.1-0.2-0.1c0,0,0.1,0.1,0.1,0.1c0-0.1-0.1-0.1-0.1-0.2c0.1,0.1,0.1,0.2,0.2,0.3c0.1,0.1,0.1,0.2,0.2,0.3
+              					c0.2,0.1,0.3,0.2,0.5,0.3c0.2,0.1,0.4,0,0.6-0.1c0.2-0.1,0.3-0.3,0.3-0.4c0-0.2,0-0.4-0.1-0.6C68.4,99.6,68.2,99.4,68,99.4
+              					L68,99.4z"/>
+              			</g>
+              		</g>
+              		<g>
+              			<g>
+              				<path class="st9" d="M62.8,107.2C62.9,107.2,62.9,107.2,62.8,107.2C62.8,107.2,62.8,107.2,62.8,107.2c0.1,0,0.2,0.1,0.2,0.1
+              					c0.1,0.1,0.2,0.1,0.3,0.2c0.2,0.2,0.4,0.3,0.7,0.5c0.7,0.4,1.4,0.5,2.1,0.2c0.2-0.1,0.4-0.2,0.6-0.3c0.2-0.1,0.3-0.3,0.5-0.4
+              					c0.3-0.2,0.5-0.2,0.9-0.3c0.8-0.2,1.5-0.5,2.1-1.2c0.2-0.3,0.1-0.8-0.3-1c-0.4-0.2-0.8-0.1-1,0.3c-0.1,0.1-0.3,0.3-0.5,0.3
+              					c-0.3,0.1-0.6,0.2-0.9,0.2c-0.3,0.1-0.7,0.2-1,0.4c-0.3,0.2-0.5,0.5-0.8,0.6c-0.1,0-0.2,0.1-0.2,0.1c-0.1,0,0,0-0.1,0
+              					c0,0-0.2,0-0.1,0c0.1,0-0.1,0-0.1,0c-0.1,0-0.1,0-0.2-0.1c0.1,0.1-0.1,0-0.1,0c-0.1-0.1-0.2-0.1-0.3-0.2
+              					c-0.4-0.3-0.8-0.6-1.3-0.8C62.3,105.5,61.9,106.9,62.8,107.2L62.8,107.2z"/>
+              			</g>
+              		</g>
+              		<g>
+              			<g>
+              				<path class="st9" d="M61.8,107.2c0.6,0.5,1.3,0.9,2.1,1.2c0.7,0.2,1.6,0.3,2.3,0c0.4-0.1,0.7-0.5,0.5-0.9
+              					c-0.1-0.4-0.5-0.7-0.9-0.5c-0.1,0-0.1,0-0.2,0.1c0,0-0.2,0-0.2,0c0,0,0.2,0,0,0c0,0-0.1,0-0.1,0c-0.1,0-0.2,0-0.2,0
+              					c-0.1,0-0.2,0-0.2,0c-0.1,0-0.1,0,0,0c0,0-0.1,0-0.1,0c-0.2,0-0.3-0.1-0.5-0.1c-0.1,0-0.2,0-0.2-0.1c0,0-0.1,0-0.1,0
+              					c0,0-0.2-0.1-0.1,0c0.1,0,0,0,0,0c0,0-0.1,0-0.1-0.1c-0.1,0-0.1-0.1-0.2-0.1c-0.1-0.1-0.3-0.2-0.4-0.2c0,0-0.1,0-0.1-0.1
+              					c-0.1-0.1,0,0,0,0c0,0-0.2-0.1-0.2-0.2c-0.3-0.3-0.8-0.3-1.1,0C61.5,106.4,61.4,106.9,61.8,107.2L61.8,107.2z"/>
+              			</g>
+              		</g>
+              		<g>
+              			<g>
+              				<path class="st9" d="M83.7,79.3C82.4,70.2,73,66.4,64.9,65.7C60,65.2,55,65.7,50.3,67c-4.4,1.2-9.1,3-12.6,6.1
+              					c-0.6,0.5-0.9,1.3-1.3,2c-0.5,0.8-1,1.6-1.6,2.4c-0.9,1.2-1.8,2.4-2.8,3.6c-1.5,1.6-3.2,3-5.1,4.2c-3.7,2.2-7.7,3.7-11.1,6.3
+              					c-1.2,0.9-2.3,2-3.5,2.8c-1.1,0.7-2.2,1.4-3.3,2.3c-1.7,1.4-3.1,3-4.1,5c-2,3.8-2,8.1-1.6,12.2c0.6,5.1,1.7,10.2,2.4,15.3
+              					c0.8,6.2,0.8,12.5-0.5,18.7c-0.4,1.7-0.8,3.4-1.4,5.1c-0.3,0.9,1.1,1.3,1.4,0.4c2-6,2.7-12.3,2.4-18.5
+              					c-0.2-5.3-1.2-10.5-2.1-15.7c-0.7-4.2-1.5-8.7-0.6-13c0.9-4.4,3.8-7.7,7.6-10.1c2.3-1.5,4.3-3.5,6.6-4.9c1.7-1.1,3.5-2,5.4-2.9
+              					c3.8-1.8,7-4.1,9.7-7.4c1-1.2,1.9-2.4,2.7-3.7c0.9-1.3,1.5-2.7,2.9-3.6c1.8-1.3,3.8-2.4,5.9-3.3c4.5-1.9,9.3-2.9,14.1-3.1
+              					c7.8-0.3,18.7,1.5,21.9,9.8c0.3,0.9,0.6,1.9,0.7,2.8C82.4,80.6,83.9,80.2,83.7,79.3L83.7,79.3z"/>
+              			</g>
+              		</g>
+              		<g>
+              			<g>
+              				<path class="st9" d="M41.2,111.8c3.2,4.1,0.8,10-1,14.2c-1,2.3-2.1,4.6-3,6.9c-1,2.5-1.6,5.2-2,7.9c-1,6.7-0.6,13.6-2.7,20.1
+              					c-0.5,1.5-1.3,2.7-1.5,4.3c-0.2,1.5-0.1,3.1-0.2,4.6c0,0.7-0.1,1.4-0.3,2.1c-0.2,0.7-0.7,1.3-0.9,2.1c-0.3,1.1,0.6,1.6,1.4,2.2
+              					c0.9,0.7,1.7,1.7,2.1,2.7c0.1,0.2,0,0.2,0.2,0.1c-0.2,0.1-0.6-0.1-0.7-0.2c-2.3-0.9-3.8-3.5-4.6-5.7c-0.3-0.9-1.8-0.5-1.4,0.4
+              					c0.9,2.3,2.2,4.4,4.2,5.9c0.9,0.6,2.6,1.6,3.6,0.6c1.1-1.2-0.7-3.3-1.4-4.1c-0.2-0.3-0.5-0.6-0.8-0.8c-0.2-0.2-0.8-0.4-0.9-0.5
+              					c-0.2-0.4,0.6-2,0.8-2.5c0.4-1.5,0.3-3.2,0.4-4.7c0-0.9,0.1-1.9,0.3-2.8c0.2-0.9,0.7-1.6,1-2.5c0.6-1.7,1-3.5,1.4-5.4
+              					c0.6-3.7,0.8-7.4,1.1-11.1c0.3-3.6,0.8-7.2,1.9-10.7c0.8-2.7,2.1-5.2,3.2-7.8c2.2-5.1,4.8-11.5,0.9-16.5
+              					C41.7,109.9,40.6,111,41.2,111.8L41.2,111.8z"/>
+              			</g>
+              		</g>
+              		<g>
+              			<g>
+              				<path class="st9" d="M27.5,174.9c0.1,0.3,0.2,0.5,0.2,0.8c0,0,0,0.1,0,0.1c0,0,0-0.2,0-0.1c0,0.1,0,0.1,0,0.2c0,0.1,0,0.3,0,0.4
+              					c0,0.1,0,0.2,0,0.3c0,0,0,0.1,0,0.1c0,0,0-0.2,0-0.1c0,0.1,0,0.1,0,0.2c0,0.1,0,0.2-0.1,0.3c0,0,0,0.1,0,0.1c0,0,0,0,0,0.1
+              					c-0.1,0.1,0.1-0.1,0,0c0,0.1-0.1,0.2-0.1,0.3c0,0,0,0.1-0.1,0.1c0,0,0,0,0,0c-0.1,0.1,0.1-0.1,0,0c-0.1,0.1-0.1,0.1-0.2,0.2
+              					c0,0-0.1,0.1-0.1,0.1c-0.1,0.1,0.1,0,0.1-0.1c0,0,0,0-0.1,0.1c-0.1,0-0.1,0.1-0.2,0.1c-0.1,0,0.2-0.1,0.1,0c0,0,0,0-0.1,0
+              					c0,0-0.1,0-0.1,0c-0.1,0-0.2,0,0,0c0,0-0.1,0-0.1,0c0,0-0.1,0-0.1,0c0,0-0.1,0-0.1,0c-0.1,0,0.1,0,0.1,0c-0.1,0-0.2,0-0.3-0.1
+              					c0,0,0,0-0.1,0c-0.1,0,0.1,0.1,0,0c-0.1,0-0.1-0.1-0.2-0.1c-0.1-0.1-0.2-0.1-0.4-0.2c-0.1-0.1,0,0,0,0c0,0-0.1-0.1-0.1-0.1
+              					c-0.1-0.1-0.1-0.1-0.2-0.2c-0.3-0.3-0.8-0.3-1.1,0c-0.3,0.3-0.3,0.8,0,1.1c0.5,0.5,1.1,0.9,1.7,1c0.6,0.1,1.2,0.1,1.7-0.2
+              					c1-0.5,1.5-1.7,1.6-2.8c0.1-0.7,0-1.4-0.3-2.1c-0.1-0.4-0.5-0.7-0.9-0.5C27.6,174.1,27.3,174.5,27.5,174.9L27.5,174.9z"/>
+              			</g>
+              		</g>
+              		<g>
+              			<g>
+              				<path class="st9" d="M23.2,177.4C23.2,177.4,23.4,177.5,23.2,177.4c0.1,0.1,0.1,0.1,0.2,0.1c0.1,0.1,0.2,0.1,0.3,0.2
+              					c0.2,0.1,0.3,0.3,0.5,0.4c0.2,0.2,0.5,0.4,0.7,0.7c0,0,0.1,0.1,0.1,0.1c0,0,0.2,0.2,0.1,0.1c-0.1-0.1,0,0,0,0.1
+              					c0,0,0.1,0.1,0.1,0.1c0,0,0,0.1,0.1,0.1c0.1,0.1,0,0.1,0-0.1c0,0.1,0,0.1,0.1,0.2c0-0.1,0-0.1,0-0.2c0,0,0,0.1,0,0.1
+              					c0-0.1,0-0.1,0-0.2c0,0,0,0,0,0.1c0,0,0.1-0.2,0-0.1c-0.1,0.1,0.2-0.2,0.1-0.1c-0.1,0.1,0,0,0.1-0.1c0,0,0,0-0.1,0
+              					c-0.1,0.1,0.2-0.1,0.1,0c-0.1,0-0.1,0-0.2,0c0.1,0,0.1,0,0.2,0c-0.2,0-0.3,0-0.5,0c0.1,0,0.1,0,0.2,0c-0.2,0-0.5-0.1-0.7-0.2
+              					c-0.1,0-0.3-0.1-0.4-0.1c0,0-0.1,0-0.1,0c0,0-0.2-0.1,0,0c0.2,0.1,0,0,0,0c0,0-0.1,0-0.1,0c-0.3-0.1-0.6-0.3-0.8-0.4
+              					c-0.1-0.1-0.3-0.2-0.4-0.3c-0.1,0-0.1-0.1-0.2-0.1c0,0-0.1,0-0.1-0.1c0.2,0.2,0.1,0.1,0,0c-0.3-0.2-0.6-0.5-0.8-0.8
+              					c-0.3-0.3-0.8-0.3-1.1,0c-0.3,0.3-0.3,0.7,0,1.1c0.5,0.6,1.2,1.1,1.9,1.5c0.6,0.4,1.3,0.7,2,0.9c0.6,0.1,1.2,0.3,1.8,0
+              					c0.3-0.2,0.5-0.5,0.6-0.9c0-0.3-0.1-0.6-0.2-0.9c-0.2-0.4-0.5-0.7-0.8-1c-0.5-0.5-1-0.9-1.6-1.3c-0.1-0.1-0.4-0.1-0.6-0.1
+              					c-0.2,0-0.4,0.2-0.4,0.3c-0.1,0.2-0.1,0.4-0.1,0.6C22.9,177.1,23,177.2,23.2,177.4L23.2,177.4z"/>
+              			</g>
+              		</g>
+              		<g>
+              			<g>
+              				<path class="st9" d="M23.1,178.3c-2.9-0.2-6.5-1.3-7.6-4.3c-1.1-3.1,1.7-6.2,4.4-7.3c2.4-0.9,4.4-2.1,4.9-4.9
+              					c0.3-1.5,0.1-2.9,0.1-4.4c0-2.4,0.5-4.9,0.6-7.3c0.7-9.7,0.4-19.5-0.4-29.2c-0.1-0.9,0.2-1.2,0.5-2c0.3-0.6,0.6-1.3,0.8-1.9
+              					c0.5-1.3,1-2.7,1.3-4.1c0.8-2.9,1.4-5.8,2.2-8.7c1.6-6.2,3.9-13.1,10.2-16c0.9-0.4,0.1-1.7-0.8-1.3c-5.7,2.6-8.4,8.3-10.1,14
+              					c-1.8,5.9-2.5,12.5-5.4,18c-0.5,0.9-0.5,1.3-0.4,2.3c0.1,1.3,0.2,2.6,0.3,3.9c0.2,2.6,0.3,5.2,0.4,7.8
+              					c0.1,5.1,0.1,10.3-0.2,15.4c-0.2,2.6-0.4,5.3-0.6,7.9c-0.2,1.7,0.2,3.5-0.2,5.2c-0.3,1.4-1,2.4-2.3,3.1
+              					c-0.7,0.4-1.4,0.5-2.1,0.8c-0.9,0.4-1.8,1.1-2.5,1.7c-2.3,2-3.6,5.2-2.1,8.1c1.6,3.1,5.3,4.4,8.6,4.6
+              					C24,179.9,24,178.4,23.1,178.3L23.1,178.3z"/>
+              			</g>
+              		</g>
+              		<g>
+              			<g>
+              				<path class="st9" d="M18.4,135.8c0,2.3-0.5,4.6-0.8,6.9c-0.5,3-1,5.9-1.4,8.9c-0.4,2.6-0.7,5.3-0.6,7.9c0.1,1.6,0.3,3.6,1.7,4.6
+              					c0.8,0.5,1.6-0.8,0.8-1.3c-1.2-0.8-1-3.4-1-4.6c0-2.7,0.4-5.3,0.8-7.9c0.4-2.7,0.9-5.5,1.3-8.2c0.3-2.1,0.7-4.2,0.7-6.3
+              					C19.9,134.8,18.4,134.8,18.4,135.8L18.4,135.8z"/>
+              			</g>
+              		</g>
+              		<g>
+              			<g>
+              				<path class="st9" d="M3.1,152.7c0.9,1.7,1.1,3.6,1.1,5.5c0.1,2.1-0.1,4.2-0.1,6.3c-0.1,2.8-0.1,7.3,3.5,8c2.7,0.5,5.6-1,7.9-2.2
+              					c0.9-0.4,0.1-1.7-0.8-1.3c-1.9,1-4.4,2.3-6.6,2c-1.2-0.1-1.9-1-2.2-2.1c-0.4-1.6-0.4-3.3-0.3-5c0.1-2,0.2-4,0.1-5.9
+              					c-0.1-2.1-0.4-4.2-1.3-6C4,151.1,2.7,151.9,3.1,152.7L3.1,152.7z"/>
+              			</g>
+              		</g>
+              		<g>
+              			<g>
+              				<path class="st9" d="M35,143.7c1.2,3.9,2.1,8,2.6,12.1c0.4,3.9,0.5,8-0.8,11.7c-0.3,0.9,1.1,1.3,1.4,0.4
+              					c1.4-3.8,1.3-8.1,0.9-12.1c-0.5-4.2-1.4-8.4-2.6-12.5C36.2,142.3,34.7,142.7,35,143.7L35,143.7z"/>
+              			</g>
+              		</g>
+              		<g>
+              			<g>
+              				<path class="st9" d="M37.1,167.3c0,0.1-0.1,0.2,0,0.1c0,0,0,0-0.1,0c-0.2,0.1-0.4,0.1-0.6,0.1c-0.5,0.1-1,0.3-1.4,0.7
+              					c-0.9,0.9-0.5,2.4,0.7,2.8c0.6,0.2,1.3-0.1,1.8-0.4c0.2-0.1,0.5-0.3,0.7-0.4c0.1,0,0.2-0.1,0.3-0.1c0,0,0.1,0,0.1,0
+              					c-0.1-0.1-0.1-0.1,0,0c0.5,0.1,0.9,0.4,1.5,0.3c0.6-0.1,1-0.6,0.9-1.3c-0.3,0.2-0.6,0.5-0.9,0.7c0.6,0.2,1.3,0.4,2,0.3
+              					c0.8-0.1,1.3-0.6,1.8-1.2c-0.1,0.1-0.2,0.2-0.3,0.3c-0.1,0,0,0,0,0c0.1,0,0.2,0,0.3,0c0.2,0,0.4,0,0.6-0.1
+              					c0.6-0.2,0.9-0.6,0.9-1.2c0-1-1.5-1-1.5,0c0-0.1,0.1-0.1,0.2-0.2c0-0.1,0,0,0,0c0,0-0.1,0-0.1,0c-0.1,0-0.1,0-0.2,0
+              					c-0.5,0-0.8,0.1-1.1,0.5c-0.6,0.7-1.3,0.4-2,0.1c-0.4-0.2-1,0.3-0.9,0.7c0,0.2,0,0.1,0.2-0.2c0.1-0.1,0.1,0.1,0,0
+              					c0.1,0.1-0.1,0-0.1,0c-0.1,0-0.1,0-0.2-0.1c-0.1,0-0.2-0.1-0.4-0.2c-0.3-0.1-0.6-0.1-0.9,0c-0.5,0.1-0.9,0.3-1.3,0.6
+              					c-0.3,0.2-0.6,0.4-0.9,0.3c0,0,0-0.1,0,0c0-0.1,0,0.1,0,0c0,0,0-0.1,0.1-0.1c0-0.1,0.1-0.1,0.2-0.2c-0.1,0.1,0.1-0.1,0,0
+              					c0.2-0.1,0.3-0.1,0.5-0.1c0.8-0.2,1.6-0.4,1.8-1.3c0.1-0.4-0.1-0.8-0.5-0.9C37.7,166.7,37.2,166.9,37.1,167.3L37.1,167.3z"/>
+              			</g>
+              		</g>
+              		<g>
+              			<g>
+              				<path class="st9" d="M41.7,165.3c-0.5,0.7-0.1,1.6,0.2,2.3c0.1,0.3,0.3,0.6,0.4,0.9c0,0.1-0.1-0.2,0-0.1c0,0,0,0.1,0,0.1
+              					c0,0.1,0,0.1,0.1,0.2c0,0,0,0.1,0,0.1c-0.1-0.2,0-0.2,0-0.1c0,0,0,0.1,0,0.1c0,0.1,0-0.2,0-0.1c0,0,0,0,0,0
+              					c0,0.1,0.1-0.1,0.1-0.1c0,0.1,0,0,0.1-0.1c0,0-0.1,0.1-0.1,0.1c0,0,0.2-0.1,0.1-0.1c0,0,0,0,0,0c-0.1,0.1,0.2-0.1,0,0
+              					c0,0-0.1,0-0.1,0c0,0-0.1,0-0.1,0c0.1,0,0.2,0,0.1,0c0,0-0.1,0-0.1,0c-0.4,0-0.8,0.3-0.8,0.8c0,0.4,0.3,0.8,0.8,0.8
+              					c0.5,0,1-0.1,1.4-0.5c0.3-0.4,0.4-0.8,0.3-1.3c-0.1-0.4-0.3-0.7-0.4-1c-0.1-0.2-0.2-0.3-0.2-0.5c0-0.1-0.1-0.1-0.1-0.2
+              					c0-0.1,0.1,0.2,0,0.1c0,0,0,0,0-0.1c0,0,0-0.1,0-0.1c0-0.1-0.1-0.2-0.1-0.2c0-0.1,0-0.2,0,0c0,0,0-0.1,0-0.1c0,0,0,0,0-0.1
+              					c0-0.1,0.1-0.1,0,0.1c0,0,0-0.1,0-0.1c0-0.1-0.1,0.2,0,0.1c0,0,0-0.1,0.1-0.1c0.2-0.3,0.1-0.9-0.3-1
+              					C42.3,164.8,42,165,41.7,165.3L41.7,165.3z"/>
+              			</g>
+              		</g>
+              		<g>
+              			<g>
+              				<path class="st9" d="M40,166.9c0,0.3,0,0.6,0,0.9c0,0.4,0,0.8,0,1.1c0-0.1,0-0.1,0-0.2c0,0.1,0,0.2-0.1,0.4
+              					c0-0.1,0.1-0.1,0.1-0.2c0,0,0,0.1-0.1,0.1c0-0.1,0.1-0.1,0.1-0.2c0,0,0,0,0,0c0.1,0,0.1-0.1,0.2-0.1c0,0,0,0-0.1,0
+              					c0.1,0,0.1-0.1,0.2-0.1c0,0,0,0-0.1,0c0.1,0,0.1,0,0.2,0c0,0,0,0-0.1,0c0.1,0,0.1,0,0.2,0c0,0-0.1,0-0.1,0
+              					c0.1,0,0.1,0.1,0.2,0.1c-0.1,0-0.1-0.1-0.2-0.1c0.1,0,0.1,0.1,0.2,0.1c0,0,0,0-0.1-0.1c-0.2-0.1-0.3-0.2-0.5-0.2
+              					c-0.2,0-0.4,0.1-0.5,0.2c-0.3,0.3-0.3,0.8,0,1.1c0.3,0.3,0.7,0.5,1.2,0.4c0.4-0.1,0.6-0.5,0.7-0.9c0.1-0.6,0.1-1.2,0.1-1.8
+              					c0-0.2,0-0.5,0-0.7c0-0.2-0.1-0.4-0.2-0.5c-0.1-0.1-0.3-0.2-0.5-0.2c-0.2,0-0.4,0.1-0.5,0.2C40.1,166.6,40,166.7,40,166.9
+              					L40,166.9z"/>
+              			</g>
+              		</g>
+              		<g>
+              			<g>
+              				<path class="st9" d="M40,167.7c-0.1-0.2-0.3-0.3-0.5-0.4c-0.1,0-0.3,0-0.5,0c-0.2,0.1-0.4,0.2-0.5,0.3c-0.2,0.2-0.4,0.5-0.5,0.7
+              					c0-0.1,0.1-0.1,0.1-0.2c-0.1,0.1-0.2,0.3-0.4,0.4c0.1,0,0.1-0.1,0.2-0.1c0,0-0.1,0.1-0.2,0.1c0.1,0,0.1-0.1,0.2-0.1
+              					c0,0-0.1,0-0.1,0c0.1,0,0.1,0,0.2,0c0,0-0.1,0-0.1,0c0.1,0,0.1,0,0.2,0c0,0-0.1,0-0.1,0c0.1,0,0.1,0.1,0.2,0.1c0,0,0,0-0.1,0
+              					c0.1,0,0.1,0.1,0.2,0.1c0,0-0.1-0.1-0.1-0.1c0,0.1,0.1,0.1,0.1,0.2c-0.1-0.1-0.1-0.2-0.2-0.3c0,0.1,0.1,0.1,0.1,0.2
+              					c0,0,0-0.1-0.1-0.1c-0.1-0.2-0.2-0.3-0.3-0.4c-0.2-0.1-0.4-0.1-0.6-0.1c-0.2,0.1-0.4,0.2-0.4,0.3c-0.1,0.2-0.1,0.4-0.1,0.6
+              					c0.1,0.3,0.2,0.6,0.5,0.8c0.3,0.3,0.6,0.4,1,0.3c0.5-0.1,0.8-0.5,1.1-0.9c0.1-0.1,0.2-0.3,0.3-0.4c0,0.1-0.1,0.1-0.1,0.2
+              					c0.1-0.1,0.1-0.2,0.2-0.2c-0.1,0-0.1,0.1-0.2,0.1c0,0,0,0,0.1,0c-0.1,0-0.1,0.1-0.2,0.1c0,0,0,0,0,0c-0.1,0-0.1,0-0.2,0
+              					c0,0,0,0,0,0c-0.1,0-0.1,0-0.2,0c0,0,0,0,0,0c-0.1,0-0.1-0.1-0.2-0.1c0,0,0,0,0,0c-0.1,0-0.1-0.1-0.2-0.1c0,0,0,0,0,0
+              					c0-0.1-0.1-0.1-0.1-0.2c0,0,0,0,0,0c0.1,0.2,0.2,0.3,0.4,0.3c0.2,0,0.4,0,0.6-0.1c0.2-0.1,0.3-0.3,0.3-0.4
+              					C40.1,168.1,40.1,167.9,40,167.7L40,167.7z"/>
+              			</g>
+              		</g>
+              		<g>
+              			<g>
+              				<path class="st9" d="M43.3,119.9c0.1,3.2-0.8,6.5,0.6,9.5c0.4,0.8,1,1.6,1.3,2.4c0.4,0.8,0.6,1.7,0.8,2.6
+              					c0.3,1.8,0.3,3.7,0.2,5.5c0,0.8-0.1,1.6,0,2.5c0,1,0.5,1.9,0.7,2.9c0.5,2,0.5,4.1,0.5,6.2c-0.1,3.9-0.8,7.8-0.6,11.8
+              					c0,1,1.5,1,1.5,0c-0.2-3.9,0.5-7.8,0.6-11.8c0.1-1.9,0-3.8-0.3-5.7c-0.2-1-0.6-2-0.8-3c-0.2-0.9-0.1-1.9,0-2.8
+              					c0.1-3.4,0-6.9-1.7-9.9c-1-1.7-1.4-3.1-1.3-5.1c0-1.7,0.3-3.4,0.2-5.1C44.8,118.9,43.3,118.9,43.3,119.9L43.3,119.9z"/>
+              			</g>
+              		</g>
+              		<g>
+              			<g>
+              				<path class="st9" d="M44.6,120.6c0-2.3,2.8-2.6,4.6-2.9c2.6-0.4,5.4-0.5,7.8-1.6c1.3-0.6,2.3-1.5,2.9-2.8
+              					c0.4-0.9-0.9-1.6-1.3-0.8c-1.1,2.5-4.1,2.9-6.4,3.3c-2.4,0.3-5.3,0.3-7.4,1.7c-1.1,0.7-1.7,1.8-1.7,3.1
+              					C43.1,121.5,44.6,121.5,44.6,120.6L44.6,120.6z"/>
+              			</g>
+              		</g>
+              		<g>
+              			<g>
+              				<path class="st9" d="M58.6,112c-3,15.9-0.1,32.1-2.1,48.1c-0.1,1,1.4,0.9,1.5,0c1.9-15.9-1-32,2-47.7
+              					C60.2,111.5,58.7,111.1,58.6,112L58.6,112z"/>
+              			</g>
+              		</g>
+              		<g>
+              			<g>
+              				<path class="st9" d="M56.6,159c-0.6,0.1-1.1,0.6-1.2,1.3c-0.1,0.6,0,1.2,0.3,1.7c0.1,0.3,0.3,0.5,0.5,0.7c0.3,0.3,0.8,0.3,1.1,0
+              					c0.3-0.3,0.3-0.8,0-1.1c-0.1-0.1-0.2-0.2-0.2-0.2c0,0.1,0.1,0.1,0.1,0.2c-0.1-0.2-0.2-0.3-0.3-0.5c0,0.1,0.1,0.1,0.1,0.2
+              					c-0.1-0.2-0.1-0.4-0.1-0.5c0,0.1,0,0.1,0,0.2c0-0.1,0-0.2,0-0.4c0,0.1,0,0.1,0,0.2c0-0.1,0-0.2,0.1-0.3c0,0.1-0.1,0.1-0.1,0.2
+              					c0-0.1,0.1-0.1,0.1-0.2c0,0.1-0.1,0.1-0.1,0.2c0-0.1,0.1-0.1,0.1-0.1c-0.1,0-0.1,0.1-0.2,0.1c0.1,0,0.1-0.1,0.2-0.1
+              					c-0.1,0-0.1,0.1-0.2,0.1c0.1,0,0.1,0,0.2-0.1c0.4-0.1,0.6-0.5,0.5-0.9C57.4,159.1,57,158.9,56.6,159L56.6,159z"/>
+              			</g>
+              		</g>
+              		<g>
+              			<g>
+              				<path class="st9" d="M56.1,159.8c-1-0.4-2.2-0.3-3.2-0.1c-1.2,0.2-2.3,0.6-3.4,1.2c-1.8,0.9-4.1,2.6-4.1,4.9
+              					c0,1.4,1,2.5,2.1,3.3c0.3,0.2,0.8,0.1,1-0.3c0.2-0.4,0.1-0.8-0.3-1c-0.4-0.3-0.8-0.7-1-1c-0.1-0.1-0.1-0.2-0.2-0.3
+              					c0,0,0-0.1-0.1-0.1c0.1,0.1,0,0,0,0c0-0.1-0.1-0.2-0.1-0.3c0,0,0-0.1,0-0.1c0,0.2,0,0,0,0c0-0.1,0-0.2,0-0.3c0-0.2,0,0.1,0-0.2
+              					c0-0.1,0-0.2,0.1-0.3c0,0,0-0.1,0-0.1c0,0,0.1-0.2,0,0c0.1-0.2,0.2-0.3,0.3-0.5c0.1-0.1,0.1-0.2,0.2-0.3
+              					c-0.1,0.1,0.1-0.2,0.2-0.2c1.3-1.5,3.3-2.4,5.3-2.8c0.5-0.1,0.9-0.2,1.5-0.2c0.1,0,0.2,0,0.4,0c0.1,0,0.1,0,0.2,0
+              					c0.2,0,0,0,0.1,0c0.2,0,0.5,0.1,0.7,0.2c0.4,0.1,0.8-0.2,0.9-0.5C56.7,160.3,56.5,159.9,56.1,159.8L56.1,159.8z"/>
+              			</g>
+              			<g>
+              				<path class="st9" d="M46.8,168.8c0.8,0.4,1.6,0.9,2.5,1.1c0.6,0.1,1.2,0.2,1.7-0.2c0.5-0.3,0.7-0.8,0.9-1.3
+              					c0.2-0.6,0.4-1.1,0.6-1.7c0-0.1,0,0.1,0,0c0-0.1,0-0.1,0.1-0.2c0-0.1,0.1-0.2,0.1-0.3c0.1-0.2,0.2-0.4,0.3-0.6
+              					c0.3-0.4,0.6-0.9,0.9-1.3c0.3-0.3,0.3-0.8,0-1.1c-0.3-0.3-0.8-0.3-1.1,0c-1,1.2-1.7,2.6-2.2,4.1c0,0.1-0.1,0.2-0.1,0.3
+              					c0,0.1,0,0.1-0.1,0.2c0,0,0,0.1,0,0.1c0,0.1,0.1-0.1,0,0c0,0.1-0.1,0.2-0.1,0.3c0,0,0,0.1-0.1,0.1c-0.1,0.1,0,0,0,0
+              					c0,0-0.1,0.1-0.1,0.1c-0.1,0.1,0,0,0,0c0,0-0.1,0.1-0.1,0.1c-0.1,0.1,0.2,0,0,0c0,0-0.1,0-0.1,0c-0.1,0,0.2,0,0,0
+              					c0,0-0.1,0-0.1,0c0,0-0.1,0-0.1,0c-0.1,0,0.2,0,0,0c-0.9-0.2-1.5-0.5-2.4-0.9c-0.4-0.2-0.8-0.1-1,0.3
+              					C46.4,168.2,46.5,168.7,46.8,168.8L46.8,168.8z"/>
+              			</g>
+              			<g>
+              				<path class="st9" d="M46.6,168.1c-0.3,1.3,0.5,2.6,1.5,3.4c0.5,0.4,1,0.8,1.6,1.1c0.2,0.1,0.5,0.2,0.7,0.3
+              					c0.5,0.1,1-0.2,1.5-0.5c0.3-0.2,0.7-0.4,1-0.6c0.4-0.3,0.5-0.7,0.7-1.1c0.3-0.7,0.4-1.4,0.7-2.1c0.1-0.3,0.3-0.6,0.5-0.8
+              					c0.2-0.2,0.3-0.4,0.5-0.6c0.3-0.4,0.4-0.9,0.5-1.4c0.1-0.6,0.1-1.2-0.2-1.7c-0.4-0.6-1.1-0.7-1.8-0.6c-0.4,0.1-0.6,0.6-0.5,0.9
+              					c0.1,0.4,0.5,0.6,0.9,0.5c-0.1,0,0.1,0,0.1,0c0.1,0,0,0,0,0c0.1,0,0.1,0,0,0c0.1,0,0-0.1,0,0c-0.1-0.1,0,0,0,0c0,0,0-0.1,0,0
+              					c0,0,0,0.2,0,0c0,0.1,0,0.1,0,0.2c0,0.1,0,0.1,0,0.2c0-0.2,0,0.1,0,0.1c0,0.1-0.1,0.2-0.1,0.4c-0.1,0.2-0.1,0.4-0.3,0.6
+              					c0,0-0.1,0.2-0.1,0.1c0.1-0.1-0.1,0.1-0.1,0.1c-0.1,0.2-0.3,0.3-0.4,0.5c-0.3,0.4-0.4,0.8-0.6,1.2c-0.3,0.8-0.5,1.7-0.9,2.5
+              					c0.1-0.1,0.2-0.2,0.3-0.3c-0.5,0.4-1.1,0.7-1.8,1c0.1,0,0.3,0,0.4,0c-0.7-0.2-1.4-0.6-1.9-1.2c-0.3-0.3-0.5-0.6-0.7-1
+              					c-0.1-0.1-0.1-0.3-0.1-0.4c0-0.1,0-0.3,0-0.4C48.2,167.6,46.8,167.2,46.6,168.1L46.6,168.1z"/>
+              			</g>
+              			<g>
+              				<path class="st9" d="M51.4,172.1c0.5,0.6,1,1.2,1.8,1.3c0.6,0.1,1.2-0.3,1.6-0.7c0.9-0.9,1.4-2.2,1.9-3.4
+              					c-0.1,0.1-0.1,0.2-0.2,0.3c0.8-0.8,1.2-2.1,1-3.3c-0.1-0.5-0.4-1-0.9-1.3c-0.7-0.3-1.4-0.1-2,0.2c-0.4,0.2-0.5,0.7-0.3,1
+              					c0.2,0.4,0.7,0.5,1,0.3c0,0,0.1,0,0.1-0.1c-0.1,0.1,0,0,0,0c0.1,0,0.2,0,0.2-0.1c0.1,0,0.2,0,0,0c0,0,0.1,0,0.1,0
+              					c0,0,0.1,0,0.1,0c-0.1,0-0.1-0.1,0,0c0.1,0.1-0.2-0.1,0,0c0.2,0.1-0.1-0.1,0,0c0.1,0.1,0-0.1,0,0c0,0.1,0.1,0.1,0.1,0.2
+              					c-0.1-0.2,0,0,0,0.1c0,0,0.1,0.2,0,0.1c0-0.1,0,0.1,0,0.2c0,0.1,0,0.2,0,0.3c0,0.1,0,0.3,0,0.1c0,0.1,0,0.1,0,0.2
+              					c0,0.2-0.1,0.3-0.1,0.5c0.1-0.2,0,0.1-0.1,0.1c0,0.1-0.1,0.1-0.1,0.2c0,0-0.2,0.2-0.1,0.1c-0.1,0.1-0.1,0.1-0.2,0.2
+              					c-0.2,0.2-0.2,0.4-0.3,0.7c0,0.1-0.1,0.3-0.1,0.2c0-0.1,0,0.1,0,0.1c0,0.1,0,0.1-0.1,0.2c-0.2,0.4-0.4,0.8-0.6,1.2
+              					c-0.1,0.2-0.2,0.3-0.3,0.5c0,0-0.1,0.1-0.1,0.1c0.1-0.1,0,0,0,0c-0.1,0.1-0.1,0.1-0.2,0.2c0,0-0.3,0.2-0.1,0.1
+              					c-0.1,0.1-0.2,0.1-0.2,0.1c-0.1,0.1,0,0,0,0c0,0-0.1,0-0.1,0c-0.1,0,0,0,0.1,0c0,0-0.1,0-0.1,0c0,0,0.2,0.1,0.1,0
+              					c0,0-0.1,0-0.2,0c0.2,0.1-0.1-0.1-0.1-0.1c0.1,0.1-0.1-0.1-0.1-0.1c-0.1-0.1-0.2-0.2-0.2-0.3c-0.2-0.3-0.7-0.5-1-0.3
+              					C51.4,171.2,51.2,171.7,51.4,172.1L51.4,172.1z"/>
+              			</g>
+              			<g>
+              				<path class="st9" d="M54.6,171.6c0.3,0.5,0.7,0.8,1.2,1c0.5,0.1,1,0,1.5-0.2c0.9-0.4,1.6-1.3,1.9-2.3c0.2-0.6,0.2-1.3,0.1-1.9
+              					c0,0.1,0,0.3,0,0.4c0.1-0.4,0-0.7-0.1-1c-0.1-0.3-0.3-0.5-0.6-0.6c-0.6-0.3-1.3-0.2-1.7,0.3c-0.3,0.3-0.3,0.8,0,1.1
+              					c0.3,0.3,0.8,0.3,1.1,0c0,0,0.1-0.1,0.1-0.1c0-0.1-0.2,0.1,0,0c0.2-0.1-0.1,0,0,0c0.1,0-0.2,0-0.1,0c0,0,0.1,0,0.1,0
+              					c0,0-0.2,0-0.1,0c0.1,0,0.1,0.1,0,0c0,0,0.2,0.1,0.1,0c-0.1-0.1,0,0,0,0c0,0,0,0.1,0-0.1c0,0,0.1,0.2,0.1,0.1c-0.1-0.1,0,0,0,0
+              					c0,0.1,0-0.2,0,0c0,0,0,0.1,0,0.1c0,0,0-0.1,0-0.1c0,0.1,0,0.1,0,0.2c0,0.1,0,0.3,0.1,0.4c0,0.1,0,0.1,0-0.1c0,0,0,0.1,0,0.1
+              					c0,0.1,0,0.2,0,0.2c0,0.1,0,0.1,0,0.2c0,0,0,0.1,0,0.1c0,0.2,0-0.2,0-0.1c0,0.1,0,0.3-0.1,0.4c0,0.1,0,0.1-0.1,0.2
+              					c0,0,0,0.1,0,0.1c0.1-0.2,0.1-0.1,0-0.1c-0.1,0.1-0.1,0.2-0.2,0.4c0,0.1-0.1,0.1-0.1,0.2c0,0,0,0,0,0.1c0.1-0.2,0.1-0.1,0-0.1
+              					c-0.1,0.1-0.2,0.2-0.3,0.3c0,0-0.1,0.1-0.1,0.1c-0.1,0-0.2,0.1,0,0c-0.1,0.1-0.2,0.1-0.3,0.2c0,0-0.1,0-0.1,0.1
+              					c-0.1,0.1,0.2-0.1,0.1,0c0,0-0.1,0-0.1,0c0,0-0.1,0-0.1,0c0,0-0.3,0-0.1,0c0.2,0,0,0-0.1,0c-0.1,0-0.1,0-0.2,0
+              					c0.2,0,0.2,0,0.1,0c0,0-0.1,0-0.1,0c0,0,0,0-0.1,0c-0.1,0,0.1,0.1,0.1,0c0,0-0.1-0.1-0.1-0.1c-0.1,0,0,0,0.1,0.1
+              					c0,0-0.1,0-0.1-0.1c0,0-0.1-0.1-0.1-0.1c0.1,0.1,0.1,0.1,0,0c0,0-0.1-0.1-0.1-0.1c-0.2-0.3-0.7-0.5-1-0.3
+              					C54.5,170.8,54.4,171.2,54.6,171.6L54.6,171.6z"/>
+              			</g>
+              			<g>
+              				<path class="st9" d="M51.6,165c0.2,0.2,0.5,0.3,0.8,0.3c0.4,0,0.8-0.3,0.9-0.7c0.1-0.5-0.1-1.1-0.3-1.5c-0.3-0.5-0.8-1-1.4-1.2
+              					c-0.7-0.3-1.4,0-2,0.5c-0.4,0.4-0.7,0.8-0.9,1.3c-0.4,0.7-0.6,1.5-0.8,2.3c-0.1,0.4,0.1,0.8,0.5,0.9c0.4,0.1,0.8-0.1,0.9-0.5
+              					c0.1-0.3,0.2-0.7,0.3-1c0-0.1,0.1-0.3,0.2-0.4c0-0.1,0-0.1,0.1-0.2c0,0,0-0.1,0-0.1c0-0.1-0.1,0.2,0,0c0.1-0.2,0.2-0.4,0.3-0.6
+              					c0-0.1,0.1-0.2,0.1-0.2c0,0,0.1-0.1,0.1-0.1c0,0,0,0,0-0.1c0.1-0.1-0.1,0.1-0.1,0.1c0.1-0.1,0.2-0.2,0.3-0.3
+              					c0.1-0.1,0.2-0.1-0.1,0c0,0,0,0,0.1,0c0.1,0,0.1-0.1,0.2-0.1c0.1-0.1-0.2,0.1-0.1,0c0,0,0.1,0,0.1,0c0.1,0,0.3,0,0,0
+              					c0,0,0.1,0,0.1,0c0,0,0,0,0.1,0c0.1,0-0.2,0-0.1,0c0,0,0.1,0,0.1,0c0,0,0,0,0.1,0c0.1,0-0.2-0.1-0.1,0c0.1,0,0.2,0.1,0.2,0.2
+              					c-0.3-0.2-0.1-0.1,0,0c0,0,0.1,0.1,0.1,0.1c0,0,0.1,0.1,0.1,0.1c0.1,0.2-0.1-0.2,0,0c0.1,0.1,0.1,0.2,0.2,0.2c0,0,0,0.1,0.1,0.1
+              					c0,0,0,0,0,0.1c0.1,0.1-0.1-0.2,0-0.1c0,0.1,0.1,0.2,0.1,0.2c0,0,0,0.1,0,0.1c0,0.1,0-0.2,0-0.1c0,0,0,0,0,0.1c0,0,0,0.2,0,0
+              					c0-0.2,0-0.1,0,0c0,0.1-0.1,0.1,0.1-0.1c-0.1,0.1,0.1-0.2,0.1-0.1c-0.1,0.1,0.2-0.1,0.1-0.1c0,0,0.2-0.1,0.1-0.1
+              					c-0.1,0,0.3,0,0.2,0c-0.1,0,0.1,0,0.1,0c0,0-0.1,0-0.1,0c0.2,0.1,0.2,0.1,0,0c-0.1,0-0.1-0.1-0.2-0.1c-0.3-0.2-0.8-0.1-1,0.3
+              					C51.1,164.4,51.2,164.8,51.6,165L51.6,165z"/>
+              			</g>
+              			<g>
+              				<path class="st9" d="M49,164.2c-0.1,0-0.2,0.1-0.3,0.1c0,0-0.1,0-0.1,0.1c-0.1,0.1-0.2,0.1-0.3,0.2c-0.1,0.1-0.2,0.2-0.2,0.3
+              					c0,0-0.1,0.1-0.1,0.1c-0.1,0.1-0.1,0.2-0.1,0.3c0,0.2-0.1,0.4-0.1,0.5c0,0.1,0,0.2,0.1,0.3c0,0.1,0.1,0.2,0.2,0.2
+              					c0.1,0.1,0.1,0.1,0.2,0.2c0.1,0,0.2,0.1,0.3,0.1c0.2,0,0.4-0.1,0.5-0.2c0-0.1,0.1-0.1,0.1-0.2c0.1-0.1,0.1-0.2,0.1-0.4
+              					c0-0.1,0-0.1,0-0.2c0,0.1,0,0.1,0,0.2c0-0.1,0-0.2,0.1-0.2c0,0.1-0.1,0.1-0.1,0.2c0-0.1,0.1-0.2,0.1-0.2c0,0.1-0.1,0.1-0.1,0.2
+              					c0.1-0.1,0.1-0.1,0.2-0.2c-0.1,0-0.1,0.1-0.2,0.1c0.1,0,0.1-0.1,0.2-0.1c-0.1,0-0.1,0.1-0.2,0.1c0,0,0.1,0,0.1,0
+              					c0.1,0,0.2-0.1,0.3-0.1c0.1-0.1,0.1-0.1,0.2-0.2c0.1-0.1,0.1-0.2,0.1-0.3c0-0.1,0-0.2,0-0.3c-0.1-0.2-0.2-0.4-0.3-0.4
+              					c-0.1,0-0.1-0.1-0.2-0.1C49.3,164.1,49.2,164.1,49,164.2L49,164.2z"/>
+              			</g>
+              			<g>
+              				<path class="st3" d="M49.9,164.9c0.2-0.5,0.2-1,0.1-1.5c-0.1-0.5-0.4-1-0.8-1.3c-0.2-0.1-0.3-0.2-0.5-0.2
+              					c-0.2,0-0.4,0.1-0.5,0.2c-0.1,0.1-0.2,0.3-0.2,0.5c0,0.2,0.1,0.4,0.2,0.5c0.1,0.1,0.2,0.2,0.3,0.3c0-0.1-0.1-0.1-0.1-0.2
+              					c0.1,0.1,0.2,0.3,0.2,0.4c0-0.1-0.1-0.1-0.1-0.2c0.1,0.2,0.1,0.3,0.1,0.5c0-0.1,0-0.1,0-0.2c0,0.2,0,0.3,0,0.5
+              					c0-0.1,0-0.1,0-0.2c0,0.1-0.1,0.3-0.1,0.4c-0.1,0.2,0,0.4,0.1,0.6c0.1,0.2,0.3,0.3,0.4,0.3c0.2,0,0.4,0,0.6-0.1
+              					C49.8,165.3,49.9,165.1,49.9,164.9L49.9,164.9z"/>
+              			</g>
+              			<g>
+              				<path class="st3" d="M55.9,160.5c0.2,0.5,0.5,0.9,0.9,1.3c0.4,0.3,0.8,0.5,1.2,0.7c0.4,0.2,0.8,0.3,1.1,0.5
+              					c0.1,0.1,0.2,0.1,0.3,0.2c0,0,0.1,0.1,0.1,0.1c0.2,0.1-0.1-0.1,0,0c0.1,0.1,0.2,0.1,0.2,0.2c0,0,0.1,0.1,0.1,0.1
+              					c0.1,0.1-0.1-0.1,0,0c0.2,0.3,0.7,0.5,1,0.3c0.3-0.2,0.5-0.7,0.3-1c-0.5-0.8-1.4-1.2-2.2-1.6c-0.4-0.2-0.8-0.3-1.1-0.6
+              					c0,0-0.1-0.1-0.1-0.1c0.1,0.1,0.1,0.1,0,0c0,0,0,0,0,0c-0.1-0.1-0.2-0.1-0.2-0.2c0,0-0.1-0.2-0.1-0.1c0.1,0.1,0-0.1,0-0.1
+              					c0,0,0-0.1-0.1-0.1c0,0-0.1-0.2,0,0c-0.2-0.4-0.5-0.7-0.9-0.5C56.1,159.6,55.8,160.1,55.9,160.5L55.9,160.5z"/>
+              			</g>
+              			<g>
+              				<path class="st3" d="M62.8,164.1c-1.7,1.7,0.4,3.9,1.2,5.4c0,0.1,0.1,0.2,0.1,0.3c0,0,0,0.1,0.1,0.1c-0.1-0.1,0-0.1,0,0
+              					c0,0.1,0,0.2,0.1,0.2c0,0.1,0-0.1,0,0c0,0,0,0.1,0,0.1c0,0.1,0-0.2,0-0.1c0,0,0,0.1,0,0.1c0-0.1,0.1-0.2,0-0.1
+              					c-0.1,0.1,0.1-0.1,0,0c0,0-0.1,0.1,0,0c0.1-0.1,0,0,0,0c0,0-0.1,0-0.1,0.1c-0.1,0.1,0,0,0.1,0c0,0-0.1,0-0.1,0
+              					c-0.1,0-0.2,0.1-0.4,0.1c-0.1,0-0.1,0-0.2,0c0.2,0-0.1,0-0.2,0c0,0-0.1,0,0,0c0.1,0-0.1,0-0.1,0c-0.1,0-0.1,0-0.2,0
+              					c-0.1,0-0.3,0-0.4,0c-0.6,0.1-1.2,0.2-1.8,0.4c-0.3,0.1-0.7,0.2-1,0.2c-0.1,0-0.2,0-0.3,0c0.2,0-0.1,0-0.1,0c-0.1,0-0.3,0-0.4,0
+              					c-0.2,0,0.1,0-0.1,0c-0.1,0-0.1,0-0.2,0c-0.1,0,0,0,0,0c0,0-0.1,0-0.1,0c-0.2-0.1,0.1,0,0,0c0,0,0,0,0-0.1c0,0,0,0,0,0.1
+              					c0,0,0,0,0,0c0,0,0-0.1,0-0.1c0-0.1,0,0.2,0,0c0-0.1,0-0.1,0-0.2c0-0.1,0,0.1,0,0c0-0.1,0-0.1,0-0.2c0-1-1.5-1-1.5,0
+              					c0,0.7,0.3,1.5,0.9,1.8c0.6,0.3,1.3,0.3,2,0.1c0.7-0.1,1.3-0.3,1.9-0.5c0.1,0,0.3-0.1,0.4-0.1c0.1,0,0.1,0,0.2,0
+              					c-0.2,0,0,0,0.1,0c0.1,0,0.2,0,0.4,0c0.1,0,0,0-0.1,0c0.1,0,0.1,0,0.2,0c0.1,0,0.2,0,0.3,0c0.6-0.1,1.3-0.2,1.8-0.6
+              					c0.4-0.4,0.5-0.9,0.4-1.5c-0.2-0.9-0.9-1.8-1.4-2.6c-0.2-0.2-0.3-0.5-0.4-0.7c0-0.1-0.1-0.1-0.1-0.2c-0.1-0.2,0,0.1,0,0
+              					c0-0.1-0.1-0.2-0.1-0.4c0-0.1,0-0.1,0-0.2c0-0.2,0,0.2,0,0c0-0.1,0-0.1,0-0.2c0-0.2,0,0.1,0,0c0,0,0-0.1,0-0.2c0-0.1,0,0,0,0.1
+              					c0,0,0-0.1,0-0.1c0-0.1,0.1-0.1,0.1-0.2c0-0.1-0.1,0.1,0,0.1c0,0,0.1-0.1,0.1-0.1C64.6,164.4,63.5,163.4,62.8,164.1L62.8,164.1z
+              					"/>
+              			</g>
+              			<g>
+              				<path class="st3" d="M57.9,169.3C57.9,169.4,57.9,169.4,57.9,169.3c0,0,0,0,0-0.1c0,0.1,0,0.3,0,0.4c0-0.1,0-0.1,0-0.2
+              					c0,0.1-0.1,0.3-0.1,0.4c0,0.1,0,0.2,0,0.3c0,0.1,0,0.2,0.1,0.3c0,0.1,0.1,0.2,0.2,0.2c0.1,0.1,0.2,0.1,0.3,0.1
+              					c0.2,0,0.4,0,0.6-0.1c0.1,0,0.1-0.1,0.2-0.1c0.1-0.1,0.2-0.2,0.2-0.3c0.1-0.2,0.1-0.4,0.1-0.7c0-0.2,0-0.5-0.1-0.7
+              					c0-0.1-0.1-0.2-0.1-0.3c-0.1-0.1-0.1-0.1-0.2-0.2c-0.1-0.1-0.2-0.1-0.3-0.1c-0.1,0-0.2,0-0.3,0c-0.2,0.1-0.4,0.2-0.4,0.3
+              					c0,0.1-0.1,0.1-0.1,0.2C57.9,169.1,57.9,169.2,57.9,169.3L57.9,169.3z"/>
+              			</g>
+              			<g>
+              				<path class="st3" d="M58,169.7c-0.3,0.3-0.5,0.6-0.8,0.9c0.4,0.3,0.8,0.6,1.2,0.9c0.3-0.5,0.6-0.9,0.8-1.4
+              					c0.1-0.1,0.2-0.3,0.3-0.4c0,0,0,0,0.1-0.1c0.1-0.1,0,0-0.1,0.1c0,0,0.1-0.1,0.1-0.1c0.1-0.1-0.2,0.1,0,0c0,0,0,0,0,0
+              					c0.1,0-0.2,0.1-0.1,0c0,0,0.2,0,0,0c-0.2,0,0,0,0.1,0c0.1,0,0.1,0,0.2,0c0,0,0.1,0,0.1,0c0,0,0,0,0,0c0.1,0-0.1,0-0.1,0
+              					c0.2,0,0.4,0.1,0.5,0.1c0.7,0.1,1.4,0.2,2.1,0.2c0.4,0,0.8-0.4,0.8-0.8c0-0.4-0.3-0.7-0.8-0.8c-0.4,0-0.7,0-1.1-0.1
+              					c-0.1,0-0.3,0-0.4,0c-0.1,0-0.1,0-0.2,0c-0.2,0,0.1,0-0.1,0c-0.4-0.1-0.8-0.1-1.1-0.1c-0.8,0-1.2,0.5-1.6,1.1
+              					c-0.3,0.5-0.6,1.1-0.9,1.6c-0.2,0.3-0.1,0.7,0.2,1c0.3,0.2,0.7,0.2,1-0.1c0.3-0.3,0.5-0.6,0.8-0.9c0.2-0.3,0.3-0.8,0-1.1
+              					C58.8,169.5,58.3,169.4,58,169.7L58,169.7z"/>
+              			</g>
+              			<g>
+              				<path class="st3" d="M63.9,165.4c4.9-11.6,3.8-24.7,7.4-36.6c0.3-0.9-1.2-1.3-1.4-0.4c-3.6,12-2.5,25-7.4,36.6
+              					C62.1,165.9,63.5,166.3,63.9,165.4L63.9,165.4z"/>
+              			</g>
+              			<g>
+              				<path class="st3" d="M71.1,129c1.9-7.7,2.7-15.7,2.4-23.6c0-1-1.5-1-1.5,0c0.3,7.8-0.4,15.6-2.3,23.2
+              					C69.5,129.6,70.9,130,71.1,129L71.1,129z"/>
+              			</g>
+              			<g>
+              				<path class="st3" d="M17.3,163.9c0.1,0,0.1,0,0.2,0c0.1,0-0.2,0,0,0c0.1,0,0.2,0,0.3,0.1c0,0,0.1,0,0.1,0c0,0,0,0,0.1,0
+              					c-0.1,0-0.1-0.1-0.1,0c0.1,0,0.1,0.1,0.2,0.1c0.1,0,0.1,0.1,0.2,0.1c-0.2-0.1-0.1-0.1,0,0c0,0,0.1,0.1,0.1,0.1
+              					c0.1,0.1,0.2,0.2,0.4,0.4c0,0,0,0.1,0.1,0.1c-0.2-0.2,0,0,0,0c0,0.1,0.1,0.1,0.1,0.2c0.1,0.2,0.2,0.3,0.3,0.5
+              					c0.2,0.3,0.4,0.6,0.6,0.9c0.2,0.3,0.7,0.5,1,0.3c0.3-0.2,0.5-0.7,0.3-1c-0.5-0.7-0.8-1.4-1.4-2c-0.6-0.7-1.4-1.1-2.4-1.2
+              					c-0.4,0-0.8,0.4-0.8,0.8C16.5,163.6,16.8,163.9,17.3,163.9L17.3,163.9z"/>
+              			</g>
+              			<g>
+              				<path class="st3" d="M69.3,66.4c-10.7,0.1-17.1,12.5-13.1,21.8c0.4,0.9,1.7,0.1,1.3-0.8c-3.6-8.3,2.4-19.4,11.8-19.5
+              					C70.3,67.9,70.3,66.4,69.3,66.4L69.3,66.4z"/>
+              			</g
+              				<path class="st3" d="M58.9,81.4c-2.7,3.9-4.2,8.5-3.7,13.2c0.5,4.7,2.7,8.8,5.8,12.2c0.6,0.7,1.7-0.3,1.1-1.1
+              					c-2.9-3.2-5.1-7.2-5.4-11.5c-0.3-4.4,1.1-8.5,3.6-12.1C60.7,81.4,59.4,80.6,58.9,81.4L58.9,81.4z"/>
+              			</g>
+              			<g>
+              				<path class="st3" d="M59,72.6c-2-2.7-5.2-4.1-8.6-3.6c-3.3,0.5-6.2,2.7-7.8,5.6c-0.5,0.8,0.8,1.6,1.3,0.8
+              					c1.3-2.5,3.7-4.4,6.5-4.9c2.8-0.5,5.6,0.5,7.2,2.8C58.2,74.1,59.5,73.4,59,72.6L59,72.6z"/>
+              			</g>
+              			<g>
+              				<path class="st3" d="M82.1,79.8c0.3,0.8,0.2,1.6,0.1,2.4c-0.1,1.2-0.4,2.3-0.6,3.5c-0.5,2-1,4.1-2,6c-0.4,0.9,0.9,1.6,1.3,0.8
+              					c1-2,1.6-4.3,2.1-6.5c0.3-1.2,0.5-2.5,0.6-3.7c0.1-0.9,0.1-1.9-0.2-2.8C83.2,78.5,81.7,78.9,82.1,79.8L82.1,79.8z"/>
+              			</g>
+              </svg>
+
+
+                </section>
+
+            <!-- ESTADISTICAS DE LA DESAPARICIÓN( texto sin editar-
+            Faco aquí queremos insertar un grafico de infogram  hasta hoy... quizas cambiemos a otra paltaforma)  -->
+
+            <div class="container border">
+                <div class="row">
+                    <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                        <h3 class="text-center mt-3 mb-1 border">Estadisticas</h3>
 
                     </div>
                 </div>
-            </section>
-              <h3 class="text-center pt-5 pb-2">Familia</h3>
-            <section>
+            </div>
+
+
+            <div class="container border">
+                <div class="row">
+                    <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                        <h3 class="text-center mt-3 mb-1 border">Amenazas</h3>
+                        <p>El espacio doméstico de la hembra es cuatro veces inferior al del macho cuyo territorio puede abarcar hasta 39 kilómetros cuadrados.</p>
+                    </div>
+                </div>
+            </div>
+
+            <section class="container" id="seccion_yuxtapuesta">
+                <div class="row">
+                    <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                        <h4 class="text-center mt-5 mb-3 border">Bosque vs Palma</h4>
+                        <div id="yuxtaposicion" class="my-3">
+                            <img src="imgs/borneoantes.jpg" alt="selva de borneo" />
+                            <img src="imgs/borneodespues.jpg" alt="plantación de palma de borneo" />
+                        </div>
+
+
+
+
+
+            <!--  .......... DESDE AQUÍ PARA ABAJO ES DE FACO .......... -->
+
+
+
+
+
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
+
+
+
+
+            <!--SECCIÓN ANCHA-->
+            <section id="seccion_ancha">
                 <div class="container-fluid g-0">
                     <div class="row g-0">
-                        <div class="col-sm-12 mx-auto">
-                            <h3 class="text-center pt-5 pb-2">Movements and maneuvers</h3>
-                            <div class="row bg-dark g-0">
-                                <!--también podemos usar object para ir a buscar el SVG-->
-                                <object class="col-sm-6 col-md-2" data="img/moves1-2.svg" type="image/svg+xml"></object>
-                                <object class="col-sm-6 col-md-2" data="img/moves3-4.svg" type="image/svg+xml"></object>
-                                <object class="col-sm-6 col-md-2" data="img/moves5-6.svg" type="image/svg+xml"></object>
-                                <object class="col-sm-6 col-md-2" data="img/moves7-8.svg" type="image/svg+xml"></object>
-                                <object class="col-sm-6 col-md-2" data="img/moves9-10.svg" type="image/svg+xml"></object>
-                                <object class="col-sm-6 col-md-2" data="img/moves11-12.svg" type="image/svg+xml"></object>
+                        <div class="col-12">
+                            <!--VAMOS A INCLUIR TRES SVG EN UN CARRUSEL-->
+                            <div id="carruselConMapa" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                                <div class="carousel-indicators">
+                                    <button type="button" data-bs-target="#carruselConMapa" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                    <button type="button" data-bs-target="#carruselConMapa" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                    <button type="button" data-bs-target="#carruselConMapa" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                </div>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active" data-bs-interval="1000">
+                                        <object class="d-block w-100" data="imgs/paso-1.svg" type="image/svg+xml"></object>
+                                        <div class="carousel-caption">
+                                            <small>A medida que se mueven su peso deforma las ramas hacia abajo.</small>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item" data-bs-interval="1000">
+                                        <object class="d-block w-100" data="imgs/paso-2.svg" type="image/svg+xml"></object>
+                                        <div class="carousel-caption">
+                                            <small>Se ayudan con sus pies prensiles para sostener ramas cercanas y propulsarse</small>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item" data-bs-interval="1000">
+                                        <object class="d-block w-100" data="imgs/paso-3.svg" type="image/svg+xml"></object>
+                                        <div class="carousel-caption">
+                                            <small>Distribuyen su peso para formar puentes a los árboles adyacentes</small>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="container">
                     <div class="row">
-                        <div class="col-sm-9 my-5 mx-auto">
-                            <p>Lo que ven arriba lo "tomé prestado" de <a href="https://multimedia.scmp.com/culture/article/ufo/" target="_blank" rel="noopener noreferrer">Are we alone?</a>, un trabajo de Adolfo Arranz y Pablo Robles, publicado en el South China Morning Post. Lo tomé por dos razones: (1) En cada SVG pueden ver <a href="https://css-tricks.com/guide-svg-animations-smil/" target="_blank" rel="noopener noreferrer">animaciones</a>, y (2) cada SVG está separado para adaptarse a distintas pantallas: Parece una única gráfica, pero en realidad son seis, y cada una presenta un par de movimientos.</p>
-                            <p>Y podemos encontrar maneras más sencillas de animar SVG. Podemos usar sólo CSS, como en el siguiente caso; donde tenemos un par de <a href="https://www.w3schools.com/css/css3_animations.asp" target="_blank">animaciones</a>, cada una con su <a href="https://www.w3schools.com/css/css3_2dtransforms.asp" target="_blank">transformación en 2D</a>:</p>
-                            <object class="mx-5" data="img/el-grito.svg" type="image/svg+xml"></object>
-                            <p class="text-center mx-5 small">Este es el saco gural o faringeo del Siamang, que puede inflarse hasta alcanzar el tamaño de su cabeza. Está presente en macho y hembra. Se trata de una característica morfológica única que los distingue de otros gibones.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="container-fluid g-0">
-                    <div class="row g-0">
-                        <div class="col-sm-12">
-                            <h3 class="text-center pt-5 pb-2">Familia</h3>
-                            <img src="img/2x1.png" alt="describa lo que se ve en la imagen" class="w-100" />
-                        </div>
-                        <div class="col-sm-8 py-5 mx-auto">
-                            <p class="px-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tellus eros, efficitur a eros at, eleifend rutrum est. Proin dolor nisl, hendrerit in dapibus vitae, molestie eu magna. Mauris at erat neque. Nulla ut convallis elit. Donec venenatis quam quam, quis facilisis sapien ultricies ac. Proin ut commodo nibh, non bibendum dui. Vestibulum convallis efficitur metus, vel vestibulum libero interdum quis. Ut varius sagittis sapien eget cursus. Morbi accumsan lectus nec sapien fermentum, a vestibulum nisl tempus. Pellentesque mollis nulla orci, id lobortis magna egestas quis. Nunc molestie, purus a posuere dapibus, turpis orci ornare elit, in semper dui purus sed nulla. Aenean vitae pharetra sem. Etiam consequat urna a lorem efficitur, vitae venenatis nisl rutrum. Aliquam dictum libero porttitor tellus consequat malesuada. Vivamus rhoncus ante ut libero pellentesque, luctus consectetur orci ultrices.</p>
+                        <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto my-5">
+                            <p>
+                                Pero no podemos dejar que todo se acabe en el encabezado. Corresponde ofrecer, en este párrafo desclasado, razones para bajar por distintas secciones (section), llegando al pie de página (footer). Nuevamente,
+                                que sea como un tweet (aquí también pueden contar sólo 280 caracteres).
+                            </p>
                         </div>
                     </div>
                 </div>
             </section>
-            <footer class="bg-dark text-white-50">
-                <div class="container">
-                    <div class="row">
-                        <div class="col py-5">
-                            <p class="text-center small">Lo dejaremos hasta aquí, por ahora</p>
-                        </div>
+            <!--SECCIÓN COMPARATIVA-->
+            <section class="container" id="seccion_comparativa">
+                <div class="row">
+                    <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                        <h3 class="text-center mt-5 mb-3">Sección comparativa</h3>
+                        <object data="imgs/grafico-tamanos.svg" type="image/svg+xml" class="my-3"></object>
+                        <p>
+                            Este es un lorem ipsum dolor sit amet, consectetur adipiscing elit. Pero no es un loren ipsum para papel, es para pantalla, donde
+                            <a href="https://www.nngroup.com/articles/how-users-read-on-the-web/" target="_blank" title="How Users Read on the Web">es recomendable</a> <em>destacar palabras clave</em>, ofrecer
+                            <a href="https://www.nngroup.com/videos/plain-language-for-experts/" target="_blank" title="Plain Language For Everyone, Even Experts">una idea por párrafo</a> (que sea clara para
+                            <a href="https://www.nngroup.com/videos/biggest-mistake-writing-web/" target="_blank" title="The Biggest Mistake in Writing for the Web">tu público objetivo</a>) y usar el estilo de pirámide invertida (incluyendo
+                            en cada pirámide lo que se acaba de <a href="https://youtu.be/iEB3oILm-qQ?t=2063" target="_blank" title="Charla del Dr. Mario García">mostrar o se mostrará</a> a continuación).
+                        </p>
                     </div>
                 </div>
-            </footer>
+            </section>
+
+            <!--SECCIÓN MOVILIZADA-->
+            <section class="container" id="seccion_movilizada">
+                <div class="row">
+                    <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                        <h3 class="text-center mt-5 mb-3">Sección movilizada</h3>
+
+                        <!--INTERACCIÓN-->
+
+                        <h4 class="text-center mt-5 mb-3">Interacción</h4>
+                        <div class="row">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100" class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                                <style type="text/css">
+                                    .lineas {
+                                        fill: none;
+                                        stroke: #585453;
+                                        stroke-linecap: round;
+                                        stroke-miterlimit: 10;
+                                    }
+                                </style>
+                                <path id="arriba" class="lineas" d="M5,50C5,50,57.7-5.9,110,5c52.3,10.9,85,80,85,80" />
+                                <path id="abajo" class="lineas" d="M25,35c0,0,14.1,55.5,75,60c59.5,4.4,70-45,70-45" />
+                                <circle id="iris" class="lineas" cx="105" cy="50" r="40" />
+                                <circle id="poca_luz" fill="back" cx="105" cy="50" r="35" />
+                                <ellipse id="mucha_luz" fill="back" cx="105" cy="50" rx="10" ry="35" class="d-none" />
+                            </svg>
+                        </div>
+                        <div class="small fw-bold text-center my-3">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="exampleRadios" id="radioNocturno" value="nocturno" onchange="getValue(this)" checked />
+                                <label class="form-check-label" for="radioNocturno">DE NOCHE</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="exampleRadios" id="radioDiurno" value="diurno" onchange="getValue(this)" />
+                                <label class="form-check-label" for="radioDiurno">DE DÍA</label>
+                            </div>
+                        </div>
+
+                        <p>
+                            Este es un lorem ipsum dolor sit amet, consectetur adipiscing elit. Pero no es un loren ipsum para papel, es para pantalla, donde
+                            <a href="https://www.nngroup.com/articles/how-users-read-on-the-web/" target="_blank" title="How Users Read on the Web">es recomendable</a> <em>destacar palabras clave</em>, ofrecer
+                            <a href="https://www.nngroup.com/videos/plain-language-for-experts/" target="_blank" title="Plain Language For Everyone, Even Experts">una idea por párrafo</a> (que sea clara para
+                            <a href="https://www.nngroup.com/videos/biggest-mistake-writing-web/" target="_blank" title="The Biggest Mistake in Writing for the Web">tu público objetivo</a>) y usar el estilo de pirámide invertida (incluyendo
+                            en cada pirámide lo que se acaba de <a href="https://youtu.be/iEB3oILm-qQ?t=2063" target="_blank" title="Charla del Dr. Mario García">mostrar o se mostrará</a> a continuación).
+                        </p>
+
+                        <!--ANIMACIÓN CON SVG-->
+
+                        <h4 class="text-center mt-5 mb-3">Animación con SVG</h4>
+                        <object class="mx-5" data="imgs/el-movimiento.svg" type="image/svg+xml"></object>
+                        <p>
+                            Este es un lorem ipsum dolor sit amet, consectetur adipiscing elit. Pero no es un loren ipsum para papel, es para pantalla, donde
+                            <a href="https://www.nngroup.com/articles/how-users-read-on-the-web/" target="_blank" title="How Users Read on the Web">es recomendable</a> <em>destacar palabras clave</em>, ofrecer
+                            <a href="https://www.nngroup.com/videos/plain-language-for-experts/" target="_blank" title="Plain Language For Everyone, Even Experts">una idea por párrafo</a> (que sea clara para
+                            <a href="https://www.nngroup.com/videos/biggest-mistake-writing-web/" target="_blank" title="The Biggest Mistake in Writing for the Web">tu público objetivo</a>) y usar el estilo de pirámide invertida (incluyendo
+                            en cada pirámide lo que se acaba de <a href="https://youtu.be/iEB3oILm-qQ?t=2063" target="_blank" title="Charla del Dr. Mario García">mostrar o se mostrará</a> a continuación).
+                        </p>
+
+                        <!--ANIMACIÓN CON SVG y CSS-->
+
+                        <h4 class="text-center mt-5 mb-3">Animación con SVG y CSS</h4>
+                        <object class="mx-5" data="imgs/el-grito.svg" type="image/svg+xml"></object>
+                        <p>
+                            Este es un lorem ipsum dolor sit amet, consectetur adipiscing elit. Pero no es un loren ipsum para papel, es para pantalla, donde
+                            <a href="https://www.nngroup.com/articles/how-users-read-on-the-web/" target="_blank" title="How Users Read on the Web">es recomendable</a> <em>destacar palabras clave</em>, ofrecer
+                            <a href="https://www.nngroup.com/videos/plain-language-for-experts/" target="_blank" title="Plain Language For Everyone, Even Experts">una idea por párrafo</a> (que sea clara para
+                            <a href="https://www.nngroup.com/videos/biggest-mistake-writing-web/" target="_blank" title="The Biggest Mistake in Writing for the Web">tu público objetivo</a>) y usar el estilo de pirámide invertida (incluyendo
+                            en cada pirámide lo que se acaba de <a href="https://youtu.be/iEB3oILm-qQ?t=2063" target="_blank" title="Charla del Dr. Mario García">mostrar o se mostrará</a> a continuación).
+                        </p>
+
+                        <!--ANIMACIÓN CON GIF y CSS-->
+
+                        <h4 class="text-center mt-5 mb-3">Animación con GIF y CSS</h4>
+                        <div class="mb-4 w-100 bg-light overflow-hidden">
+                            <img src="imgs/corre.gif" class="w-50" id="homero" />
+                        </div>
+                        <p>
+                            Este es un lorem ipsum dolor sit amet, consectetur adipiscing elit. Pero no es un loren ipsum para papel, es para pantalla, donde
+                            <a href="https://www.nngroup.com/articles/how-users-read-on-the-web/" target="_blank" title="How Users Read on the Web">es recomendable</a> <em>destacar palabras clave</em>, ofrecer
+                            <a href="https://www.nngroup.com/videos/plain-language-for-experts/" target="_blank" title="Plain Language For Everyone, Even Experts">una idea por párrafo</a> (que sea clara para
+                            <a href="https://www.nngroup.com/videos/biggest-mistake-writing-web/" target="_blank" title="The Biggest Mistake in Writing for the Web">tu público objetivo</a>) y usar el estilo de pirámide invertida (incluyendo
+                            en cada pirámide lo que se acaba de <a href="https://youtu.be/iEB3oILm-qQ?t=2063" target="_blank" title="Charla del Dr. Mario García">mostrar o se mostrará</a> a continuación).
+                        </p>
+
+                        <!--ANIMACIÓN CON GIF-->
+
+                        <h4 class="text-center mt-5 mb-3">Animación con GIF</h4>
+                        <div class="text-center pb-4">
+                            <img src="imgs/vuela.gif" class="w-50 mx-auto" />
+                        </div>
+                        <p>
+                            Este es un lorem ipsum dolor sit amet, consectetur adipiscing elit. Pero no es un loren ipsum para papel, es para pantalla, donde
+                            <a href="https://www.nngroup.com/articles/how-users-read-on-the-web/" target="_blank" title="How Users Read on the Web">es recomendable</a> <em>destacar palabras clave</em>, ofrecer
+                            <a href="https://www.nngroup.com/videos/plain-language-for-experts/" target="_blank" title="Plain Language For Everyone, Even Experts">una idea por párrafo</a> (que sea clara para
+                            <a href="https://www.nngroup.com/videos/biggest-mistake-writing-web/" target="_blank" title="The Biggest Mistake in Writing for the Web">tu público objetivo</a>) y usar el estilo de pirámide invertida (incluyendo
+                            en cada pirámide lo que se acaba de <a href="https://youtu.be/iEB3oILm-qQ?t=2063" target="_blank" title="Charla del Dr. Mario García">mostrar o se mostrará</a> a continuación).
+                        </p>
+                    </div>
+                </div>
+            </section>
         </main>
+
+        <!--ESTE ES EL PIE DE PÁGINA-->
+        <footer class="bg-dark text-white-50">
+            <div class="container">
+                <div class="row">
+                    <div class="col py-3">
+                        <p class="text-center small">Revisa <a href="index.html" class="link-light">el formato</a></p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- JAVASCRIPT -->
+
+        <!--Gráfico de barras-->
+
+        <script>
+            //No creo que sea necesario complicarse, puedes meter el dato a mano a continuación
+            var dato = [
+                { especie: "Orangután de Borneo", imagen: "https://www.nationalgeographic.com.es/medio/2018/02/27/orangutan__800x800_3.jpg", quedan: 45233 },
+                { especie: "Orangután de Sumatra", imagen: "https://www.nationalgeographic.com.es/medio/2018/02/27/orangutan__800x800_3.jpg", quedan: 721 },
+                { especie: "Orangután de Tapanuli", imagen: "https://www.nationalgeographic.com.es/medio/2018/02/27/orangutan__800x800_3.jpg", quedan: 2345 },
+            ];
+            //Sumo los que quedan a mano, para tener el total necesario para sacar % para barra
+            var total = dato[0]["quedan"] + dato[1]["quedan"] + dato[2]["quedan"];
+            //Voy a tomar el elemento con esta identidad
+            const lugar = document.getElementById("grafico_de_barras");
+            //Por cada dato en gráfico chanto algo al elemento
+            dato.forEach((d) => {
+                lugar.innerHTML +=
+                    '<div class="col-2 col-md-1"><img src="' +
+                    d.imagen +
+                    '" class="w-100 rounded-circle" data-bs-toggle="tooltip" data-bs-placement="right" title="' +
+                    d.especie +
+                    '"/></div><div class="col-10 col-md-11"><div class="progress"><div class="progress-bar" role="progressbar" style="width: ' +
+                    (d.quedan * 100) / total +
+                    '%;">' +
+                    d.quedan +
+                    "</div></div></div>";
+            });
+        </script>
+
+        <!-- Final de gráficos de barras -->
+
+        <!--EL SIGUIENTE PROGRAMITA CAMBIA EL OJO-->
+
+        <script>
+            function getValue(radio) {
+                if (radio.value == "nocturno") {
+                    document.getElementById("poca_luz").classList.remove("d-none");
+                    document.getElementById("mucha_luz").classList.add("d-none");
+                } else {
+                    document.getElementById("poca_luz").classList.add("d-none");
+                    document.getElementById("mucha_luz").classList.remove("d-none");
+                }
+            }
+        </script>
+        <!--BOOTSTRAP OFRECE SU PROPIA BIBLIOTECA DE JAVASCRIPT-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <script>
+            //esto activa el tooltip, que muestra el nombre de la especie en el gráfico
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+        </script>
+        <!--LO QUE SIGUE ES OTRA BIBLIOTECA DE JAVASCRIPT-->
+        <script src="https://unpkg.com/image-compare-viewer/dist/image-compare-viewer.min.js"></script>
+        <!--LO QUE SIGUE ES LA CONFIGURACIÓN DE LA COMPARACIÓN DE IMÁGENES-->
+        <script>
+            const element = document.querySelector("#yuxtaposicion");
+            const options = {
+                controlColor: "#fff",
+                controlShadow: true,
+                addCircle: true,
+                addCircleBlur: true,
+                showLabels: true,
+                labelOptions: {
+                    before: "Cara",
+                    after: "Sello",
+                    onHover: false,
+                },
+            };
+            const viewer = new ImageCompare(element, options).mount();
+        </script>
+
+        <!-- Este es el script para el mapa -->
+
+        <script>
+
+          var map = L.map('map').setView([-33.441, -70.648], 13);
+
+          var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+            maxZoom: 18,
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+              'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            id: 'mapbox/streets-v11',
+            tileSize: 512,
+            zoomOffset: -1
+          }).addTo(map);
+
+          var marker = L.marker([-33.441, -70.648]).addTo(map)
+            .bindPopup('<b>probando probando</b><br />Esto es Santiagoooooo de Shile!').openPopup();
+
+          var circle = L.circle([-33.45, -70.64], {
+            color: 'red',
+            fillColor: '#f03',
+            fillOpacity: 0.5,
+            radius: 500
+          }).addTo(map).bindPopup('Esto sería un círculo');
+
+          var polygon = L.polygon([
+            [-33.43, -70.67],
+            [-33.44, -70.66],
+            [-33.45, -70.68]
+          ]).addTo(map).bindPopup('Esto un poligono');
+
+          var popup = L.popup()
+            .setLatLng([-33.441, -70.648])
+            .setContent('Esto sería un Popup')
+            .openOn(map);
+
+          function onMapClick(e) {
+            popup
+              .setLatLng(e.latlng)
+              .setContent('esto pasa si haces click en el mapa :)' + e.latlng.toString())
+              .openOn(map);
+          }
+
+          map.on('aprete! aprete!', onMapClick);
+
+        </script>
+
     </body>
 </html>
