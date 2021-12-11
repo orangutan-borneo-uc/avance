@@ -1,935 +1,734 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <!-- COMMON TAGS -->
-        <title>Orangután de Borneo / Diplomado en Infografía UC</title>
-        <!-- Search Engine -->
-        <meta name="description" content="Infografía sobre el Orangután de Borneo, el hombre del bosque." />
-        <meta name="image" content="https://orangutan-borneo-uc.github.io/infografia/imgs/Orangutan_002.png" />
-        <!-- Schema.org for Google -->
-        <meta itemprop="name" content="Orangután de Borneo / Diplomado en Infografía UC" />
-        <meta itemprop="description" content="Infografía sobre el Orangután de Borneo, el hombre del bosque." />
-        <meta itemprop="image" content="https://orangutan-borneo-uc.github.io/infografia/imgs/Orangutan_002.png" />
-        <!-- Open Graph general (Facebook, Pinterest & Google+) -->
-        <meta name="og:title" content="Orangután de Borneo / Diplomado en Infografía UC" />
-        <meta name="og:description" content="Infografía sobre el Orangután de Borneo, el hombre del bosque." />
-        <meta name="og:locale" content="es_CL" />
-        <meta name="og:type" content="website" />
-
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
-        <style>
-            @import url("https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Roboto:ital,wght@0,300;0,400;0,500;1,400&display=swap");
-
-            /* Contradiciendo a Bootstrap */
-            :root {
-                --bs-body-font-family: "Roboto", sans-serif;
-                --bs-primary: #e65100 !important;
-            }
-
-            a {
-                color: #222;
-                text-decoration: underline;
-                transition: color ease 0.5s;
-            }
-            a:hover {
-                color: var(--bs-primary);
-                text-decoration: none;
-                transition: color ease 0.5s;
-            }
-
-            h1,
-            h2,
-            h3,
-            h4 {
-                font-weight: 400;
-                font-family: "PT Serif", serif;
-            }
-
-            h5,
-            h6 {
-                font-weight: 700;
-                font-family: "PT Serif", serif;
-            }
-
-            strong,
-            b,
-            em {
-                font-weight: 500;
-                font-style: normal;
-            }
-
-            h1 {
-                font-size: calc(1rem + 3vw);
-            }
-
-            h2 {
-                font-size: calc(0.75rem + 1vw);
-            }
-
-            h2 > span {
-                background: var(--bs-primary);
-                color: #fff;
-            }
-
-            h3 {
-                font-size: calc(1.5rem + 1vw);
-            }
-
-            header {
-                background: linear-gradient(rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%), url(imgs/bosque_borneo.jpeg);
-                background-size: cover;
-                background-position: center -250px;
-                background-repeat: no-repeat;
-                /*  background-attachment: fixed; */
-            }
-		
-	span[data-bs-toggle="popover"]{
-                cursor: pointer;
-            }
-		
-        </style>
-
-        <link href="https://unpkg.com/image-compare-viewer/dist/image-compare-viewer.min.css" rel="stylesheet" />
-
-        <!-- Esto sirve para que funcione el mapa -->
-
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
-        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
-
-    </head>
-
-    <body>
-
-        <!-- ENCABEZADO -->
-
-        <header>
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12 col-md-11 col-lg-10 col-xl-9 mx-auto">
-                        <img src="imgs/Orangutan_002.png" class="w-100" />
-                    </div>
-                </div>
+   <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <!-- COMMON TAGS -->
+      <title>Orangután de Borneo / Diplomado en Infografía UC</title>
+      <!-- Search Engine -->
+      <meta name="description" content="Infografía sobre el Orangután de Borneo, el hombre del bosque." />
+      <meta name="image" content="https://orangutan-borneo-uc.github.io/infografia/imgs/Orangutan_002.png" />
+      <!-- Schema.org for Google -->
+      <meta itemprop="name" content="Orangután de Borneo / Diplomado en Infografía UC" />
+      <meta itemprop="description" content="Infografía sobre el Orangután de Borneo, el hombre del bosque." />
+      <meta itemprop="image" content="https://orangutan-borneo-uc.github.io/infografia/imgs/Orangutan_002.png" />
+      <!-- Open Graph general (Facebook, Pinterest & Google+) -->
+      <meta name="og:title" content="Orangután de Borneo / Diplomado en Infografía UC" />
+      <meta name="og:description" content="Infografía sobre el Orangután de Borneo, el hombre del bosque." />
+      <meta name="og:locale" content="es_CL" />
+      <meta name="og:type" content="website" />
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+      <style>
+         @import url("https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Roboto:ital,wght@0,300;0,400;0,500;1,400&display=swap");
+         /* Contradiciendo a Bootstrap */
+         :root {
+         --bs-body-font-family: "Roboto", sans-serif;
+         --bs-primary: #e65100 !important;
+         }
+         a {
+         color: #222;
+         text-decoration: underline;
+         transition: color ease 0.5s;
+         }
+         a:hover {
+         color: var(--bs-primary);
+         text-decoration: none;
+         transition: color ease 0.5s;
+         }
+         h1,
+         h2,
+         h3,
+         h4 {
+         font-weight: 400;
+         font-family: "PT Serif", serif;
+         }
+         h5,
+         h6 {
+         font-weight: 700;
+         font-family: "PT Serif", serif;
+         }
+         strong,
+         b,
+         em {
+         font-weight: 500;
+         font-style: normal;
+         }
+         h1 {
+         font-size: calc(1rem + 3vw);
+         }
+         h2 {
+         font-size: calc(0.75rem + 1vw);
+         }
+         h2 > span {
+         background: var(--bs-primary);
+         color: #fff;
+         }
+         h3 {
+         font-size: calc(1.5rem + 1vw);
+         }
+         header {
+         background: linear-gradient(rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%), url(imgs/bosque_borneo.jpeg);
+         background-size: cover;
+         background-position: center -250px;
+         background-repeat: no-repeat;
+         /*  background-attachment: fixed; */
+         }
+         span[data-bs-toggle="popover"] {
+         cursor: pointer;
+         }
+         .progress-bar {
+         background-color: var(--bs-primary) !important;
+         }
+      </style>
+      <link href="https://unpkg.com/image-compare-viewer/dist/image-compare-viewer.min.css" rel="stylesheet" />
+      <!-- Esto sirve para que funcione el mapa -->
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+      <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+   </head>
+   <body>
+      <header>
+         <div class="container">
+            <div class="row">
+               <div class="col-sm-12 col-md-11 col-lg-10 col-xl-9 mx-auto">
+                  <img src="imgs/Orangutan_002.png" class="w-100" />
+               </div>
             </div>
-            <div class="container bg-white rounded-2">
-                <div class="row">
-                    <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-                        <h2 class="text-center fst-italic mt-5"><span class="px-2 py-1 rounded-2">Pongo pygmaeus</span></h2>
-
-                        <h1 class="text-center py-3">Orangután de Borneo</h1>
-
-			   
-	            <!--desde acá la edición de nombres-->
-
-                    <h6 class="text-center mb-5 text-muted">
-                        Por
-
-                        <span
-                            data-bs-container="body"
-                            data-bs-toggle="popover"
-                            data-bs-trigger="hover focus"
-                            data-bs-placement="top"
-                            data-bs-content="<div class='text-center'><img src='https://randomuser.me/api/portraits/men/14.jpg' class='w-50 mb-2 rounded-circle'><br>Nombre Apellido<br><span class='small text-muted'>Profesión</span></div>"
+         </div>
+         <div class="container bg-white rounded-2">
+            <div class="row">
+               <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                  <h2 class="text-center fst-italic mt-5"><span class="px-2 py-1 rounded-2">Pongo pygmaeus</span></h2>
+                  <h1 class="text-center py-3">Orangután de Borneo</h1>
+                  <!--desde acá la edición de nombres-->
+                  <h6 class="text-center mb-5 text-muted">
+                     Por
+                     <span
+                        data-bs-container="body"
+                        data-bs-toggle="popover"
+                        data-bs-trigger="hover focus"
+                        data-bs-placement="top"
+                        data-bs-content="<div class='text-center'><img src='https://randomuser.me/api/portraits/men/14.jpg' class='w-50 mb-2 rounded-circle'><br>Nombre Apellido<br><span class='small text-muted'>Profesión</span></div>"
                         >
-                            Fabiola Hernández
-                        </span>
-
-                        y
-
-                        <span
-                            data-bs-container="body"
-                            data-bs-toggle="popover"
-                            data-bs-trigger="hover focus"
-                            data-bs-placement="top"
-                            data-bs-content="<div class='text-center'><img src='https://randomuser.me/api/portraits/women/14.jpg' class='w-50 mb-2 rounded-circle'><br>Nombre Apellido<br><span class='small text-muted'>Profesión</span></div>"
+                     Fabiola Hernández
+                     </span>
+                     y
+                     <span
+                        data-bs-container="body"
+                        data-bs-toggle="popover"
+                        data-bs-trigger="hover focus"
+                        data-bs-placement="top"
+                        data-bs-content="<div class='text-center'><img src='https://randomuser.me/api/portraits/women/14.jpg' class='w-50 mb-2 rounded-circle'><br>Nombre Apellido<br><span class='small text-muted'>Profesión</span></div>"
                         >
-                            Juan Pablo Astorga
-                        </span>
-                    </h6>
-
-                    <!--hasta aquí la edición de nombres-->
-
-			    
-			    
-                        <p class="lead">
-                            En indonesio o malayo Orangután significa <em>"Hombre del bosque"</em>. "Orang" significa "pueblo / persona" y "hutan" significa "bosque". Otros nombres locales son: Kogiu, kahui, kisau y maias. Están en peligro
-                            crítico de extinción​ de acuerdo con la Lista Roja de la UICN.
-                        </p>
-
-                        <p class="strong text-center mt-5">Infografía Fabiola Hernández y Juan Pablo Astorga</p>
-
-                        <!-- NIVEL DE AMENAZA-->
-
-                        <div class="row">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300" class="col-11 col-sm-10 col-md-9 col-lg-8 col-xl-7 col-xxl-6 my-5 mx-auto">
-                                <style type="text/css">
-                                    line,
-                                    path {
-                                        fill: none;
-                                        stroke: #777777;
-                                        stroke-linecap: round;
-                                    }
-                                    .blanco {
-                                        fill: #ffffff;
-                                        font-size: 45px;
-                                    }
-                                    .gris {
-                                        fill: #777777;
-                                        font-size: 35px;
-                                    }
-                                    .no {
-                                        fill: #999999;
-                                    }
-                                    .si {
-                                        fill: var(--bs-primary);
-                                    }
-                                </style>
-                                <g id="ex">
-                                    <circle class="no" cx="82.1" cy="228.7" r="46.4" />
-                                    <text transform="matrix(1 0 0 1 54 245)" class="blanco">EX</text>
-                                </g>
-                                <g id="ew">
-                                    <circle class="no" cx="212.6" cy="228.7" r="46.4" />
-                                    <text transform="matrix(1 0 0 1 180 245)" class="blanco">EW</text>
-                                </g>
-                                <g id="cr">
-                                    <circle class="si" cx="342.9" cy="228.7" r="46.4" />
-                                    <text transform="matrix(1 0 0 1 313 245)" class="blanco">CR</text>
-                                </g>
-                                <g id="en">
-                                    <circle class="no" cx="473.6" cy="228.7" r="46.4" />
-                                    <text transform="matrix(1 0 0 1 444 245)" class="blanco">EN</text>
-                                </g>
-                                <g id="vu">
-                                    <circle class="no" cx="603.8" cy="228.7" r="46.4" />
-                                    <text transform="matrix(1 0 0 1 574 245)" class="blanco">VU</text>
-                                </g>
-                                <g id="nt">
-                                    <circle class="no" cx="734.1" cy="228.7" r="46.4" />
-                                    <text transform="matrix(1 0 0 1 705 245)" class="blanco">NT</text>
-                                </g>
-                                <g id="lc">
-                                    <circle class="no" cx="865.6" cy="228.7" r="46.4" />
-                                    <text transform="matrix(1 0 0 1 840 245)" class="blanco">LC</text>
-                                </g>
-                                <g id="datos">
-                                    <text transform="matrix(1 0 0 1 29.8186 54.2935)" class="gris">Extinto</text>
-                                    <text transform="matrix(1 0 0 1 382.5784 54.2935)" class="gris">Amenazado</text>
-                                    <text transform="matrix(1 0 0 1 760.9694 54.2935)" class="gris">Preocupación</text>
-                                    <text transform="matrix(1 0 0 1 812.2867 95.3477)" class="gris">menor</text>
-                                    <line class="st6" x1="865.6" y1="119.4" x2="865.6" y2="162.5" />
-                                    <line class="st6" x1="82.1" y1="77.9" x2="82.1" y2="162.5" />
-                                    <path
-                                        class="st6"
-                                        d="M279.3,162.5v-55.2c0-6,4.8-10.8,10.8-10.8h161.1c4.4,0,7.9-0.3,10.4-0.9c2.6-0.5,5-1.9,7-3.8 c2.6-3.3,4.1-6,4.3-8.6c0.2,2.6,1.7,5.3,4.3,8.6c2.1,2.1,4.4,3.3,7,3.8c2.6,0.5,6.2,0.9,10.4,0.9h163.2c6,0,10.8,4.8,10.8,10.8v55.2"
-                                    />
-                                </g>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-
-        <main class="pb-5">
-
-            <!-- TAXONOMÍA Y DISTRIBUCIÓN -->
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-                        <h3 class="text-center mt-3 mb-2">Las tres especies</h3>
-                        <p>
-                            Existen tres especies reconocidas de orangután. Sólo se encuentran en el sudeste asiático en las islas de Borneo y Sumatra. Borneo es la isla más grande de Asia y se divide en tres países: Brunei, Indonesia y
-                            Malasia. Sumatra es una isla más pequeña que pertenece por completo a Indonesia.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Este es el mapa con javascript -->
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-12 mt-3 py-3">
-                        <div id="map" style="height: 450px;"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Estos son los tres orangutanes -->
-                  <div class="container">
-                     <div class="row row-cols-12 row-cols-lg-4 g-2 g-lg-3 justify-content-center">
-                        <div class="col-12 col-lg-4">
-                            <div class="card">
-                                <img src="imgs/Borneo_bg_col.jpg" class="card-img-top" alt="Ilustración de un orangután de Borneo macho con bridas" />
-                                <div class="card-body">
-                                    <h5 class="card-title">Orangután de Borneo</h5>
-                                    <p class="card-text">Esl más grande de las tres especies. Posee el cabello semi corto de color marrón rojizo oscuro.</p>
-                                </div class="align-top">
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Las bridas masculinas son redondas y anchas.</li>
-                                    <li class="list-group-item">A menudo pasa tiempo en el suelo.</li>
-                          <!--  <li class="list-group-item">Población estimada:  57,350</li> -->
-                                </ul>
-                            </div>
-                        </div>
-
-                       <div class="col-12 col-lg-4">
-                            <div class="card">
-                                <img src="imgs/Borneo_bg_col.jpg" class="card-img-top" alt="Ilustración de un orangután de Sumatra macho con bridas" />
-                                <div class="card-body">
-                                    <h5 class="card-title">Orangután de Sumatra</h5>
-                                    <p class="card-text">Es más pequeño que su hermano de Borneo. Tiene un color de pelo rojo pardusco claro.</p>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Sus bridas se inclinan y parecen ovaladas.</li>
-                                    <li class="list-group-item">Pasa la mayor parte del tiempo en la copa de los árboles.</li>
-                            <!--    <li class="list-group-item">Población estimada: 13,846</li> -->
-                                </ul>
-                            </div>
-                       </div>
-
-                       <div class="col-12 col-lg-4">
-                            <div class="card">
-                                <img src="imgs/Borneo_bg_col.jpg" class="card-img-top" alt="Ilustración de un orangután Tapanuli macho con bridas" />
-                                <div class="card-body">
-                                    <h5 class="card-title">Orangután de Tapanuli</h5>
-                                    <p class="card-text">Similar al de Sumatra pero su cabello es más grueso y rizado. Posee una barba más larga</p>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Sus bridas tienden a ser planas y gruesas.</li>
-                                    <li class="list-group-item">Solo se encuentra en el bosque de Batang Toru.</li>
-                                    <!--<li class="list-group-item">Población estimada: < 800</li>-->
-                                </ul>
-                            </div>
-                       </div>
+                     Juan Pablo Astorga
+                     </span>
+                  </h6>
+                  <!--hasta aquí la edición de nombres-->
+                  <p class="lead">
+                     En indonesio o malayo Orangután significa <em>"Hombre del bosque"</em>. "Orang" significa "pueblo / persona" y "hutan" significa "bosque". Otros nombres locales son: Kogiu, kahui, kisau y maias. Están en peligro
+                     crítico de extinción​ de acuerdo con la Lista Roja de la UICN.
+                  </p>
+                  <!-- NIVEL DE AMENAZA-->
+                  <div class="row">
+                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300" class="col-11 col-sm-10 col-md-9 col-lg-8 col-xl-7 col-xxl-6 my-5 mx-auto">
+                        <style type="text/css">
+                           line,
+                           path {
+                           fill: none;
+                           stroke: #777777;
+                           stroke-linecap: round;
+                           }
+                           .blanco {
+                           fill: #ffffff;
+                           font-size: 45px;
+                           }
+                           .gris {
+                           fill: #777777;
+                           font-size: 35px;
+                           }
+                           .no {
+                           fill: #999999;
+                           }
+                           .si {
+                           fill: var(--bs-primary);
+                           }
+                        </style>
+                        <g id="ex">
+                           <circle class="no" cx="82.1" cy="228.7" r="46.4" />
+                           <text transform="matrix(1 0 0 1 54 245)" class="blanco">EX</text>
+                        </g>
+                        <g id="ew">
+                           <circle class="no" cx="212.6" cy="228.7" r="46.4" />
+                           <text transform="matrix(1 0 0 1 180 245)" class="blanco">EW</text>
+                        </g>
+                        <g id="cr">
+                           <circle class="si" cx="342.9" cy="228.7" r="46.4" />
+                           <text transform="matrix(1 0 0 1 313 245)" class="blanco">CR</text>
+                        </g>
+                        <g id="en">
+                           <circle class="no" cx="473.6" cy="228.7" r="46.4" />
+                           <text transform="matrix(1 0 0 1 444 245)" class="blanco">EN</text>
+                        </g>
+                        <g id="vu">
+                           <circle class="no" cx="603.8" cy="228.7" r="46.4" />
+                           <text transform="matrix(1 0 0 1 574 245)" class="blanco">VU</text>
+                        </g>
+                        <g id="nt">
+                           <circle class="no" cx="734.1" cy="228.7" r="46.4" />
+                           <text transform="matrix(1 0 0 1 705 245)" class="blanco">NT</text>
+                        </g>
+                        <g id="lc">
+                           <circle class="no" cx="865.6" cy="228.7" r="46.4" />
+                           <text transform="matrix(1 0 0 1 840 245)" class="blanco">LC</text>
+                        </g>
+                        <g id="datos">
+                           <text transform="matrix(1 0 0 1 29.8186 54.2935)" class="gris">Extinto</text>
+                           <text transform="matrix(1 0 0 1 382.5784 54.2935)" class="gris">Amenazado</text>
+                           <text transform="matrix(1 0 0 1 760.9694 54.2935)" class="gris">Preocupación</text>
+                           <text transform="matrix(1 0 0 1 812.2867 95.3477)" class="gris">menor</text>
+                           <line class="st6" x1="865.6" y1="119.4" x2="865.6" y2="162.5" />
+                           <line class="st6" x1="82.1" y1="77.9" x2="82.1" y2="162.5" />
+                           <path
+                              class="st6"
+                              d="M279.3,162.5v-55.2c0-6,4.8-10.8,10.8-10.8h161.1c4.4,0,7.9-0.3,10.4-0.9c2.6-0.5,5-1.9,7-3.8 c2.6-3.3,4.1-6,4.3-8.6c0.2,2.6,1.7,5.3,4.3,8.6c2.1,2.1,4.4,3.3,7,3.8c2.6,0.5,6.2,0.9,10.4,0.9h163.2c6,0,10.8,4.8,10.8,10.8v55.2"
+                              />
+                        </g>
+                     </svg>
                   </div>
+               </div>
             </div>
-
-            <!-- Este es el mapa SVG -->
-            <div class="container mt-5">
-                <div class="row">
-                    <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-                        <h3 class="text-center mt-3 mb-2">Aquí va el svg</h3>
-                        <p class="text-center" >Hay tres subespecies de orangután de Borneo</p>
-                        <object data="imgs/Digital_Mapa_Borneo_001.svg" type="image/svg+xml" class="my-3"></object>
-                    </div>
-                </div>
+         </div>
+      </header>
+      <main class="pb-5">
+         <!-- 
+            cuando describe  las características de las 3 especies, refieren a las bridas, pero no las explican. Creo que es necesario adelantar las características físicas, para que se llegue a tal lugar con esta información
+            
+            -->
+         <section>
+            <div class="container">
+               <div class="row">
+                  <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                     <h3 class="text-center my-5">Características físicas</h3>
+                     <p>Sus dedos largos y tienden a curvarse. En comparación con la mano humana, sus pulgares son más pequeños y menos ágiles. Sin embargo, pueden recoger objetos pequeños con bastante facilidad.</p>
+                     <div class="row g-5 mb-5">
+                        <div class="col-sm-6 text-center">
+                           <img src="imgs/manoorangutan.png" class="w-100" alt="..." />
+                           <p>Mano de un orangutan</p>
+                        </div>
+                        <div class="col-sm-6 text-center">
+                           <img src="imgs/manohumano.png" class="card-img-top" alt="..." />
+                           <p>Mano humana</p>
+                        </div>
+                     </div>
+                     <p>El macho dominante tiene protuberancias laterales que se denominan <em>bridas</em>. Los machos que no las poseen se integran con las hembras.</p>
+                     <div class="row g-5">
+                        <div class="col-6 text-center">
+                           <img src="imgs/bridas.png" class="w-100" alt="..." />
+                           <p>Macho dominante con bridas</p>
+                        </div>
+                        <div class="col-6 text-center">
+                           <img src="imgs/sinbridas.png" class="w-100" alt="..." />
+                           <p>Otros machos, sin bridas</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
             </div>
-
-            <!--Gráfico de Barras / MUCHAS GRACIAS FACO POR LA AYUDA! QUEDÓ GENIAL! -->
-            <div class="container mt-5">
-                <div class="row">
-                    <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+         </section>
+         <section class="container">
+            <div class="row">
+               <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                  <h3 class="text-center my-5">Las tres especies de orangután</h3>
+                  <p>
+                     Existen tres especies reconocidas de orangután. Sólo se encuentran en el sudeste asiático en las islas de Borneo y Sumatra. Borneo es la isla más grande de Asia y se divide en tres países: Brunei, Indonesia y
+                     Malasia. Sumatra es una isla más pequeña que pertenece por completo a Indonesia.
+                  </p>
+               </div>
+               <div class="col-12 mt-3 py-3">
+                  <div id="map" style="height: 50vh;"></div>
+                  <div class="row mt-1 align-items-stretch g-4">
+                     <div class="col-md-4 my-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                           <img src="imgs/Borneo_bg_col.jpg" class="card-img-top" alt="Ilustración de un orangután de Borneo macho con bridas" />
+                           <div class="card-body">
+                              <h5 class="card-title">Orangután de Borneo</h5>
+                              <p class="card-text">El más grande de las tres especies. Posee el cabello semi corto de color marrón rojizo oscuro.</p>
+                              <p class="card-text">Las bridas masculinas son redondas y anchas.</p>
+                              <p class="card-text">A menudo pasa tiempo en el suelo.</p>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-md-4 my-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                           <img src="imgs/Borneo_bg_col.jpg" class="card-img-top" alt="Ilustración de un orangután de Sumatra macho con bridas" />
+                           <div class="card-body">
+                              <h5 class="card-title">Orangután de Sumatra</h5>
+                              <p class="card-text">Es más pequeño que su hermano de Borneo. Tiene un color de pelo rojo pardusco claro.</p>
+                              <p class="card-text">Sus bridas se inclinan y parecen ovaladas.</p>
+                              <p class="card-text">Pasa la mayor parte del tiempo en la copa de los árboles.</p>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-md-4 my-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                           <img src="imgs/Borneo_bg_col.jpg" class="card-img-top" alt="Ilustración de un orangután Tapanuli macho con bridas" />
+                           <div class="card-body">
+                              <h5 class="card-title">Orangután de Tapanuli</h5>
+                              <p class="card-text">Similar al de Sumatra pero su cabello es más grueso y rizado. Posee una barba más larga</p>
+                              <p class="card-text">Sus bridas tienden a ser planas y gruesas.</p>
+                              <p class="card-text">Solo se encuentra en el bosque de Batang Toru.</p>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
                         <h4 class="text-center mt-5">¿Cuántos individuos quedan por especie?</h4>
                         <div class="row g-2 align-items-center my-4" id="grafico_de_barras"></div>
                         <p class="small text-center mb-5 text-black-50">Según el censo de población de orangután de 2016 [link], en [fecha]</p>
-                    </div>
-                </div>
-            </div>
-
-            
-            <!-- ................................................................................ -->
-            
-            <!-- CARACTERÍSTICAS FÍSICAS -->
-
-
-  <!-- aca viene mi card old . FACO ME AYUDAS A CENTRAR?-->
-
-            <div class="container border">
-                <div class="row">
-                    <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-                        <h3 class="text-center mt-3 mb-1 border">Características físicas</h3>
-                        <p>Sus dedos son más largos y tienden a curvarse.</p>
-                        <div class="card" style="width: 18rem;">
-                        <img src="imgs/manoorangutan.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                      <h5 class="card-title">Mano de un orangutan</h5>
-                    </div>
+                     </div>
                   </div>
-              <p> Sus pulgares son más pequeños y menos ágiles. Sin embargo, pueden recoger objetos pequeños con bastante facilidad.</p>
-
-               </div>
-                <div class="card" style="width: 18rem;">
-                 <img src="imgs/manohumano.png" class="card-img-top" alt="...">
-                <div class="card-body">
-      <h5 class="card-title">mano humana</h5>
-
-    </div>
-  </div>
-  <div class="card" style="width: 18rem;">
-    <img src="imgs/bridas.png" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Macho dominante</h5>
-      <p class="card-text">El macho dominante tiene protuberancias laterales que se denominan bridas.
-      </p>
-      <a href="#" class="btn btn-primary">más</a>
-    </div>
-  </div>
-  <div class="card" style="width: 18rem;">
-    <img src="imgs/sinbridas.png" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Otros machos</h5>
-              <p>
-              <p>
-      <p class="card-text">Los machos que no las poseen se integran con las hembras.</p>
-          <p>
-      <a href="#" class="btn btn-primary">más</a>
-
-    </div>
-  </div>
-            
-            <!-- ................................................................................ -->
-            
-            <!-- DESPLAZAMIENTO -->
-
-            <div class="container border">
-                <div class="row">
-                    <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-                        <h3 class="text-center mt-3 mb-1 border">Desplazamiento</h3>
-                        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    </div>
-                </div>
-            </div>
-
-            
-            <!-- ................................................................................ -->
-                    
-            <!-- REPRODUCCIÓN -->
-
-            <div class="container border">
-                <div class="row">
-                    <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-                        <h3 class="text-center mt-3 mb-1 border">Reproducción</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- HERRAMIENTAS -->
-
-            <div class="container border">
-                <div class="row">
-                    <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-                        <h3 class="text-center mt-3 mb-1 border">Uso de Herramientas</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    </div>
-                </div>
-            </div>
-
-                    
-            <!-- ................................................................................ -->
-                    
-            <!-- ALIMENTACIÓN -->
-
-            <div class="container border">
-                <div class="row">
-                    <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-                        <h3 class="text-center mt-3 mb-1 border">Uso de Herramientas</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseruntmollit anim id est laborum.</p>
-                    </div>
-                </div>
-            </div>
-
-                    
-            <!-- ................................................................................ -->
-            
-            <!-- TERRITORIO -->
-
-            <div class="container border">
-                <div class="row">
-                    <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-                        <h3 class="text-center mt-3 mb-1 border">Territorio</h3>
-                        <p>El espacio doméstico de la hembra es cuatro veces inferior al del macho cuyo territorio puede abarcar hasta 39 kilómetros cuadrados.
-                        </p>
-			     <object data="imgs/territorio.svg" type="image/svg+xml"></object>
-                 
-              
-           <h3 class="text-center mt-3 mb-1 border">Aullido</h3>
-           <?xml version="1.0" encoding="utf-8"?>
-            <!-- Generator: Adobe Illustrator 26.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	      viewBox="0 0 350 149.7" style="enable-background:new 0 0 350 149.7;" xml:space="preserve">
-             <style type="text/css">
-	     .st0{fill:none;}
-	     .st1{fill:#BCCFE3;}
-           </style>
-           <image style="overflow:visible;" width="700" height="300" xlink:href="imgs/bosquesonido.jpg"  transform="matrix(0.4974 0 0 0.4974 1.8 0.5)">
-           </image>
-           <path class="st0" d="M70.8,99.8h209.3 M268.1,106.9l14.4-7.1l-14.4-7"/>
-           <circle class="st1" cx="1.8" cy="-0.1" r="10">
-           <animateTransform  accumulate="none" additive="replace" attributeName="transform" attributeType="XML" begin="space1.end" calcMode="linear" dur="2s" fill="remove" id="pause" restart="always" type="translate">
-	   </animateTransform>
-           <animateMotion  accumulate="none" additive="replace" begin="0; pause.end" calcMode="linear" dur="4s" fill="freeze" id="space1" path="M70.8 99.8h209.3M268.1" restart="always">
-	   </animateMotion>
-           </circle>
-           <circle class="st1" cx="3" cy="0.5" r="10">
-           <animateTransform  accumulate="none" additive="replace" attributeName="transform" attributeType="XML" begin="space2.end" calcMode="linear" dur="2s" fill="remove" id="pause" restart="always" type="translate">
-	   </animateTransform>
-           <animateMotion  accumulate="none" additive="replace" begin="0; pause.end" calcMode="linear" dur="4s" fill="freeze" id="space2" keyPoints="0;0.5;0.65;0.8;1" keyTimes="0;0.30;0.36;0.66;1" path="M284 341.5h-225.6v-61h123.3" restart="always">
-	   </animateMotion>
-           </circle>
-           </svg>		 
-			<p>Se comunican a través de los sonidos para atraer a las hembras y ahuyentar a otros machos.
-Los aullidos emitidos por el macho dominante pueden traspasar selva sin perder su significado con una distancia de hasta 2 kilometros. </p>
-		<p>Se comunican a través de los sonidos para atraer a las hembras y ahuyentar a otros machos.
-Los aullidos emitidos por el macho dominante pueden traspasar selva sin perder su significado con una distancia de hasta 2 kilometros. </p>	
                </div>
             </div>
-	</div>	    
-
-
+         </section>
+         <!-- Este es el mapa SVG -->
+         <section class="container mt-5">
+            <div class="row">
+               <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                  <h3 class="text-center mt-3 mb-2">Subespecies en Borneo</h3>
+                  <p class="text-center">Hay tres subespecies de orangután de Borneo</p>
+                  <object data="imgs/Digital_Mapa_Borneo_001.svg" type="image/svg+xml" class="my-3"></object>
+               </div>
+            </div>
+         </section>
+         <!-- ................................................................................ -->
+         <!-- CARACTERÍSTICAS FÍSICAS -->
+         <!-- ................................................................................ -->
+         <!-- DESPLAZAMIENTO -->
+         <div class="container border">
+            <div class="row">
+               <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                  <h3 class="text-center mt-3 mb-1 border">Desplazamiento</h3>
+                  <p>
+                     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+                     ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                     mollit anim id est laborum.
+                  </p>
+               </div>
+            </div>
+         </div>
+         <!-- ................................................................................ -->
+         <!-- REPRODUCCIÓN -->
+         <div class="container border">
+            <div class="row">
+               <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                  <h3 class="text-center mt-3 mb-1 border">Reproducción</h3>
+                  <p>
+                     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+                     ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                     mollit anim id est laborum.
+                  </p>
+               </div>
+            </div>
+         </div>
+         <!-- HERRAMIENTAS -->
+         <div class="container border">
+            <div class="row">
+               <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                  <h3 class="text-center mt-3 mb-1 border">Uso de Herramientas</h3>
+                  <p>
+                     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+                     ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                     mollit anim id est laborum.
+                  </p>
+               </div>
+            </div>
+         </div>
+         <!-- ................................................................................ -->
+         <!-- ALIMENTACIÓN -->
+         <div class="container border">
+            <div class="row">
+               <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                  <h3 class="text-center mt-3 mb-1 border">Uso de Herramientas</h3>
+                  <p>
+                     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+                     ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                     deseruntmollit anim id est laborum.
+                  </p>
+               </div>
+            </div>
+         </div>
+         <!-- ................................................................................ -->
+         <!-- TERRITORIO -->
+         <div class="container border">
+            <div class="row">
+               <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                  <h3 class="text-center mt-3 mb-1 border">Territorio</h3>
+                  <p>El espacio doméstico de la hembra es cuatro veces inferior al del macho cuyo territorio puede abarcar hasta 39 kilómetros cuadrados.</p>
+                  <object data="imgs/territorio.svg" type="image/svg+xml"></object>
+                  <h3 class="text-center mt-3 mb-1 border">Aullido</h3>
+                  <?xml version="1.0" encoding="utf-8"?>
+                  <!-- Generator: Adobe Illustrator 26.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                  <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 350 149.7" style="enable-background: new 0 0 350 149.7;" xml:space="preserve">
+                     <style type="text/css">
+                        .st0 {
+                        fill: none;
+                        }
+                        .st1 {
+                        fill: #bccfe3;
+                        }
+                     </style>
+                     <image style="overflow: visible;" width="700" height="300" xlink:href="imgs/bosquesonido.jpg" transform="matrix(0.4974 0 0 0.4974 1.8 0.5)"></image>
+                     <path class="st0" d="M70.8,99.8h209.3 M268.1,106.9l14.4-7.1l-14.4-7" />
+                     <circle class="st1" cx="1.8" cy="-0.1" r="10">
+                        <animateTransform
+                           accumulate="none"
+                           additive="replace"
+                           attributeName="transform"
+                           attributeType="XML"
+                           begin="space1.end"
+                           calcMode="linear"
+                           dur="2s"
+                           fill="remove"
+                           id="pause"
+                           restart="always"
+                           type="translate"
+                           ></animateTransform>
+                        <animateMotion accumulate="none" additive="replace" begin="0; pause.end" calcMode="linear" dur="4s" fill="freeze" id="space1" path="M70.8 99.8h209.3M268.1" restart="always"></animateMotion>
+                     </circle>
+                     <circle class="st1" cx="3" cy="0.5" r="10">
+                        <animateTransform
+                           accumulate="none"
+                           additive="replace"
+                           attributeName="transform"
+                           attributeType="XML"
+                           begin="space2.end"
+                           calcMode="linear"
+                           dur="2s"
+                           fill="remove"
+                           id="pause"
+                           restart="always"
+                           type="translate"
+                           ></animateTransform>
+                        <animateMotion
+                           accumulate="none"
+                           additive="replace"
+                           begin="0; pause.end"
+                           calcMode="linear"
+                           dur="4s"
+                           fill="freeze"
+                           id="space2"
+                           keyPoints="0;0.5;0.65;0.8;1"
+                           keyTimes="0;0.30;0.36;0.66;1"
+                           path="M284 341.5h-225.6v-61h123.3"
+                           restart="always"
+                           ></animateMotion>
+                     </circle>
+                  </svg>
+                  <p>
+                     Se comunican a través de los sonidos para atraer a las hembras y ahuyentar a otros machos. Los aullidos emitidos por el macho dominante pueden traspasar selva sin perder su significado con una distancia de hasta
+                     2 kilometros.
+                  </p>
+                  <p>
+                     Se comunican a través de los sonidos para atraer a las hembras y ahuyentar a otros machos. Los aullidos emitidos por el macho dominante pueden traspasar selva sin perder su significado con una distancia de hasta
+                     2 kilometros.
+                  </p>
+               </div>
+            </div>
+         </div>
          <!-- ESTADISTICAS DE LA DESAPARICIÓN( texto sin editar   Faco aquí queremos insertar un grafico de infogram  hasta hoy... quizas cambiemos a otra paltaforma  -->
-
-     <div class="container border">
-          <div class="row">
-                    <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-                        <h3 class="text-center mt-3 mb-1 border">Estadisticas</h3>
-                        <p> Revisemos aquí un grafico comparativo de  variables asociadas a la desaparición del  la especie en la zona.</p>
-                    </div>
-                </div>
-	    </div>
-              <div class="mx-auto" style="width: 500px;">
-              <img src="imgs/estadistica_amenazas.png" alt="describa lo que se ve en la imagen" class="w-100 my-3" />
-                 <div class="position-static">
-              </div>
-           </div>
-        <div class="container border">
-          <div class="row">
-             <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-                </div>
-	          </div>
-                   </div>
-
-       <div class="container border">
-          <div class="row">
-              <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+         <div class="container border">
+            <div class="row">
+               <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                  <h3 class="text-center mt-3 mb-1 border">Estadisticas</h3>
+                  <p>Revisemos aquí un grafico comparativo de variables asociadas a la desaparición del la especie en la zona.</p>
+               </div>
+            </div>
+         </div>
+         <div class="mx-auto" style="width: 500px;">
+            <img src="imgs/estadistica_amenazas.png" alt="describa lo que se ve en la imagen" class="w-100 my-3" />
+            <div class="position-static"></div>
+         </div>
+         <div class="container border">
+            <div class="row">
+               <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto"></div>
+            </div>
+         </div>
+         <div class="container border">
+            <div class="row">
+               <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
                   <h3 class="text-center mt-3 mb-1 border">Amenazas</h3>
-                   <p>El espacio doméstico de la hembra es cuatro veces inferior al del macho cuyo territorio puede abarcar hasta 39 kilómetros cuadrados.</p>
-                 </div>
-              </div>
+                  <p>El espacio doméstico de la hembra es cuatro veces inferior al del macho cuyo territorio puede abarcar hasta 39 kilómetros cuadrados.</p>
+               </div>
             </div>
-
-        <section class="container" id="seccion_yuxtapuesta">
-                <div class="row">
-                    <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-                        <h4 class="text-center mt-5 mb-3 border">Bosque vs Palma</h4>
-                        <div id="yuxtaposicion" class="my-3">
-                            <img src="imgs/borneo_selva_tira.jpg" alt="selva de borneo" />
-                            <img src="imgs/borneo_palma_tira.jpg" alt="plantación de palma de borneo" />
-                        </div>
-                      </div>
-                    </p>
-                    </p>
-                    </p>
-                    </p>
-                    </p>
-                    </p>
-                    </p>
-                    </p>
-                    </p>
-                    </p>
-                    </p>
-                    </p>
-                    </p>
-                    </p>
-                    </p>
-                    </p>
-                    </p>
-                    </p>
-                    </div>
-                  </section>
-
-
-
-
-            <!--  .......... DESDE AQUÍ PARA ABAJO ES DE FACO .......... -->
-
-
-
-
-       </p>
-       </p>
-       </p>
-       </p>
-       </p>
-       </p>
-       </p>
-       </p>		    
-		    
-      </div>
-      </div>
-      </div>
-      </div>
-      </div>
-      </div>
-
-
-
-
-            <!--SECCIÓN ANCHA-->
-            <section id="seccion_ancha">
-                <div class="container-fluid g-0">
-                    <div class="row g-0">
-                        <div class="col-12">
-                            <!--VAMOS A INCLUIR TRES SVG EN UN CARRUSEL-->
-                            <div id="carruselConMapa" class="carousel slide carousel-fade" data-bs-ride="carousel">
-                                <div class="carousel-indicators">
-                                    <button type="button" data-bs-target="#carruselConMapa" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                                    <button type="button" data-bs-target="#carruselConMapa" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                    <button type="button" data-bs-target="#carruselConMapa" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                                </div>
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active" data-bs-interval="1000">
-                                        <object class="d-block w-100" data="imgs/paso-1.svg" type="image/svg+xml"></object>
-                                        <div class="carousel-caption">
-                                            <small>A medida que se mueven su peso deforma las ramas hacia abajo.</small>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item" data-bs-interval="1000">
-                                        <object class="d-block w-100" data="imgs/paso-2.svg" type="image/svg+xml"></object>
-                                        <div class="carousel-caption">
-                                            <small>Se ayudan con sus pies prensiles para sostener ramas cercanas y propulsarse</small>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item" data-bs-interval="1000">
-                                        <object class="d-block w-100" data="imgs/paso-3.svg" type="image/svg+xml"></object>
-                                        <div class="carousel-caption">
-                                            <small>Distribuyen su peso para formar puentes a los árboles adyacentes</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto my-5">
-                            <p>
-                                Pero no podemos dejar que todo se acabe en el encabezado. Corresponde ofrecer, en este párrafo desclasado, razones para bajar por distintas secciones (section), llegando al pie de página (footer). Nuevamente,
-                                que sea como un tweet (aquí también pueden contar sólo 280 caracteres).
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!--SECCIÓN COMPARATIVA-->
-            <section class="container" id="seccion_comparativa">
-                <div class="row">
-                    <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-                        <h3 class="text-center mt-5 mb-3">Sección comparativa</h3>
-                        <object data="imgs/grafico-tamanos.svg" type="image/svg+xml" class="my-3"></object>
-                        <p>
-                            Este es un lorem ipsum dolor sit amet, consectetur adipiscing elit. Pero no es un loren ipsum para papel, es para pantalla, donde
-                            <a href="https://www.nngroup.com/articles/how-users-read-on-the-web/" target="_blank" title="How Users Read on the Web">es recomendable</a> <em>destacar palabras clave</em>, ofrecer
-                            <a href="https://www.nngroup.com/videos/plain-language-for-experts/" target="_blank" title="Plain Language For Everyone, Even Experts">una idea por párrafo</a> (que sea clara para
-                            <a href="https://www.nngroup.com/videos/biggest-mistake-writing-web/" target="_blank" title="The Biggest Mistake in Writing for the Web">tu público objetivo</a>) y usar el estilo de pirámide invertida (incluyendo
-                            en cada pirámide lo que se acaba de <a href="https://youtu.be/iEB3oILm-qQ?t=2063" target="_blank" title="Charla del Dr. Mario García">mostrar o se mostrará</a> a continuación).
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <!--SECCIÓN MOVILIZADA-->
-            <section class="container" id="seccion_movilizada">
-                <div class="row">
-                    <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-                        <h3 class="text-center mt-5 mb-3">Sección movilizada</h3>
-
-                        <!--INTERACCIÓN-->
-
-                        <h4 class="text-center mt-5 mb-3">Interacción</h4>
-                        <div class="row">
-                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100" class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-                                <style type="text/css">
-                                    .lineas {
-                                        fill: none;
-                                        stroke: #585453;
-                                        stroke-linecap: round;
-                                        stroke-miterlimit: 10;
-                                    }
-                                </style>
-                                <path id="arriba" class="lineas" d="M5,50C5,50,57.7-5.9,110,5c52.3,10.9,85,80,85,80" />
-                                <path id="abajo" class="lineas" d="M25,35c0,0,14.1,55.5,75,60c59.5,4.4,70-45,70-45" />
-                                <circle id="iris" class="lineas" cx="105" cy="50" r="40" />
-                                <circle id="poca_luz" fill="back" cx="105" cy="50" r="35" />
-                                <ellipse id="mucha_luz" fill="back" cx="105" cy="50" rx="10" ry="35" class="d-none" />
-                            </svg>
-                        </div>
-                        <div class="small fw-bold text-center my-3">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="exampleRadios" id="radioNocturno" value="nocturno" onchange="getValue(this)" checked />
-                                <label class="form-check-label" for="radioNocturno">DE NOCHE</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="exampleRadios" id="radioDiurno" value="diurno" onchange="getValue(this)" />
-                                <label class="form-check-label" for="radioDiurno">DE DÍA</label>
-                            </div>
-                        </div>
-
-                        <p>
-                            Este es un lorem ipsum dolor sit amet, consectetur adipiscing elit. Pero no es un loren ipsum para papel, es para pantalla, donde
-                            <a href="https://www.nngroup.com/articles/how-users-read-on-the-web/" target="_blank" title="How Users Read on the Web">es recomendable</a> <em>destacar palabras clave</em>, ofrecer
-                            <a href="https://www.nngroup.com/videos/plain-language-for-experts/" target="_blank" title="Plain Language For Everyone, Even Experts">una idea por párrafo</a> (que sea clara para
-                            <a href="https://www.nngroup.com/videos/biggest-mistake-writing-web/" target="_blank" title="The Biggest Mistake in Writing for the Web">tu público objetivo</a>) y usar el estilo de pirámide invertida (incluyendo
-                            en cada pirámide lo que se acaba de <a href="https://youtu.be/iEB3oILm-qQ?t=2063" target="_blank" title="Charla del Dr. Mario García">mostrar o se mostrará</a> a continuación).
-                        </p>
-
-                        <!--ANIMACIÓN CON SVG-->
-
-                        <h4 class="text-center mt-5 mb-3">Animación con SVG</h4>
-                        <object class="mx-5" data="imgs/el-movimiento.svg" type="image/svg+xml"></object>
-                        <p>
-                            Este es un lorem ipsum dolor sit amet, consectetur adipiscing elit. Pero no es un loren ipsum para papel, es para pantalla, donde
-                            <a href="https://www.nngroup.com/articles/how-users-read-on-the-web/" target="_blank" title="How Users Read on the Web">es recomendable</a> <em>destacar palabras clave</em>, ofrecer
-                            <a href="https://www.nngroup.com/videos/plain-language-for-experts/" target="_blank" title="Plain Language For Everyone, Even Experts">una idea por párrafo</a> (que sea clara para
-                            <a href="https://www.nngroup.com/videos/biggest-mistake-writing-web/" target="_blank" title="The Biggest Mistake in Writing for the Web">tu público objetivo</a>) y usar el estilo de pirámide invertida (incluyendo
-                            en cada pirámide lo que se acaba de <a href="https://youtu.be/iEB3oILm-qQ?t=2063" target="_blank" title="Charla del Dr. Mario García">mostrar o se mostrará</a> a continuación).
-                        </p>
-
-                        <!--ANIMACIÓN CON SVG y CSS-->
-
-                        <h4 class="text-center mt-5 mb-3">Animación con SVG y CSS</h4>
-                        <object class="mx-5" data="imgs/el-grito.svg" type="image/svg+xml"></object>
-                        <p>
-                            Este es un lorem ipsum dolor sit amet, consectetur adipiscing elit. Pero no es un loren ipsum para papel, es para pantalla, donde
-                            <a href="https://www.nngroup.com/articles/how-users-read-on-the-web/" target="_blank" title="How Users Read on the Web">es recomendable</a> <em>destacar palabras clave</em>, ofrecer
-                            <a href="https://www.nngroup.com/videos/plain-language-for-experts/" target="_blank" title="Plain Language For Everyone, Even Experts">una idea por párrafo</a> (que sea clara para
-                            <a href="https://www.nngroup.com/videos/biggest-mistake-writing-web/" target="_blank" title="The Biggest Mistake in Writing for the Web">tu público objetivo</a>) y usar el estilo de pirámide invertida (incluyendo
-                            en cada pirámide lo que se acaba de <a href="https://youtu.be/iEB3oILm-qQ?t=2063" target="_blank" title="Charla del Dr. Mario García">mostrar o se mostrará</a> a continuación).
-                        </p>
-
-                        <!--ANIMACIÓN CON GIF y CSS-->
-
-                        <h4 class="text-center mt-5 mb-3">Animación con GIF y CSS</h4>
-                        <div class="mb-4 w-100 bg-light overflow-hidden">
-                            <img src="imgs/corre.gif" class="w-50" id="homero" />
-                        </div>
-                        <p>
-                            Este es un lorem ipsum dolor sit amet, consectetur adipiscing elit. Pero no es un loren ipsum para papel, es para pantalla, donde
-                            <a href="https://www.nngroup.com/articles/how-users-read-on-the-web/" target="_blank" title="How Users Read on the Web">es recomendable</a> <em>destacar palabras clave</em>, ofrecer
-                            <a href="https://www.nngroup.com/videos/plain-language-for-experts/" target="_blank" title="Plain Language For Everyone, Even Experts">una idea por párrafo</a> (que sea clara para
-                            <a href="https://www.nngroup.com/videos/biggest-mistake-writing-web/" target="_blank" title="The Biggest Mistake in Writing for the Web">tu público objetivo</a>) y usar el estilo de pirámide invertida (incluyendo
-                            en cada pirámide lo que se acaba de <a href="https://youtu.be/iEB3oILm-qQ?t=2063" target="_blank" title="Charla del Dr. Mario García">mostrar o se mostrará</a> a continuación).
-                        </p>
-
-                        <!--ANIMACIÓN CON GIF-->
-
-                        <h4 class="text-center mt-5 mb-3">Animación con GIF</h4>
-                        <div class="text-center pb-4">
-                            <img src="imgs/vuela.gif" class="w-50 mx-auto" />
-                        </div>
-                        <p>
-                            Este es un lorem ipsum dolor sit amet, consectetur adipiscing elit. Pero no es un loren ipsum para papel, es para pantalla, donde
-                            <a href="https://www.nngroup.com/articles/how-users-read-on-the-web/" target="_blank" title="How Users Read on the Web">es recomendable</a> <em>destacar palabras clave</em>, ofrecer
-                            <a href="https://www.nngroup.com/videos/plain-language-for-experts/" target="_blank" title="Plain Language For Everyone, Even Experts">una idea por párrafo</a> (que sea clara para
-                            <a href="https://www.nngroup.com/videos/biggest-mistake-writing-web/" target="_blank" title="The Biggest Mistake in Writing for the Web">tu público objetivo</a>) y usar el estilo de pirámide invertida (incluyendo
-                            en cada pirámide lo que se acaba de <a href="https://youtu.be/iEB3oILm-qQ?t=2063" target="_blank" title="Charla del Dr. Mario García">mostrar o se mostrará</a> a continuación).
-                        </p>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <!--ESTE ES EL PIE DE PÁGINA-->
-<aside>
-            <div class="container small text-center">
-                <div class="row py-5">
-                    <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-                        <h5 class="fs-6 mb-3">Fuentes</h5>
-
-                        <p>
-                            <a href="http://visibleearth.nasa.gov/view.php?id=40173">NASA Visible Earth</a> &bull; <a href="http://orbitaldebris.jsc.nasa.gov/">NASA Orbital Debris Program Office</a> &bull;
-                            <a href="http://www.ucsusa.org/">UCS Union of Concerned Scientics</a> &bull; <a href="http://www.jpl.nasa.gov/">NASA Jet Propulsion Laboratory</a> &bull; <a href="#">SSN (U.S. Space Surveillance Network)</a>
-                        </p>
-
-                        <p><em>Agradecimientos a</em> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum fringilla lorem nec tristique varius. Fusce egestas ullamcorper lorem et consequat.</p>
-
-                        <h5 class="fs-6 mt-5 mb-3">Versión impresa</h5>
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#modalImpreso">
-                            <img src="files/impresa.png" class="w-50 shadow-sm mb-5" alt="infografía impresa pequeña" />
-                        </a>
-                        <div class="modal fade" id="modalImpreso" tabindex="-1" aria-hidden="true">
-                            <div class="modal-dialog modal-fullscreen">
-                                <img src="files/impresa.png" class="w-100" alt="infografía impresa grande" />
-                            </div>
-                        </div>
-
-                        <p class="small">
-                            <em><a href="https://www.diplomadodeinfografia.cl/" class="link-dark" target="_blank">Diplomado de Infografía</a> &bull; 2021</em><br />
-                            Escuela de Diseño de la Pontificia Universidad Católica de Chile<br />
-                        </p>
-                    </div>
-                </div>
+         </div>
+         <section class="container" id="seccion_yuxtapuesta">
+            <div class="row">
+               <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                  <h4 class="text-center mt-5 mb-3 border">Bosque vs Palma</h4>
+                  <div id="yuxtaposicion" class="my-3">
+                     <img src="imgs/borneo_selva_tira.jpg" alt="selva de borneo" />
+                     <img src="imgs/borneo_palma_tira.jpg" alt="plantación de palma de borneo" />
+                  </div>
+               </div>
             </div>
-            <div class="bg-light">
-                <div class="container py-5">
-                    <div class="row">
-                        <h4 class="col-12 mb-4 text-center">También te puede interesar</h4>
-                    </div>
-                    <div class="row g-4" id="colegas"></div>
-                    <script>
-                        const colegas = document.getElementById("colegas");
-                        const datos = [
-                            { especie: "Gibón de manos blancas", imagen: "https://picsum.photos/id/237/300/300", descripcion: "Lorem ipsum dolor sit amet.", url: "https://gibon-de-manos-blancas.github.io/avance/" },
-                            { especie: "Grulla de cuello blanco", imagen: "https://picsum.photos/id/237/300/300", descripcion: "Lorem ipsum dolor sit amet.", url: "https://grulla-de-cuello-blanco.github.io/avance" },
-                            { especie: "Hipopotamo pigmeo", imagen: "https://picsum.photos/id/237/300/300", descripcion: "Un pequeño caballo de río.", url: "https://hipopotamo-pigmeo.github.io/avance" },
-                            { especie: "Panda rojo", imagen: "https://picsum.photos/id/237/300/300", descripcion: "El animal más lindo del mundo.", url: "https://infografia-panda-rojo.github.io/avance" },
-                            { especie: "Lemur cola anillada", imagen: "https://picsum.photos/id/237/300/300", descripcion: "El zorrillo de Madagascar.", url: "https://lemur-cola-anillada.github.io/avance" },
-                            { especie: "Orangutan borneo", imagen: "https://picsum.photos/id/237/300/300", descripcion: "El hombre del bosque.", url: "https://orangutan-borneo-uc.github.io/avance" },
-                            { especie: "Oso malayo", imagen: "https://picsum.photos/id/237/300/300", descripcion: "El oso más pequeño", url: "https://oso-malayo.github.io/avance" },
-                            { especie: "Siamang", imagen: "https://picsum.photos/id/237/300/300", descripcion: "El acróbata de la selva.", url: "https://siamang-infografia.github.io/avance" },
-                            { especie: "Tapir amazonico", imagen: "https://picsum.photos/id/237/300/300", descripcion: "El jardinero de la selva.", url: "https://tapir-amazonico.github.io/avance" },
-                            { especie: "Tigre de bengala", imagen: "https://picsum.photos/id/237/300/300", descripcion: "El felino más grande del mundo.", url: "https://tapir-amazonico.github.io/avance" }
-                        ];
-
-                        datos.forEach((d) => {
-                            if(d.especie != "Orangutan borneo"){
-                                colegas.innerHTML +=
-                                    '<div class="col-12 col-md-6 col-lg-4"><div class="row shadow-sm g-0 small align-items-center bg-white"><div class="col-3"><img src="' +
-                                    d.imagen + '" alt="' +
-                                    d.especie +
-                                    '" class="w-100"></div><div class="col-9 p-2"><em>' +
-                                    d.especie +
-                                    '</em>, <a href="' +
-                                    d.url +
-                                    '">' +
-                                    d.descripcion +
-                                    "</a></div></div></div>";
-                            }
-                        });
-                    </script>
-                </div>
+         </section>
+         <!--SECCIÓN ANCHA-->
+         <section id="seccion_ancha">
+            <div class="container-fluid g-0">
+               <div class="row g-0">
+                  <div class="col-12">
+                     <!--VAMOS A INCLUIR TRES SVG EN UN CARRUSEL-->
+                     <div id="carruselConMapa" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                           <button type="button" data-bs-target="#carruselConMapa" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                           <button type="button" data-bs-target="#carruselConMapa" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                           <button type="button" data-bs-target="#carruselConMapa" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        </div>
+                        <div class="carousel-inner">
+                           <div class="carousel-item active" data-bs-interval="1000">
+                              <object class="d-block w-100" data="imgs/paso-1.svg" type="image/svg+xml"></object>
+                              <div class="carousel-caption">
+                                 <small>A medida que se mueven su peso deforma las ramas hacia abajo.</small>
+                              </div>
+                           </div>
+                           <div class="carousel-item" data-bs-interval="1000">
+                              <object class="d-block w-100" data="imgs/paso-2.svg" type="image/svg+xml"></object>
+                              <div class="carousel-caption">
+                                 <small>Se ayudan con sus pies prensiles para sostener ramas cercanas y propulsarse</small>
+                              </div>
+                           </div>
+                           <div class="carousel-item" data-bs-interval="1000">
+                              <object class="d-block w-100" data="imgs/paso-3.svg" type="image/svg+xml"></object>
+                              <div class="carousel-caption">
+                                 <small>Distribuyen su peso para formar puentes a los árboles adyacentes</small>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
             </div>
-        </aside>
-
-        <!--ESTE ES EL PIE DE PÁGINA-->
-        <footer class="bg-dark text-white-50">
             <div class="container">
-                <div class="row">
-                    <div class="col py-3">
-                        <p class="text-center small">
-                            Esta obra está bajo una <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" class="link-light">Licencia Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional</a>.
-                        </p>
-                    </div>
-                </div>
+               <div class="row">
+                  <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto my-5">
+                     <p>
+                        Pero no podemos dejar que todo se acabe en el encabezado. Corresponde ofrecer, en este párrafo desclasado, razones para bajar por distintas secciones (section), llegando al pie de página (footer). Nuevamente,
+                        que sea como un tweet (aquí también pueden contar sólo 280 caracteres).
+                     </p>
+                  </div>
+               </div>
             </div>
-        </footer>
-
-        <!-- JAVASCRIPT -->
-
-        <!--Gráfico de barras-->
-
-        <script>
-            //No creo que sea necesario complicarse, puedes meter el dato a mano a continuación
-            var dato = [
-                { especie: "Orangután de Borneo", imagen: "https://www.nationalgeographic.com.es/medio/2018/02/27/orangutan__800x800_3.jpg", quedan: 45233 },
-                { especie: "Orangután de Sumatra", imagen: "https://www.nationalgeographic.com.es/medio/2018/02/27/orangutan__800x800_3.jpg", quedan: 721 },
-                { especie: "Orangután de Tapanuli", imagen: "https://www.nationalgeographic.com.es/medio/2018/02/27/orangutan__800x800_3.jpg", quedan: 2345 },
-            ];
-            //Sumo los que quedan a mano, para tener el total necesario para sacar % para barra
-            var total = dato[0]["quedan"] + dato[1]["quedan"] + dato[2]["quedan"];
-            //Voy a tomar el elemento con esta identidad
-            const lugar = document.getElementById("grafico_de_barras");
-            //Por cada dato en gráfico chanto algo al elemento
-            dato.forEach((d) => {
-                lugar.innerHTML +=
-                    '<div class="col-2 col-md-1"><img src="' +
-                    d.imagen +
-                    '" class="w-100 rounded-circle" data-bs-toggle="tooltip" data-bs-placement="right" title="' +
-                    d.especie +
-                    '"/></div><div class="col-10 col-md-11"><div class="progress"><div class="progress-bar" role="progressbar" style="width: ' +
-                    (d.quedan * 100) / total +
-                    '%;">' +
-                    d.quedan +
-                    "</div></div></div>";
-            });
-        </script>
-
-        <!-- Final de gráficos de barras -->
-
-        <!--EL SIGUIENTE PROGRAMITA CAMBIA EL OJO-->
-
-        <script>
-            function getValue(radio) {
-                if (radio.value == "nocturno") {
-                    document.getElementById("poca_luz").classList.remove("d-none");
-                    document.getElementById("mucha_luz").classList.add("d-none");
-                } else {
-                    document.getElementById("poca_luz").classList.add("d-none");
-                    document.getElementById("mucha_luz").classList.remove("d-none");
-                }
-            }
-        </script>
-        <!--BOOTSTRAP OFRECE SU PROPIA BIBLIOTECA DE JAVASCRIPT-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-        <script>
-            //esto activa el tooltip, que muestra el nombre de la especie en el gráfico
-            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-                return new bootstrap.Tooltip(tooltipTriggerEl);
-            });
-        </script>
-        <!--LO QUE SIGUE ES OTRA BIBLIOTECA DE JAVASCRIPT-->
-        <script src="https://unpkg.com/image-compare-viewer/dist/image-compare-viewer.min.js"></script>
-        <!--LO QUE SIGUE ES LA CONFIGURACIÓN DE LA COMPARACIÓN DE IMÁGENES-->
-        <script>
-            const element = document.querySelector("#yuxtaposicion");
-            const options = {
-                controlColor: "#fff",
-                controlShadow: true,
-                addCircle: true,
-                addCircleBlur: true,
-                showLabels: true,
-                labelOptions: {
-                    before: "Cara",
-                    after: "Sello",
-                    onHover: false,
-                },
-            };
-            const viewer = new ImageCompare(element, options).mount();
-        </script>
-
-        <!-- Este es el script para el mapa -->
-
-              <script>
-            var map = L.map("map").setView([1.0, 107.7], 5);
-
-            L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-            }).addTo(map);
-
-            var LeafIcon = L.Icon.extend({
-                options: {
-                    shadowUrl: "imgs/leaf-shadow.png",
-                    iconSize: [53, 95],
-                    shadowSize: [50, 64],
-                    iconAnchor: [22, 94],
-                    shadowAnchor: [4, 62],
-                    popupAnchor: [-3, -76],
-                },
-            });
-
-            var greenIcon = new LeafIcon({ iconUrl: "imgs/leaf-green.png" });
-            var redIcon = new LeafIcon({ iconUrl: "imgs/leaf-red.png" });
-            var orangeIcon = new LeafIcon({ iconUrl: "imgs/leaf-orange.png" });
-
-            var mGreen = L.marker([3.807798, 97.452561], { icon: greenIcon }).bindPopup("<strong>Orangután de Sumatra</strong> <br> Pongo abelii.").addTo(map);
-            var mRed = L.marker([1.274309, 113.378906], { icon: redIcon }).bindPopup("<strong>Orangután de Borneo</strong> <br> Pongo pygmaeus.").addTo(map);
-            var mOrange = L.marker([1.487107, 99.068527], { icon: orangeIcon }).bindPopup("<strong>Orangután de Tapanuli</strong> <br> Pongo tapanuliensis.").addTo(map);
-        </script>
-
-        <!--BOOTSTRAP OFRECE SU PROPIA BIBLIOTECA DE JAVASCRIPT-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
-        <!--CON ESTE CÓDIGO DE ACTIVA EL POPOVER SOBRE SU NOMBRE-->
-        <script>
-            var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
-            var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-                return new bootstrap.Popover(popoverTriggerEl, { html: true });
-            });
-         </script>
-
-    </body>
+         </section>
+         <!--SECCIÓN COMPARATIVA-->
+         <section class="container" id="seccion_comparativa">
+            <div class="row">
+               <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                  <h3 class="text-center mt-5 mb-3">Sección comparativa</h3>
+                  <object data="imgs/grafico-tamanos.svg" type="image/svg+xml" class="my-3"></object>
+                  <p>
+                     Este es un lorem ipsum dolor sit amet, consectetur adipiscing elit. Pero no es un loren ipsum para papel, es para pantalla, donde
+                     <a href="https://www.nngroup.com/articles/how-users-read-on-the-web/" target="_blank" title="How Users Read on the Web">es recomendable</a> <em>destacar palabras clave</em>, ofrecer
+                     <a href="https://www.nngroup.com/videos/plain-language-for-experts/" target="_blank" title="Plain Language For Everyone, Even Experts">una idea por párrafo</a> (que sea clara para
+                     <a href="https://www.nngroup.com/videos/biggest-mistake-writing-web/" target="_blank" title="The Biggest Mistake in Writing for the Web">tu público objetivo</a>) y usar el estilo de pirámide invertida (incluyendo
+                     en cada pirámide lo que se acaba de <a href="https://youtu.be/iEB3oILm-qQ?t=2063" target="_blank" title="Charla del Dr. Mario García">mostrar o se mostrará</a> a continuación).
+                  </p>
+               </div>
+            </div>
+         </section>
+      </main>
+      <!--ESTE ES EL PIE DE PÁGINA-->
+      <aside>
+         <div class="container small text-center">
+            <div class="row py-5">
+               <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                  <h5 class="fs-6 mb-3">Fuentes</h5>
+                  <p>
+                     <a href="http://visibleearth.nasa.gov/view.php?id=40173">NASA Visible Earth</a> &bull; <a href="http://orbitaldebris.jsc.nasa.gov/">NASA Orbital Debris Program Office</a> &bull;
+                     <a href="http://www.ucsusa.org/">UCS Union of Concerned Scientics</a> &bull; <a href="http://www.jpl.nasa.gov/">NASA Jet Propulsion Laboratory</a> &bull; <a href="#">SSN (U.S. Space Surveillance Network)</a>
+                  </p>
+                  <p><em>Agradecimientos a</em> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum fringilla lorem nec tristique varius. Fusce egestas ullamcorper lorem et consequat.</p>
+                  <h5 class="fs-6 mt-5 mb-3">Versión impresa</h5>
+                  <a href="#" data-bs-toggle="modal" data-bs-target="#modalImpreso">
+                  <img src="imgs/impresa.jpg" class="w-50 shadow-sm mb-5" alt="infografía impresa pequeña" />
+                  </a>
+                  <div class="modal fade" id="modalImpreso" tabindex="-1" aria-hidden="true">
+                     <div class="modal-dialog modal-fullscreen">
+                        <img src="imgs/impresa.jpg" class="w-100" alt="infografía impresa grande" />
+                     </div>
+                  </div>
+                  <p class="small">
+                     <em><a href="https://www.diplomadodeinfografia.cl/" class="link-dark" target="_blank">Diplomado de Infografía</a> &bull; 2021</em><br />
+                     Escuela de Diseño de la Pontificia Universidad Católica de Chile<br />
+                  </p>
+               </div>
+            </div>
+         </div>
+         <div class="bg-light">
+            <div class="container py-5">
+               <div class="row">
+                  <h4 class="col-12 mb-4 text-center">También te puede interesar</h4>
+               </div>
+               <div class="row g-4" id="colegas"></div>
+               <script>
+                  const colegas = document.getElementById("colegas");
+                  const datos = [
+                      {
+                          especie: "Gibón de manos blancas",
+                          imagen: "https://raw.githubusercontent.com/Gibon-de-manos-blancas/avance/main/archivos/grupal.jpg",
+                          descripcion: "el danzarin del bosque.",
+                          url: "https://gibon-de-manos-blancas.github.io/avance/",
+                      },
+                      { especie: "Grulla de cuello blanco", imagen: "https://picsum.photos/id/237/300/300", descripcion: "un viajera romántica.", url: "https://grulla-de-cuello-blanco.github.io/avance" },
+                      {
+                          especie: "Hipopótamo pigmeo",
+                          imagen: "https://raw.githubusercontent.com/hipopotamo-pigmeo/avance/main/files/grupal.jpg",
+                          descripcion: "un pequeño caballo de río.",
+                          url: "https://hipopotamo-pigmeo.github.io/avance",
+                      },
+                      { especie: "Panda rojo", imagen: "https://picsum.photos/id/237/300/300", descripcion: "el animal más lindo del mundo.", url: "https://infografia-panda-rojo.github.io/avance" },
+                      {
+                          especie: "Lemur cola anillada",
+                          imagen: "https://raw.githubusercontent.com/lemur-cola-anillada/avance/main/files/grupal.png",
+                          descripcion: "el zorrillo de Madagascar.",
+                          url: "https://lemur-cola-anillada.github.io/avance",
+                      },
+                      {
+                          especie: "Orangutan borneo",
+                          imagen: "https://raw.githubusercontent.com/orangutan-borneo-uc/avance/main/imgs/grupal.jpg",
+                          descripcion: "el hombre del bosque.",
+                          url: "https://orangutan-borneo-uc.github.io/avance",
+                      },
+                      { especie: "Oso malayo", imagen: "https://raw.githubusercontent.com/oso-malayo/Avance/main/cositas/grupal.png", descripcion: "el oso más pequeño", url: "https://oso-malayo.github.io/avance" },
+                      { especie: "Siamang", imagen: "https://avatars.githubusercontent.com/u/95137910?s=200&v=4", descripcion: "El acróbata de la selva.", url: "https://siamang-infografia.github.io/avance" },
+                      { especie: "Tapir amazónico", imagen: "https://raw.githubusercontent.com/tapir-amazonico/avance/main/files/grupal.jpg", descripcion: "el jardinero de la selva.", url: "https://tapir-amazonico.github.io/avance" },
+                      {
+                          especie: "Tigre de bengala",
+                          imagen: "https://raw.githubusercontent.com/Tigre-de-Bengala/avance/main/grupal.jpg",
+                          descripcion: "el felino más grande del mundo.",
+                          url: "https://tapir-amazonico.github.io/avance",
+                      },
+                  ];
+                  datos.forEach((d) => {
+                      if (d.especie != "Orangutan borneo") {
+                          colegas.innerHTML +=
+                              '<div class="col-12 col-md-6 col-lg-4"><div class="row shadow-sm g-0 small align-items-center bg-white"><div class="col-3"><img src="' +
+                              d.imagen +
+                              '" alt="' +
+                              d.especie +
+                              '" class="w-100"></div><div class="col-9 p-2"><em>' +
+                              d.especie +
+                              '</em>, <a href="' +
+                              d.url +
+                              '">' +
+                              d.descripcion +
+                              "</a></div></div></div>";
+                      }
+                  });
+               </script>
+            </div>
+         </div>
+      </aside>
+      <!--ESTE ES EL PIE DE PÁGINA-->
+      <footer class="bg-dark text-white-50">
+         <div class="container">
+            <div class="row">
+               <div class="col py-3">
+                  <p class="text-center small">
+                     Esta obra está bajo una <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" class="link-light">Licencia Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional</a>.
+                  </p>
+               </div>
+            </div>
+         </div>
+      </footer>
+      <!-- JAVASCRIPT -->
+      <!--Gráfico de barras-->
+      <script>
+         //No creo que sea necesario complicarse, puedes meter el dato a mano a continuación
+         var dato = [
+             { especie: "Orangután de Borneo", imagen: "https://www.nationalgeographic.com.es/medio/2018/02/27/orangutan__800x800_3.jpg", quedan: 45233 },
+             { especie: "Orangután de Sumatra", imagen: "https://www.nationalgeographic.com.es/medio/2018/02/27/orangutan__800x800_3.jpg", quedan: 721 },
+             { especie: "Orangután de Tapanuli", imagen: "https://www.nationalgeographic.com.es/medio/2018/02/27/orangutan__800x800_3.jpg", quedan: 2345 },
+         ];
+         //Sumo los que quedan a mano, para tener el total necesario para sacar % para barra
+         var total = dato[0]["quedan"] + dato[1]["quedan"] + dato[2]["quedan"];
+         //Voy a tomar el elemento con esta identidad
+         const lugar = document.getElementById("grafico_de_barras");
+         //Por cada dato en gráfico chanto algo al elemento
+         dato.forEach((d) => {
+             lugar.innerHTML +=
+                 '<div class="col-2 col-md-1"><img src="' +
+                 d.imagen +
+                 '" class="w-100 rounded-circle" data-bs-toggle="tooltip" data-bs-placement="right" title="' +
+                 d.especie +
+                 '"/></div><div class="col-10 col-md-11"><div class="progress"><div class="progress-bar" role="progressbar" style="width: ' +
+                 (d.quedan * 100) / total +
+                 '%;"></div><span class="ps-1 fw-bold">' +
+                 d.quedan.toLocaleString("es-CL") +
+                 "</span></div></div>";
+         });
+      </script>
+      <!-- Final de gráficos de barras -->
+      <!--BOOTSTRAP OFRECE SU PROPIA BIBLIOTECA DE JAVASCRIPT-->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+      <script>
+         //esto activa el tooltip, que muestra el nombre de la especie en el gráfico
+         var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+         var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+             return new bootstrap.Tooltip(tooltipTriggerEl);
+         });
+      </script>
+      <!--LO QUE SIGUE ES OTRA BIBLIOTECA DE JAVASCRIPT-->
+      <script src="https://unpkg.com/image-compare-viewer/dist/image-compare-viewer.min.js"></script>
+      <!--LO QUE SIGUE ES LA CONFIGURACIÓN DE LA COMPARACIÓN DE IMÁGENES-->
+      <script>
+         const element = document.querySelector("#yuxtaposicion");
+         const options = {
+             controlColor: "#fff",
+             controlShadow: true,
+             addCircle: true,
+             addCircleBlur: true,
+             showLabels: true,
+             labelOptions: {
+                 before: "Cara",
+                 after: "Sello",
+                 onHover: false,
+             },
+         };
+         const viewer = new ImageCompare(element, options).mount();
+      </script>
+      <!-- Este es el script para el mapa -->
+      <script>
+         var map = L.map("map").setView([1.0, 107.7], 5);
+         
+         L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+         }).addTo(map);
+         
+         var LeafIcon = L.Icon.extend({
+             options: {
+                 shadowUrl: "imgs/leaf-shadow.png",
+                 iconSize: [53, 95],
+                 shadowSize: [50, 64],
+                 iconAnchor: [22, 94],
+                 shadowAnchor: [4, 62],
+                 popupAnchor: [-3, -76],
+             },
+         });
+         
+         var greenIcon = new LeafIcon({ iconUrl: "imgs/leaf-green.png" });
+         var redIcon = new LeafIcon({ iconUrl: "imgs/leaf-red.png" });
+         var orangeIcon = new LeafIcon({ iconUrl: "imgs/leaf-orange.png" });
+         
+         var mGreen = L.marker([3.807798, 97.452561], { icon: greenIcon }).bindPopup("<strong>Orangután de Sumatra</strong> <br> Pongo abelii.").addTo(map);
+         var mRed = L.marker([1.274309, 113.378906], { icon: redIcon }).bindPopup("<strong>Orangután de Borneo</strong> <br> Pongo pygmaeus.").addTo(map);
+         var mOrange = L.marker([1.487107, 99.068527], { icon: orangeIcon }).bindPopup("<strong>Orangután de Tapanuli</strong> <br> Pongo tapanuliensis.").addTo(map);
+      </script>
+      <!--BOOTSTRAP OFRECE SU PROPIA BIBLIOTECA DE JAVASCRIPT-->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+      <!--CON ESTE CÓDIGO DE ACTIVA EL POPOVER SOBRE SU NOMBRE-->
+      <script>
+         var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+         var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+             return new bootstrap.Popover(popoverTriggerEl, { html: true });
+         });
+      </script>
+   </body>
 </html>
