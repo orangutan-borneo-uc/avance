@@ -22,7 +22,7 @@
 	.st16{fill:none;stroke:#11150F;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
 </style>
 <g id="Mapa_x5F_raster">
-	
+
 		<image style="overflow:visible;enable-background:new    ;" width="1920" height="1080" xlink:href="Digital_mapa_Borneo_002.jpg" >
 	</image>
 </g>
@@ -42,19 +42,19 @@
 		</g>
 	</g>
 	<g>
-		<text transform="matrix(0.9969 0 0 1 741.5 865.6885)" class="st2 st4">Orangután de</text>
-		<text transform="matrix(0.9969 0 0 1 741.5 905.6299)" class="st2 st3">Borneo central</text>
-		<text transform="matrix(0.9969 0 0 1 741.5 945.5703)" class="st5 st4">(wurmbii)</text>
+		<text transform="matrix(0.9969 0 0 1 741.5 865.6885)" class="st2 st4">Pongo pygmaeus</text>
+		<text transform="matrix(0.9969 0 0 1 741.5 905.6299)" class="st2 st3">wurmbii</text>
+		<text transform="matrix(0.9969 0 0 1 741.5 945.5703)" class="st5 st4">(Borneo central)</text>
 	</g>
 	<g>
-		<text transform="matrix(1.0003 0 0 1 1471.5 375.6885)" class="st2 st6">Orangután de </text>
-		<text transform="matrix(1.0003 0 0 1 1471.5 415.6294)" class="st2 st3">Borneo del noreste </text>
-		<text transform="matrix(1.0003 0 0 1 1471.5 455.5703)" class="st5 st6">(morio)</text>
+		<text transform="matrix(1.0003 0 0 1 1471.5 375.6885)" class="st2 st6">Pongo pygmaeus</text>
+		<text transform="matrix(1.0003 0 0 1 1471.5 415.6294)" class="st2 st3">Morio</text>
+		<text transform="matrix(1.0003 0 0 1 1471.5 455.5703)" class="st5 st6">(Borneo noreste)</text>
 	</g>
 	<g>
-		<text transform="matrix(0.9972 0 0 1 673.0005 250.689)" class="st2 st6">Orangután de Borneo </text>
-		<text transform="matrix(0.9972 0 0 1 673.0005 290.6299)" class="st2 st3">del noroeste</text>
-		<text transform="matrix(0.9972 0 0 1 673.0005 330.5708)" class="st5 st6">(pygmaeus)</text>
+		<text transform="matrix(0.9972 0 0 1 673.0005 250.689)" class="st2 st6">Pongo pygmaeus</text>
+		<text transform="matrix(0.9972 0 0 1 673.0005 290.6299)" class="st2 st3">pygmaeus</text>
+		<text transform="matrix(0.9972 0 0 1 673.0005 330.5708)" class="st5 st6">(Borneo noroeste)</text>
 	</g>
 	<g>
 		<text transform="matrix(1 0 0 1 1627.5535 1000.6166)" class="st7 st8 st9">N</text>
@@ -101,13 +101,13 @@
 	</g>
 </g>
 <g id="caras">
-	
+
 		<image style="overflow:visible;enable-background:new    ;" width="300" height="300" xlink:href="ppmorio.png"  transform="matrix(0.72 0 0 0.72 1236 298)">
 	</image>
-	
+
 		<image style="overflow:visible;enable-background:new    ;" width="300" height="300" xlink:href="ppwurmii.png"  transform="matrix(0.72 0 0 0.72 500 788)">
 	</image>
-	
+
 		<image style="overflow:visible;enable-background:new    ;" width="300" height="300" xlink:href="ppygmaeus.png"  transform="matrix(0.72 0 0 0.72 435 173)">
 	</image>
 </g>
