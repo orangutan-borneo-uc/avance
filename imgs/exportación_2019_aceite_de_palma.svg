@@ -44,7 +44,7 @@
 <rect x="856.2" y="377.5" class="st1" width="90" height="27"/>
 <text transform="matrix(1 0 0 1 856.1556 396.2577)" class="st7 st8">$2.3 bn</text>
 <rect x="859" y="485.5" class="st1" width="90" height="27"/>
-<text transform="matrix(1 0 0 1 859.0109 504.2576)" class="st7 st8">$383bn</text>
+<text transform="matrix(1 0 0 1 859.0109 504.2576)" class="st7 st8">$383m</text>
 <rect x="855.5" y="584.5" class="st1" width="90" height="27"/>
 <text transform="matrix(1 0 0 1 855.5209 603.2578)" class="st7 st8">$332m</text>
 <rect x="864.3" y="692.5" class="st1" width="90" height="27"/>
@@ -74,4 +74,5 @@
 <polyline class="st11" points="199,621 217,603 235,558 253,567 271,549 307,387 316,414 343,243 370,342 397,396 406,441 424,396 
 	433,414 451,432 "/>
 <rect x="910" y="108" class="st1" width="2.1" height="3.3"/>
+<rect x="684" y="445.9" class="st1" width="3.6" height="4.1"/>
 </svg>
