@@ -1,525 +1,558 @@
 <!DOCTYPE html>
 <html lang="es">
-   <head>
-      <meta charset="utf-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <!-- COMMON TAGS -->
-      <title>Orangután de Borneo / Diplomado en Infografía UC</title>
-      <!-- Search Engine -->
-      <meta name="description" content="Infografía sobre el Orangután de Borneo, el hombre del bosque." />
-      <meta name="image" content="https://orangutan-borneo-uc.github.io/infografia/imgs/Orangutan_002.png" />
-      <!-- Schema.org for Google -->
-      <meta itemprop="name" content="Orangután de Borneo / Diplomado en Infografía UC" />
-      <meta itemprop="description" content="Infografía sobre el Orangután de Borneo, el hombre del bosque." />
-      <meta itemprop="image" content="https://orangutan-borneo-uc.github.io/infografia/imgs/Orangutan_002.png" />
-      <!-- Open Graph general (Facebook, Pinterest & Google+) -->
-      <meta name="og:title" content="Orangután de Borneo / Diplomado en Infografía UC" />
-      <meta name="og:description" content="Infografía sobre el Orangután de Borneo, el hombre del bosque." />
-      <meta name="og:locale" content="es_CL" />
-      <meta name="og:type" content="website" />
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
-      <style>
-         @import url("https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Roboto:ital,wght@0,300;0,400;0,500;1,400&display=swap");
-         /* Contradiciendo a Bootstrap */
-         :root {
-         --bs-body-font-family: "Roboto", sans-serif;
-         --bs-primary: #e65100 !important;
-         }
-         a {
-         color: #222;
-         text-decoration: underline;
-         transition: color ease 0.5s;
-         }
-         a:hover {
-         color: var(--bs-primary);
-         text-decoration: none;
-         transition: color ease 0.5s;
-         }
-         h1,
-         h2,
-         h3,
-         h4 {
-         font-weight: 400;
-         font-family: "PT Serif", serif;
-         }
-         h5,
-         h6 {
-         font-weight: 700;
-         font-family: "PT Serif", serif;
-         }
-         strong,
-         b,
-         em {
-         font-weight: 500;
-         font-style: normal;
-         }
-         h1 {
-         font-size: calc(1rem + 3vw);
-         }
-         h2 {
-         font-size: calc(0.75rem + 1vw);
-         }
-         h2 > span {
-         background: var(--bs-primary);
-         color: #fff;
-         }
-         h3 {
-         font-size: calc(1.5rem + 1vw);
-         }
-         header {
-         background: url(imgs/bosque_borneo.webp);
-         background-size: cover;
-         background-position: center -250px;
-         background-repeat: no-repeat;
-         /*  background-attachment: fixed; */
-         }
-         aside{
-            background: linear-gradient(#fff, #e7e8e9);
-         }         
-         span[data-bs-toggle="popover"] {
-         cursor: pointer;
-         }
-         .progress-bar {
-         background-color: var(--bs-primary) !important;
-         }
-         
-          .videoresponsive {
-	       height: 0;
-	       overflow: hidden;
-	       padding-bottom: 56.25%;
-	       padding-top: 30px;
-	       position: relative;
-	       }
-         .videoresponsive iframe, .video-responsive object, .video-responsive embed {
-	       height: 100%;
-	       left: 0;
-	       position: absolute;
-	       top: 0;
-	       width: 100%;
-	       }
-      </style>
-      <link href="https://unpkg.com/image-compare-viewer/dist/image-compare-viewer.min.css" rel="stylesheet" />
-      <!-- Esto sirve para que funcione el mapa -->
-      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
-      <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
-   </head>
-     <body>
-      <header>
-         <div class="container">
-            <div class="row">
-               <div class="col-sm-12 col-md-11 col-lg-10 col-xl-9 mx-auto">
-                  <img src="imgs/Orangutan_002.png" class="w-100" />
-               </div>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- COMMON TAGS -->
+        <title>Orangután de Borneo / Diplomado en Infografía UC</title>
+        <!-- Search Engine -->
+        <meta name="description" content="Infografía sobre el Orangután de Borneo, el hombre del bosque." />
+        <meta name="image" content="https://orangutan-borneo-uc.github.io/infografia/imgs/Orangutan_002.png" />
+        <!-- Schema.org for Google -->
+        <meta itemprop="name" content="Orangután de Borneo / Diplomado en Infografía UC" />
+        <meta itemprop="description" content="Infografía sobre el Orangután de Borneo, el hombre del bosque." />
+        <meta itemprop="image" content="https://orangutan-borneo-uc.github.io/infografia/imgs/Orangutan_002.png" />
+        <!-- Open Graph general (Facebook, Pinterest & Google+) -->
+        <meta name="og:title" content="Orangután de Borneo / Diplomado en Infografía UC" />
+        <meta name="og:description" content="Infografía sobre el Orangután de Borneo, el hombre del bosque." />
+        <meta name="og:locale" content="es_CL" />
+        <meta name="og:type" content="website" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Roboto:ital,wght@0,300;0,400;0,500;1,400&display=swap");
+            /* Contradiciendo a Bootstrap */
+            :root {
+                --bs-body-font-family: "Roboto", sans-serif;
+                --bs-primary: #e65100 !important;
+            }
+            a {
+                color: #222;
+                text-decoration: underline;
+                transition: color ease 0.5s;
+            }
+            a:hover {
+                color: var(--bs-primary);
+                text-decoration: none;
+                transition: color ease 0.5s;
+            }
+            h1,
+            h2,
+            h3,
+            h4 {
+                font-weight: 400;
+                font-family: "PT Serif", serif;
+            }
+            h5,
+            h6 {
+                font-weight: 700;
+                font-family: "PT Serif", serif;
+            }
+            strong,
+            b,
+            em {
+                font-weight: 500;
+                font-style: normal;
+            }
+            h1 {
+                font-size: calc(1rem + 3vw);
+            }
+            h2 {
+                font-size: calc(0.75rem + 1vw);
+            }
+            h2 > span {
+                background: var(--bs-primary);
+                color: #fff;
+            }
+            h3 {
+                font-size: calc(1.5rem + 1vw);
+            }
+            header {
+                background: url(imgs/bosque_borneo.webp);
+                background-size: cover;
+                background-position: center -250px;
+                background-repeat: no-repeat;
+                /*  background-attachment: fixed; */
+            }
+            aside {
+                background: linear-gradient(#fff, #e7e8e9);
+            }
+            span[data-bs-toggle="popover"] {
+                cursor: pointer;
+            }
+            .progress-bar {
+                background-color: var(--bs-primary) !important;
+            }
+
+            body {
+                max-width: 100vw;
+                overflow-x: hidden;
+            }
+        </style>
+        <link href="https://unpkg.com/image-compare-viewer/dist/image-compare-viewer.min.css" rel="stylesheet" />
+        <!-- Esto sirve para que funcione el mapa -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-md-11 col-lg-10 col-xl-9 mx-auto">
+                        <img src="imgs/Orangutan_002.png" class="w-100" />
+                    </div>
+                </div>
             </div>
-         </div>
-         <div class="container bg-white rounded-2">
-            <div class="row">
-               <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-                  <h2 class="text-center fst-italic mt-5"><span class="px-2 py-1 rounded-2">Pongo pygmaeus</span></h2>
-                  <h1 class="text-center py-3">Orangután de Borneo</h1>
-                  <!--desde acá la edición de nombres-->
-                  <h6 class="text-center mb-5 text-muted">
-                     Por
-                     <span
-                        data-bs-container="body"
-                        data-bs-toggle="popover"
-                        data-bs-trigger="hover focus"
-                        data-bs-placement="top"
-                        data-bs-content="<div class='text-center'><img src='https://randomuser.me/api/portraits/men/14.jpg' class='w-50 mb-2 rounded-circle'><br>Nombre Apellido<br><span class='small text-muted'>Profesión</span></div>"
-                        >
-                     Fabiola Hernández
-                     </span>
-                     y
-                     <span
-                        data-bs-container="body"
-                        data-bs-toggle="popover"
-                        data-bs-trigger="hover focus"
-                        data-bs-placement="top"
-                        data-bs-content="<div class='text-center'><img src='https://randomuser.me/api/portraits/women/14.jpg' class='w-50 mb-2 rounded-circle'><br>Nombre Apellido<br><span class='small text-muted'>Profesión</span></div>"
-                        >
-                     Juan Pablo Astorga
-                     </span>
-                  </h6>
-                  <!--hasta aquí la edición de nombres-->
-                  <p class="lead">
-                   En indonesio o malayo Orangután significa <em>"Hombre del bosque"</em>. "Orang" significa "pueblo / persona" y "hutan" significa "bosque". El Orangután ha vivido en armonía con la selva tropical del sudeste asiático durante millones de años. Hoy la explotación industrial está destruyendo su hogar. Según la <a href="https://www.iucnredlist.org/species/17975/123809220" target="_blank">Lista Roja de Especies Amenazadas </a> de la Unión Internacional para la Conservación de la Naturaleza (UICN) el orangután está en peligro crítico de extinción.
-                  </p>
-                  <!-- NIVEL DE AMENAZA-->
-                  <div class="row">
-                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300" class="col-11 col-sm-10 col-md-9 col-lg-8 col-xl-7 col-xxl-6 my-5 mx-auto">
-                        <style type="text/css">
-                           line,
-                           path {
-                           fill: none;
-                           stroke: #777777;
-                           stroke-linecap: round;
-                           }
-                           .blanco {
-                           fill: #ffffff;
-                           font-size: 45px;
-                           }
-                           .gris {
-                           fill: #777777;
-                           font-size: 35px;
-                           }
-                           .no {
-                           fill: #999999;
-                           }
-                           .si {
-                           fill: var(--bs-primary);
-                           }
-                        </style>
-                        <g id="ex">
-                           <circle class="no" cx="82.1" cy="228.7" r="46.4" />
-                           <text transform="matrix(1 0 0 1 54 245)" class="blanco">EX</text>
-                        </g>
-                        <g id="ew">
-                           <circle class="no" cx="212.6" cy="228.7" r="46.4" />
-                           <text transform="matrix(1 0 0 1 180 245)" class="blanco">EW</text>
-                        </g>
-                        <g id="cr">
-                           <circle class="si" cx="342.9" cy="228.7" r="46.4" />
-                           <text transform="matrix(1 0 0 1 313 245)" class="blanco">CR</text>
-                        </g>
-                        <g id="en">
-                           <circle class="no" cx="473.6" cy="228.7" r="46.4" />
-                           <text transform="matrix(1 0 0 1 444 245)" class="blanco">EN</text>
-                        </g>
-                        <g id="vu">
-                           <circle class="no" cx="603.8" cy="228.7" r="46.4" />
-                           <text transform="matrix(1 0 0 1 574 245)" class="blanco">VU</text>
-                        </g>
-                        <g id="nt">
-                           <circle class="no" cx="734.1" cy="228.7" r="46.4" />
-                           <text transform="matrix(1 0 0 1 705 245)" class="blanco">NT</text>
-                        </g>
-                        <g id="lc">
-                           <circle class="no" cx="865.6" cy="228.7" r="46.4" />
-                           <text transform="matrix(1 0 0 1 840 245)" class="blanco">LC</text>
-                        </g>
-                        <g id="datos">
-                           <text transform="matrix(1 0 0 1 29.8186 54.2935)" class="gris">Extinto</text>
-                           <text transform="matrix(1 0 0 1 382.5784 54.2935)" class="gris">Amenazado</text>
-                           <text transform="matrix(1 0 0 1 760.9694 54.2935)" class="gris">Preocupación</text>
-                           <text transform="matrix(1 0 0 1 812.2867 95.3477)" class="gris">menor</text>
-                           <line class="st6" x1="865.6" y1="119.4" x2="865.6" y2="162.5" />
-                           <line class="st6" x1="82.1" y1="77.9" x2="82.1" y2="162.5" />
-                           <path
-                              class="st6"
-                              d="M279.3,162.5v-55.2c0-6,4.8-10.8,10.8-10.8h161.1c4.4,0,7.9-0.3,10.4-0.9c2.6-0.5,5-1.9,7-3.8 c2.6-3.3,4.1-6,4.3-8.6c0.2,2.6,1.7,5.3,4.3,8.6c2.1,2.1,4.4,3.3,7,3.8c2.6,0.5,6.2,0.9,10.4,0.9h163.2c6,0,10.8,4.8,10.8,10.8v55.2"
-                              />
-                        </g>
-                     </svg>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </header>
-      <main class="pb-5">
-
-         <!-- TAXONOMÍA Y DISTRIBUCIÓN -->
-
-         <section class="container">
-            <div class="row">
-               <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-
-                  <p>
-                   Los orangutanes son los únicos grandes simios, además de los humanos, que no viven en África. Hoy en día, su área de distribución se limita a solo dos islas, <strong>Borneo</strong> y <strong>Sumatra</strong>. Borneo es la isla más grande de Asia y se divide en tres países: Brunei, Indonesia y Malasia. Sumatra es una isla más pequeña que pertenece por completo a Indonesia.
-                  </p>
-
-                  <h3 class="text-center mt-3 mb-3">Las tres especies de orangután</h3>
-                  <p>
-                      Hay tres especies diferentes. <em>El orangután de Borneo</em> (Pongo pygmaeus) en la isla de Borneo, el <em>orangután de Sumatra</em> (Pongo abelii) y el <em>orangután de Tapanuli</em> (Pongo tapanuliensis) en la isla de Sumatra.
-                  </p>
-               </div>
-               <div class="col-12 mt-3 py-3">
-                  <div id="map" style="height: 50vh;"></div>
-                  <div class="row mt-1 align-items-stretch g-4">
-                     <div class="col-md-4 my-4">
-                        <div class="card h-100 border-0 shadow-sm">
-                           <img src="imgs/Pongo_Borneo.webp" class="card-img-top" alt="Ilustración de un orangután de Borneo macho con bridas" />
-                           <div class="card-body">
-                              <h5 class="card-title text-center">Orangután de Borneo<br>(Pongo pygmaeus)</h5>
-                              <p class="card-text">Vive exclusivamente en la isla de Borneo. Es un poco más pequeño y su pelaje es más oscuro que el de sus primos de Sumatra. Al igual que otras especies de primates, su esperanza de vida oscila entre los 40 y los 50 años en estado salvaje.</p>
-                           </div>
+            <div class="container bg-white rounded-2">
+                <div class="row">
+                    <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                        <h2 class="text-center fst-italic mt-5"><span class="px-2 py-1 rounded-2">Pongo pygmaeus</span></h2>
+                        <h1 class="text-center py-3">Orangután de Borneo</h1>
+                        <!--desde acá la edición de nombres-->
+                        <h6 class="text-center mb-5 text-muted">
+                            Por
+                            <span
+                                data-bs-container="body"
+                                data-bs-toggle="popover"
+                                data-bs-trigger="hover focus"
+                                data-bs-placement="top"
+                                data-bs-content="<div class='text-center'><img src='https://randomuser.me/api/portraits/men/14.jpg' class='w-50 mb-2 rounded-circle'><br>Nombre Apellido<br><span class='small text-muted'>Profesión</span></div>"
+                            >
+                                Fabiola Hernández
+                            </span>
+                            y
+                            <span
+                                data-bs-container="body"
+                                data-bs-toggle="popover"
+                                data-bs-trigger="hover focus"
+                                data-bs-placement="top"
+                                data-bs-content="<div class='text-center'><img src='https://randomuser.me/api/portraits/women/14.jpg' class='w-50 mb-2 rounded-circle'><br>Nombre Apellido<br><span class='small text-muted'>Profesión</span></div>"
+                            >
+                                Juan Pablo Astorga
+                            </span>
+                        </h6>
+                        <!--hasta aquí la edición de nombres-->
+                        <p class="lead">
+                            En indonesio o malayo Orangután significa <em>"Hombre del bosque"</em>. "Orang" significa "pueblo / persona" y "hutan" significa "bosque". El Orangután ha vivido en armonía con la selva tropical del sudeste
+                            asiático durante millones de años. Hoy la explotación industrial está destruyendo su hogar. Según la
+                            <a href="https://www.iucnredlist.org/species/17975/123809220" target="_blank">Lista Roja de Especies Amenazadas </a> de la Unión Internacional para la Conservación de la Naturaleza (UICN) el orangután está en
+                            peligro crítico de extinción.
+                        </p>
+                        <!-- NIVEL DE AMENAZA-->
+                        <div class="row">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300" class="col-11 col-sm-10 col-md-9 col-lg-8 col-xl-7 col-xxl-6 my-5 mx-auto">
+                                <style type="text/css">
+                                    line,
+                                    path {
+                                        fill: none;
+                                        stroke: #777777;
+                                        stroke-linecap: round;
+                                    }
+                                    .blanco {
+                                        fill: #ffffff;
+                                        font-size: 45px;
+                                    }
+                                    .gris {
+                                        fill: #777777;
+                                        font-size: 35px;
+                                    }
+                                    .no {
+                                        fill: #999999;
+                                    }
+                                    .si {
+                                        fill: var(--bs-primary);
+                                    }
+                                </style>
+                                <g id="ex">
+                                    <circle class="no" cx="82.1" cy="228.7" r="46.4" />
+                                    <text transform="matrix(1 0 0 1 54 245)" class="blanco">EX</text>
+                                </g>
+                                <g id="ew">
+                                    <circle class="no" cx="212.6" cy="228.7" r="46.4" />
+                                    <text transform="matrix(1 0 0 1 180 245)" class="blanco">EW</text>
+                                </g>
+                                <g id="cr">
+                                    <circle class="si" cx="342.9" cy="228.7" r="46.4" />
+                                    <text transform="matrix(1 0 0 1 313 245)" class="blanco">CR</text>
+                                </g>
+                                <g id="en">
+                                    <circle class="no" cx="473.6" cy="228.7" r="46.4" />
+                                    <text transform="matrix(1 0 0 1 444 245)" class="blanco">EN</text>
+                                </g>
+                                <g id="vu">
+                                    <circle class="no" cx="603.8" cy="228.7" r="46.4" />
+                                    <text transform="matrix(1 0 0 1 574 245)" class="blanco">VU</text>
+                                </g>
+                                <g id="nt">
+                                    <circle class="no" cx="734.1" cy="228.7" r="46.4" />
+                                    <text transform="matrix(1 0 0 1 705 245)" class="blanco">NT</text>
+                                </g>
+                                <g id="lc">
+                                    <circle class="no" cx="865.6" cy="228.7" r="46.4" />
+                                    <text transform="matrix(1 0 0 1 840 245)" class="blanco">LC</text>
+                                </g>
+                                <g id="datos">
+                                    <text transform="matrix(1 0 0 1 29.8186 54.2935)" class="gris">Extinto</text>
+                                    <text transform="matrix(1 0 0 1 382.5784 54.2935)" class="gris">Amenazado</text>
+                                    <text transform="matrix(1 0 0 1 760.9694 54.2935)" class="gris">Preocupación</text>
+                                    <text transform="matrix(1 0 0 1 812.2867 95.3477)" class="gris">menor</text>
+                                    <line class="st6" x1="865.6" y1="119.4" x2="865.6" y2="162.5" />
+                                    <line class="st6" x1="82.1" y1="77.9" x2="82.1" y2="162.5" />
+                                    <path
+                                        class="st6"
+                                        d="M279.3,162.5v-55.2c0-6,4.8-10.8,10.8-10.8h161.1c4.4,0,7.9-0.3,10.4-0.9c2.6-0.5,5-1.9,7-3.8 c2.6-3.3,4.1-6,4.3-8.6c0.2,2.6,1.7,5.3,4.3,8.6c2.1,2.1,4.4,3.3,7,3.8c2.6,0.5,6.2,0.9,10.4,0.9h163.2c6,0,10.8,4.8,10.8,10.8v55.2"
+                                    />
+                                </g>
+                            </svg>
                         </div>
-                     </div>
-                     <div class="col-md-4 my-4">
-                        <div class="card h-100 border-0 shadow-sm">
-                           <img src="imgs/Pongo_sumatra.webp" class="card-img-top" alt="Ilustración de un orangután de Sumatra macho con bridas" />
-                           <div class="card-body">
-                              <h5 class="card-title text-center">Orangután de Sumatra <br>(Pongo abelii)</h5>
-                              <p class="card-text">Habita las áreas boscosas del norte de la isla de Sumatra. Pasa toda su vida en los árboles. Casi nunca baja al suelo por miedo a los tigres de Sumatra, que todavía existen en estas regiones. De color más claro que otros orangutanes, mide entre 1,25 y 1,50 metros.</p>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="col-md-4 my-4">
-                        <div class="card h-100 border-0 shadow-sm">
-                           <img src="imgs/Tapanuliensis.webp" class="card-img-top" alt="Ilustración de un orangután Tapanuli macho con bridas" />
-                           <div class="card-body">
-                              <h5 class="card-title text-center">Orangután de Tapanuli <br>(Pongo tapanuliensis)</h5>
-                              <p class="card-text">Solo se encuentra en el bosque de Batang Toru. Tienen un cráneo más pequeño, caninos más largos y un pelaje más brillante que sus primos. Recientemente se descubrió que su morfología y ADN eran diferentes de las otras dos especies ya conocidas.</p>
-                           </div>
-                        </div>
-                     </div>
-                  <!--   <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-                        <h4 class="text-center mt-5">¿Cuántos individuos quedan por especie?</h4>
-                        <div class="row g-2 align-items-center my-4" id="grafico_de_barras"></div>
-                        <p class="small text-center mb-5 text-black-50">Según la Lista Roja de Especies Amenazadas de la UICN. <br><a href="https://www.iucnredlist.org/species/17975/123809220" target="_blank">Orangután de Borneo</a>, <a href="https://www.iucnredlist.org/species/121097935/123797627" target="_blank">Orangután de Sumatra</a>, <a href="https://www.iucnredlist.org/species/120588639/120588662" target="_blank">Orangután de Tapanuli</a></p>
-                     </div> -->
-                  </div>
-               </div>
+                    </div>
+                </div>
             </div>
-         </section>
+        </header>
 
-         <!-- Este es el mapa SVG -->
-         <section class="container mt-3">
-            <div class="row">
-               <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-                  <h3 class="text-center mt-3 mb-2">Una historia familiar</h3>
-                  <p class="text-center">La historia de los orangutanes está ligada al ser humano. Las dos especies pertenecen a la misma familia biológica: los grandes simios. Esta familia, llamada <em>los homínidos</em>, está formada por primos evolutivos como gibones, gorilas, orangutanes, chimpancés y bonobos.</p>
-                  <object data="imgs/Familia_hominidae.svg" type="image/svg+xml" class="my-1"></object>
-                  <h4 class="text-center mt-3 mb-2">Subespecies en Borneo</h4>
-                  <p class="text-center">Hay <em>tres subespecies</em> de orangután de Borneo y viven en diferentes lugares de la isla</p>
-                  <object data="imgs/Digital_Mapa_Borneo_001.svg" type="image/svg+xml" class="my-1 mx-auto"></object>
-               </div>
-            </div>
-         </section>
+        <!--EN LO QUE SIGUE AJUSTO ALGUNAS COSAS-->
+        <main class="pb-5">
+            <!-- TAXONOMÍA Y DISTRIBUCIÓN -->
+            <section class="container">
+                <div class="row">
+                    <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                        <p>
+                            Los orangutanes son los únicos grandes simios, además de los humanos, que no viven en África. Hoy en día, su área de distribución se limita a solo dos islas, <strong>Borneo</strong> y <strong>Sumatra</strong>.
+                            Borneo es la isla más grande de Asia y se divide en tres países: Brunei, Indonesia y Malasia. Sumatra es una isla más pequeña que pertenece por completo a Indonesia.
+                        </p>
 
-         <!-- ................................................................................ -->
-         <!-- CARACTERÍSTICAS FÍSICAS -->
+                        <h3 class="text-center mt-5 mb-3">Las tres especies de orangután</h3>
+                        <p>
+                            Hay tres especies diferentes. <em>El orangután de Borneo</em> (Pongo pygmaeus) en la isla de Borneo, el <em>orangután de Sumatra</em> (Pongo abelii) y el <em>orangután de Tapanuli</em> (Pongo tapanuliensis) en la
+                            isla de Sumatra.
+                        </p>
+                    </div>
+                    <div class="col-12 mt-3 py-3">
+                        <div id="map" style="height: 50vh;" class="w-100"></div>
+                        <div class="row mt-1 align-items-stretch g-4">
+                            <div class="col-md-4 my-4">
+                                <div class="card h-100 border-0 shadow-sm">
+                                    <img src="imgs/Pongo_Borneo.webp" class="card-img-top" alt="Ilustración de un orangután de Borneo macho con bridas" />
+                                    <div class="card-body">
+                                        <h5 class="card-title text-center">
+                                            Orangután de Borneo<br />
+                                            (Pongo pygmaeus)
+                                        </h5>
+                                        <p class="card-text">
+                                            Vive exclusivamente en la isla de Borneo. Es un poco más pequeño y su pelaje es más oscuro que el de sus primos de Sumatra. Al igual que otras especies de primates, su esperanza de vida oscila
+                                            entre los 40 y los 50 años en estado salvaje.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 my-4">
+                                <div class="card h-100 border-0 shadow-sm">
+                                    <img src="imgs/Pongo_sumatra.webp" class="card-img-top" alt="Ilustración de un orangután de Sumatra macho con bridas" />
+                                    <div class="card-body">
+                                        <h5 class="card-title text-center">
+                                            Orangután de Sumatra <br />
+                                            (Pongo abelii)
+                                        </h5>
+                                        <p class="card-text">
+                                            Habita las áreas boscosas del norte de la isla de Sumatra. Pasa toda su vida en los árboles. Casi nunca baja al suelo por miedo a los tigres de Sumatra, que todavía existen en estas regiones. De
+                                            color más claro que otros orangutanes, mide entre 1,25 y 1,50 metros.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 my-4">
+                                <div class="card h-100 border-0 shadow-sm">
+                                    <img src="imgs/Tapanuliensis.webp" class="card-img-top" alt="Ilustración de un orangután Tapanuli macho con bridas" />
+                                    <div class="card-body">
+                                        <h5 class="card-title text-center">
+                                            Orangután de Tapanuli <br />
+                                            (Pongo tapanuliensis)
+                                        </h5>
+                                        <p class="card-text">
+                                            Solo se encuentra en el bosque de Batang Toru. Tienen un cráneo más pequeño, caninos más largos y un pelaje más brillante que sus primos. Recientemente se descubrió que su morfología y ADN eran
+                                            diferentes de las otras dos especies ya conocidas.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-         <!--
+            <!-- Este es el mapa SVG -->
+            <section class="container mt-3">
+                <div class="row">
+                    <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                        <h3 class="text-center mt-3 mb-2">Una historia familiar</h3>
+                        <p class="text-center">
+                            La historia de los orangutanes está ligada al ser humano. Las dos especies pertenecen a la misma familia biológica: los grandes simios. Esta familia, llamada <em>los homínidos</em>, está formada por primos
+                            evolutivos como gibones, gorilas, orangutanes, chimpancés y bonobos.
+                        </p>
+                        <object data="imgs/Familia_hominidae.svg" type="image/svg+xml" class="my-1"></object>
+                        <h4 class="text-center mt-3 mb-2">Subespecies en Borneo</h4>
+                        <p class="text-center">Hay <em>tres subespecies</em> de orangután de Borneo y viven en diferentes lugares de la isla</p>
+                        <object data="imgs/Digital_Mapa_Borneo_001.svg" type="image/svg+xml" class="my-1 mx-auto"></object>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ................................................................................ -->
+            <!-- CARACTERÍSTICAS FÍSICAS -->
+
+            <!--
             cuando describe  las características de las 3 especies, refieren a las bridas, pero no las explican. Creo que es necesario adelantar las características físicas, para que se llegue a tal lugar con esta información
             Gracias por la sugerencia! Estamos trabajando en estos contenidos.
             -->
-         <section>
-            <div class="container">
-               <div class="row">
-                  <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-                     <h3 class="text-center my-5">Características físicas</h3>
-                     <p>Los primates se distinguen de otros animales por la ubicación de sus ojos, en la parte frontal de la cara, sus manos permiten un agarre efectivo gracias a los pulgares oponibles y al volumen de su caja craneal.</p>
-                     <p>Los orangutanes son conocidos como el mamífero arbóreo más grande del mundo, por lo que sus cuerpos son muy adecuados para moverse de una rama a otra.</p>
-                     <div class="row g-5 mb-5">
-                        <div class="col-12 mx-auto">
-                           <object data="imgs/fisico_001.svg" type="image/svg+xml" class="my-1 mx-auto"></object>
+            <section>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                            <h3 class="text-center my-5">Características físicas</h3>
+                            <p>
+                                Los primates se distinguen de otros animales por la ubicación de sus ojos, en la parte frontal de la cara, sus manos permiten un agarre efectivo gracias a los pulgares oponibles y al volumen de su caja
+                                craneal.
+                            </p>
+                            <p>Los orangutanes son conocidos como el mamífero arbóreo más grande del mundo, por lo que sus cuerpos son muy adecuados para moverse de una rama a otra.</p>
+                            <div class="row g-5 mb-5">
+                                <div class="col-12 mx-auto">
+                                    <object data="imgs/fisico_001.svg" type="image/svg+xml" class="my-1 mx-auto"></object>
+                                </div>
+                            </div>
+                            <p>Sus dedos largos y tienden a curvarse. En comparación con la mano humana, sus pulgares son más pequeños y menos ágiles. Sin embargo, pueden recoger objetos pequeños con bastante facilidad.</p>
+                            <div class="row g-5 mb-5">
+                                <div class="col-sm-6 text-center">
+                                    <img src="imgs/manoorangutan.png" class="w-100" alt="..." />
+                                    <p>Mano de un orangutan</p>
+                                </div>
+                                <div class="col-sm-6 text-center">
+                                    <img src="imgs/manohumano.png" class="card-img-top" alt="..." />
+                                    <p>Mano humana</p>
+                                </div>
+                            </div>
+                            <h4 class="text-center mt-3 mb-2">Dimorfismo sexual</h4>
+                            <p>
+                                El dimorfismo sexual corresponde a las <em>variaciones físicas entre machos y hembras</em> de una misma especie (tamaño, forma o coloración). Se presenta en la mayoría de las especies en mayor o menor grado.
+                            </p>
+                            <p>El orangután de Borneo muestra un <em>dimorfismo sexual extremo</em>. Los machos continúan engordando a medida que envejecen y pueden superar los 100 kg.</p>
+                            <div class="row g-5 mb-5">
+                                <div class="col-12 mx-auto">
+                                    <object data="imgs/fisico_002.svg" type="image/svg+xml" class="my-1 mx-auto"></object>
+                                </div>
+                            </div>
+                            <h4 class="text-center mt-3 mb-2">Hay dos tipos de machos de orangután</h4>
+                            <p>
+                                Existen los <em>machos dominantes</em>, que gobiernan un territorio y los <em>machos subordinados</em> que deambulan por la jungla. Los machos subordinados son similares a las hembras en su tamaño y aspecto
+                                facial. No tienen prioridad sobre las hembras, pero a veces, dependiendo de los encuentros casuales, también se reproducen.
+                            </p>
+
+                            <div class="col-12 mt-1 py-3">
+                                <div></div>
+                                <div class="row mt-1 align-items-stretch g-4">
+                                    <div class="col-md-4 my-4">
+                                        <div class="card h-100 border-0 shadow-sm">
+                                            <img src="imgs/Bimaturismo_01_hembra.jpg" class="card-img-top" alt="Ilustración de un orangután de Borneo macho con bridas" />
+                                            <div class="card-body">
+                                                <h5 class="card-title text-center">Hembra</h5>
+                                                <!-- <p class="card-text">Solo se encuentra en el bosque de Batang Toru.</p> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 my-4">
+                                        <div class="card h-100 border-0 shadow-sm">
+                                            <img src="imgs/Bimaturismo_02_macho.jpg" class="card-img-top" alt="Ilustración de un orangután de Sumatra macho con bridas" />
+                                            <div class="card-body">
+                                                <h5 class="card-title text-center">Macho subordinado</h5>
+                                                <!-- <p class="card-text">Solo se encuentra en el bosque de Batang Toru.</p> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 my-4">
+                                        <div class="card h-100 border-0 shadow-sm">
+                                            <img src="imgs/Bimaturismo_03_macho.jpg" class="card-img-top" alt="Ilustración de un orangután Tapanuli macho con bridas" />
+                                            <div class="card-body">
+                                                <h5 class="card-title text-center">Macho dominante</h5>
+                                                <!-- <p class="card-text">Solo se encuentra en el bosque de Batang Toru.</p> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p>El mecanismo detrás de esta divergencia masculina se denominada <em>bimaturismo</em> y constituye un misterio de la zoología.</p>
+
+                            <div class="row g-5 mb-5">
+                                <div class="col-12 mx-auto">
+                                    <object data="imgs/fisico_003.svg" type="image/svg+xml" class="my-1 mx-auto"></object>
+                                </div>
+                            </div>
+
+                            <h4 class="text-center mt-3 mb-2">Aullido</h4>
+
+                            <p>
+                                El macho dominante <em>marca su territorio con llamadas largas y roncas</em>, conocidas como "llamada larga" para señalar su presencia a las hembras y ahuyentar a otros machos. Puedes escuchar ese aullido a
+                                <em>dos kilómetros</em> de distancia.
+                            </p>
+                            <!-- Aullido -->
+
+                            <div class="row g-5 mb-5">
+                                <div class="col-12 mx-auto">
+                                    <object data="imgs/sonido.svg" type="image/svg+xml" class="my-1 mx-auto"></object>
+                                </div>
+                            </div>
+
+                            <!-- Probando sonido orangutan -->
+
+                            <div class="mx-auto px-3 py-2 g-5 mb-5 rounded-pill shadow-sm" style="width: 250px; background: rgba(230, 81, 0, 0.16);">
+                                <audio id="elAudio">
+                                    <source src="imgs/llamada_larga.mp3" type="audio/mpeg" />
+                                    <source src="imgs/llamada_larga.ogg" type="audio/ogg" />
+                                </audio>
+                                <div class="form-check form-switch text-center">
+                                    <input class="form-check-input" type="checkbox" id="elSwitch" />
+                                    <label class="form-check-label" for="elSwitch">Escucha al Orangután</label>
+                                </div>
+                            </div>
                         </div>
-                     </div>
-                     <p>Sus dedos largos y tienden a curvarse. En comparación con la mano humana, sus pulgares son más pequeños y menos ágiles. Sin embargo, pueden recoger objetos pequeños con bastante facilidad.</p>
-                     <div class="row g-5 mb-5">
-                        <div class="col-sm-6 text-center">
-                           <img src="imgs/manoorangutan.png" class="w-100" alt="..." />
-                           <p>Mano de un orangutan</p>
-                        </div>
-                        <div class="col-sm-6 text-center">
-                           <img src="imgs/manohumano.png" class="card-img-top" alt="..." />
-                           <p>Mano humana</p>
-                        </div>
-                     </div>
-                     <h4 class="text-center mt-3 mb-2">Dimorfismo sexual</h4>
-                     <p>El dimorfismo sexual corresponde a las <em>variaciones físicas entre machos y hembras</em> de una misma especie (tamaño, forma o coloración). Se presenta en la mayoría de las especies en mayor o menor grado.</p>
-                     <p>El orangután de Borneo muestra un <em>dimorfismo sexual extremo</em>. Los machos continúan engordando a medida que envejecen y pueden superar los 100 kg.</p>
-                     <div class="row g-5 mb-5">
-                        <div class="col-12 mx-auto">
-                           <object data="imgs/fisico_002.svg" type="image/svg+xml" class="my-1 mx-auto"></object>
-                        </div>
-                     </div>
-                     <h4 class="text-center mt-3 mb-2">Hay dos tipos de machos de orangután</h4>
-                     <p>Existen los <em>machos dominantes</em>, que gobiernan un territorio y los <em>machos subordinados</em> que deambulan por la jungla. Los machos subordinados son similares a las hembras en su tamaño y aspecto facial. No tienen prioridad sobre las hembras, pero a veces, dependiendo de los encuentros casuales, también se reproducen.</p>
-
-                     <div class="col-12 mt-1 py-3">
-                        <div></div>
-                        <div class="row mt-1 align-items-stretch g-4">
-                           <div class="col-md-4 my-4">
-                              <div class="card h-100 border-0 shadow-sm">
-                                 <img src="imgs/Bimaturismo_01_hembra.jpg" class="card-img-top" alt="Ilustración de un orangután de Borneo macho con bridas" />
-                                 <div class="card-body">
-                                    <h5 class="card-title text-center">Hembra</h5>
-                                    <!-- <p class="card-text">Solo se encuentra en el bosque de Batang Toru.</p> -->
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="col-md-4 my-4">
-                              <div class="card h-100 border-0 shadow-sm">
-                                 <img src="imgs/Bimaturismo_02_macho.jpg" class="card-img-top" alt="Ilustración de un orangután de Sumatra macho con bridas" />
-                                 <div class="card-body">
-                                    <h5 class="card-title text-center">Macho subordinado</h5>
-                                    <!-- <p class="card-text">Solo se encuentra en el bosque de Batang Toru.</p> -->
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="col-md-4 my-4">
-                              <div class="card h-100 border-0 shadow-sm">
-                                 <img src="imgs/Bimaturismo_03_macho.jpg" class="card-img-top" alt="Ilustración de un orangután Tapanuli macho con bridas" />
-                                 <div class="card-body">
-                                    <h5 class="card-title text-center">Macho dominante</h5>
-                                <!-- <p class="card-text">Solo se encuentra en el bosque de Batang Toru.</p> -->
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-
-                     <p>El mecanismo detrás de esta divergencia masculina se denominada <em>bimaturismo</em> y constituye un misterio de la zoología.</p>
-
-                     <div class="row g-5 mb-5">
-                        <div class="col-12 mx-auto">
-                           <object data="imgs/fisico_003.svg" type="image/svg+xml" class="my-1 mx-auto"></object>
-                        </div>
-                     </div>
-
-                     <h4 class="text-center mt-3 mb-2">Aullido</h4>
-
-                    <p>El macho dominante <em>marca su territorio con llamadas largas y roncas</em>, conocidas como "llamada larga" para señalar su presencia a las hembras y ahuyentar a otros machos. Puedes escuchar ese aullido a <em>dos kilómetros</em> de distancia.</p>
-<!-- Aullido -->
-
-<div class="row g-5 mb-5">
-   <div class="col-12 mx-auto">
-      <object data="imgs/sonido.svg" type="image/svg+xml" class="my-1 mx-auto"></object>
-   </div>
-</div>
-
-<!-- Probando sonido orangutan -->
-
-<div class="mx-auto px-3 py-2 g-5 mb-5 rounded-pill shadow-sm" style="width:250px; background:rgba(230, 81, 0, 0.16)">
-    <audio id="elAudio">
-        <source src="imgs/llamada_larga.mp3" type="audio/mpeg">
-        <source src="imgs/llamada_larga.ogg" type="audio/ogg">
-    </audio>
-    <div class="form-check form-switch text-center">
-        <input class="form-check-input" type="checkbox" id="elSwitch">
-        <label class="form-check-label" for="elSwitch">Escucha al Orangután</label>
-    </div>
-</div>
-                    <!--
-                     <div class="row g-5">
-                        <div class="col-6 text-center">
-                           <img src="imgs/bridas.png" class="w-100" alt="..." />
-                           <p>Macho dominante con bridas</p>
-                        </div>
-                        <div class="col-6 text-center">
-                           <img src="imgs/sinbridas.png" class="w-100" alt="..." />
-                           <p>Otros machos, sin bridas</p>
-                        </div>
-                     </div>-->
-                  </div>
-               </div>
-            </div>
-         </section>
-
-	      
-                  <!-- ................................................................................ -->
-         <!-- DESPLAZAMIENTO -->
-         <section>
-            <div class="container">
-               <div class="row">
-                  <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-
-
-                  <h3 class="text-center mt-3 mb-1">La selva tropical de Borneo</h3>
-                  <p>La <em>lluvia y la humedad</em> han hecho de la selva tropical de Borneo, un ecosistema compuesto por una gran diversidad de árboles y plantas, que suelen tener cientos de años, están formados por una formación de plantas arbóreas altas y densas.</p>
-
-                  <div class="row g-5 mb-5">
-                     <div class="col-12 mx-auto text-center">
-                        <object data="imgs/Bosque_001.svg" type="image/svg+xml" class="my-1 mx-auto"></object>
-                        <a href="https://en.wikipedia.org/wiki/Biodiversity_of_Borneo#/media/File:Borneo_rainforest.jpg" target="_blank">Selva en Kinabalu Park, Borneo</a>
-                     </div>
-                  </div>
-
-                  <h4 class="text-center mt-3 mb-1">Escucha los sonidos de selva tropical de Borneo.</h4>
-
-<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/799884187&color=545c43&show_comments=false&show_teaser=false"></iframe><div class="mb-5" style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/wildambience" title="Wild Ambience" target="_blank" style="color: #cccccc; text-decoration: none;">Wild Ambience</a> · <a href="https://soundcloud.com/wildambience/heart-of-borneo-tawau-hills" title="New Album &#x27;Heart of Borneo - Tawau Hills&#x27;" target="_blank" style="color: #cccccc; text-decoration: none;">New Album &#x27;Heart of Borneo - Tawau Hills&#x27;</a></div>
-
-                  <h3 class="text-center mt-3 mb-2">Estilo de vida</h3>
-
-                  <p>
-                    Viven y viajan casi exclusivamente a través de el dosel forestal, donde encuentran todo lo que necesitan para su supervivencia: comida, agua y refugio para dormir. <em>Los orangutanes no saltan</em>, usan sus brazos largos y musculosos para <em>balancearse</em> fácilmente de una rama a otra.
-
-                  </p>
-
+                    </div>
                 </div>
-                </div>
-                </div>
-                </section>
+            </section>
 
-         <section id="seccion_ancha">
-            <div class="container-fluid g-0">
-               <div class="row g-0">
-                  <div class="col-12">
-                     <!--VAMOS A INCLUIR TRES SVG EN UN CARRUSEL-->
-                     <div id="carruselConMapa" class="carousel slide carousel-fade" data-bs-ride="carousel">
-                        <div class="carousel-indicators">
-                           <button type="button" data-bs-target="#carruselConMapa" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                           <button type="button" data-bs-target="#carruselConMapa" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                           <button type="button" data-bs-target="#carruselConMapa" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <!-- ................................................................................ -->
+            <!-- DESPLAZAMIENTO -->
+            <section>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                            <h3 class="text-center mt-3 mb-1">La selva tropical de Borneo</h3>
+                            <p>
+                                La <em>lluvia y la humedad</em> han hecho de la selva tropical de Borneo, un ecosistema compuesto por una gran diversidad de árboles y plantas, que suelen tener cientos de años, están formados por una
+                                formación de plantas arbóreas altas y densas.
+                            </p>
+
+                            <div class="row g-5 mb-5">
+                                <div class="col-12 mx-auto text-center">
+                                    <object data="imgs/Bosque_001.svg" type="image/svg+xml" class="my-1 mx-auto"></object>
+                                    <a href="https://en.wikipedia.org/wiki/Biodiversity_of_Borneo#/media/File:Borneo_rainforest.jpg" target="_blank">Selva en Kinabalu Park, Borneo</a>
+                                </div>
+                            </div>
+
+                            <h4 class="text-center mt-3 mb-1">Escucha los sonidos de selva tropical de Borneo.</h4>
+
+                            <iframe
+                                width="100%"
+                                height="166"
+                                scrolling="no"
+                                frameborder="no"
+                                allow="autoplay"
+                                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/799884187&color=545c43&show_comments=false&show_teaser=false"
+                            ></iframe>
+                            <div
+                                class="mb-5"
+                                style="
+                                    font-size: 10px;
+                                    color: #cccccc;
+                                    line-break: anywhere;
+                                    word-break: normal;
+                                    overflow: hidden;
+                                    white-space: nowrap;
+                                    text-overflow: ellipsis;
+                                    font-family: Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Garuda, Verdana, Tahoma, sans-serif;
+                                    font-weight: 100;
+                                "
+                            >
+                                <a href="https://soundcloud.com/wildambience" title="Wild Ambience" target="_blank" style="color: #cccccc; text-decoration: none;">Wild Ambience</a> ·
+                                <a href="https://soundcloud.com/wildambience/heart-of-borneo-tawau-hills" title="New Album &#x27;Heart of Borneo - Tawau Hills&#x27;" target="_blank" style="color: #cccccc; text-decoration: none;">
+                                    New Album &#x27;Heart of Borneo - Tawau Hills&#x27;
+                                </a>
+                            </div>
+
+                            <h3 class="text-center mt-3 mb-2">Estilo de vida</h3>
+
+                            <p>
+                                Viven y viajan casi exclusivamente a través de el dosel forestal, donde encuentran todo lo que necesitan para su supervivencia: comida, agua y refugio para dormir. <em>Los orangutanes no saltan</em>, usan sus
+                                brazos largos y musculosos para <em>balancearse</em> fácilmente de una rama a otra.
+                            </p>
                         </div>
-                        <div class="carousel-inner">
-                           <div class="carousel-item active" data-bs-interval="1000">
-                              <object class="d-block w-100" data="imgs/paso-1.svg" type="image/svg+xml"></object>
-                              <div class="carousel-caption">
-                                 <small>A medida que se mueven su peso deforma las ramas hacia abajo.</small>
-                              </div>
-                           </div>
-                           <div class="carousel-item" data-bs-interval="1000">
-                              <object class="d-block w-100" data="imgs/paso-2.svg" type="image/svg+xml"></object>
-                              <div class="carousel-caption">
-                                 <small>Se ayudan con sus pies prensiles para sostener ramas cercanas y propulsarse.</small>
-                              </div>
-                           </div>
-                           <div class="carousel-item" data-bs-interval="1000">
-                              <object class="d-block w-100" data="imgs/paso-3.svg" type="image/svg+xml"></object>
-                              <div class="carousel-caption">
-                                 <small>Distribuyen su peso para formar puentes a los árboles adyacentes</small>
-                              </div>
-                           </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <!--VAMOS A INCLUIR TRES SVG EN UN CARRUSEL-->
+                <div id="carruselConMapa" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carruselConMapa" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carruselConMapa" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carruselConMapa" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" data-bs-interval="1000">
+                            <object class="d-block w-100" data="imgs/paso-1.svg" type="image/svg+xml"></object>
+                            <div class="carousel-caption">
+                                <small>A medida que se mueven su peso deforma las ramas hacia abajo.</small>
+                            </div>
                         </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="container">
-               <div class="row">
-                  <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto my-5">
-                     <p>
-                        Los orangutanes caminan, trepan y se desplazan con brazos y piernas. Utilizan diferentes técnicas para moverse libremente por el bosque.
-                     </p>
-                  </div>
-               </div>
-            </div>
-         </section>
+                        <div class="carousel-item" data-bs-interval="1000">
+                            <object class="d-block w-100" data="imgs/paso-2.svg" type="image/svg+xml"></object>
+                            <div class="carousel-caption">
+                                <small>Se ayudan con sus pies prensiles para sostener ramas cercanas y propulsarse.</small>
+                            </div>
+                        </div>
+                        <div class="carousel-item" data-bs-interval="1000">
+                            <object class="d-block w-100" data="imgs/paso-3.svg" type="image/svg+xml"></object>
+                            <div class="carousel-caption">
+                                <small>Distribuyen su peso para formar puentes a los árboles adyacentes</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto my-5">
+                            <p>
+                                Los orangutanes caminan, trepan y se desplazan con brazos y piernas. Utilizan diferentes técnicas para moverse libremente por el bosque.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-         <div class="container">
-            <div class="row">
-               <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 text-center mx-auto">
-                  <h4 class="mt-1mb-1">Balanceo</h4>
-                  <p>Utilizan su propio peso para doblar troncos y ramas <br>de árboles pequeños para impulsarse de un árbol a otro.</p>
-                  <div class="videoresponsive">
-                  <iframe src="https://www.youtube.com/embed/ZeVoL4xjEWY" frameborder="0" allowfullscreen></iframe>
-                  </div>
-                  <h4 class="text-center mt-3 mb-1">Escalada</h4>
-                  <p>Dominan la técnica de trepar y descender árboles altos con gran facilidad.</p>
-                  <div class="videoresponsive">
-                  <iframe src="https://www.youtube.com/embed/paRxi7L8_c8" frameborder="0" allowfullscreen></iframe>
-                  </div>
-                  <h4 class="text-center mt-3 mb-1">Braquiación</h4>
-                  <p>Se balancean mano a mano de una rama a otra, una forma de locomoción conocida como braquiar.</p>
-                  <div class="videoresponsive">
-                  <iframe src="https://www.youtube.com/embed/Nam2xkIfyiM" frameborder="0" allowfullscreen></iframe>
-                  </div>
+            <section>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 text-center mx-auto">
+                            <h4 class="my-1">Balanceo</h4>
+                            <p>
+                                Utilizan su propio peso para doblar troncos y ramas <br />
+                                de árboles pequeños para impulsarse de un árbol a otro.
+                            </p>
+                            <div class="ratio ratio-16x9">
+                                <iframe src="https://www.youtube.com/embed/ZeVoL4xjEWY" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <h4 class="text-center mt-3 mb-1">Escalada</h4>
+                            <p>Dominan la técnica de trepar y descender árboles altos con gran facilidad.</p>
+                            <div class="ratio ratio-16x9">
+                                <iframe src="https://www.youtube.com/embed/paRxi7L8_c8" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <h4 class="text-center mt-3 mb-1">Braquiación</h4>
+                            <p>Se balancean mano a mano de una rama a otra, una forma de locomoción conocida como braquiar.</p>
+                            <div class="ratio ratio-16x9">
+                                <iframe src="https://www.youtube.com/embed/Nam2xkIfyiM" frameborder="0" allowfullscreen></iframe>
+                            </div>
 
-                  <div class="row g-5 mb-5 mt-5">
-                     <div class="col-12 mx-auto text-center">
-                        <object data="imgs/Bosque_002.svg" type="image/svg+xml" class="my-1 mx-auto"></object>
-                     </div>
-                  </div>
+                            <div class="row g-5 mb-5 mt-5">
+                                <div class="col-12 mx-auto text-center">
+                                    <object data="imgs/Bosque_002.svg" type="image/svg+xml" class="my-1 mx-auto"></object>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-               </div>
-            </div>
-         </div>
-
-
-         <!-- ................................................................................ -->
-         <!-- REPRODUCCIÓN
+            <section>
+                <!-- ................................................................................ -->
+                <!-- REPRODUCCIÓN
          <div class="container border">
             <div class="row">
                <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
@@ -533,471 +566,510 @@
             </div>
          </div>-->
 
-         <!-- ................................................................................ -->
-         <!-- ALIMENTACIÓN -->
-         <div class="container">
-            <div class="row">
-               <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-                  <h3 class="text-center mt-3 mb-2">Alimentación</h3>
-                  <p>
-                     La dieta de los orangutanes se compone principalmente de plantas como frutas, hojas, cortezas, flores y hongos. Aproximadamente el 60% de su dieta proviene de frutas.
-                  </p>
-                  <div class="row g-5 mb-5">
-                     <div class="col-12 mx-auto text-center">
-                        <object data="imgs/alimentacion.svg" type="image/svg+xml" class="my-1 mx-auto"></object>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-
-	      
-	      
-         <!-- ..................TERRITORIO.............................................................. -->
-     <!-- DOSEL-->
-         <div class="container ">
-          <div class="row">
-             <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-               <h3 class="text-center mt-3 mb-1">Duermen en las alturas</h3>
-               <p>Construyen un nido nuevo cada noche para dormir.</p>
-               <div class="card" style="width: 18rem;">
-             <img src="imgs/dosel.svg" class="card-img-top" alt="dimensiones de los arboles em Borneo pueden llegar a los 40 metrso de altura">
-             <div class="card-body">
-              <p class="card-text">El dosel es el hábitat que comprende las regiones superiores de los árboles de un bosque.</p>
-             </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-
-            <div class="row">
-               <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-                  <h3 class="text-center mt-3 mb-1">Territorio</h3>
-                  <p>El espacio doméstico de la hembra es cuatro veces inferior al del macho cuyo territorio puede abarcar hasta 39 kilómetros cuadrados.</p>
-                  <object data="imgs/territorio.svg" type="image/svg+xml"></object>
-                 <p>El espacio aproximado de un orangután en un zoologico chileno es de aproximadamente 500 metros cúbicos. </p>
-              </div>
-            </div>
-            </div>
-    <!-- ..............AMENAZAS.................................... -->
-
-
-
-   <section>
-    <div class="container">
-      <div class="row">
-         <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-            <h3 class="text-center my-5">Disminución acelerada</h3>
-             <p>Censos rigurosos a la población de orangutanes en la isla de Borneo realizados por investigadores de centros de estudios y universidades se empezaron a realizar recién en el siglo XX. Gracias a ellos se comienza a visualizar una disminución considerable de la especie. Por esta razón, varios factores como incendios, tala de árboles nativos y las ambiciones de los países que son parte de la isla juegan variables fundamentales en la posible extinción de este mamífero arbóreo.</p>
-
-             <img src="imgs/amenaza_orangutan.jpg" class="w-100" alt="Sandai, orangutan de BuinZOO" />
-
-            <p>Un estudio públicado el 2018 por <a href="https://www.sciencedirect.com/science/article/pii/S0960982218300861">sciencedirect</a> nos muestra de manera grafica el declive de la especie desde hace dos decadas y desarrolla un proyección no muy alentadora.</p>
-
-             <div class="row g-5 mb-5">
-               <div class="col-sm-6 text-center">
-                  <img src="imgs/amenazas_densidad_orangutan.gif" class="w-100" alt="grafico que muestra la disminucióngeografica en la isla de Boe" />
-                  <p></p>
-                 </div>
-                  <div class="col-sm-6 text-center">
-                <img src="imgs/amenazas_densidad_orangutan_leyenda2.svg" class="card-img-top" alt="proyección de las densidades estimadas del orangután en Borneo entre el año 1999 al 2015 y proyecciones para el 2020 y 2050" />
-              </div>
-              </div>
-            </div>
-           </div>
-           </div>
-           <div class="container">
-             <div class="row">
-                <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-                <h3 class="text-center my-5"></h3>
-                <p>Los pocos parches verde oscuro que se grafican en el año 1999 hablan de  unos diez ornagutanes por kilometro cuadrado.
-                  La proyección para el año 2050 muestra un habitat sectorizado, agrupado seguramente solo en parques nacionales y considerablemente dismunuido.
-                </p>
-              </div>
-          </div>
-        </div>
-      </div>
-    </div>
- </section>
-<div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-<h4 class="text-center mt-5">¿Cuántos individuos quedan por especie?</h4>
-<div class="row g-2 align-items-center my-4" id="grafico_de_barras"></div>
-<p class="small text-center mb-5 text-black-50">Según la Lista Roja de Especies Amenazadas de la UICN. <br><a href="https://www.iucnredlist.org/species/17975/123809220" target="_blank">Orangután de Borneo</a>, <a href="https://www.iucnredlist.org/species/121097935/123797627" target="_blank">Orangután de Sumatra</a>, <a href="https://www.iucnredlist.org/species/120588639/120588662" target="_blank">Orangután de Tapanuli</a></p>
-                     </div>
-
-		   <!-- ..............DISMINUCIÓN  DEL ORANGUTAN FIN.................................... -->
-	       <!-- ..............DISMINUCIÓN  BOSQUES.................................... -->
-	     <section>
- <div class="container">
-   <div class="row">
-      <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-         <h3 class="text-center my-5">Desaparece un pulmón de nuestro planeta</h3>
-          <p>    Borneo estuvo una vez cubierto por una densa selva tropical, que permaneció prácticamente intacta durante miles de años. Habitado por tribus nativas Dayak, practicaban la agricultura de subsistencia y de mediana escala, preservando gran parte del ecosistema de la selva tropical. Antes de la conversión generalizada insostenible de la tierra, los incendios forestales no eran una preocupación en las selvas tropicales de Borneo, ya que la humedad debajo del dosel, así como la falta de abundante material inflamable en el suelo del bosque (debido a que se descompone tan rápidamente) impedían que los incendios comenzaran o se extendieran.</p>
-           <p></p>
-           <p></p>
-           <p></p>
-        <img src="imgs/amenaza_bosque.jpg" class="w-100" alt="Sandai, orangutan de BuinZOO" />
-         <p></p>
-           <p></p> El grafico que viene a continucación se basa en datos  investigados por <a href="https://wwf.org/">www.wwf.org</a>  publicados el año 2009, nos enseña la  desaparición del bosque tropical de las tierras bajas y altas de Borneo, ademas de extensiones de selva tropical, cual han disminuido rápidamente después del final de la Segunda Guerra Mundial. Los bosques se queman, talan y reemplazandose por tierras agrícolas, áreas urbanizadas o plantaciones de aceite de palma lo que   trae como consecuencia la perdida del habitat de nuestro orangutan.</p>
-         <p></p>
-         <p></p>
-         <p></p>
-         <p></p>
-         <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <div class="row g-5 mb-5">
-            <div class="col-sm-6 text-center">
-               <img src="imgs/amenazas_densidad_bosque.gif" class="w-100" alt="disminución del bosque nativo en la isla de borneo desde 1950 a la actualidad" />
-               <p></p>
-              </div>
-               <div class="col-sm-6 text-center">
-             <img src="imgs/amenazas_bosques_leyenda2.svg" class="card-img-top" alt="proyección de la desforestación en Borneo desde 1950 con proyeccion al 2020. Adaptado a Raday M WWf, 200" />
-           </div>
-           </div>
-         </div>
-        </div>
-        </div>
-        <div class="container">
-          <div class="row">
-             <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-             <h3 class="text-center my-5"></h3>
-             <p> Según el medio <a href="https://es.mongabay.com/2015/02/el-30-de-las-selvas-de-borneo-han-sido-destruidas-desde-el-ano-1973/">mongabay.com</a> mas del 30% del bosque primario en Bornea ha dismunuido desde los años 70, esto debido a la industria del papel, extracción de madera e insercion de plantaciones de palma.
-             </p>
-           </div>
-       </div>
-     </div>
-   </div>
- </div>
-</section>
-
-<!-- ..............DISMINUCIÓN  BOSQUES FIN.................................... -->
-<!-- .............ACEITE DE PALMA.................................... -->
-  <div class="container">
-     <div class="row">
-        <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-           <h3 class="text-center mt-3 mb-1">Plantaciones de Palma</h3>
-
-           <p> A mediados del siglo XX la tala del bosque primario fue dejando espacios vacíos de terreno  en la isla, los cuales se fueron reacomodando a la siembra de palma que prometía ganancias exuberantes para Indonesia y Malasia.
-           </p>
-
-           <img src="imgs/amenaza_palma.jpg" class="img-fluid" alt="se muestra una plantación de palma delimitada por la selva pristina de Borneo">
-           <p>
-           </p>
-           <p></p>
-           <p> Para entender cómo pudo ocurrir este gran fenomeno economico, el sitio de pieriodismo ambiental independiente latinoamericano mongabay.com entrega una breve historia de como se origina la industra de aceite de palma.</p>
-           <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
-             <p>  Así es como al día estas dos naciones producen alrededor del 85% del aceite de palma del mundo, que se utiliza en casi todo lo productos industriales cosmeticos, de higiene y alimenticios  como tambien  combustibles como el biodiesel. </p>
-              <div class="ratio ratio-16x9">
-                  <object data="imgs/mapa_exportacion_aceite_palma_mundial_2019.svg" type="image/svg+xml"></object>
-              </div>
-          <div class="small text-center mb-5 text-black-50"> Datos mundiales sobre exportacion de miel de palma, año 2019 por https://resourcetrade.earth/  <br><a href="https://resourcetrade.earth/?year=2019&category=615&units=value&autozoom=1" target="_blank">importaciones y exportaciones mundiales de aceite de palma,año 2019 </a></p>
-             </div>
-           </div>
-         </div>
-        </div>
-
-      <div class="container">
-         <div class="row">
-             <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-                 <h3 class="text-center my-5"></h3>
-                 <p> Podemos darnos cuenta que los paises que lideran el ranking son Indonesia y Malasia.mSe observa ademas que, a diferencia de los paises que los siguen, son los unicos con ganacias  en billones de dolares(Bn) y estan por muy encima del 3er país que es Guatemala. </p>
-              <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-              </div>
-            </div>
-          </div>
-      </div>
-
-        <div class="container">
-           <div class="row">
-               <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-                   <h3 class="text-center my-5"></h3>
-                   <p> Pero veamos hasta donde esta incorporado en nuestras vidas este insensato producto </p>
-                <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                <!-- ................................................................................ -->
+                <!-- ALIMENTACIÓN -->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                            <h4 class="text-center mt-3 mb-2">Alimentación</h4>
+                            <p>
+                                La dieta de los orangutanes se compone principalmente de plantas como frutas, hojas, cortezas, flores y hongos. Aproximadamente el 60% de su dieta proviene de frutas.
+                            </p>
+                            <div class="row g-5 mb-5">
+                                <div class="col-12 mx-auto text-center">
+                                    <object data="imgs/alimentacion.svg" type="image/svg+xml" class="my-1 mx-auto"></object>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
+            </section>
+
+            <!-- ..................TERRITORIO.............................................................. -->
+            <!-- DOSEL-->
+            <section>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto text-center">
+                            <h4 class="mt-3 mb-1">Duermen en las alturas</h4>
+                            <p>Construyen un nido nuevo cada noche para dormir.</p>
+                            <div class="w-50 mx-auto">
+                                <img src="imgs/dosel.svg" class="card-img-top" alt="dimensiones de los arboles em Borneo pueden llegar a los 40 metrso de altura" />
+                                <p class="card-text">El dosel es el hábitat que comprende las regiones superiores de los árboles de un bosque.</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                            <h3 class="text-center mt-5 mb-3">Territorio</h3>
+                            <p>El espacio doméstico de la hembra es cuatro veces inferior al del macho cuyo territorio puede abarcar hasta 39 kilómetros cuadrados.</p>
+                            <object data="imgs/territorio.svg" type="image/svg+xml" class="w-100" alt="representación del territprio"></object>
+                            <p class="text-start">El espacio aproximado de un orangután en un zoologico chileno es de aproximadamente 500 metros cúbicos.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ..............AMENAZAS.................................... -->
+
+            <section>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                            <h3 class="text-center mt-5 mb-3">Disminución acelerada</h3>
+                            <p>
+                                Censos rigurosos a la población de orangutanes en la isla de Borneo realizados por investigadores de centros de estudios y universidades se empezaron a realizar recién en el siglo XX. Gracias a ellos se
+                                comienza a visualizar una disminución considerable de la especie. Por esta razón, varios factores como incendios, tala de árboles nativos y las ambiciones de los países que son parte de la isla juegan
+                                variables fundamentales en la posible extinción de este mamífero arbóreo.
+                            </p>
+
+                            <img src="imgs/amenaza_orangutan.jpg" class="w-100 my-3" alt="Sandai, orangutan de BuinZOO" />
+
+                            <p>
+                                Un estudio públicado el 2018 por <a href="https://www.sciencedirect.com/science/article/pii/S0960982218300861">sciencedirect</a> nos muestra de manera grafica el declive de la especie desde hace dos decadas y
+                                desarrolla un proyección no muy alentadora.
+                            </p>
+
+                            <div class="row g-5">
+                                <div class="col-sm-6 text-center">
+                                    <img src="imgs/amenazas_densidad_orangutan.gif" class="w-100" alt="grafico que muestra la disminucióngeografica en la isla de Boe" />
+                                    <p></p>
+                                </div>
+                                <div class="col-sm-6 text-center">
+                                    <img
+                                        src="imgs/amenazas_densidad_orangutan_leyenda2.svg"
+                                        class="card-img-top"
+                                        alt="proyección de las densidades estimadas del orangután en Borneo entre el año 1999 al 2015 y proyecciones para el 2020 y 2050"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                            <p>
+                                Los pocos parches verde oscuro que se grafican en el año 1999 hablan de unos diez ornagutanes por kilometro cuadrado. La proyección para el año 2050 muestra un habitat sectorizado, agrupado seguramente solo
+                                en parques nacionales y considerablemente dismunuido.
+                            </p>
+                            <h4 class="text-center mt-5">¿Cuántos individuos quedan por especie?</h4>
+                            <div class="row g-2 align-items-center my-4" id="grafico_de_barras"></div>
+                            <p class="small text-center mb-5 text-black-50">
+                                Según la Lista Roja de Especies Amenazadas de la UICN. <br />
+                                <a href="https://www.iucnredlist.org/species/17975/123809220" target="_blank">Orangután de Borneo</a>,
+                                <a href="https://www.iucnredlist.org/species/121097935/123797627" target="_blank">Orangután de Sumatra</a>,
+                                <a href="https://www.iucnredlist.org/species/120588639/120588662" target="_blank">Orangután de Tapanuli</a>
+                            </p>
+                        </div>
+
+                        <!-- ..............DISMINUCIÓN  DEL ORANGUTAN FIN.................................... -->
+                        <!-- ..............DISMINUCIÓN  BOSQUES.................................... -->
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                            <h3 class="text-center mt-5 mb-3">Desaparece un pulmón de nuestro planeta</h3>
+                            <p>
+                                Borneo estuvo una vez cubierto por una densa selva tropical, que permaneció prácticamente intacta durante miles de años. Habitado por tribus nativas Dayak, practicaban la agricultura de subsistencia y de
+                                mediana escala, preservando gran parte del ecosistema de la selva tropical. Antes de la conversión generalizada insostenible de la tierra, los incendios forestales no eran una preocupación en las selvas
+                                tropicales de Borneo, ya que la humedad debajo del dosel, así como la falta de abundante material inflamable en el suelo del bosque (debido a que se descompone tan rápidamente) impedían que los incendios
+                                comenzaran o se extendieran.
+                            </p>
+                            <img src="imgs/amenaza_bosque.jpg" class="w-100 my-3" alt="Sandai, orangutan de BuinZOO" />
+                            <p>
+                                El grafico que viene a continucación se basa en datos investigados por <a href="https://wwf.org/">www.wwf.org</a> publicados el año 2009, nos enseña la desaparición del bosque tropical de las tierras bajas y
+                                altas de Borneo, ademas de extensiones de selva tropical, cual han disminuido rápidamente después del final de la Segunda Guerra Mundial. Los bosques se queman, talan y reemplazandose por tierras agrícolas,
+                                áreas urbanizadas o plantaciones de aceite de palma lo que trae como consecuencia la perdida del habitat de nuestro orangutan.
+                            </p>
+
+                            <div class="row g-5 mb-5">
+                                <div class="col-sm-6 text-center">
+                                    <img src="imgs/amenazas_densidad_bosque.gif" class="w-100" alt="disminución del bosque nativo en la isla de borneo desde 1950 a la actualidad" />
+                                </div>
+                                <div class="col-sm-6 text-center">
+                                    <img src="imgs/amenazas_bosques_leyenda2.svg" class="card-img-top" alt="proyección de la desforestación en Borneo desde 1950 con proyeccion al 2020. Adaptado a Raday M WWf, 200" />
+                                </div>
+                            </div>
+                            <p>
+                                Según el medio <a href="https://es.mongabay.com/2015/02/el-30-de-las-selvas-de-borneo-han-sido-destruidas-desde-el-ano-1973/">mongabay.com</a> mas del 30% del bosque primario en Bornea ha dismunuido desde los
+                                años 70, esto debido a la industria del papel, extracción de madera e insercion de plantaciones de palma.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ..............DISMINUCIÓN  BOSQUES FIN.................................... -->
+            <!-- .............ACEITE DE PALMA.................................... -->
+            <section>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                            <h3 class="text-center mt-5 mb-3">Plantaciones de Palma</h3>
+
+                            <p>
+                                A mediados del siglo XX la tala del bosque primario fue dejando espacios vacíos de terreno en la isla, los cuales se fueron reacomodando a la siembra de palma que prometía ganancias exuberantes para Indonesia
+                                y Malasia.
+                            </p>
+
+                            <img src="imgs/amenaza_palma.jpg" class="w-100 my-3" alt="se muestra una plantación de palma delimitada por la selva pristina de Borneo" />
+
+                            <p>
+                                Para entender cómo pudo ocurrir este gran fenomeno economico, el sitio de pieriodismo ambiental independiente latinoamericano mongabay.com entrega una breve historia de como se origina la industra de aceite
+                                de palma.
+                            </p>
+                            <p>
+                                Así es como al día estas dos naciones producen alrededor del 85% del aceite de palma del mundo, que se utiliza en casi todo lo productos industriales cosmeticos, de higiene y alimenticios como tambien
+                                combustibles como el biodiesel.
+                            </p>
+                            <object data="imgs/mapa_exportacion_aceite_palma_mundial_2019.svg" type="image/svg+xml" class="w-100" alt="Visualización de la exportación mundial de aceite de palma"></object>
+                            <p class="small text-center mb-5 text-black-50">
+                                Datos mundiales sobre <a href="https://resourcetrade.earth/?year=2019&category=615&units=value&autozoom=1" target="_blank">importaciones y exportaciones mundiales de aceite de palma, año 2019 </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                            <p>
+                                Podemos darnos cuenta que los paises que lideran el ranking son Indonesia y Malasia. Se observa ademas que, a diferencia de los paises que los siguen, son los unicos con ganacias en billones de dolares(Bn) y
+                                estan por muy encima del 3er país que es Guatemala.
+                            </p>
+                            <p>Pero veamos hasta donde esta incorporado en nuestras vidas este insensato producto</p>
+                        </div>
+                        <div class="col-12">
+                            <div class="row g-3">
+                                <div class="col-6 col-sm-4 col-md-3">
+                                    <div class="p-3 bg-light">Productos para untar</div>
+                                    <figure class="figure">
+                                        <img src="imgs/Aceite_palma_untable.svg" class="w-100 rounded" alt="aceite de palma utilizado en cremas de untar como cacao y margarinas" />
+                                        <figcaption class="figure-caption">Por la cantidad de grasas saturadas que contiene y que facilitan el untado, hace que se utilice en cremas de cacao y en margarinas.</figcaption>
+                                    </figure>
+                                </div>
+
+                                <div class="col-6 col-sm-4 col-md-3">
+                                    <div class="p-3 bg-light">Cremas y coberturas</div>
+                                    <figure class="figure">
+                                        <img src="imgs/Aceite_palma_coverturas.svg" class="w-100 rounded" alt="aceite de palma utilizado en cremas de untar como cacao y margarinas" />
+                                        <figcaption class="figure-caption">Por la cantidad de grasas saturadas que contiene y que facilitan el untado, hace que se utilice en cremas de cacao y en margarinas.</figcaption>
+                                    </figure>
+                                </div>
+
+                                <div class="col-6 col-sm-4 col-md-3">
+                                    <div class="p-3 bg-light">Precocinados</div>
+                                    <figure class="figure">
+                                        <img src="imgs/Aceite_palma_precocinadas.svg" class="w-100 rounded" alt="aceite de palma utilizado en cremas de untar como cacao y margarinas" />
+                                        <figcaption class="figure-caption">Por la cantidad de grasas saturadas que contiene y que facilitan el untado, hace que se utilice en cremas de cacao y en margarinas.</figcaption>
+                                    </figure>
+                                </div>
+
+                                <div class="col-6 col-sm-4 col-md-3">
+                                    <div class="p-3 bg-light">Chips y aperitivos</div>
+                                    <figure class="figure">
+                                        <img src="imgs/Aceite_palma_ships.svg" class="w-100 rounded" alt="aceite de palma utilizado en cremas de untar como cacao y margarinas" />
+                                        <figcaption class="figure-caption">Por la cantidad de grasas saturadas que contiene y que facilitan el untado, hace que se utilice en cremas de cacao y en margarinas.</figcaption>
+                                    </figure>
+                                </div>
+
+                                <div class="col-6 col-sm-4 col-md-3">
+                                    <div class="p-3 bg-light">Productos de limpieza</div>
+                                    <figure class="figure">
+                                        <img src="imgs/Aceite_palma_art_limpieza.svg" class="w-100 rounded" alt="aceite de palma utilizado en cremas de untar como cacao y margarinas" />
+                                        <figcaption class="figure-caption">Por la cantidad de grasas saturadas que contiene y que facilitan el untado, hace que se utilice en cremas de cacao y en margarinas.</figcaption>
+                                    </figure>
+                                </div>
+
+                                <div class="col-6 col-sm-4 col-md-3">
+                                    <div class="p-3 bg-light">Cosméticos</div>
+                                    <figure class="figure">
+                                        <img src="imgs/Aceite_palma_cosmeticos.svg" class="w-100 rounded" alt="aceite de palma utilizado en cremas de untar como cacao y margarinas" />
+                                        <figcaption class="figure-caption">Por la cantidad de grasas saturadas que contiene y que facilitan el untado, hace que se utilice en cremas de cacao y en margarinas.</figcaption>
+                                    </figure>
+                                </div>
+
+                                <div class="col-6 col-sm-4 col-md-3">
+                                    <div class="p-3 bg-light">Snacks y pasteles</div>
+                                    <figure class="figure">
+                                        <img src="imgs/Aceite_palma_snack.svg" class="w-100 rounded" alt="aceite de palma utilizado en cremas de untar como cacao y margarinas" />
+                                        <figcaption class="figure-caption">Por la cantidad de grasas saturadas que contiene y que facilitan el untado, hace que se utilice en cremas de cacao y en margarinas.</figcaption>
+                                    </figure>
+                                </div>
+
+                                <div class="col-6 col-sm-4 col-md-3">
+                                    <div class="p-3 bg-light">Velas Alternativa</div>
+                                    <figure class="figure">
+                                        <img src="imgs/Aceite_palma_velas.svg" class="w-100 rounded" alt="aceite de palma utilizado en cremas de untar como cacao y margarinas" />
+                                        <figcaption class="figure-caption">Por la cantidad de grasas saturadas que contiene y que facilitan el untado, hace que se utilice en cremas de cacao y en margarinas.</figcaption>
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto my-5">
+                            <p>
+                                Las marcas que lo utilizan según Greenpeace son: Colgate-Palmolive, General Mills, Hershey, Kellogg’s, Kraft Heinz, L’Oreal, Ferrero Rocher, Nutella, Mondelez (Oreo), Nestlé, PepsiCo, Reckitt Benckiser y
+                                Unilever. Mars es una de las pocas compañías que ha cortado lazos con las empresas de aceite de palma vinculadas a la deforestación.
+                            </p>
+                            <p>
+                                Utilizan su propio peso para doblar troncos y ramas <br />
+                                de árboles pequeños para impulsarse de un árbol a otro.
+                            </p>
+                            <div class="ratio ratio-16x9">
+                                <iframe
+                                    src="https://www.youtube.com/embed/oA10-oZi4Xc"
+                                    title="YouTube video player"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen
+                                ></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- .............ACEITE DE PALMA FIN.................................... -->
+        </main>
+        <!--ESTE ES EL PIE DE PÁGINA-->
+        <aside>
+            <div class="container small text-center">
+                <div class="row py-5">
+                    <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                        <h5 class="fs-6 mb-3">Fuentes</h5>
+                        <p>
+                            <a href="https://www.greenpeace.org/">Greenpeace</a> &bull; <a href="https://resourcetrade.earth/">resourcetrade.earth</a> &bull; <a href="https://es.mongabay.com/">Mongabay</a> &bull;
+                            <a href="http://www.jpl.nasa.gov/">NASA Jet Propulsion Laboratory</a> &bull; <a href="#">SSN (U.S. Space Surveillance Network)</a>
+                        </p>
+                        <p><em>Agradecimientos a</em> nuestras familias, a la Pontificia Universidad Católica de Chile, BuinZoo y a los medios de divulgación cientifica que nos han permitido ahondar a fondo en este hermoso ser vivo.</p>
+                        <h5 class="fs-6 mt-5 mb-3">Versión impresa</h5>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#modalImpreso">
+                            <img src="imgs/impresa.jpg" class="w-50 shadow-sm mb-5" alt="infografía impresa pequeña" />
+                        </a>
+                        <div class="modal fade" id="modalImpreso" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog modal-fullscreen">
+                                <img src="imgs/impresa.jpg" class="w-100" alt="infografía impresa grande" />
+                            </div>
+                        </div>
+                        <p class="small">
+                            <em><a href="https://www.diplomadodeinfografia.cl/" class="link-dark" target="_blank">Diplomado de Infografía</a> &bull; 2021</em><br />
+                            Escuela de Diseño de la Pontificia Universidad Católica de Chile<br />
+                        </p>
+                    </div>
+                </div>
             </div>
+            <div class="bg-light">
+                <div class="container py-5">
+                    <div class="row">
+                        <h4 class="col-12 mb-4 text-center">También te puede interesar</h4>
+                    </div>
+                    <div class="row g-4" id="colegas"></div>
+                    <script>
+                        const colegas = document.getElementById("colegas");
+                        const datos = [
+                            {
+                                especie: "Gibón de manos blancas",
+                                imagen: "https://raw.githubusercontent.com/profesorfaco/infografia/main/thumbnails/gibon.jpg",
+                                descripcion: "el danzarín del bosque.",
+                                url: "https://gibon-de-manos-blancas.github.io/avance/",
+                            },
+                            {
+                                especie: "Grulla de cuello blanco",
+                                imagen: "https://raw.githubusercontent.com/profesorfaco/infografia/main/thumbnails/grulla.jpg",
+                                descripcion: "un viajera romántica.",
+                                url: "https://grulla-de-cuello-blanco.github.io/avance",
+                            },
+                            {
+                                especie: "Hipopótamo pigmeo",
+                                imagen: "https://raw.githubusercontent.com/profesorfaco/infografia/main/thumbnails/hipopotamo.jpg",
+                                descripcion: "un pequeño caballo de río.",
+                                url: "https://hipopotamo-pigmeo.github.io/avance",
+                            },
+                            {
+                                especie: "Panda rojo",
+                                imagen: "https://raw.githubusercontent.com/profesorfaco/infografia/main/thumbnails/panda.jpg",
+                                descripcion: "el animal más lindo del mundo.",
+                                url: "https://infografia-panda-rojo.github.io/avance",
+                            },
+                            {
+                                especie: "Lemur de cola anillada",
+                                imagen: "https://raw.githubusercontent.com/profesorfaco/infografia/main/thumbnails/lemur.jpg",
+                                descripcion: "el zorrillo de Madagascar.",
+                                url: "https://lemur-cola-anillada.github.io/avance",
+                            },
+                            {
+                                especie: "Orangután de borneo",
+                                imagen: "https://raw.githubusercontent.com/profesorfaco/infografia/main/thumbnails/orangutan.jpg",
+                                descripcion: "el hombre del bosque.",
+                                url: "https://orangutan-borneo-uc.github.io/avance",
+                            },
+                            { especie: "Oso malayo", imagen: "https://raw.githubusercontent.com/profesorfaco/infografia/main/thumbnails/oso.jpg", descripcion: "el oso más pequeño.", url: "https://oso-malayo.github.io/avance" },
+                            {
+                                especie: "Siamang",
+                                imagen: "https://raw.githubusercontent.com/profesorfaco/infografia/main/thumbnails/siamang.jpg",
+                                descripcion: "el acróbata de la selva.",
+                                url: "https://siamang-infografia.github.io/avance",
+                            },
+                            {
+                                especie: "Tapir amazónico",
+                                imagen: "https://raw.githubusercontent.com/profesorfaco/infografia/main/thumbnails/tapir.jpg",
+                                descripcion: "el jardinero de la selva.",
+                                url: "https://tapir-amazonico.github.io/avance",
+                            },
+                            {
+                                especie: "Tigre de bengala",
+                                imagen: "https://raw.githubusercontent.com/profesorfaco/infografia/main/thumbnails/tigre.jpg",
+                                descripcion: "el felino más grande del mundo.",
+                                url: "https://tigre-de-bengala.github.io/avance/",
+                            },
+                        ];
+                        datos.forEach((d) => {
+                            if (d.especie != "Orangután de borneo") {
+                                colegas.innerHTML +=
+                                    '<div class="col-12 col-md-6 col-lg-4"><div class="row shadow-sm g-0 small align-items-center bg-white"><div class="col-3"><img loading="lazy" src="' +
+                                    d.imagen +
+                                    '" alt="' +
+                                    d.especie +
+                                    '" class="w-100"></div><div class="col-9 p-2"><em>' +
+                                    d.especie +
+                                    '</em>, <a href="' +
+                                    d.url +
+                                    '">' +
+                                    d.descripcion +
+                                    "</a></div></div></div>";
+                            }
+                        });
+                    </script>
+                </div>
             </div>
-
-       <section>
-<div class="container">
-  <div class="row row-cols-4 row-cols-lg-4 g-2 g-lg-3">
-    <div class="col">
-      <div class="p-3  bg-light">Productos para untar</div>
-      <figure class="figure">
-  <img src="imgs/Aceite_palma_untable.svg" class="figure-img img-fluid rounded" alt="aceite de palma utilizado en cremas de untar como cacao y margarinas">
-  <figcaption class="figure-caption">Por la cantidad de grasas saturadas que contiene y que facilitan el untado, hace que se utilice en cremas de cacao y en margarinas.</figcaption>
-</figure>
-    </div>
-    <div class="col">
-      <div class="p-3  bg-light">Cremas y coberturas</div>
-      <figure class="figure">
-  <img src="imgs/Aceite_palma_coverturas.svg" class="figure-img img-fluid rounded" alt="aceite de palma utilizado en cremas de untar como cacao y margarinas">
-  <figcaption class="figure-caption">Por la cantidad de grasas saturadas que contiene y que facilitan el untado, hace que se utilice en cremas de cacao y en margarinas.</figcaption>
-</figure>
-    </div>
-    <div class="col">
-      <div class="p-3  bg-light">Precocinados</div>
-      <img src="imgs/Aceite_palma_precocinadas.svg" class="figure-img img-fluid rounded" alt="aceite de palma utilizado en cremas de untar como cacao y margarinas">
-      <figcaption class="figure-caption">Por la cantidad de grasas saturadas que contiene y que facilitan el untado, hace que se utilice en cremas de cacao y en margarinas.</figcaption>
-    </figure>
-    </div>
-    <div class="col">
-      <div class="p-3  bg-light">Chips y aperitivos</div>
-      <img src="imgs/Aceite_palma_ships.svg" class="figure-img img-fluid rounded" alt="aceite de palma utilizado en cremas de untar como cacao y margarinas">
-      <figcaption class="figure-caption">Por la cantidad de grasas saturadas que contiene y que facilitan el untado, hace que se utilice en cremas de cacao y en margarinas.</figcaption>
-    </figure>
-    </div>
-    <div class="col">
-      <div class="p-3  bg-light">Productos de limpieza</div>
-      <img src="imgs/Aceite_palma_art_limpieza.svg" class="figure-img img-fluid rounded" alt="aceite de palma utilizado en cremas de untar como cacao y margarinas">
-      <figcaption class="figure-caption">Por la cantidad de grasas saturadas que contiene y que facilitan el untado, hace que se utilice en cremas de cacao y en margarinas.</figcaption>
-    </figure>
-    </div>
-    <div class="col">
-      <div class="p-3  bg-light">Cosméticos</div>
-      <img src="imgs/Aceite_palma_cosmeticos.svg" class="figure-img img-fluid rounded" alt="aceite de palma utilizado en cremas de untar como cacao y margarinas">
-      <figcaption class="figure-caption">Por la cantidad de grasas saturadas que contiene y que facilitan el untado, hace que se utilice en cremas de cacao y en margarinas.</figcaption>
-    </figure>
-    </div>
-    <div class="col">
-      <div class="p-3  bg-light">Snacks y pasteles</div>
-      <img src="imgs/Aceite_palma_snack.svg" class="figure-img img-fluid rounded" alt="aceite de palma utilizado en cremas de untar como cacao y margarinas">
-      <figcaption class="figure-caption">Por la cantidad de grasas saturadas que contiene y que facilitan el untado, hace que se utilice en cremas de cacao y en margarinas.</figcaption>
-    </figure>
-    </div>
-    <div class="col">
-      <div class="p-3  bg-light">Velas Alternativa</div>
-      <img src="imgs/Aceite_palma_velas.svg" class="figure-img img-fluid rounded" alt="aceite de palma utilizado en cremas de untar como cacao y margarinas">
-      <figcaption class="figure-caption">Por la cantidad de grasas saturadas que contiene y que facilitan el untado, hace que se utilice en cremas de cacao y en margarinas.</figcaption>
-    </figure>
-    </div>
-</div>
-<section>
-</section>
-<div class="container">
-   <div class="row">
-      <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto my-5">
-         <p>
-          Las marcas que lo utilizan según Greenpeace son: Colgate-Palmolive, General Mills, Hershey, Kellogg’s, Kraft Heinz, L’Oreal, Ferrero Rocher, Nutella, Mondelez (Oreo), Nestlé, PepsiCo, Reckitt Benckiser y Unilever.   Mars es una de las pocas compañías que ha cortado lazos con las empresas de aceite de palma vinculadas a la deforestación.
-         </p>
-
-      </div>
-   </div>
-</div>
-<div class="container">
-   <div class="row">
-      <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 text-center mx-auto">
-         <h4 class="mt-1mb-1"></h4>
-         <p>Utilizan su propio peso para doblar troncos y ramas <br>de árboles pequeños para impulsarse de un árbol a otro.</p>
-         <div class="videoresponsive">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/oA10-oZi4Xc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-         </div>
-
-</section>
-<!-- .............ACEITE DE PALMA FIN.................................... -->
-	 
+        </aside>
+        <!--ESTE ES EL PIE DE PÁGINA-->
+        <footer class="bg-dark text-white-50">
             <div class="container">
-               <div class="row">
-                  <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto my-5">
-                     <p>
-                        Infografía sobre el orangután de Borneo en la cual encontrarás una investigación de su taxonomía, características físicas y sociales además de las amenazas que lo acechan hoy en día.
-                     </p>
-                  </div>
-               </div>
+                <div class="row">
+                    <div class="col py-3">
+                        <p class="text-center small">
+                            Esta obra está bajo una <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" class="link-light">Licencia Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional</a>.
+                        </p>
+                    </div>
+                </div>
             </div>
-  
-      </main>
-      <!--ESTE ES EL PIE DE PÁGINA-->
-      <aside>
-         <div class="container small text-center">
-            <div class="row py-5">
-               <div class="col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-                  <h5 class="fs-6 mb-3">Fuentes</h5>
-                  <p>
-                     <a href="https://www.greenpeace.org/">Greenpeace</a> &bull; <a href="https://resourcetrade.earth/">resourcetrade.earth</a> &bull;
-                     <a href="https://es.mongabay.com/">Mongabay</a> &bull; <a href="http://www.jpl.nasa.gov/">NASA Jet Propulsion Laboratory</a> &bull; <a href="#">SSN (U.S. Space Surveillance Network)</a>
-                  </p>
-                  <p><em>Agradecimientos a</em> a nuestras familias, a la Pontificia Universidad Católica de Chile, BuinZoo y a los medios de divulgación cientifica que nos han permitido ahondar a fondo en este hermoso ser vivo.</p>
-                  <h5 class="fs-6 mt-5 mb-3">Versión impresa</h5>
-                  <a href="#" data-bs-toggle="modal" data-bs-target="#modalImpreso">
-                  <img src="imgs/impresa.jpg" class="w-50 shadow-sm mb-5" alt="infografía impresa pequeña" />
-                  </a>
-                  <div class="modal fade" id="modalImpreso" tabindex="-1" aria-hidden="true">
-                     <div class="modal-dialog modal-fullscreen">
-                        <img src="imgs/impresa.jpg" class="w-100" alt="infografía impresa grande" />
-                     </div>
-                  </div>
-                  <p class="small">
-                     <em><a href="https://www.diplomadodeinfografia.cl/" class="link-dark" target="_blank">Diplomado de Infografía</a> &bull; 2021</em><br />
-                     Escuela de Diseño de la Pontificia Universidad Católica de Chile<br />
-                  </p>
-               </div>
-            </div>
-         </div>
-         <div class="bg-light">
-            <div class="container py-5">
-               <div class="row">
-                  <h4 class="col-12 mb-4 text-center">También te puede interesar</h4>
-               </div>
-               <div class="row g-4" id="colegas"></div>
-               <script>
-                  const colegas = document.getElementById("colegas");
-                  const datos = [
-                     { especie: "Gibón de manos blancas", imagen: "https://raw.githubusercontent.com/profesorfaco/infografia/main/thumbnails/gibon.jpg", descripcion: "el danzarín del bosque.", url: "https://gibon-de-manos-blancas.github.io/avance/" },
-                     { especie: "Grulla de cuello blanco", imagen: "https://raw.githubusercontent.com/profesorfaco/infografia/main/thumbnails/grulla.jpg", descripcion: "un viajera romántica.", url: "https://grulla-de-cuello-blanco.github.io/avance" },
-                     { especie: "Hipopótamo pigmeo", imagen: "https://raw.githubusercontent.com/profesorfaco/infografia/main/thumbnails/hipopotamo.jpg", descripcion: "un pequeño caballo de río.", url: "https://hipopotamo-pigmeo.github.io/avance" },
-                     { especie: "Panda rojo", imagen: "https://raw.githubusercontent.com/profesorfaco/infografia/main/thumbnails/panda.jpg", descripcion: "el animal más lindo del mundo.", url: "https://infografia-panda-rojo.github.io/avance" },
-                     { especie: "Lemur de cola anillada", imagen: "https://raw.githubusercontent.com/profesorfaco/infografia/main/thumbnails/lemur.jpg", descripcion: "el zorrillo de Madagascar.", url: "https://lemur-cola-anillada.github.io/avance" },
-                     { especie: "Orangután de borneo", imagen: "https://raw.githubusercontent.com/profesorfaco/infografia/main/thumbnails/orangutan.jpg", descripcion: "el hombre del bosque.", url: "https://orangutan-borneo-uc.github.io/avance" },
-                     { especie: "Oso malayo", imagen: "https://raw.githubusercontent.com/profesorfaco/infografia/main/thumbnails/oso.jpg", descripcion: "el oso más pequeño.", url: "https://oso-malayo.github.io/avance" },
-                     { especie: "Siamang", imagen: "https://raw.githubusercontent.com/profesorfaco/infografia/main/thumbnails/siamang.jpg", descripcion: "el acróbata de la selva.", url: "https://siamang-infografia.github.io/avance" },
-                     { especie: "Tapir amazónico", imagen: "https://raw.githubusercontent.com/profesorfaco/infografia/main/thumbnails/tapir.jpg", descripcion: "el jardinero de la selva.", url: "https://tapir-amazonico.github.io/avance" },
-                     { especie: "Tigre de bengala", imagen: "https://raw.githubusercontent.com/profesorfaco/infografia/main/thumbnails/tigre.jpg", descripcion: "el felino más grande del mundo.", url: "https://tigre-de-bengala.github.io/avance/" }
-                  ];
-                  datos.forEach((d) => {
-                     if(d.especie != "Orangután de borneo"){
-                        colegas.innerHTML +=
-                           '<div class="col-12 col-md-6 col-lg-4"><div class="row shadow-sm g-0 small align-items-center bg-white"><div class="col-3"><img loading="lazy" src="' +
-                           d.imagen + '" alt="' +
-                           d.especie +
-                           '" class="w-100"></div><div class="col-9 p-2"><em>' +
-                           d.especie +
-                           '</em>, <a href="' +
-                           d.url +
-                           '">' +
-                           d.descripcion +
-                           "</a></div></div></div>";
-                     }
-                  });
-               </script>
-            </div>
-         </div>
-      </aside>
-      <!--ESTE ES EL PIE DE PÁGINA-->
-      <footer class="bg-dark text-white-50">
-         <div class="container">
-            <div class="row">
-               <div class="col py-3">
-                  <p class="text-center small">
-                     Esta obra está bajo una <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" class="link-light">Licencia Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional</a>.
-                  </p>
-               </div>
-            </div>
-         </div>
-      </footer>
-      <!-- JAVASCRIPT -->
-      <!--Gráfico de barras-->
-      <script>
-         //No creo que sea necesario complicarse, puedes meter el dato a mano a continuación
-          var dato = [
-             { especie: "Orangután de Borneo", imagen: "imgs/Pongo_Borneo.webp", quedan: 104700 },
-             { especie: "Orangután de Sumatra", imagen: "imgs/Pongo_sumatra.webp", quedan: 13846  },
-             { especie: "Orangután de Tapanuli", imagen: "imgs/Tapanuliensis.webp", quedan: 800 },
-         ];
-         //Sumo los que quedan a mano, para tener el total necesario para sacar % para barra
-         var total = dato[0]["quedan"] + dato[1]["quedan"] + dato[2]["quedan"];
-         //Voy a tomar el elemento con esta identidad
-         const lugar = document.getElementById("grafico_de_barras");
-         //Por cada dato en gráfico chanto algo al elemento
-         dato.forEach((d) => {
-             lugar.innerHTML +=
-                 '<div class="col-2 col-md-1"><img src="' +
-                 d.imagen +
-                 '" class="w-100 rounded-circle" data-bs-toggle="tooltip" data-bs-placement="right" title="' +
-                 d.especie +
-                 '"/></div><div class="col-10 col-md-11"><div class="progress"><div class="progress-bar" role="progressbar" style="width: ' +
-                 (d.quedan * 100) / total +
-                 '%;"></div><span class="ps-1 fw-bold">' +
-                 d.quedan.toLocaleString("es-CL") +
-                 "</span></div></div>";
-         });
-      </script>
-      <!-- Final de gráficos de barras -->
-      <!--BOOTSTRAP OFRECE SU PROPIA BIBLIOTECA DE JAVASCRIPT-->
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-      <script>
-         //esto activa el tooltip, que muestra el nombre de la especie en el gráfico
-         var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-         var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-             return new bootstrap.Tooltip(tooltipTriggerEl);
-         });
-      </script>
-      <!--LO QUE SIGUE ES OTRA BIBLIOTECA DE JAVASCRIPT-->
-      <script src="https://unpkg.com/image-compare-viewer/dist/image-compare-viewer.min.js"></script>
-      <!--LO QUE SIGUE ES LA CONFIGURACIÓN DE LA COMPARACIÓN DE IMÁGENES-->
-      <script>
-         const element = document.querySelector("#yuxtaposicion");
-         const options = {
-             controlColor: "#fff",
-             controlShadow: true,
-             addCircle: true,
-             addCircleBlur: true,
-             showLabels: true,
-             labelOptions: {
-                 before: "Cara",
-                 after: "Sello",
-                 onHover: false,
-             },
-         };
-         const viewer = new ImageCompare(element, options).mount();
-      </script>
-      <!-- Este es el script para el mapa -->
-      <script>
-         var map = L.map("map").setView([1.0, 107.7], 5);
-         
-         L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-         }).addTo(map);
-         
-         var LeafIcon = L.Icon.extend({
-             options: {
-                 shadowUrl: "imgs/leaf-shadow.png",
-                 iconSize: [53, 95],
-                 shadowSize: [50, 64],
-                 iconAnchor: [22, 94],
-                 shadowAnchor: [4, 62],
-                 popupAnchor: [-3, -76],
-             },
-         });
-         
-         var greenIcon = new LeafIcon({ iconUrl: "imgs/leaf-green.png" });
-         var redIcon = new LeafIcon({ iconUrl: "imgs/leaf-red.png" });
-         var orangeIcon = new LeafIcon({ iconUrl: "imgs/leaf-orange.png" });
-         
-         var mGreen = L.marker([3.807798, 97.452561], { icon: greenIcon }).bindPopup("<strong>Orangután de Sumatra</strong> <br> Pongo abelii.").addTo(map);
-         var mRed = L.marker([1.274309, 113.378906], { icon: redIcon }).bindPopup("<strong>Orangután de Borneo</strong> <br> Pongo pygmaeus.").addTo(map);
-         var mOrange = L.marker([1.487107, 99.068527], { icon: orangeIcon }).bindPopup("<strong>Orangután de Tapanuli</strong> <br> Pongo tapanuliensis.").addTo(map);
-      </script>
-      <!--BOOTSTRAP OFRECE SU PROPIA BIBLIOTECA DE JAVASCRIPT-->
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-      <!--CON ESTE CÓDIGO DE ACTIVA EL POPOVER SOBRE SU NOMBRE-->
-      <script>
-         var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
-         var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-             return new bootstrap.Popover(popoverTriggerEl, { html: true });
-         });
-      </script>
-      
-      <!-- Este es el script para el canto-->
+        </footer>
+        <!-- JAVASCRIPT -->
+        <!--Gráfico de barras-->
+        <script>
+            //No creo que sea necesario complicarse, puedes meter el dato a mano a continuación
+            var dato = [
+                { especie: "Orangután de Borneo", imagen: "imgs/Pongo_Borneo.webp", quedan: 104700 },
+                { especie: "Orangután de Sumatra", imagen: "imgs/Pongo_sumatra.webp", quedan: 13846 },
+                { especie: "Orangután de Tapanuli", imagen: "imgs/Tapanuliensis.webp", quedan: 800 },
+            ];
+            //Sumo los que quedan a mano, para tener el total necesario para sacar % para barra
+            var total = dato[0]["quedan"] + dato[1]["quedan"] + dato[2]["quedan"];
+            //Voy a tomar el elemento con esta identidad
+            const lugar = document.getElementById("grafico_de_barras");
+            //Por cada dato en gráfico chanto algo al elemento
+            dato.forEach((d) => {
+                lugar.innerHTML +=
+                    '<div class="col-2 col-md-1"><img src="' +
+                    d.imagen +
+                    '" class="w-100 rounded-circle" data-bs-toggle="tooltip" data-bs-placement="right" title="' +
+                    d.especie +
+                    '"/></div><div class="col-10 col-md-11"><div class="progress"><div class="progress-bar" role="progressbar" style="width: ' +
+                    (d.quedan * 100) / total +
+                    '%;"></div><span class="ps-1 fw-bold">' +
+                    d.quedan.toLocaleString("es-CL") +
+                    "</span></div></div>";
+            });
+        </script>
+        <!-- Final de gráficos de barras -->
+        <!--BOOTSTRAP OFRECE SU PROPIA BIBLIOTECA DE JAVASCRIPT-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <script>
+            //esto activa el tooltip, que muestra el nombre de la especie en el gráfico
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+        </script>
+        <!--LO QUE SIGUE ES OTRA BIBLIOTECA DE JAVASCRIPT-->
+        <script src="https://unpkg.com/image-compare-viewer/dist/image-compare-viewer.min.js"></script>
+        <!--LO QUE SIGUE ES LA CONFIGURACIÓN DE LA COMPARACIÓN DE IMÁGENES-->
+        <script>
+            const element = document.querySelector("#yuxtaposicion");
+            const options = {
+                controlColor: "#fff",
+                controlShadow: true,
+                addCircle: true,
+                addCircleBlur: true,
+                showLabels: true,
+                labelOptions: {
+                    before: "Cara",
+                    after: "Sello",
+                    onHover: false,
+                },
+            };
+            const viewer = new ImageCompare(element, options).mount();
+        </script>
+        <!-- Este es el script para el mapa -->
+        <script>
+            var map = L.map("map").setView([1.0, 107.7], 5);
 
-      <script>
-          var aullido = document.getElementById("elAudio");
-          var boton = document.getElementById("elSwitch");
-          boton.addEventListener('change', function() {
-              if (this.checked) {
-                  aullido.play();
-              } else {
-                  aullido.pause();
-              }
-          });
-      </script>
-      
-   </body>
+            L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+            }).addTo(map);
+
+            var LeafIcon = L.Icon.extend({
+                options: {
+                    shadowUrl: "imgs/leaf-shadow.png",
+                    iconSize: [53, 95],
+                    shadowSize: [50, 64],
+                    iconAnchor: [22, 94],
+                    shadowAnchor: [4, 62],
+                    popupAnchor: [-3, -76],
+                },
+            });
+
+            var greenIcon = new LeafIcon({ iconUrl: "imgs/leaf-green.png" });
+            var redIcon = new LeafIcon({ iconUrl: "imgs/leaf-red.png" });
+            var orangeIcon = new LeafIcon({ iconUrl: "imgs/leaf-orange.png" });
+
+            var mGreen = L.marker([3.807798, 97.452561], { icon: greenIcon }).bindPopup("<strong>Orangután de Sumatra</strong> <br> Pongo abelii.").addTo(map);
+            var mRed = L.marker([1.274309, 113.378906], { icon: redIcon }).bindPopup("<strong>Orangután de Borneo</strong> <br> Pongo pygmaeus.").addTo(map);
+            var mOrange = L.marker([1.487107, 99.068527], { icon: orangeIcon }).bindPopup("<strong>Orangután de Tapanuli</strong> <br> Pongo tapanuliensis.").addTo(map);
+        </script>
+        <!--BOOTSTRAP OFRECE SU PROPIA BIBLIOTECA DE JAVASCRIPT-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <!--CON ESTE CÓDIGO DE ACTIVA EL POPOVER SOBRE SU NOMBRE-->
+        <script>
+            var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+            var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+                return new bootstrap.Popover(popoverTriggerEl, { html: true });
+            });
+        </script>
+
+        <!-- Este es el script para el canto-->
+
+        <script>
+            var aullido = document.getElementById("elAudio");
+            var boton = document.getElementById("elSwitch");
+            boton.addEventListener("change", function () {
+                if (this.checked) {
+                    aullido.play();
+                } else {
+                    aullido.pause();
+                }
+            });
+        </script>
+    </body>
 </html>
